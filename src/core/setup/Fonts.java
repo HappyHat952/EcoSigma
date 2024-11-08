@@ -1,4 +1,4 @@
-package core.Setup;
+package core.setup;
 
 public class Fonts {
 }
