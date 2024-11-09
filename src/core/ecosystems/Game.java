@@ -14,6 +14,8 @@ public class Game extends BasicGameState
 {	
 	private int id;
 	StateBasedGame sbg;
+	public static int levelID;
+	Shop shop;
 
 	public Game(int id) 
 	{
@@ -30,6 +32,7 @@ public class Game extends BasicGameState
 		// This code happens when you enter a game state for the *first time.*
 		this.sbg = sbg;
 		gc.setShowFPS(true);
+		shop = new Shop();
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -41,12 +44,15 @@ public class Game extends BasicGameState
 	{
 		// This code renders shapes and images every frame.
 		g.setColor(Color.white);
-		g.drawString("Hello World!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
+		shop.render(g);
+		// REPLACE THIS
+		g.drawString(String.valueOf(levelID), Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		// This code happens when you enter a gameState.  
+		// This code happens when you enter a gameState.
+		shop.setItems(levelID);
 	}
 
 	public void leave(GameContainer gc, StateBasedGame sbg) 
@@ -64,7 +70,10 @@ public class Game extends BasicGameState
 	{
 		// This code happens every time the user presses the mouse
 	}
-	
+
+	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
+
+	}
 	
 
 

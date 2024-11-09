@@ -18,7 +18,7 @@ public class Images {
     // GAME
 
     // ARCTIC
-
+    public static Image arcticMachine;
     // LEVEL 2
 
     // LEVEL 3
@@ -41,7 +41,7 @@ public class Images {
             // GAME
 
             // ARCTIC
-
+            arcticMachine = new Image("res/game/arctic/arcticMachine.png");
             // LEVEL 2
 
             // LEVEL 3
