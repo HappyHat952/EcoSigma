@@ -1,5 +1,6 @@
-package core;
+package core.ecosystems;
 
+import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -7,9 +8,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import static core.Main.LAB_ID;
+
 public class Game extends BasicGameState 
 {	
 	private int id;
+	StateBasedGame sbg;
 
 	public Game(int id) 
 	{
@@ -24,6 +28,7 @@ public class Game extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
 		// This code happens when you enter a game state for the *first time.*
+		this.sbg = sbg;
 		gc.setShowFPS(true);
 	}
 
@@ -52,6 +57,7 @@ public class Game extends BasicGameState
 	public void keyPressed(int key, char c)
 	{
 		// This code happens every time the user presses a key
+		sbg.enterState(LAB_ID);
 	}
 	
 	public void mousePressed(int button, int x, int y)
