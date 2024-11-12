@@ -1,5 +1,6 @@
 package core.ecosystems;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 //manages everything regarding a single ecosystem - contains the shop, lab, and grid
@@ -11,6 +12,7 @@ abstract public class Ecosystem {
         grid = new Grid();
         shop = new Shop();
         shop.setItems(0);
+
     }
 
     public void render(Graphics g){

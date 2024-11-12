@@ -5,8 +5,8 @@ import org.newdawn.slick.Graphics;
 
 public class Cell {
     //static
-    private static int width;
-    private static int height;
+    protected static int width;
+    protected static int height;
 
     //not static
     private int row;
@@ -14,6 +14,8 @@ public class Cell {
 
     private int myX;
     private int myY;
+
+    protected Color myColor;
 
 
     public Cell(int r, int c)
@@ -23,16 +25,17 @@ public class Cell {
 
         myX = r*width;
         myY = c*height;
+        myColor = Color.green;
     }
 
     public void render(Graphics g)
     {
-        g.setColor(Color.green);
+        g.setColor(myColor);
         g.fillRect(myX, myY, width, height);
         g.setColor(Color.blue);
         g.setLineWidth(10);
         g.drawRect(myX, myY, width, height);
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawString(row+", "+col, myX,myY);
     }
 

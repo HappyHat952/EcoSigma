@@ -3,6 +3,7 @@ package core.ecosystems;
 
 import core.Main;
 import core.setup.Images;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class Shop {
     }
 
     public void render(Graphics g) {
+        g.setColor(Color.white);
         g.drawString("$ "+money, Grid.getGridWidth() + margin, Main.getScreenHeight() * .65f);
 
         for (int i = 0; i < items.size(); i++) {

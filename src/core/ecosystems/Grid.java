@@ -4,9 +4,9 @@ import core.Main;
 import org.newdawn.slick.Graphics;
 
 public class Grid {
-    public final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
-    private static int gridWidth; //size of the grid relative to 1920 x 1080
-    private static Cell[][] cells;
+    protected final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
+    protected static int gridWidth; //size of the grid relative to 1920 x 1080
+    protected Cell[][] cells;
 
     public Grid()
     {
