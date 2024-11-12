@@ -1,5 +1,6 @@
 package core;
 
+import core.setup.Fonts;
 import core.setup.Images;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -27,6 +28,7 @@ public class Title extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         sbg = stateBasedGame;
         Images.loadImages();
+        Fonts.loadFonts();
     }
 
     @Override

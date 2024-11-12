@@ -1,5 +1,6 @@
 package core.ecosystems;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -24,6 +25,7 @@ public class Item {
 
     public void render(Graphics g) {
         g.drawImage(image, x, y);
+        g.setColor(Color.white);
         g.drawString(name, x + 20, y + image.getHeight() + 10);
     }
 
