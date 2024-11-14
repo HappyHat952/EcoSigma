@@ -68,7 +68,6 @@ public class Game extends BasicGameState
 	public void keyPressed(int key, char c)
 	{
 		// This code happens every time the user presses a key
-		sbg.enterState(LAB_ID);
 	}
 
 	public void mousePressed(int button, int x, int y)

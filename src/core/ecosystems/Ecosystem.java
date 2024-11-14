@@ -15,6 +15,9 @@ abstract public class Ecosystem {
         shop = new Shop();
         taskManager = new TaskManager();
         taskManager.addTask("Do stuff");
+        taskManager.addTask("Do stuff");
+        taskManager.addTask("Do stuff");
+        taskManager.addTask("Do stuff");
         shop.setItems(0);
     }
 

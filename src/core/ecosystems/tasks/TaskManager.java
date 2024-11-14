@@ -16,6 +16,10 @@ public class TaskManager {
     private float y;
     private float w;
     private float h;
+    private int xBuffer;
+    private int yBuffer;
+    private int textBuffer;
+    private int boxWidth;
 
     private ArrayList<Task> tasks;
 
@@ -25,6 +29,10 @@ public class TaskManager {
         w = Main.getScreenWidth()-x-(10/1920f);
         h = Main.getScreenHeight() * (500/1080f);
         tasks = new ArrayList<>();
+        xBuffer = 70;
+        yBuffer = 60;
+        textBuffer = 50;
+        boxWidth = 30;
     }
 
     public void render(Graphics g) {
@@ -38,13 +46,17 @@ public class TaskManager {
     public void renderTasks(Graphics g) {
         g.setFont(Fonts.medium);
         for (int i = 0; i < tasks.size(); i++) {
-            g.drawRect(x + 10, y + 50 + i * 10, 15, 15);
-            g.drawString(tasks.get(i).getName(), x + 30, y + 50 + i * 10);
+            g.setLineWidth(1);
+            g.drawRect(x + xBuffer - (xBuffer-boxWidth), y + yBuffer + (i * textBuffer), boxWidth, boxWidth);
+            g.drawString(tasks.get(i).getName(), x + xBuffer, y + yBuffer + i * textBuffer);
+            g.setLineWidth(10);
+            if (tasks.get(i).isComplete()) {
+                g.drawImage(Images.check, x + xBuffer - (xBuffer-boxWidth), y + yBuffer + (i * textBuffer));
+            }
         }
     }
 
     public void addTask(String name) {
-        tasks.add(new Task(name));
+//        tasks.add(new Task(name));
     }
-
 }
