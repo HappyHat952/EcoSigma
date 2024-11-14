@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class Shop {
 
-    private final float x = Main.getScreenWidth() * .65f;
-    private final float y = Main.getScreenHeight() * .7f;
-    private final float margin = Main.getScreenWidth() * .05f;
-    private final float buffer = 180;
+    private final int x = (int) (Main.getScreenWidth() * .65f);
+    private static final int y = (int)( Main.getScreenHeight() * .7f);
+    private final static int margin = (int)(Main.getScreenWidth() * .05f);
+    private final static int buffer = (int)( 180/1920f * Main.getScreenWidth() ) ;
     private ArrayList<Item> items;
 
     protected static int money;
@@ -24,14 +24,13 @@ public class Shop {
 
     }
 
-    public void setItems(int levelID) {
-        if (levelID == 0) {
+    public void setItems( int level ) {
             for (int i = 0; i<3; i++)
             {
-                items.add(new Item("Arctic Machine", Images.arcticMachine, "Makes it cold",
-                        (int)(Grid.getGridWidth()+ margin + i * buffer), (int) y ) );
+                items.add(new Item (i));
+//                items.add(new Item("Arctic Machine", Images.arcticMachine, "Makes it cold",
+//                        (int)(Grid.getGridWidth()+ margin + i * buffer), (int) y ) );
             }
-        }
     }
 
     public void render(Graphics g) {
@@ -66,4 +65,7 @@ public class Shop {
     public ArrayList<Item> getItems() {
         return items;
     }
+    public static int getHeight() { return y;}
+    public static int getBuffer() { return buffer;}
+    public static int getMargin(){ return margin;};
 }

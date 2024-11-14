@@ -4,9 +4,16 @@ import core.ecosystems.Shop;
 
 public class ArcticShop extends Shop {
 
-    public ArcticShop()
+    public ArcticShop() 
     {
         super();
-        setItems(0);
+        setItems();
+    }
+
+    //MUTATOR
+    //setting the items for a specific class
+    public void setItems()
+    {
+
     }
 }

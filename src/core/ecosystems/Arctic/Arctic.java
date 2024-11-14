@@ -9,6 +9,6 @@ public class Arctic extends Ecosystem {
         super();
         grid = new ArcticGrid();
         shop = new ArcticShop();
-
+        shop.setItems(0);
     }
 }
