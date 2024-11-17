@@ -14,6 +14,8 @@ public class Item {
     protected int x;
     protected int y;
     protected int cost;
+    protected Building building;
+    protected Color myColor;
 
     public Item(String name, Image image, String info, int i, int y) {
         this.name = name;
@@ -32,33 +34,50 @@ public class Item {
         this.x = i* Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
         cost = 4;
+        building = new Building();
+
+        myColor = Color.white;
 
     }
 
     public void render(Graphics g) {
         g.drawImage(image, x, y);
-        g.setColor(Color.white);
+        g.setColor(myColor);
         g.drawString(name, x + 20, y + image.getHeight() + 10);
+        g.drawRect(x, y,image.getWidth(), image.getHeight());
     }
 
     public void click(int x, int y)
     {
         if (mouseOver(x,y))
         {
-
+            myColor = Color.green;
+        }
+        else {
+            myColor = Color.white;
         }
     }
 
     public boolean mouseOver(int x, int y)
     {
-        return (x>this.x && x< this.x+image.getWidth() && y > this.y  && y<this.y + image.getHeight() );
+        return (x>this.x && x< (this.x+image.getWidth()) && y > this.y  && y< (this.y + image.getHeight()) );
 
+    }
+
+    //Accessor
+    public Building getBuilding()
+    {
+        building = new Building();
+        return building;
     }
 
     public int getCost()
     {
         return cost;
     }
+
+    //mutator
+
 
 
 }

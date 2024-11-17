@@ -13,18 +13,20 @@ public class Shop {
     private final int x = (int) (Main.getScreenWidth() * .65f);
     private static final int y = (int)( Main.getScreenHeight() * .7f);
     private final static int margin = (int)(Main.getScreenWidth() * .05f);
-    private final static int buffer = (int)( 180/1920f * Main.getScreenWidth() ) ;
-    private ArrayList<Item> items;
+    private final static int buffer = (int)( 200/1920f * Main.getScreenWidth() ) ;
+    protected ArrayList<Item> items;
+    protected Grid grid;
 
     protected static int money;
 
-    public Shop() {
+    public Shop( Grid g) {
         items = new ArrayList<>();
-        money = 10;
+        money = 50;
+        grid = g;
 
     }
 
-    public void setItems( int level ) {
+    public void setItems() {
             for (int i = 0; i<3; i++)
             {
                 items.add(new Item (i));
@@ -35,7 +37,7 @@ public class Shop {
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.drawString("$ "+money, Grid.getGridWidth() + margin, Main.getScreenHeight() * .65f);
+        g.drawString("$ "+money + "\nitems: "+items.size(), Grid.getGridWidth() + margin, Main.getScreenHeight() * .65f);
 
         for (int i = 0; i < items.size(); i++) {
             items.get(i).render(g);
@@ -52,9 +54,10 @@ public class Shop {
     {
         for (Item i: items)
         {
-            if (i.mouseOver(x,y) && money >= i.getCost())
+            if (i.mouseOver(x,y) && money >= i.getCost() && !grid.mouseHasBuilding())
             {
                 money -= i.getCost();
+                grid.addBuilding(i.getBuilding());//later make it so it matches the item purchased.
             }
         }
     }

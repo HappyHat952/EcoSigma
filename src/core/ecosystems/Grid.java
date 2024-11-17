@@ -3,10 +3,14 @@ package core.ecosystems;
 import core.Main;
 import org.newdawn.slick.Graphics;
 
+import java.util.ArrayList;
+
 public class Grid {
     protected final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
     protected static int gridWidth; //size of the grid relative to 1920 x 1080
     protected Cell[][] cells;
+    protected Building mouseBuilding;//a building that is purchased (only one)
+    protected ArrayList<Building> buildings;
 
     public Grid()
     {
@@ -22,6 +26,8 @@ public class Grid {
                 cells[i][j] = new Cell(i,j);
             }
         }
+        mouseBuilding = new Building();
+        buildings = new ArrayList<>();
     }
 
     public void render(Graphics g)
@@ -48,10 +54,36 @@ public class Grid {
 
     //ACCESSOR
     public static int getGridWidth(){ return gridWidth;}
+    public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
 
     //MUTATOR
     public static void setGridWidth()
     {
         gridWidth = (int) (Main.getScreenWidth() * (float)1080/1920) ;
+    }
+    public void addBuilding(Building b){
+        //only adds a new building if the current one is placed;
+        if (!mouseHasBuilding())
+        {
+            buildings.add(b);
+            mouseBuilding = b;
+        }
+        }
+    public void mousePressed(int x, int y)
+    {
+        if (mouseBuilding != null)
+        {
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+                for (int j = 0; j < GRID_SIZE; j++)
+                {
+                    if (cells[i][j].mouseOver(x,y))
+                    {
+                        mouseBuilding.assignCell(cells[i][j]);
+                        mouseBuilding = null;
+                    }
+                }
+            }
+        }
     }
 }

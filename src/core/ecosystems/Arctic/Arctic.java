@@ -1,6 +1,7 @@
 package core.ecosystems.Arctic;
 
 import core.ecosystems.Ecosystem;
+import core.ecosystems.Shop;
 
 public class Arctic extends Ecosystem {
 
@@ -8,7 +9,6 @@ public class Arctic extends Ecosystem {
     {
         super();
         grid = new ArcticGrid();
-        shop = new ArcticShop();
-        shop.setItems(0);
+        shop = new ArcticShop(grid);
     }
 }

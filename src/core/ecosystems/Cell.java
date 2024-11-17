@@ -17,6 +17,9 @@ public class Cell {
 
     protected Color myColor;
 
+    protected Building myBuilding;
+    protected int myState;// tracks what state the cell is in.
+
 
     public Cell(int r, int c)
     {
@@ -37,6 +40,10 @@ public class Cell {
         g.drawRect(myX, myY, width, height);
         g.setColor(Color.black);
         g.drawString(row+", "+col, myX,myY);
+        if (myBuilding != null)
+        {
+            myBuilding.render(g);
+        }
     }
 
     public void update()
@@ -45,6 +52,34 @@ public class Cell {
     }
 
     //ACCESSOR
+    public boolean mouseOver(int x, int y)
+    {
+        return (x>myX && y >myY && x<myX+width && y< myY+height);
+    }
+    public static int getWidth()
+    {
+        return width;
+    }
+    public static int getHeight()
+    {
+        return height;
+    }
+    public int getRow()
+    {
+        return row;
+    }
+    public int getCol()
+    {
+        return col;
+    }
+    public int getX()
+    {
+        return myX;
+    }
+    public int getY()
+    {
+        return myY;
+    }
     //MUTATOR
     public static void setWidth(int w)
     {
@@ -53,5 +88,10 @@ public class Cell {
     public static void setHeight(int h)
     {
         height = h;
+    }
+
+    public void addBuilding(Building b)
+    {
+        myBuilding = b;
     }
 }

@@ -12,13 +12,13 @@ abstract public class Ecosystem {
 
     public Ecosystem(){
         grid = new Grid();
-        shop = new Shop();
+        shop = new Shop(grid);
         taskManager = new TaskManager();
         taskManager.addTask("Do stuff");
         taskManager.addTask("Do stuff");
         taskManager.addTask("Do stuff");
         taskManager.addTask("Do stuff");
-        shop.setItems(0);
+//        shop.setItems();
     }
 
     public void render(Graphics g){
@@ -36,5 +36,6 @@ abstract public class Ecosystem {
     public void mousePressed(int x, int y)
     {
         shop.mousePressed(x,y);
+        grid.mousePressed(x,y);
     }
 }
