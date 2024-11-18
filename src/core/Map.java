@@ -37,7 +37,8 @@ public class Map extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         sbg = stateBasedGame;
         mapScreenButtons = new ArrayList<>();
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenWidth()*.5f), 50, 50, Color.white, 0));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.5f), 50, 50, Color.white, 0));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.4f), 50, 50, Color.red, 0));
     }
 
     @Override

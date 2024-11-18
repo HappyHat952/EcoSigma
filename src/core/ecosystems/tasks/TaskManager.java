@@ -30,7 +30,7 @@ public class TaskManager {
         h = Main.getScreenHeight() * (500/1080f);
         tasks = new ArrayList<>();
         xBuffer = 70;
-        yBuffer = 60;
+        yBuffer = 80;
         textBuffer = 50;
         boxWidth = 30;
     }
@@ -47,16 +47,20 @@ public class TaskManager {
         g.setFont(Fonts.medium);
         for (int i = 0; i < tasks.size(); i++) {
             g.setLineWidth(1);
-            g.drawRect(x + xBuffer - (xBuffer-boxWidth), y + yBuffer + (i * textBuffer), boxWidth, boxWidth);
-            g.drawString(tasks.get(i).getName(), x + xBuffer, y + yBuffer + i * textBuffer);
+            g.drawRect(x + xBuffer - (xBuffer-boxWidth), yBuffer + (i * textBuffer), boxWidth, boxWidth);
+            g.drawString(tasks.get(i).getName() + ": " + tasks.get(i).getPercentDone() + "%", x + xBuffer, yBuffer + i * textBuffer - 10);
             g.setLineWidth(10);
             if (tasks.get(i).isComplete()) {
-                g.drawImage(Images.check, x + xBuffer - (xBuffer-boxWidth), y + yBuffer + (i * textBuffer));
+                g.drawImage(Images.check, x + xBuffer - (xBuffer-boxWidth), yBuffer + (i * textBuffer));
             }
         }
     }
 
-    public void addTask(String name) {
-//        tasks.add(new Task(name));
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public Task getTask(int i) {
+        return tasks.get(i);
     }
 }

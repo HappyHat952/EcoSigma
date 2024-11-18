@@ -15,4 +15,5 @@ public abstract class Task {
     }
 
     public abstract boolean isComplete();
+    public abstract int getPercentDone();
 }

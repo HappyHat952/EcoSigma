@@ -1,5 +1,6 @@
 package core.ecosystems;
 
+import core.ecosystems.Arctic.tasks.ClearedCO2;
 import core.ecosystems.tasks.TaskManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -14,11 +15,6 @@ abstract public class Ecosystem {
         grid = new Grid();
         shop = new Shop(grid);
         taskManager = new TaskManager();
-        taskManager.addTask("Do stuff");
-        taskManager.addTask("Do stuff");
-        taskManager.addTask("Do stuff");
-        taskManager.addTask("Do stuff");
-//        shop.setItems();
     }
 
     public void render(Graphics g){
