@@ -16,7 +16,7 @@ public class Game extends BasicGameState
 	private int id;
 	private StateBasedGame sbg;
 	public static int levelID;
-	private Ecosystem[] ecosystems;
+	private static Ecosystem[] ecosystems;
 	private final static int NUM_ECOSYSTEMS = 1;
 
 
@@ -80,6 +80,9 @@ public class Game extends BasicGameState
 
 	}
 
+	public static Ecosystem getCurrentLevel() {
+		return ecosystems[levelID];
+	}
 
 
 }

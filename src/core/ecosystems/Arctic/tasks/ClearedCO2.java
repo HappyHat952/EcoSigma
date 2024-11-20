@@ -1,17 +1,21 @@
 package core.ecosystems.Arctic.tasks;
 
 import core.ecosystems.Arctic.Arctic;
+import core.ecosystems.Arctic.Cloud;
 import core.ecosystems.tasks.Task;
+
+import java.util.ArrayList;
+
 
 public class ClearedCO2 extends Task {
 
-    private int totalClouds;
+    private static int totalClouds;
     private int cloudsDone;
 
     public ClearedCO2(String name) {
         super(name);
 //        totalClouds = Arctic.getClouds().size();
-        totalClouds = 1;
+        totalClouds = 10;
         cloudsDone = 0;
     }
 
@@ -28,8 +32,20 @@ public class ClearedCO2 extends Task {
         return (int) ((cloudsDone/(float) totalClouds) * 100);
     }
 
-    public void deleteCloud() {
-        cloudsDone++;
+    public void update() {
+
+        int count = 0;
+        for (Cloud c: Arctic.getClouds()) {
+            if (c.isDeleted()) {
+                count++;
+            }
+
+        }
+        cloudsDone = count;
+    }
+
+    public static int getTotalClouds() {
+        return totalClouds;
     }
 
 }

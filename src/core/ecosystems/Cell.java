@@ -18,7 +18,7 @@ public class Cell {
     protected Color myColor;
 
     protected Building myBuilding;
-    protected int myState;// tracks what state the cell is in.
+    protected int myState;  // tracks what state the cell is in.
 
 
     public Cell(int r, int c)

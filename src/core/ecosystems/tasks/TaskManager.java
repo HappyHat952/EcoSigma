@@ -63,4 +63,8 @@ public class TaskManager {
     public Task getTask(int i) {
         return tasks.get(i);
     }
+
+    public ArrayList<Task> getAllTasks() {
+        return tasks;
+    }
 }

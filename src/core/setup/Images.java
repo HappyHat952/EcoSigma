@@ -22,6 +22,7 @@ public class Images {
     public static Image check;
     // ARCTIC
     public static Image arcticMachine;
+    public static SpriteSheet CO2SuckerSheet;
     // LEVEL 2
 
     // LEVEL 3
@@ -45,6 +46,7 @@ public class Images {
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             // ARCTIC
             arcticMachine = new Image("res/game/arctic/arcticMachine.png");
+            CO2SuckerSheet = new SpriteSheet("res/game/arctic/carbonSucker.png", 192, 192);
             // LEVEL 2
 
             // LEVEL 3

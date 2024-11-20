@@ -1,6 +1,7 @@
 package core.ecosystems;
 
 import core.ecosystems.Arctic.tasks.ClearedCO2;
+import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -27,6 +28,9 @@ abstract public class Ecosystem {
     {
         grid.update();
         shop.update();
+        for (Task t: taskManager.getAllTasks()) {
+            t.update();
+        }
     }
 
     public void mousePressed(int x, int y)
