@@ -1,5 +1,6 @@
-package core.ecosystems;
+package core.ecosystems.Lab;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -10,6 +11,7 @@ public class Lab extends BasicGameState {
 
     private int id;
     StateBasedGame sbg;
+    GameContainer gc;
 
     public Lab(int id) {
         this.id = id;
@@ -22,12 +24,13 @@ public class Lab extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        gc = gameContainer;
         sbg = stateBasedGame;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
+        graphics.setBackground(Color.green);
     }
 
     @Override

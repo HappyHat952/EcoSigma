@@ -26,7 +26,6 @@ public class Grid {
                 cells[i][j] = new Cell(i,j);
             }
         }
-        mouseBuilding = new Building();
         buildings = new ArrayList<>();
     }
 
@@ -77,7 +76,7 @@ public class Grid {
             {
                 for (int j = 0; j < GRID_SIZE; j++)
                 {
-                    if (cells[i][j].mouseOver(x,y))
+                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
                     {
                         mouseBuilding.assignCell(cells[i][j]);
                         mouseBuilding = null;
@@ -86,4 +85,5 @@ public class Grid {
             }
         }
     }
+
 }

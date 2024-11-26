@@ -1,7 +1,7 @@
 package core;
 
 import core.ecosystems.Game;
-import core.ecosystems.Lab;
+import core.ecosystems.Lab.Lab;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -47,9 +47,8 @@ public class Main extends StateBasedGame
 	}
 	
 
-	public void initStatesList(GameContainer gc) throws SlickException 
+	public void initStatesList(GameContainer gc) throws SlickException
 	{
-
 		addState(title);
         addState(intro);
         addState(map);

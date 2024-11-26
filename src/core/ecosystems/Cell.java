@@ -80,6 +80,7 @@ public class Cell {
     {
         return myY;
     }
+    public boolean hasBuilding(){ return !(myBuilding == null);}
     //MUTATOR
     public static void setWidth(int w)
     {

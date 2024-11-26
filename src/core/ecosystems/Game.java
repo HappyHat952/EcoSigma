@@ -2,10 +2,7 @@ package core.ecosystems;
 
 import core.Main;
 import core.ecosystems.Arctic.Arctic;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -15,6 +12,7 @@ public class Game extends BasicGameState
 {
 	private int id;
 	private StateBasedGame sbg;
+	private GameContainer gc;
 	public static int levelID;
 	private static Ecosystem[] ecosystems;
 	private final static int NUM_ECOSYSTEMS = 1;
@@ -30,13 +28,14 @@ public class Game extends BasicGameState
 		return id;
 	}
 
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
+	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		// This code happens when you enter a game state for the *first time.*
 		this.sbg = sbg;
+		this.gc = gc;
 		gc.setShowFPS(true);
 		ecosystems = new Ecosystem[NUM_ECOSYSTEMS];
-		ecosystems[0] = new Arctic();
+		ecosystems[0] = new Arctic( gc, sbg);
 
 	}
 

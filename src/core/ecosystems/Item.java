@@ -43,7 +43,7 @@ public class Item {
     public void render(Graphics g) {
         g.drawImage(image, x, y);
         g.setColor(myColor);
-        g.drawString(name, x + 20, y + image.getHeight() + 10);
+        g.drawString(name+"\n$ "+cost, x + 20, y + image.getHeight() + 10);
         g.drawRect(x, y,image.getWidth(), image.getHeight());
     }
 

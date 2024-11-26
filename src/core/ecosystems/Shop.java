@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Shop {
 
-    private final int x = (int) (Main.getScreenWidth() * .65f);
+    private final int x = (int) (Main.getScreenWidth() * .7f);
     private static final int y = (int)( Main.getScreenHeight() * .7f);
     private final static int margin = (int)(Main.getScreenWidth() * .05f);
     private final static int buffer = (int)( 200/1920f * Main.getScreenWidth() ) ;

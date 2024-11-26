@@ -3,8 +3,10 @@ package core.ecosystems.Arctic;
 import core.ecosystems.Arctic.tasks.ClearedCO2;
 import core.ecosystems.Ecosystem;
 import core.ecosystems.Shop;
+import org.newdawn.slick.GameContainer;
 import core.ecosystems.tasks.Task;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 
@@ -12,9 +14,9 @@ public class Arctic extends Ecosystem {
 
     private static ArrayList<Cloud> clouds;
 
-    public Arctic()
+    public Arctic(GameContainer gc, StateBasedGame sbg)
     {
-        super();
+        super(gc, sbg);
         grid = new ArcticGrid();
         shop = new ArcticShop(grid);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions"));
