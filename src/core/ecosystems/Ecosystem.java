@@ -19,8 +19,8 @@ abstract public class Ecosystem {
     protected StateBasedGame sbg;
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg){
-        grid = new Grid();
-        shop = new Shop(grid);
+        grid = new Grid(gc);
+        shop = new Shop(grid, gc);
         lab = new LabButton();
         taskManager = new TaskManager();
         this.gc =gc;

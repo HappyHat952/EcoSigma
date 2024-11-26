@@ -17,8 +17,8 @@ public class Arctic extends Ecosystem {
     public Arctic(GameContainer gc, StateBasedGame sbg)
     {
         super(gc, sbg);
-        grid = new ArcticGrid();
-        shop = new ArcticShop(grid);
+        grid = new ArcticGrid(gc);
+        shop = new ArcticShop(grid, gc);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions"));
         clouds = new ArrayList<>();
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {

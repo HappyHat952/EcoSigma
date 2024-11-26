@@ -5,12 +5,13 @@ import core.ecosystems.Arctic.items.Item2;
 import core.ecosystems.Arctic.items.Item3;
 import core.ecosystems.Grid;
 import core.ecosystems.Shop;
+import org.newdawn.slick.GameContainer;
 
 public class ArcticShop extends Shop {
 
-    public ArcticShop(Grid grid)
+    public ArcticShop(Grid grid, GameContainer gc)
     {
-        super(grid);
+        super(grid, gc);
         setItems();
     }
 

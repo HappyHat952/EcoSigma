@@ -30,6 +30,7 @@ public class Building {
         g.drawImage(myImage, cell.getX(), cell.getY());
     }
     //accessor
+    public Image getMyImage() {return myImage;}
     //mutator
     public void resizeImage()
     {

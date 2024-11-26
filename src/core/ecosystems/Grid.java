@@ -1,6 +1,8 @@
 package core.ecosystems;
 
 import core.Main;
+import org.lwjgl.input.Cursor;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -11,8 +13,9 @@ public class Grid {
     protected Cell[][] cells;
     protected Building mouseBuilding;//a building that is purchased (only one)
     protected ArrayList<Building> buildings;
+    protected GameContainer gc;
 
-    public Grid()
+    public Grid(GameContainer gc)
     {
         setGridWidth();
         Cell.setWidth(gridWidth/GRID_SIZE);
@@ -27,6 +30,7 @@ public class Grid {
             }
         }
         buildings = new ArrayList<>();
+        this.gc = gc;
     }
 
     public void render(Graphics g)
@@ -80,6 +84,7 @@ public class Grid {
                     {
                         mouseBuilding.assignCell(cells[i][j]);
                         mouseBuilding = null;
+                        gc.setDefaultMouseCursor();
                     }
                 }
             }
