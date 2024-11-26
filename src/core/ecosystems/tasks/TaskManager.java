@@ -20,6 +20,12 @@ public class TaskManager {
     private int yBuffer;
     private int textBuffer;
     private int boxWidth;
+    // PROGRESS BAR
+    private int progressBarX;
+    private int progressBarY;
+    private int progressBarWidth;
+    private int progressBarHeight;
+    private float currentProgress;
 
     private ArrayList<Task> tasks;
 
@@ -33,6 +39,11 @@ public class TaskManager {
         yBuffer = 80;
         textBuffer = 50;
         boxWidth = 30;
+        progressBarWidth = (int) (w - Main.getScreenWidth() * 2 * (10/1920f));
+        progressBarHeight = (int) (Main.getScreenHeight() * .05f);
+        progressBarX = (int) (x + Main.getScreenWidth() * (10/1920f));
+        progressBarY = (int) (y + h +  Main.getScreenWidth() * 2 * (10/1920f));
+        currentProgress = 0;
     }
 
     public void render(Graphics g) {
@@ -41,6 +52,18 @@ public class TaskManager {
         g.setFont(Fonts.big);
         g.drawString("TASKS:", x+w/2-100, y+10);
         renderTasks(g);
+        g.drawRect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
+        g.setColor(Color.green);
+        g.fillRect(progressBarX, progressBarY, currentProgress * progressBarWidth, progressBarHeight);
+        g.setColor(Color.red);
+        g.drawString((int) (currentProgress * 100) + "%", progressBarX, progressBarY);
+
+        // UPDATE WIDTH OF PROGRESS BAR
+        int count = 0;
+        for (Task t: tasks) {
+            count += t.getPercentDone();
+        }
+        currentProgress = (float) count /(tasks.size() * 100);
     }
 
     public void renderTasks(Graphics g) {
