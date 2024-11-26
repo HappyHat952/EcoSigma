@@ -10,6 +10,8 @@ public class Building {
     protected int myCol;
     protected Cell cell;
     protected Image myImage;
+    protected int time;
+    protected boolean isCompleted;
 
     public Building()
     {
@@ -28,6 +30,7 @@ public class Building {
     public void render(Graphics g)
     {
         g.drawImage(myImage, cell.getX(), cell.getY());
+        g.drawString(String.valueOf(time), cell.getX(), cell.getY());
     }
     //accessor
     public Image getMyImage() {return myImage;}
@@ -35,5 +38,20 @@ public class Building {
     public void resizeImage()
     {
         myImage = myImage.getScaledCopy(Cell.getWidth(), Cell.getHeight());
+    }
+    public void update() {
+        time++;
+        if (time >= (5 * 60)){
+            isCompleted = true;
+            time = 0;
+        }
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 }

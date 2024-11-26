@@ -12,7 +12,7 @@ public class Grid {
     protected static int gridWidth; //size of the grid relative to 1920 x 1080
     protected Cell[][] cells;
     protected Building mouseBuilding;//a building that is purchased (only one)
-    protected ArrayList<Building> buildings;
+    protected static ArrayList<Building> buildings;
     protected GameContainer gc;
 
     public Grid(GameContainer gc)
@@ -53,6 +53,9 @@ public class Grid {
                 cells[i][j].update();
             }
         }
+        for (Building b: buildings) {
+            b.update();
+        }
     }
 
     //ACCESSOR
@@ -85,10 +88,14 @@ public class Grid {
                         mouseBuilding.assignCell(cells[i][j]);
                         mouseBuilding = null;
                         gc.setDefaultMouseCursor();
+
                     }
                 }
             }
         }
     }
 
+    public static ArrayList<Building> getBuildings() {
+        return buildings;
+    }
 }

@@ -16,6 +16,6 @@ public class ArcticGrid extends Grid {
                 cells[i][j] = new ArcticCell(i,j);
             }
         }
-        mouseBuilding = new Building();
+//        mouseBuilding = new Building();
     }
 }
