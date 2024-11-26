@@ -14,6 +14,7 @@ public class Cell {
 
     private int myX;
     private int myY;
+    private boolean isOver;
 
     protected Color myColor;
 
@@ -39,6 +40,11 @@ public class Cell {
         g.setLineWidth(10);
         g.drawRect(myX, myY, width, height);
         g.setColor(Color.black);
+        if (isOver)
+        {
+            g.setColor(new Color(1f,1f,1f,.3f));
+            g.fillRect(myX,myY, width,height);
+        }
         g.drawString(row+", "+col, myX,myY);
         if (myBuilding != null)
         {
@@ -46,9 +52,9 @@ public class Cell {
         }
     }
 
-    public void update()
+    public void update(int x, int y)
     {
-
+        isOver = mouseOver(x,y);
     }
 
     //ACCESSOR
@@ -72,10 +78,7 @@ public class Cell {
     {
         return col;
     }
-    public int getX()
-    {
-        return myX;
-    }
+    public int getX() {return myX;  }
     public int getY()
     {
         return myY;

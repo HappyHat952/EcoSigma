@@ -19,7 +19,7 @@ public class Arctic extends Ecosystem {
         super(gc, sbg);
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
-        taskManager.addTask(new ClearedCO2("Clear CO2 Emissions"));
+        taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         clouds = new ArrayList<>();
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {
             clouds.add(new Cloud());

@@ -12,7 +12,8 @@ public class Grid {
     protected static int gridWidth; //size of the grid relative to 1920 x 1080
     protected Cell[][] cells;
     protected Building mouseBuilding;//a building that is purchased (only one)
-    protected static ArrayList<Building> buildings;
+    protected ArrayList<Building> buildings;
+    protected ArrayList<Animal> animals;
     protected GameContainer gc;
 
     public Grid(GameContainer gc)
@@ -30,6 +31,10 @@ public class Grid {
             }
         }
         buildings = new ArrayList<>();
+        animals = new ArrayList<>();
+
+        animals.add(new Animal(cells[2][3]));
+
         this.gc = gc;
     }
 
@@ -42,6 +47,10 @@ public class Grid {
                 cells[i][j].render(g);
             }
         }
+        for (Animal a: animals)
+        {
+            a.render(g);
+        }
     }
 
     public void update()
@@ -50,11 +59,15 @@ public class Grid {
         {
             for (int j = 0; j < GRID_SIZE; j++)
             {
-                cells[i][j].update();
+                //cells[i][j].update();
             }
         }
         for (Building b: buildings) {
             b.update();
+        }
+        for (Animal a: animals)
+        {
+            a.update();
         }
     }
 
@@ -95,7 +108,7 @@ public class Grid {
         }
     }
 
-    public static ArrayList<Building> getBuildings() {
+    public ArrayList<Building> getBuildings() {
         return buildings;
     }
 }

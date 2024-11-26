@@ -4,6 +4,7 @@ import core.ecosystems.Arctic.Arctic;
 import core.ecosystems.Arctic.ArcticGrid;
 import core.ecosystems.Arctic.Cloud;
 import core.ecosystems.Building;
+import core.ecosystems.Grid;
 import core.ecosystems.tasks.Task;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class ClearedCO2 extends Task {
     private static int totalClouds;
     private int cloudsDone;
 
-    public ClearedCO2(String name) {
-        super(name);
+    public ClearedCO2(String name, Grid grid) {
+        super(name, grid);
 //        totalClouds = Arctic.getClouds().size();
         totalClouds = 10;
         cloudsDone = 0;
@@ -45,7 +46,7 @@ public class ClearedCO2 extends Task {
 //        }
 //        cloudsDone = count;
 
-        for (Building b: ArcticGrid.getBuildings()) {
+        for (Building b: grid.getBuildings()) {
             if (b.isCompleted()) {
                 count++;
                 b.setCompleted(false);

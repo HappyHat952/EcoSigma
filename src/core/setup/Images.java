@@ -1,6 +1,7 @@
 package core.setup;
 
 import core.Main;
+import core.ecosystems.Cell;
 import core.ecosystems.tasks.TaskManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -20,6 +21,7 @@ public class Images {
     public static Image mapScreen;
     // GAME
     public static Image check;
+    public static SpriteSheet animal;
     // ARCTIC
     public static Image arcticMachine;
     public static SpriteSheet CO2SuckerSheet;
@@ -44,6 +46,7 @@ public class Images {
             mapScreen = (new Image("res/map/mapBlank.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
+            animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
             // ARCTIC
             arcticMachine = new Image("res/game/arctic/arcticMachine.png");
             CO2SuckerSheet = new SpriteSheet("res/game/arctic/carbonSucker.png", 192, 192);
