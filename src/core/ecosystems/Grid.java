@@ -1,9 +1,12 @@
 package core.ecosystems;
 
 import core.Main;
-import org.lwjgl.input.Cursor;
+
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.*;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 
@@ -15,6 +18,7 @@ public class Grid {
     protected ArrayList<Building> buildings;
     protected ArrayList<Animal> animals;
     protected GameContainer gc;
+    protected StateBasedGame sbg;
 
     public Grid(GameContainer gc)
     {
@@ -59,7 +63,7 @@ public class Grid {
         {
             for (int j = 0; j < GRID_SIZE; j++)
             {
-                //cells[i][j].update();
+                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
             }
         }
         for (Building b: buildings) {

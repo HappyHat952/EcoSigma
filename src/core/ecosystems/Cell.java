@@ -36,15 +36,16 @@ public class Cell {
     {
         g.setColor(myColor);
         g.fillRect(myX, myY, width, height);
-        g.setColor(Color.blue);
-        g.setLineWidth(10);
-        g.drawRect(myX, myY, width, height);
         g.setColor(Color.black);
+        g.setLineWidth(2);
+        g.drawRect(myX, myY, width, height);
+
         if (isOver)
         {
-            g.setColor(new Color(1f,1f,1f,.3f));
+            g.setColor(new Color(1f,1f,1f,.5f));
             g.fillRect(myX,myY, width,height);
         }
+        g.setColor(Color.black);
         g.drawString(row+", "+col, myX,myY);
         if (myBuilding != null)
         {
