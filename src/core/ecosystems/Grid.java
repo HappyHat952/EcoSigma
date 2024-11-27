@@ -137,4 +137,8 @@ public class Grid {
     public ArrayList<Building> getBuildings() {
         return buildings;
     }
+
+    public void addAnimal() {
+        animals.add(new Animal(cells[0][0]));
+    }
 }

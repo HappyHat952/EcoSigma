@@ -52,4 +52,9 @@ abstract public class Ecosystem {
             sbg.enterState(Main.LAB_ID);
         }
     }
+
+    public void addAnimal()
+    {
+        grid.addAnimal();
+    }
 }

@@ -1,6 +1,8 @@
 package core.ecosystems.Lab;
 
 import core.Main;
+import core.ecosystems.Animal;
+import core.ecosystems.Game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -52,6 +54,7 @@ public class Lab extends BasicGameState {
     public void keyPressed(int key, char c)
     {
         // This code happens every time the user presses a key
+        Game.getCurrentLevel().addAnimal();
 
     }
 
