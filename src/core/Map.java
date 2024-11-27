@@ -38,7 +38,7 @@ public class Map extends BasicGameState {
         sbg = stateBasedGame;
         mapScreenButtons = new ArrayList<>();
         mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.5f), 50, 50, Color.white, 0));
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.4f), 50, 50, Color.red, 0));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.4f), 50, 50, Color.red, 1));
     }
 
     @Override

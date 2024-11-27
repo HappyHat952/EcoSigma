@@ -38,6 +38,7 @@ public class Grid {
         animals = new ArrayList<>();
 
         animals.add(new Animal(cells[2][3]));
+        animals.add(new Animal(cells[1][1]));
 
         this.gc = gc;
     }
@@ -71,13 +72,34 @@ public class Grid {
         }
         for (Animal a: animals)
         {
-            a.update();
+            a.update(this);
         }
     }
 
     //ACCESSOR
     public static int getGridWidth(){ return gridWidth;}
     public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
+    public ArrayList<Cell> getOpenAdjacentCells(int r, int c)
+    {
+        //adds all available cells (checking boundaries)
+        ArrayList<Cell> cellList = new ArrayList<>();
+        if (r>0){           cellList.add(cells[r-1][c]);}
+        if (c>0){           cellList.add(cells[r][c-1]);}
+        if (r<GRID_SIZE-1){ cellList.add(cells[r+1][c]);}
+        if (c<GRID_SIZE-1){ cellList.add(cells[r][c+1]);}
+
+        //removes any cells that have a building on it
+        for (int i= 0; i< cellList.size(); i++)
+        {
+            if(cellList.get(i).hasBuilding() || cellList.get(i).hasAnimal())
+            {
+                cellList.remove(i);
+                i--;
+            }
+        }
+
+        return cellList;
+    }
 
     //MUTATOR
     public static void setGridWidth()

@@ -15,7 +15,7 @@ public class Game extends BasicGameState
 	private GameContainer gc;
 	public static int levelID;
 	private static Ecosystem[] ecosystems;
-	private final static int NUM_ECOSYSTEMS = 1;
+	private final static int NUM_ECOSYSTEMS = 2;
 
 
 	public Game(int id)
@@ -36,6 +36,7 @@ public class Game extends BasicGameState
 		gc.setShowFPS(true);
 		ecosystems = new Ecosystem[NUM_ECOSYSTEMS];
 		ecosystems[0] = new Arctic( gc, sbg);
+		ecosystems[1] = new Arctic( gc, sbg);
 
 	}
 
@@ -67,6 +68,10 @@ public class Game extends BasicGameState
 	public void keyPressed(int key, char c)
 	{
 		// This code happens every time the user presses a key
+		if (key == Input.KEY_E)
+		{
+			sbg.enterState(Main.MAP_ID);
+		}
 	}
 
 	public void mousePressed(int button, int x, int y)

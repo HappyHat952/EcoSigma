@@ -19,6 +19,7 @@ public class Cell {
     protected Color myColor;
 
     protected Building myBuilding;
+    protected Animal myAnimal;
     protected int myState;  // tracks what state the cell is in.
 
 
@@ -85,6 +86,7 @@ public class Cell {
         return myY;
     }
     public boolean hasBuilding(){ return !(myBuilding == null);}
+    public boolean hasAnimal(){return !(myAnimal == null);}
     //MUTATOR
     public static void setWidth(int w)
     {
@@ -99,4 +101,6 @@ public class Cell {
     {
         myBuilding = b;
     }
+    public void addAnimal(Animal a){myAnimal = a;}
+    public void removeAnimal(){myAnimal = null;}
 }

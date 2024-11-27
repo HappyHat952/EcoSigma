@@ -1,5 +1,6 @@
 package core.ecosystems.Lab;
 
+import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -51,10 +52,13 @@ public class Lab extends BasicGameState {
     public void keyPressed(int key, char c)
     {
         // This code happens every time the user presses a key
+
     }
 
     public void mousePressed(int button, int x, int y)
     {
         // This code happens every time the user presses the mouse
+        sbg.enterState(Main.GAME_ID);
+
     }
 }
