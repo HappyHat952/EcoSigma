@@ -91,7 +91,7 @@ public class Grid {
         //removes any cells that have a building on it
         for (int i= 0; i< cellList.size(); i++)
         {
-            if(cellList.get(i).hasBuilding() || cellList.get(i).hasAnimal())
+            if(!isAvailable(cellList.get(i)))
             {
                 cellList.remove(i);
                 i--;
@@ -99,6 +99,29 @@ public class Grid {
         }
 
         return cellList;
+    }
+
+    public ArrayList<Cell> getAllOpenCells()
+    {
+        ArrayList<Cell> cellList = new ArrayList<>();
+
+        //adds all cells in cells to cellList
+        for (int i=0; i<cells.length; i++)
+        {
+            for (int j=0; j<cells[0].length; j++)
+            {
+                if (isAvailable(cells[i][j]))
+                {
+                    cellList.add(cells[i][j]);
+                }
+            }
+        }
+        return cellList;
+    }
+
+    public boolean isAvailable(Cell cell)
+    {
+        return (!cell.hasBuilding() && !cell.hasAnimal());
     }
 
     //MUTATOR
@@ -139,6 +162,8 @@ public class Grid {
     }
 
     public void addAnimal() {
-        animals.add(new Animal(cells[0][0]));
+        ArrayList<Cell> cellList = getAllOpenCells();
+        Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        animals.add(new Animal(cell));
     }
 }
