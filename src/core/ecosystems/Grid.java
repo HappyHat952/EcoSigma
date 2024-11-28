@@ -8,6 +8,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Grid {
@@ -36,9 +38,6 @@ public class Grid {
         }
         buildings = new ArrayList<>();
         animals = new ArrayList<>();
-
-        animals.add(new Animal(cells[2][3]));
-        animals.add(new Animal(cells[1][1]));
 
         this.gc = gc;
     }
@@ -161,9 +160,16 @@ public class Grid {
         return buildings;
     }
 
-    public void addAnimal() {
+    public void addAnimal(Class<? extends Animal> animal) {
         ArrayList<Cell> cellList = getAllOpenCells();
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));
-        animals.add(new Animal(cell));
+        try {
+            Constructor constructor = animal.getDeclaredConstructor(Cell.class);
+            animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        //animals.add(new Animal(cell));
     }
 }

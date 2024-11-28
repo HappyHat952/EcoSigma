@@ -2,6 +2,7 @@ package core;
 
 import core.ecosystems.Game;
 import core.ecosystems.Lab.Lab;
+import core.setup.Images;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -28,7 +29,7 @@ public class Main extends StateBasedGame
 	public Main(String name) 
 	{
 		super(name);
-		
+
 		title = new Title(TITLE_ID);
         intro = new Intro(INTRO_ID);
         map = new Map(MAP_ID);

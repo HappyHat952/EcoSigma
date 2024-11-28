@@ -16,6 +16,7 @@ public class Title extends BasicGameState {
     StateBasedGame sbg;
 
     public Title(int id) {
+
         this.id = id;
     }
 
@@ -26,8 +27,8 @@ public class Title extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        sbg = stateBasedGame;
         Images.loadImages();
+        sbg = stateBasedGame;
         Fonts.loadFonts();
     }
 

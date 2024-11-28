@@ -53,8 +53,8 @@ abstract public class Ecosystem {
         }
     }
 
-    public void addAnimal()
+    public void addAnimal(Class<? extends Animal> animal)
     {
-        grid.addAnimal();
+        grid.addAnimal(animal);
     }
 }

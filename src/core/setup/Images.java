@@ -22,9 +22,15 @@ public class Images {
     // GAME
     public static Image check;
     public static SpriteSheet animal;
+    //LAB
+    public static Image labMachine;
     // ARCTIC
     public static Image arcticMachine;
     public static SpriteSheet CO2SuckerSheet;
+
+    public static SpriteSheet polarBear;
+    public static SpriteSheet walrus;
+    public static SpriteSheet lemming;
     // LEVEL 2
 
     // LEVEL 3
@@ -47,9 +53,17 @@ public class Images {
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
+            //LAB
+            labMachine = new Image("res/game/LabMachine.png");
             // ARCTIC
-            arcticMachine = new Image("res/game/arctic/arcticMachine.png");
-            CO2SuckerSheet = new SpriteSheet("res/game/arctic/carbonSucker.png", 192, 192);
+                //machines
+                arcticMachine = new Image("res/game/arctic/arcticMachine.png");
+                CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/carbonSucker.png").getScaledCopy(3), 128, 128);
+
+                //animals
+                polarBear =new SpriteSheet( (new Image("res/game/arctic/polar_bear.png")), 128, 128);
+                walrus =new SpriteSheet( (new Image("res/game/arctic/walrus.png")), 128, 128);
+                lemming =new SpriteSheet( (new Image("res/game/arctic/lemming.png")), 128, 128);
             // LEVEL 2
 
             // LEVEL 3
