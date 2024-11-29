@@ -36,7 +36,17 @@ public class Building {
 
     }
     //accessor
+
+    public int getMyCol() {
+        return myCol;
+    }
+
+    public int getMyRow() {
+        return myRow;
+    }
+
     public Image getMyImage() {return myImage;}
+
     public String getName() {
         return name;
     }

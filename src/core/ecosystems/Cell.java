@@ -109,4 +109,14 @@ public class Cell {
     }
     public void addAnimal(Animal a){myAnimal = a;}
     public void removeAnimal(){myAnimal = null;}
+    public void removeBuilding(){
+        myBuilding = null;
+    }
+
+    public Building getBuilding() {
+        if (hasBuilding()) {
+            return myBuilding;
+        }
+        return null;
+    }
 }

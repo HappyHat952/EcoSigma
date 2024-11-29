@@ -50,7 +50,7 @@ public class Game extends BasicGameState
 	{
 		// This code renders shapes and images every frame.
 		g.setColor(Color.white);
-		g.setBackground(Color.black);
+		g.setBackground(Color.darkGray);
 		// REPLACE THIS
 		g.drawString(String.valueOf(levelID), Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
 		ecosystems[levelID].render(g);
