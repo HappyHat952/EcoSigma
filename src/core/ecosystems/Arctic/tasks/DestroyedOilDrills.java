@@ -25,8 +25,6 @@ public class DestroyedOilDrills extends Task {
                 count++;
             }
         }
-        System.out.println("Oil Drills: " + count + "/" + totalOilDrills);
-        System.out.println((int) (((totalOilDrills-count)/(float)totalOilDrills) * 100));
         return (int) (((totalOilDrills-count)/(float)totalOilDrills) * 100);
     }
 

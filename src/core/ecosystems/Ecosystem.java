@@ -54,6 +54,10 @@ abstract public class Ecosystem {
         grid.addAnimal(animal);
     }
 
+    public TaskManager getTaskManager() {
+        return taskManager;
+    }
+
     public Grid getGrid() {
         return grid;
     }
