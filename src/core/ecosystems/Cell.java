@@ -67,6 +67,9 @@ public class Cell {
     {
         return (x>myX && y >myY && x<myX+width && y< myY+height);
     }
+    public Color getColor() {
+        return myColor;
+    }
     public static int getWidth()
     {
         return width;

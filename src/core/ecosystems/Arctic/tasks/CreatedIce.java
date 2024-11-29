@@ -4,8 +4,11 @@ import core.ecosystems.Arctic.Arctic;
 import core.ecosystems.Arctic.buildings.CO2Sucker;
 import core.ecosystems.Arctic.buildings.IcePump;
 import core.ecosystems.Building;
+import core.ecosystems.Cell;
+import core.ecosystems.Game;
 import core.ecosystems.Grid;
 import core.ecosystems.tasks.Task;
+import org.newdawn.slick.Color;
 
 public class CreatedIce extends Task {
 
@@ -17,27 +20,29 @@ public class CreatedIce extends Task {
         totalIce = 30;
     }
 
-    @Override
-    public boolean isComplete() {
-        return complete;
-    }
 
 
     @Override
     public int getPercentDone() {
-        return (int) ((iceCreated/(float) totalIce) * 100);
+        if (iceCreated <= 30) {
+            return (int) ((iceCreated / (float) totalIce) * 100);
+        } else {
+            return 100;
+        }
     }
 
     public void update() {
-        for (Building b: grid.getBuildings()) {
-            if (b instanceof IcePump) {
-                if (((IcePump) b).isCompleted()) {
-                    iceCreated += ((IcePump) b).getIceCreated();
-                    ((IcePump) b).setCompleted(false);
-                }
-            }
-        }
-
+                    // LOOP HERE
+                    int count = 0;
+                    Cell[][] cells = grid.getCells();
+                    for (int r = 0; r < cells.length; r++) {
+                        for (int c = 0; c < cells[r].length; c++) {
+                            if (cells[r][c].getColor().equals(Color.white)) {
+                                count++;
+                            }
+                        }
+                    }
+                    iceCreated = count;
     }
 
 }

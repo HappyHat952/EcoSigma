@@ -6,11 +6,9 @@ public abstract class Task {
 
     String name;
     protected Grid grid;
-    protected boolean complete;
 
     public Task(String name, Grid grid) {
         this.name = name;
-        complete = false;
         this.grid = grid;
     }
 
@@ -18,7 +16,12 @@ public abstract class Task {
         return name;
     }
 
-    public abstract boolean isComplete();
+    public boolean isComplete() {
+        if (getPercentDone() == 100) {
+            return true;
+        }
+        return false;
+    }
     public abstract int getPercentDone();
     public abstract void update();
 }

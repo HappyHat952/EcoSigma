@@ -167,6 +167,9 @@ public class Grid {
         return buildings;
     }
 
+    public static int getGridSize() {
+        return GRID_SIZE;
+    }
     public void addAnimal(Class<? extends Animal> animal) {
         ArrayList<Cell> cellList = getAllOpenCells();
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));

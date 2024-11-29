@@ -23,13 +23,6 @@ public class ClearedCO2 extends Task {
         cloudsDone = 0;
     }
 
-    @Override
-    public boolean isComplete() {
-        if (cloudsDone == totalClouds) {
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public int getPercentDone() {
