@@ -1,6 +1,5 @@
 package core.ecosystems;
 
-import core.setup.Images;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -14,7 +13,8 @@ public class Item {
     protected int x;
     protected int y;
     protected int cost;
-    protected Building building;
+    protected Class<? extends Building> buildingClass;
+    protected Building buildingObject;
     protected Color myColor;
 
     public Item(String name, Image image, String info, int i, int y) {
@@ -25,17 +25,17 @@ public class Item {
         this.x = i*Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
         cost = 4;
-
     }
-    public Item(int i ) {
-        this.name = "notNamed";
-        this.image = Images.arcticMachine.getFlippedCopy(false, true);//upside down Image if not there
-        this.info = "doesn't exist";
-        this.x = i* Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
+
+    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject) {
+        this.name = buildingObject.getName();
+        this.image = buildingObject.getMyImage();
+        this.info = buildingObject.getInfo();
+        this.x = i * Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
         cost = 4;
-        building = new Building();
-
+        this.buildingClass = buildingClass;
+        this.buildingObject = buildingObject;
         myColor = Color.white;
 
     }
@@ -65,10 +65,14 @@ public class Item {
     }
 
     //Accessor
-    public Building getBuilding()
+    public Class<? extends Building> getBuildingClass()
     {
-        building = new Building();
-        return building;
+//        building = new Building();
+        return buildingClass;
+    }
+
+    public Building getBuildingObject() {
+        return buildingObject;
     }
 
     public int getCost()

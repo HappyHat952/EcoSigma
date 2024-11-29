@@ -1,6 +1,8 @@
 package core.ecosystems.Arctic;
 
 import core.ecosystems.Arctic.tasks.ClearedCO2;
+import core.ecosystems.Arctic.tasks.CreatedIce;
+import core.ecosystems.Arctic.tasks.DestroyedOilDrills;
 import core.ecosystems.Ecosystem;
 import core.ecosystems.Shop;
 import org.newdawn.slick.GameContainer;
@@ -20,6 +22,8 @@ public class Arctic extends Ecosystem {
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
+        taskManager.addTask(new CreatedIce("Create Ice", grid));
+        taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));
         clouds = new ArrayList<>();
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {
             clouds.add(new Cloud());
@@ -44,11 +48,6 @@ public class Arctic extends Ecosystem {
     @Override
     public void mousePressed(int x, int y) {
         super.mousePressed(x, y);
-        for (Cloud c: clouds) {
-            if (c.mouseOver(x, y)) {
-                c.delete();
-            }
-        }
     }
 
     public static ArrayList<Cloud> getClouds() {

@@ -6,7 +6,7 @@ public abstract class Task {
 
     String name;
     protected Grid grid;
-    private boolean complete;
+    protected boolean complete;
 
     public Task(String name, Grid grid) {
         this.name = name;

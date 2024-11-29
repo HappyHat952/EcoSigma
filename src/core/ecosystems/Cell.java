@@ -58,6 +58,9 @@ public class Cell {
     {
         isOver = mouseOver(x,y);
     }
+    public void setColor(Color color) {
+        myColor = color;
+    }
 
     //ACCESSOR
     public boolean mouseOver(int x, int y)

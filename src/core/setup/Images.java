@@ -27,6 +27,8 @@ public class Images {
     // ARCTIC
     public static Image arcticMachine;
     public static SpriteSheet CO2SuckerSheet;
+    public static SpriteSheet cloudSheet;
+    public static Image pump;
 
     public static SpriteSheet polarBear;
     public static SpriteSheet walrus;
@@ -59,11 +61,15 @@ public class Images {
                 //machines
                 arcticMachine = new Image("res/game/arctic/arcticMachine.png");
                 CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/carbonSucker.png").getScaledCopy(3), 128, 128);
+                pump = new Image("res/game/arctic/pump.png");
 
                 //animals
                 polarBear =new SpriteSheet( (new Image("res/game/arctic/polar_bear.png")), 128, 128);
                 walrus =new SpriteSheet( (new Image("res/game/arctic/walrus.png")), 128, 128);
                 lemming =new SpriteSheet( (new Image("res/game/arctic/lemming.png")), 128, 128);
+                //other
+                cloudSheet = new SpriteSheet((new Image("res/game/arctic/cloud.png")), 128, 128);
+
             // LEVEL 2
 
             // LEVEL 3

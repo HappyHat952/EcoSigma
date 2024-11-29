@@ -76,6 +76,11 @@ public class Grid {
     }
 
     //ACCESSOR
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     public static int getGridWidth(){ return gridWidth;}
     public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
     public ArrayList<Cell> getOpenAdjacentCells(int r, int c)
@@ -128,14 +133,13 @@ public class Grid {
     {
         gridWidth = (int) (Main.getScreenWidth() * (float)1080/1920) ;
     }
-    public void addBuilding(Building b){
-        //only adds a new building if the current one is placed;
-        if (!mouseHasBuilding())
-        {
-            buildings.add(b);
-            mouseBuilding = b;
-        }
-        }
+//    public void addMouseBuilding(Building b){
+//        //only adds a new building if the current one is placed;
+//        if (!mouseHasBuilding())
+//        {
+//            mouseBuilding = b;
+//        }
+//        }
     public void mousePressed(int x, int y)
     {
         if (mouseBuilding != null)
@@ -147,12 +151,15 @@ public class Grid {
                     if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
                     {
                         mouseBuilding.assignCell(cells[i][j]);
+                        buildings.add(mouseBuilding);
                         mouseBuilding = null;
                         gc.setDefaultMouseCursor();
 
                     }
                 }
             }
+        } else {
+            System.out.println("NO BUILDING");
         }
     }
 
@@ -166,6 +173,24 @@ public class Grid {
         try {
             Constructor constructor = animal.getDeclaredConstructor(Cell.class);
             animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        //animals.add(new Animal(cell));
+    }
+
+    public void addBuilding(Class<? extends Building> building) {
+        ArrayList<Cell> cellList = getAllOpenCells();
+        Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        try {
+            Constructor constructor = building.getDeclaredConstructor();
+            Building newBuilding = building.getDeclaredConstructor().newInstance();
+            buildings.add(newBuilding);
+            if (!mouseHasBuilding())
+            {
+                mouseBuilding = newBuilding;
+            }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

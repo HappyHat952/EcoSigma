@@ -1,9 +1,10 @@
 package core.ecosystems.Arctic;
 
-import core.ecosystems.Arctic.items.Item1;
-import core.ecosystems.Arctic.items.Item2;
-import core.ecosystems.Arctic.items.Item3;
+import core.ecosystems.Arctic.buildings.CO2Sucker;
+import core.ecosystems.Arctic.buildings.IcePump;
+import core.ecosystems.Arctic.buildings.Protestors;
 import core.ecosystems.Grid;
+import core.ecosystems.Item;
 import core.ecosystems.Shop;
 import org.newdawn.slick.GameContainer;
 
@@ -19,8 +20,8 @@ public class ArcticShop extends Shop {
     //setting the items for a specific class
     public void setItems()
     {
-        items.add(new Item1(0));
-        items.add(new Item2(1));
-        items.add(new Item3(2));
+        items.add(new Item(0, CO2Sucker.class, new CO2Sucker()));
+        items.add(new Item (1, IcePump.class, new IcePump()));
+        items.add(new Item (2, Protestors.class, new Protestors()));
     }
 }

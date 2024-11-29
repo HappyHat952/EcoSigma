@@ -2,12 +2,11 @@ package core.ecosystems;
 
 
 import core.Main;
-import core.setup.Images;
+import core.ecosystems.Arctic.buildings.CO2Sucker;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 
@@ -32,12 +31,9 @@ public class Shop {
     }
 
     public void setItems() {
-            for (int i = 0; i<3; i++)
-            {
-                items.add(new Item (i));
-//                items.add(new Item("Arctic Machine", Images.arcticMachine, "Makes it cold",
-//                        (int)(Grid.getGridWidth()+ margin + i * buffer), (int) y ) );
-            }
+        items.add(new Item (0, CO2Sucker.class, new CO2Sucker()));
+        items.add(new Item (1, CO2Sucker.class, new CO2Sucker()));
+        items.add(new Item (2, CO2Sucker.class, new CO2Sucker()));
     }
 
     public void render(Graphics g) {
@@ -62,9 +58,9 @@ public class Shop {
             if (i.mouseOver(x,y) && money >= i.getCost() && !grid.mouseHasBuilding())
             {
                 money -= i.getCost();
-                grid.addBuilding(i.getBuilding());//later make it so it matches the item purchased.
+                grid.addBuilding(i.getBuildingClass());
                 try {
-                    gc.setMouseCursor(i.getBuilding().getMyImage(), 50,50);
+                    gc.setMouseCursor(i.getBuildingObject().getMyImage(), 50,50);
                 } catch (SlickException e) {
                     throw new RuntimeException(e);
                 }
