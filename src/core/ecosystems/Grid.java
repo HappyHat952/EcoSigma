@@ -19,6 +19,7 @@ public class Grid {
     protected Building mouseBuilding;//a building that is purchased (only one)
     protected ArrayList<Building> buildings;
     protected ArrayList<Animal> animals;
+    protected ArrayList<Plant> plants;
     protected GameContainer gc;
     protected StateBasedGame sbg;
 
@@ -38,6 +39,7 @@ public class Grid {
         }
         buildings = new ArrayList<>();
         animals = new ArrayList<>();
+        plants = new ArrayList<>();
 
         this.gc = gc;
     }
@@ -54,6 +56,10 @@ public class Grid {
         for (Animal a: animals)
         {
             a.render(g);
+        }
+        for (Plant p: plants)
+        {
+            p.render(g);
         }
     }
 
@@ -72,6 +78,23 @@ public class Grid {
         for (Animal a: animals)
         {
             a.update(this);
+//            if (True)
+//            {
+//                addAnimal(a.getClass());
+//            }
+        }
+        for (Plant p: plants)
+        {
+            p.update(this);
+
+        }
+        if (!animals.isEmpty()&& Math.random()<.0001)
+        {
+            addAnimal(animals.get((int)(animals.size()*Math.random())).getClass());
+        }
+        if (!plants.isEmpty()&& Math.random()<.0001)
+        {
+            addPlant(plants.get((int)(plants.size()*Math.random())).getClass());
         }
     }
 
@@ -80,7 +103,8 @@ public class Grid {
     public Cell[][] getCells() {
         return cells;
     }
-
+    public ArrayList<Animal> getAnimals(){ return animals;}
+    public ArrayList<Plant> getPlants(){ return plants;}
     public static int getGridWidth(){ return gridWidth;}
     public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
     public ArrayList<Cell> getOpenAdjacentCells(int r, int c)
@@ -125,7 +149,7 @@ public class Grid {
 
     public boolean isAvailable(Cell cell)
     {
-        return (!cell.hasBuilding() && !cell.hasAnimal());
+        return (!cell.hasBuilding() && !cell.hasAnimal() && !cell.hasPlant());
     }
 
     //MUTATOR
@@ -171,11 +195,28 @@ public class Grid {
         return GRID_SIZE;
     }
     public void addAnimal(Class<? extends Animal> animal) {
+        if (!getAllOpenCells().isEmpty())
+        {
+            ArrayList<Cell> cellList = getAllOpenCells();
+            Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+            try {
+                Constructor constructor = animal.getDeclaredConstructor(Cell.class);
+                animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        //animals.add(new Animal(cell));
+    }
+
+    public void addPlant(Class<? extends Plant> plant) {
         ArrayList<Cell> cellList = getAllOpenCells();
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));
         try {
-            Constructor constructor = animal.getDeclaredConstructor(Cell.class);
-            animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
+            Constructor constructor = plant.getDeclaredConstructor(Cell.class);
+            plants.add(plant.getDeclaredConstructor(Cell.class).newInstance(cell));
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

@@ -8,7 +8,7 @@ public class CO2Sucker extends Building {
 
     private int time;
     public CO2Sucker() {
-        myImage = Images.arcticMachine;
+        myImage = Images.CO2SuckerSheet.getSubImage(0,0);
         name = "CO2 Sucker";
         info = "help please";
         time = 0;

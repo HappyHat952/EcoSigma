@@ -1,8 +1,6 @@
 package core.ecosystems.Arctic;
 
-import core.ecosystems.Arctic.tasks.ClearedCO2;
-import core.ecosystems.Arctic.tasks.CreatedIce;
-import core.ecosystems.Arctic.tasks.DestroyedOilDrills;
+import core.ecosystems.Arctic.tasks.*;
 import core.ecosystems.Ecosystem;
 import core.ecosystems.Shop;
 import org.newdawn.slick.GameContainer;
@@ -24,6 +22,8 @@ public class Arctic extends Ecosystem {
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         taskManager.addTask(new CreatedIce("Create Ice", grid));
         taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));
+        taskManager.addTask(new CreateAnimals("Create all three Animals", grid));
+        taskManager.addTask(new Plant4Plants("Plant four plants", grid));
         clouds = new ArrayList<>();
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {
             clouds.add(new Cloud());

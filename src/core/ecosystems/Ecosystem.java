@@ -58,6 +58,10 @@ abstract public class Ecosystem {
         return taskManager;
     }
 
+    public void addPlant(Class<? extends Plant> plant) {
+        grid.addPlant(plant);
+    }
+
     public Grid getGrid() {
         return grid;
     }

@@ -22,6 +22,7 @@ public class Images {
     // GAME
     public static Image check;
     public static SpriteSheet animal;
+    public static SpriteSheet plant;
     //LAB
     public static Image labMachine;
     // ARCTIC
@@ -57,12 +58,13 @@ public class Images {
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
+            plant = new SpriteSheet( (new Image("res/game/plant_placeholder.png")), 128,128 );
             //LAB
             labMachine = new Image("res/game/LabMachine.png");
             // ARCTIC
                 //machines
                 arcticMachine = new Image("res/game/arctic/arcticMachine.png");
-                CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/carbonSucker.png").getScaledCopy(3), 128, 128);
+                CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/carbonSucker.png").getScaledCopy(2), 128, 128);
                 pump = new Image("res/game/arctic/pump.png");
                 oilDrill = new Image("res/game/arctic/oilDrill.png");
                 protesters = new Image("res/game/arctic/protesters.png");

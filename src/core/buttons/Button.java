@@ -44,7 +44,7 @@ public abstract class Button {
         if (name != null)
         {
             g.setColor(Color.black);
-            g.drawString(name, x+w/2f, y+ w/2f);
+            g.drawString(name, x+w/2f, y+ h/2f);
         }
     }
 
@@ -54,5 +54,4 @@ public abstract class Button {
         }
         return false;
     }
-
 }
