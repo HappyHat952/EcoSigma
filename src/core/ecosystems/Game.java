@@ -78,7 +78,6 @@ public class Game extends BasicGameState
 		g.drawString(String.valueOf(levelID), Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
 		ecosystems[levelID].render(g);
 		popupManager.render(g);
-		g.drawString(""+pause, 900,900);
 	}
 
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
