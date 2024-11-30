@@ -4,6 +4,7 @@ import core.Main;
 import core.ecosystems.Arctic.tasks.ClearedCO2;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
+import core.ui.PopupManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -17,14 +18,17 @@ abstract public class Ecosystem {
     protected TaskManager taskManager;
     protected GameContainer gc;
     protected StateBasedGame sbg;
+    protected PopupManager pu;
 
-    public Ecosystem(GameContainer gc, StateBasedGame sbg) {
+    public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
         shop = new Shop(grid, gc);
         lab = new LabButton();
         taskManager = new TaskManager();
         this.gc = gc;
         this.sbg = sbg;
+        this.pu = pu;
+        pu.activate(0);
     }
 
     public void render(Graphics g) {
@@ -32,6 +36,7 @@ abstract public class Ecosystem {
         lab.render(g);
         shop.render(g);
         taskManager.render(g);
+
     }
 
     public void update() {
@@ -46,6 +51,7 @@ abstract public class Ecosystem {
         shop.mousePressed(x, y);
         grid.mousePressed(x, y);
         if (lab.isMouseOver(x, y)) {
+            pu.activate(1);
             sbg.enterState(Main.LAB_ID);
         }
     }

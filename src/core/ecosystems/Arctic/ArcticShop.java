@@ -24,9 +24,9 @@ public class ArcticShop extends Shop {
     //setting the items for a specific class
     public void setItems()
     {
-        items.add(new Item(0, CO2Sucker.class, new CO2Sucker()));
-        items.add(new Item (1, IcePump.class, new IcePump()));
-        items.add(new Item (2, Protesters.class, new Protesters()));
+        items.add(new Item(0, CO2Sucker.class, new CO2Sucker(), 2));
+        items.add(new Item (1, IcePump.class, new IcePump(),3));
+        items.add(new Item (2, Protesters.class, new Protesters(),4));
     }
 
     public void update() {

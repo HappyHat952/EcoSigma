@@ -7,6 +7,7 @@ import core.ecosystems.Arctic.animals.PolarBear;
 import core.ecosystems.Arctic.animals.Walrus;
 import core.ecosystems.Game;
 import core.ecosystems.Plant;
+import core.ui.PopupManager;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -75,6 +76,7 @@ public class Lab extends BasicGameState {
             upgrade.render(graphics);
             upgrade.reset();
         }
+        PopupManager.render(graphics);
 
 
         graphics.drawString("animal: "+availableAnimals.size() + "\nplant: "+availablePlants.size(), 0, 300);
@@ -83,27 +85,32 @@ public class Lab extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-        if (upgrade != null)
-        {
-            upgrade.update();
-        }
+       if (!Game.getPause())
+       {
+           if (upgrade != null)
+           {
+               upgrade.update();
+           }
 
-        if (upgrade != null && upgrade.isComplete())
-        {
-            if (!availableAnimals.isEmpty())
-            {
-                animalMachines.add(availableAnimals.getFirst());
-                availableAnimals.removeFirst();
-            }
-            else if (!availablePlants.isEmpty())
-            {
-                plantMachines.add(availablePlants.getFirst());
-                availablePlants.removeFirst();
-            }
-            if (availableAnimals.isEmpty() && availablePlants.isEmpty()) {
-                upgrade = null;
-            }
-        }
+           if (upgrade != null && upgrade.isComplete())
+           {
+               if (!availableAnimals.isEmpty())
+               {
+                   animalMachines.add(availableAnimals.getFirst());
+                   availableAnimals.removeFirst();
+               }
+               else if (!availablePlants.isEmpty())
+               {
+                   plantMachines.add(availablePlants.getFirst());
+                   availablePlants.removeFirst();
+               }
+               if (availableAnimals.isEmpty() && availablePlants.isEmpty()) {
+                   upgrade = null;
+               }
+           }
+       }
+        PopupManager.update();
+
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -119,10 +126,14 @@ public class Lab extends BasicGameState {
     public void keyPressed(int key, char c)
     {
         // This code happens every time the user presses a key
-        if (key == Input.KEY_E)
+        if (!Game.getPause())
         {
-            sbg.enterState(Main.GAME_ID);
+            if (key == Input.KEY_E)
+            {
+                sbg.enterState(Main.GAME_ID);
+            }
         }
+
 
 
     }
@@ -130,26 +141,31 @@ public class Lab extends BasicGameState {
     public void mousePressed(int button, int x, int y)
     {
         // This code happens every time the user presses the mouse
-        for (AnimalButton m: animalMachines)
+        if (!Game.getPause())
         {
-            if (m.isMouseOver(x,y))
+            for (AnimalButton m: animalMachines)
             {
-                Game.getCurrentLevel().addAnimal(m.getAnimal());
+                if (m.isMouseOver(x,y))
+                {
+                    Game.getCurrentLevel().addAnimal(m.getAnimal());
+                }
+            }
+
+            for (PlantButton m: plantMachines)
+            {
+                if (m.isMouseOver(x,y))
+                {
+                    Game.getCurrentLevel().addPlant(m.getPlant());
+                }
+            }
+
+            if (upgrade != null && upgrade.isMouseOver(x,y))
+            {
+                upgrade.action();
             }
         }
 
-        for (PlantButton m: plantMachines)
-        {
-            if (m.isMouseOver(x,y))
-            {
-                Game.getCurrentLevel().addPlant(m.getPlant());
-            }
-        }
-
-        if (upgrade != null && upgrade.isMouseOver(x,y))
-        {
-            upgrade.action();
-        }
+        PopupManager.mousePressed(button,x,y);
 
 
 

@@ -1,5 +1,6 @@
 package core.ecosystems;
 
+import core.ui.PopupManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,6 +17,9 @@ public class Item {
     protected Class<? extends Building> buildingClass;
     protected Building buildingObject;
     protected Color myColor;
+    protected boolean wasClicked;
+    protected int myNum;
+
 
     public Item(String name, Image image, String info, int i, int y) {
         this.name = name;
@@ -27,13 +31,14 @@ public class Item {
         cost = 4;
     }
 
-    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject) {
+    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int myNum) {
         this.name = buildingObject.getName();
         this.image = buildingObject.getMyImage();
         this.info = buildingObject.getInfo();
         this.x = i * Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
         cost = 4;
+        this.myNum = myNum;
         this.buildingClass = buildingClass;
         this.buildingObject = buildingObject;
         myColor = Color.white;
@@ -49,13 +54,17 @@ public class Item {
 
     public void click(int x, int y)
     {
+        if(!wasClicked)
+        {
+            PopupManager.activate(myNum);
+        }
         if (mouseOver(x,y))
         {
-            myColor = Color.green;
+            wasClicked = true;
         }
-        else {
-            myColor = Color.white;
-        }
+
+
+
     }
 
     public boolean mouseOver(int x, int y)
