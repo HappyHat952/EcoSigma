@@ -1,11 +1,12 @@
 package core.ecosystems;
 
 import core.Main;
-import core.ecosystems.Arctic.tasks.ClearedCO2;
+import core.buttons.LabButton;
+import core.ecosystems.general.Animal;
+import core.ecosystems.general.Plant;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
 import core.ui.PopupManager;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;

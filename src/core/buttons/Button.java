@@ -5,15 +5,14 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 public abstract class Button {
-    private int x;
-    private int y;
-    private int w;
-    private int h;
-    private Color color;
-    private Image image;
+    protected int x;
+    protected int y;
+    protected int w;
+    protected int h;
+    protected Color color;
+    protected Image image;
     protected  String name;
 
-    private int id;
     public Button(int x, int y, int w, int h, Color color) {
         this.x = x;
         this.y = y;
@@ -28,6 +27,11 @@ public abstract class Button {
         this.image = image;
         w = image.getWidth();
         h = image.getHeight();
+    }
+
+    public Button(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void render(Graphics g) {

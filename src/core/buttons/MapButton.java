@@ -1,7 +1,9 @@
 package core.buttons;
 
-import core.ecosystems.Game;
+import core.Game;
+import core.setup.Fonts;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
 import static core.Main.GAME_ID;
@@ -17,5 +19,12 @@ public class MapButton extends Button {
     public void action(StateBasedGame sbg) {
         Game.levelID = levelID;
         sbg.enterState(GAME_ID);
+    }
+
+    public void render(Graphics g) {
+        super.render(g);
+        g.setFont(Fonts.small);
+        g.setColor(Color.black);
+        g.drawString(String.valueOf(levelID), x, y);
     }
 }

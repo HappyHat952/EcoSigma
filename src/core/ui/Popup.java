@@ -2,9 +2,8 @@ package core.ui;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import core.ui.PopupButton;
 
-import core.ecosystems.Game;
+import core.Game;
 
 public class Popup {
     private PopupButton myButton;

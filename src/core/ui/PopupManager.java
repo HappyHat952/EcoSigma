@@ -2,11 +2,9 @@ package core.ui;
 
 import java.util.ArrayList;
 
-import core.ecosystems.Game;
+import core.Game;
 import core.setup.PopupLoader;
 import org.newdawn.slick.Graphics;
-
-import java.util.ArrayList;
 
 public class PopupManager {
     private static ArrayList<Popup> popups;

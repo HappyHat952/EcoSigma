@@ -41,7 +41,7 @@ public class PopupLoader {
 
             //for (int i = 1; i < text.size()-1; i++)
             while (scan.hasNextLine()){
-                System.out.println(i);
+//                System.out.println(i);
                 i++;
                 String row = scan.nextLine();
                 message = message +"\n"+ row;

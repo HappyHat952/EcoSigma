@@ -1,8 +1,6 @@
 package core.setup;
 
 import core.Main;
-import core.ecosystems.Cell;
-import core.ecosystems.tasks.TaskManager;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -12,7 +10,12 @@ public class Images {
 
     // CONSTANTS
     static int boxWidth = 30;
-
+    // BUTTONS
+    public static Image homeButton;
+    public static Image helpButton;
+    public static Image soundOnButton;
+    public static Image soundOffButton;
+    public static Image pauseButton;
     // TITLE
     public static Image titleScreen;
     // INTRO
@@ -48,7 +51,12 @@ public class Images {
 
     public static void loadImages() {
         try {
-
+            // BUTTONS
+            homeButton = new Image("res/buttons/homeButton.png");
+            helpButton = new Image("res/buttons/helpButton.png");
+            soundOnButton = new Image("res/buttons/soundOnButton.png");
+            soundOffButton = new Image("res/buttons/soundOffButton.png");
+            pauseButton = new Image("res/buttons/pauseButton.png");
             // TITLE
             titleScreen = (new Image("res/title/title.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             // INTRO

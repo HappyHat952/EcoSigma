@@ -2,8 +2,11 @@ package core.ecosystems;
 
 import core.Main;
 
+import core.ecosystems.general.Animal;
+import core.ecosystems.general.Building;
+import core.ecosystems.general.Cell;
+import core.ecosystems.general.Plant;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;

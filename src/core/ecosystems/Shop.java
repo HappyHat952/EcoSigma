@@ -2,7 +2,8 @@ package core.ecosystems;
 
 
 import core.Main;
-import core.ecosystems.Arctic.buildings.CO2Sucker;
+import core.ecosystems.arctic.buildings.CO2Sucker;
+import core.ecosystems.general.Item;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
