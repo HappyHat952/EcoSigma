@@ -14,7 +14,7 @@ public class UpgradeLab extends Button {
     public UpgradeLab() {
         super(0, 0, 600, 100, Color.red);
         name = "upgrade lab";
-        maxTime = 10; //in seconds
+        maxTime = 2; //in seconds
         timer = maxTime;
         researching = false;
         complete = false;

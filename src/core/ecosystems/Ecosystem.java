@@ -3,6 +3,7 @@ package core.ecosystems;
 import core.Main;
 import core.buttons.LabButton;
 import core.ecosystems.general.Animal;
+import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
@@ -57,17 +58,15 @@ abstract public class Ecosystem {
         }
     }
 
-    public void addAnimal(Class<? extends Animal> animal) {
-        grid.addAnimal(animal);
+    public void addOrganism(Class<? extends Organism> organism)
+    {
+        grid.addOrganism(organism);
     }
 
     public TaskManager getTaskManager() {
         return taskManager;
     }
 
-    public void addPlant(Class<? extends Plant> plant) {
-        grid.addPlant(plant);
-    }
 
     public Grid getGrid() {
         return grid;

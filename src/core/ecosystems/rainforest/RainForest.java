@@ -11,6 +11,6 @@ public class RainForest extends Ecosystem {
     public RainForest(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         super(gc, sbg, pu);
         grid = new RainForestGrid(gc);
-        shop = new RainForestShop(grid, gc);
+        //shop = new RainForestShop(grid, gc);
     }
 }

@@ -2,10 +2,7 @@ package core.ecosystems;
 
 import core.Main;
 
-import core.ecosystems.general.Animal;
-import core.ecosystems.general.Building;
-import core.ecosystems.general.Cell;
-import core.ecosystems.general.Plant;
+import core.ecosystems.general.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -197,6 +194,34 @@ public class Grid {
     public static int getGridSize() {
         return GRID_SIZE;
     }
+
+    public void addOrganism(Class<? extends Organism> clazz) {
+        if (!getAllOpenCells().isEmpty())
+        {
+            ArrayList<Cell> cellList = getAllOpenCells();
+            Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+            try {
+                Constructor constructor = clazz.getDeclaredConstructor(Cell.class);
+                Organism organism = clazz.getDeclaredConstructor(Cell.class).newInstance(cell);
+                if (organism instanceof Animal)
+                {
+                    animals.add((Animal) organism);
+                }
+                if (organism instanceof Plant)
+                {
+                    plants.add((Plant) organism);
+                }
+
+
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        //animals.add(new Animal(cell));
+    }
+
     public void addAnimal(Class<? extends Animal> animal) {
         if (!getAllOpenCells().isEmpty())
         {
@@ -215,13 +240,16 @@ public class Grid {
     }
 
     public void addPlant(Class<? extends Plant> plant) {
-        ArrayList<Cell> cellList = getAllOpenCells();
-        Cell cell = cellList.get((int)(Math.random()*cellList.size()));
-        try {
-            Constructor constructor = plant.getDeclaredConstructor(Cell.class);
-            plants.add(plant.getDeclaredConstructor(Cell.class).newInstance(cell));
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+        if (!getAllOpenCells().isEmpty()) {
+            ArrayList<Cell> cellList = getAllOpenCells();
+            Cell cell = cellList.get((int) (Math.random() * cellList.size()));
+            try {
+                Constructor constructor = plant.getDeclaredConstructor(Cell.class);
+                plants.add(plant.getDeclaredConstructor(Cell.class).newInstance(cell));
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                     InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         //animals.add(new Animal(cell));

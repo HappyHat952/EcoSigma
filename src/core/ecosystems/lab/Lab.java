@@ -21,11 +21,13 @@ public class Lab extends BasicGameState {
 
     private UpgradeLab upgrade;
 
-    private ArrayList<AnimalButton> animalMachines;
-    private ArrayList<PlantButton> plantMachines;
+    private ArrayList<OrganismCreator> animalMachines;
 
-    private ArrayList<AnimalButton> availableAnimals;
-    private ArrayList<PlantButton> availablePlants;
+    private ArrayList<OrganismCreator> availableAnimals;
+
+    private LabScreen[] machines;
+    private GenomeMaker genomeMaker;
+    private PetriDish petriDish;
 
     public Lab(int id) {
         this.id = id;
@@ -43,33 +45,39 @@ public class Lab extends BasicGameState {
 
         upgrade = new UpgradeLab();
 
-        availablePlants = new ArrayList<>();
         availableAnimals = new ArrayList<>();
 
         animalMachines = new ArrayList<>();
-        plantMachines = new ArrayList<>();
+
+        genomeMaker = new GenomeMaker();
+        petriDish = new PetriDish();
+
+        machines = new LabScreen[2];
+        machines[0] = genomeMaker;
+        machines[1] = petriDish;
 
         //makes new animal buttons
-        availableAnimals.add( new AnimalButton(0,500, PolarBear.class, "polar bear"));
-        availableAnimals.add(new AnimalButton(500, 500, Walrus.class, "walrus"));
-        availableAnimals.add(new AnimalButton(1000, 500, Lemming.class, "lemming"));
+        availableAnimals.add( new OrganismCreator(0,500, PolarBear.class, "polar bear"));
+        availableAnimals.add(new OrganismCreator(500, 500, Walrus.class, "walrus"));
+        availableAnimals.add(new OrganismCreator(1000, 500, Lemming.class, "lemming"));
 
         //makes new plant button
-        availablePlants.add(new PlantButton(1500,500, Plant.class, "plant"));
+        availableAnimals.add(new OrganismCreator(1500,500, Plant.class, "plant"));
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.setBackground(Color.green);
-        for (AnimalButton m: animalMachines)
+        for (OrganismCreator m: animalMachines)
         {
             m.render(graphics);
         }
 
-        for (PlantButton p: plantMachines)
+        for (LabScreen l: machines)
         {
-            p.render(graphics);
+            l.render(graphics);
         }
+
         if (upgrade != null)
         {
             upgrade.render(graphics);
@@ -78,7 +86,7 @@ public class Lab extends BasicGameState {
         PopupManager.render(graphics);
 
 
-        graphics.drawString("animal: "+availableAnimals.size() + "\nplant: "+availablePlants.size(), 0, 300);
+        graphics.drawString("animal: "+availableAnimals.size(), 0, 300);
 
     }
 
@@ -98,14 +106,15 @@ public class Lab extends BasicGameState {
                    animalMachines.add(availableAnimals.getFirst());
                    availableAnimals.removeFirst();
                }
-               else if (!availablePlants.isEmpty())
-               {
-                   plantMachines.add(availablePlants.getFirst());
-                   availablePlants.removeFirst();
-               }
-               if (availableAnimals.isEmpty() && availablePlants.isEmpty()) {
+
+               else {
                    upgrade = null;
                }
+           }
+
+           for (LabScreen l: machines)
+           {
+               l.update();
            }
        }
         PopupManager.update();
@@ -131,6 +140,10 @@ public class Lab extends BasicGameState {
             {
                 sbg.enterState(Main.GAME_ID);
             }
+            for (LabScreen l: machines)
+            {
+                l.keyPressed(key,c);
+            }
         }
 
 
@@ -142,25 +155,30 @@ public class Lab extends BasicGameState {
         // This code happens every time the user presses the mouse
         if (!Game.getPause())
         {
-            for (AnimalButton m: animalMachines)
+//            for (OrganismCreator m: animalMachines)
+//            {
+//                if (m.isMouseOver(x,y))
+//                {
+//                    Game.getCurrentLevel().addAnimal(m.getOrganism());
+//                }
+//            }
+            for (OrganismCreator m: animalMachines)
             {
                 if (m.isMouseOver(x,y))
                 {
-                    Game.getCurrentLevel().addAnimal(m.getAnimal());
+                    Game.getCurrentLevel().addOrganism(m.getOrganism());
                 }
             }
 
-            for (PlantButton m: plantMachines)
-            {
-                if (m.isMouseOver(x,y))
-                {
-                    Game.getCurrentLevel().addPlant(m.getPlant());
-                }
-            }
 
             if (upgrade != null && upgrade.isMouseOver(x,y))
             {
                 upgrade.action();
+            }
+
+            for (LabScreen l: machines)
+            {
+                l.mouseClicked(button,x,y);
             }
         }
 

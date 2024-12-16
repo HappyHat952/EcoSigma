@@ -7,7 +7,7 @@ import org.newdawn.slick.SpriteSheet;
 
 import java.util.ArrayList;
 
-public class Animal {
+public class Animal extends Organism{
     protected int x;
     protected int y;
     protected String name;
