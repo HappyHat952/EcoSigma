@@ -6,8 +6,8 @@ import core.setup.Images;
 public class CoralRobot extends Building {
 
     public CoralRobot(){
-        myImage = Images.CO2SuckerSheet.getSubImage(0,0);
-        name = "Building";
+        myImage = Images.coralRobot;
+        name = "Repair Robot";
         info = "help please";
         resizeImage();
     }
@@ -15,6 +15,7 @@ public class CoralRobot extends Building {
     public void update() {
 
     }
+
 
     public boolean isCompleted() {
         return isCompleted;

@@ -6,8 +6,8 @@ import core.setup.Images;
 public class SoundMaker extends Building {
 
     public SoundMaker(){
-        myImage = Images.CO2SuckerSheet.getSubImage(0,0);
-        name = "Building";
+        myImage = Images.soundCreator;
+        name = "Sound Creator";
         info = "help please";
         resizeImage();
     }

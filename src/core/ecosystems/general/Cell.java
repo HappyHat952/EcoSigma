@@ -48,7 +48,7 @@ public class Cell {
             g.fillRect(myX,myY, width,height);
         }
         g.setColor(Color.black);
-        g.drawString(row+", "+col, myX,myY);
+//        g.drawString(row+", "+col, myX,myY);
         if (myBuilding != null)
         {
             myBuilding.render(g);

@@ -6,6 +6,6 @@ import org.newdawn.slick.Color;
 public class CoralReefCell extends Cell {
     public CoralReefCell(int r, int c) {
         super(r, c);
-        myColor = Color.blue;
+        myColor = new Color(2, 194, 252);
     }
 }

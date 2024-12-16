@@ -39,8 +39,11 @@ public class Images {
     public static SpriteSheet polarBear;
     public static SpriteSheet walrus;
     public static SpriteSheet lemming;
-    // LEVEL 2
-
+    // CORAL REEF
+    public static Image damagedCoral;
+    public static Image bioRock;
+    public static Image soundCreator;
+    public static Image coralRobot;
     // LEVEL 3
 
     // LEVEL 4
@@ -85,6 +88,10 @@ public class Images {
                 cloudSheet = new SpriteSheet((new Image("res/game/arctic/cloud.png")), 128, 128);
 
             // LEVEL 2
+            damagedCoral = new Image("res/game/coralreef/bleachedCoral.png");
+            bioRock = new Image("res/game/coralreef/bioRock.png");
+            soundCreator = new Image("res/game/coralreef/soundCreator.png");
+            coralRobot = new Image("res/game/coralreef/robotRepairer.png");
 
             // LEVEL 3
 

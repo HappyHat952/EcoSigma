@@ -3,11 +3,11 @@ package core.ecosystems.coralreef.buildings;
 import core.ecosystems.general.Building;
 import core.setup.Images;
 
-public class WaterPurifier extends Building {
+public class BioRock extends Building {
 
-    public WaterPurifier(){
-        myImage = Images.CO2SuckerSheet.getSubImage(0,0);
-        name = "Building";
+    public BioRock(){
+        myImage = Images.bioRock;
+        name = "Biorock";
         info = "help please";
         resizeImage();
     }
