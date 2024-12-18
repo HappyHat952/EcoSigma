@@ -38,7 +38,7 @@ public class Game extends BasicGameState
 
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
-		// This code happens when you enter a game state for the *first time.*
+		// This code happens when you enter a game state for the *first time.* heelp
 		this.sbg = sbg;
 		this.gc = gc;
 		gc.setShowFPS(true);
