@@ -2,7 +2,9 @@ package core;
 
 import core.ecosystems.Ecosystem;
 import core.ecosystems.arctic.Arctic;
+import core.ecosystems.city.City;
 import core.ecosystems.coralreef.CoralReef;
+import core.ecosystems.farm.Farm;
 import core.ecosystems.rainforest.RainForest;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
@@ -48,8 +50,8 @@ public class Game extends BasicGameState
 		ecosystems[0] = new Arctic(gc, sbg, popupManager);
 		ecosystems[1] = new CoralReef(gc, sbg, popupManager);
 		ecosystems[2] = new RainForest(gc, sbg, popupManager);
-		ecosystems[3] = new Arctic(gc, sbg, popupManager);
-		ecosystems[4] = new Arctic(gc, sbg, popupManager);
+		ecosystems[3] = new Farm(gc, sbg, popupManager);
+		ecosystems[4] = new City(gc, sbg, popupManager);
 		//popupManager.activate(0);
 	}
 
