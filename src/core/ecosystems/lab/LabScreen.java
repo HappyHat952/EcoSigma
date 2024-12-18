@@ -1,0 +1,69 @@
+package core.ecosystems.lab;
+
+import core.Main;
+import core.buttons.Button;
+import core.setup.Images;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+
+abstract public class LabScreen {
+    static protected int height;
+    static protected int width;
+    static protected int x;
+    static protected int y;
+    protected Button closeButton;
+    protected LabMachineButton machineButton;
+
+
+    boolean open;//determines if the lab machine has been opened
+
+    public LabScreen()
+    {
+        x = (int)(Main.getScreenWidth()*.1f);
+        y = (int)(Main.getScreenHeight()*.1f);
+        width = (int)(Main.getScreenWidth()*.8f);
+        height = (int)(Main.getScreenHeight()*.8f);
+
+        closeButton = new Button(x+width,y,
+                Images.placeHolder.getSubImage(0,0).getScaledCopy((int)(x*.05f),(int)(y*.05f)));
+    }
+    public void render(Graphics g)
+    {
+        machineButton.render(g);
+        if (open)
+        {
+            g.setColor(new Color(23,23,23));
+            g.fillRect(x,y,width, height);
+            g.setColor(new Color(23,23,233));
+            g.fillRect(2*x,2*y,width-(2*x), height- 2*y);
+        }
+
+    }
+    abstract void update();
+
+    public void mouseClicked(int button, int x, int y)
+    {
+        if (!open && machineButton.isMouseOver( x,  y))
+        {
+            open = true;
+        }
+        if (open && (closeButton.isMouseOver(x,y)||!mouseOver(x,y)))
+        {
+            open = false;
+        }
+    }
+
+    public boolean mouseOver(int x, int y)
+    {
+        if (x>this.x && x<(this.x+width))
+        {
+            if (y>this.y && y<(this.y + height))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    abstract public void keyPressed(int key, char c);
+}

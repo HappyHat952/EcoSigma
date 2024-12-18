@@ -8,6 +8,8 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Images {
 
+    //PLACEHOLDERS
+    public static SpriteSheet placeHolder;
     // CONSTANTS
     static int boxWidth = 30;
     // BUTTONS
@@ -54,6 +56,11 @@ public class Images {
 
     public static void loadImages() {
         try {
+
+            //PLACEHOLDERS
+            placeHolder = new SpriteSheet("res/game/placeHolder.png", 256, 256);
+
+
             // BUTTONS
             homeButton = new Image("res/buttons/homeButton.png");
             helpButton = new Image("res/buttons/helpButton.png");

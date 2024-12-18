@@ -4,7 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-public abstract class Button {
+public class Button {
     protected int x;
     protected int y;
     protected int w;
