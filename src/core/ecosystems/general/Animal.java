@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Animal extends Organism{
     protected int x;
     protected int y;
-    protected String name;
     protected Class<? extends Animal> myClass;
 
     protected Cell cell;
@@ -38,9 +37,8 @@ public class Animal extends Organism{
         name = "animal";
         myClass = Animal.class;
 
-
-
     }
+
     public void render(Graphics g)
     {
         g.drawImage(sprite.getSubImage(0,frame).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
@@ -81,11 +79,5 @@ public class Animal extends Organism{
             timer --;
         }
     }
-
-    public String toString()
-    {
-        return name;
-    }
-
 
 }

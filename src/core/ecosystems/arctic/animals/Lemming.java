@@ -8,5 +8,6 @@ public class Lemming extends Animal {
     public Lemming(Cell cell) {
         super(cell);
         sprite = Images.lemming;
+        name = "Lemming";
     }
 }

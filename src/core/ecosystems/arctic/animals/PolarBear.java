@@ -8,5 +8,6 @@ public class PolarBear extends Animal {
     public PolarBear(Cell cell) {
         super(cell);
         sprite = Images.polarBear;
+        name = "Polar Bear";
     }
 }

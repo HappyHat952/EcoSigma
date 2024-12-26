@@ -8,5 +8,6 @@ public class Walrus extends Animal {
     public Walrus(Cell cell) {
         super(cell);
         sprite = Images.walrus;
+        name = "Walrus";
     }
 }

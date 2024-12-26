@@ -13,7 +13,7 @@ public class Fonts {
 
 
     public static void loadFonts() {
-        big = new TrueTypeFont(new Font("Segoe UI Black", Font.BOLD, 50), false);
+        big = new TrueTypeFont(new Font("Segoe UI Black", Font.BOLD, 45), false);
         medium = new TrueTypeFont(new Font("Segoe UI Black", Font.PLAIN, 32), false);
         small = new TrueTypeFont(new Font("Segoe UI Black", Font.PLAIN, 15), false);
     }

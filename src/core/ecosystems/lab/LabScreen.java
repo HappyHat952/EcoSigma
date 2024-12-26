@@ -15,7 +15,7 @@ abstract public class LabScreen {
     protected LabMachineButton machineButton;
 
 
-    boolean open;//determines if the lab machine has been opened
+    protected boolean open;//determines if the lab machine has been opened
 
     public LabScreen()
     {
@@ -25,7 +25,7 @@ abstract public class LabScreen {
         height = (int)(Main.getScreenHeight()*.8f);
 
         closeButton = new Button(x+width,y,
-                Images.placeHolder.getSubImage(0,0).getScaledCopy((int)(x*.05f),(int)(y*.05f)));
+                Images.placeHolder.getSubImage(0,0).getScaledCopy((int)(Main.getScreenHeight()*.05f),(int)(Main.getScreenHeight()*.05f)));
     }
     public void render(Graphics g)
     {
@@ -36,20 +36,23 @@ abstract public class LabScreen {
             g.fillRect(x,y,width, height);
             g.setColor(new Color(23,23,233));
             g.fillRect(2*x,2*y,width-(2*x), height- 2*y);
+            closeButton.render(g);
         }
 
     }
-    abstract void update();
+    protected abstract void update();
 
     public void mouseClicked(int button, int x, int y)
     {
         if (!open && machineButton.isMouseOver( x,  y))
         {
             open = true;
+            Lab.freeze();
         }
         if (open && (closeButton.isMouseOver(x,y)||!mouseOver(x,y)))
         {
             open = false;
+            Lab.unfreeze();
         }
     }
 
@@ -66,4 +69,15 @@ abstract public class LabScreen {
     }
 
     abstract public void keyPressed(int key, char c);
+
+    public boolean getIsOpen(){     return open;}
+    public int getScreenX(){        return x;}
+    public int getScreenY(){        return y;}
+    public int getScreenHeight(){   return height;}
+    public int getScreenWidth(){    return width;}
+
+    public int getMachineX(){       return machineButton.getX();}
+    public int getMachineY(){       return machineButton.getY();}
+    public int getMachineHeight(){       return machineButton.getHeight();}
+    public int getMachineWidth(){       return machineButton.getWidth();}
 }

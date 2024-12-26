@@ -1,5 +1,6 @@
 package core.buttons;
 
+import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -19,6 +20,15 @@ public class Button {
         this.w = w;
         this.h = h;
         this.color = color;
+    }
+
+    public Button(int x, int y, int w, int h, Color color, String name) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+        this.name = name;
     }
 
     public Button(int x, int y, Image image) {
@@ -47,8 +57,10 @@ public class Button {
 
         if (name != null)
         {
+            g.setFont(Fonts.small);
             g.setColor(Color.white);
-            g.drawString(name, x+w/2f, y+ h/2f);
+            g.drawString(name, x+w/2f - Fonts.small.getWidth(name)/2f, y+ h/2f);
+            Fonts.small.getWidth(name);
         }
     }
 
@@ -58,4 +70,10 @@ public class Button {
         }
         return false;
     }
+
+    public int getX(){ return x;}
+    public int getY(){ return y;}
+    public int getWidth(){ return w;}
+    public int getHeight(){ return h;}
+    public String getName(){ return name;}
 }
