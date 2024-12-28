@@ -28,10 +28,12 @@ public class Images {
     public static Image check;
     public static SpriteSheet animal;
     public static SpriteSheet plant;
+    public static Image lab;
     //LAB
     public static Image labMachine;
     // ARCTIC
     public static Image arcticMachine;
+    public static SpriteSheet arcticCells;
     public static SpriteSheet CO2SuckerSheet;
     public static SpriteSheet cloudSheet;
     public static Image pump;
@@ -77,20 +79,22 @@ public class Images {
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
             plant = new SpriteSheet( (new Image("res/game/plant_placeholder.png")), 128,128 );
+            lab = new Image("res/game/lab.png");
             //LAB
             labMachine = new Image("res/game/LabMachine.png");
             // ARCTIC
+                arcticCells = new SpriteSheet("res/game/arctic/arcticCells.png", 224,224);
                 //machines
-                arcticMachine = new Image("res/game/arctic/arcticMachine.png");
-                CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/carbonSucker.png").getScaledCopy(2), 128, 128);
-                pump = new Image("res/game/arctic/pump.png");
-                oilDrill = new Image("res/game/arctic/oilDrill.png");
+                arcticMachine = new Image("res/game/arctic/machine/arcticMachine.png");
+                CO2SuckerSheet = new SpriteSheet(new Image("res/game/arctic/machine/carbonSucker.png").getScaledCopy(2), 128, 128);
+                pump = new Image("res/game/arctic/machine/pump.png");
+                oilDrill = new Image("res/game/arctic/machine/oilDrill.png");
                 protesters = new Image("res/game/arctic/protesters.png");
 
                 //animals
-                polarBear =new SpriteSheet( (new Image("res/game/arctic/polarBear.png")), 280, 280);
-                walrus =new SpriteSheet( (new Image("res/game/arctic/walrus.png")), 128, 128);
-                lemming =new SpriteSheet( (new Image("res/game/arctic/lemming.png")), 128, 128);
+                polarBear =new SpriteSheet( (new Image("res/game/arctic/animals/polarBear.png")), 280, 280);
+                walrus =new SpriteSheet( (new Image("res/game/arctic/animals/walrus.png")), 128, 128);
+                lemming =new SpriteSheet( (new Image("res/game/arctic/animals/lemming.png")), 128, 128);
                 //other
                 cloudSheet = new SpriteSheet((new Image("res/game/arctic/cloud.png")), 128, 128);
 

@@ -2,6 +2,7 @@ package core.ecosystems.general;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 public class Cell {
     //static
@@ -17,6 +18,7 @@ public class Cell {
     private boolean isOver;
 
     protected Color myColor;
+    protected Image myImage;
 
     protected Building myBuilding;
     protected Animal myAnimal;
@@ -36,11 +38,19 @@ public class Cell {
 
     public void render(Graphics g)
     {
-        g.setColor(myColor);
-        g.fillRect(myX, myY, width, height);
+        if(myImage == null)
+        {
+            g.setColor(myColor);
+            g.fillRect(myX, myY, width, height);
+        }
+        else {
+            g.drawImage(myImage.getScaledCopy(width, height), myX,myY);
+        }
+
         g.setColor(Color.black);
         g.setLineWidth(2);
         g.drawRect(myX, myY, width, height);
+
 
         if (isOver)
         {
@@ -61,6 +71,10 @@ public class Cell {
     }
     public void setColor(Color color) {
         myColor = color;
+    }
+    public void setImage(Image image)
+    {
+        myImage = image;
     }
 
     //ACCESSOR
@@ -104,7 +118,6 @@ public class Cell {
     {
         height = h;
     }
-
     public void addBuilding(Building b)
     {
         myBuilding = b;

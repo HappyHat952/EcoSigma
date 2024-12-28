@@ -71,10 +71,10 @@ abstract public class LabScreen {
     abstract public void keyPressed(int key, char c);
 
     public boolean getIsOpen(){     return open;}
-    public int getScreenX(){        return x;}
-    public int getScreenY(){        return y;}
-    public int getScreenHeight(){   return height;}
-    public int getScreenWidth(){    return width;}
+    public static int getScreenX(){        return x;}
+    public static int getScreenY(){        return y;}
+    public static int getScreenHeight(){   return height;}
+    public static int getScreenWidth(){    return width;}
 
     public int getMachineX(){       return machineButton.getX();}
     public int getMachineY(){       return machineButton.getY();}

@@ -8,6 +8,7 @@ import core.Game;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
+import core.ecosystems.lab.organismMaker.OrganismMaker;
 import core.ecosystems.lab.petriDish.PetriDish;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;

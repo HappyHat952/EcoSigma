@@ -30,7 +30,7 @@ public class PetriDish  extends LabScreen {
 
         if (open)
         {
-
+            setDishes(Lab.getGenomes());
         }
     }
 
@@ -50,6 +50,11 @@ public class PetriDish  extends LabScreen {
             {
                 g.setFont(Fonts.big);
                 g.drawString("Click circle to put genome in egg",
+                        x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
+            }
+            else {
+                g.setFont(Fonts.big);
+                g.drawString("Make Genomes before placing in egg",
                         x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
             }
 
@@ -82,7 +87,11 @@ public class PetriDish  extends LabScreen {
         dishes = new ArrayList<>();
         for (Genome g: genomes)
         {
-            dishes.add(new EggDish(g));
+            if (!g.isEgged())
+            {
+                dishes.add(new EggDish(g));
+            }
+
         }
     }
 

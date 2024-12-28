@@ -22,24 +22,29 @@ public class EggDish {
     {
         int x = i%4;
         int y = i/4;
-        int w = (int)(Main.getScreenWidth()*.22f);
-        int h = (int)(Main.getScreenHeight()*.22f);
+        int w = (int)(Main.getScreenWidth()*.28f);
+        int h = (int)(Main.getScreenHeight()*.32f);
 
         pixelX = (int)(w + x*Main.getScreenHeight()*.11f);
         pixelY = (int)(h + y* Main.getScreenHeight()*.11f);
         pixelW = (int) (Main.getScreenHeight()*.1f);
-        pixelH = (int)(Main.getScreenHeight()*.11f);
+        pixelH = (int)(Main.getScreenHeight()*.1f);
 
+        //the petri dish
         g.setColor(Color.cyan);
         g.fillOval(pixelX, pixelY, pixelW, pixelH);
+
+        //the name
         g.setColor(Color.black); g.setFont(Fonts.small);
-        g.drawString(Lab.getOrganismName(genome.getOrganism()), pixelX, pixelY);
+        int textW = Fonts.small.getWidth(Lab.getOrganismName(genome.getOrganism()));
+        g.drawString(Lab.getOrganismName(genome.getOrganism()), pixelX +(int)(pixelW/2f)- (int)(textW/2f) , pixelY
+         + (int)(pixelH/2f) - (int)(Fonts.small.getHeight()/2f));
     }
 
     public Genome getGenome(){ return genome;}
     public boolean mouseOver(int x, int y)
     {
-        return  (distance(x,y, pixelX + (int)(pixelW/2), pixelY + (int)(pixelH/2))< pixelW/2 );
+        return  (distance(x,y, pixelX + (int)(pixelW/2f), pixelY + (int)(pixelH/2f))< pixelW/2 );
     }
     public int distance(int x1, int y1, int x2, int y2)
     {

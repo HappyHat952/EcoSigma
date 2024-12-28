@@ -38,6 +38,7 @@ abstract public class Ecosystem {
         lab.render(g);
         shop.render(g);
         taskManager.render(g);
+        g.drawString(toString(), 400,400);
 
     }
 

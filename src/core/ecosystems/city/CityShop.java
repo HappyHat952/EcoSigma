@@ -1,4 +1,14 @@
 package core.ecosystems.city;
 
-public class CityShop {
+import core.ecosystems.Grid;
+import core.ecosystems.Shop;
+import org.newdawn.slick.GameContainer;
+
+public class CityShop extends Shop {
+    public CityShop(Grid g, GameContainer gc) {
+        super(g, gc);
+        setItems();
+    }
+
+
 }
