@@ -1,18 +1,14 @@
 package core.ecosystems.coralreef.tasks;
 
 import core.ecosystems.Grid;
-import core.ecosystems.arctic.Arctic;
-import core.ecosystems.arctic.buildings.CO2Sucker;
-import core.ecosystems.arctic.buildings.Protesters;
 import core.ecosystems.coralreef.buildings.SoundMaker;
-import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.ecosystems.tasks.Task;
 
 public class CreateSounds extends Task {
 
     private int soundMakers;
-    final private int totalSoundMakers = 3;
+    final private int TOTAL_SOUND_MAKERS = 3;
 
     public CreateSounds(String name, Grid grid) {
         super(name, grid);
@@ -20,8 +16,8 @@ public class CreateSounds extends Task {
     }
 
     public int getPercentDone() {
-        int percent = (int) ((soundMakers/(float) totalSoundMakers) * 100);
-        if (soundMakers >= totalSoundMakers) {
+        int percent = (int) ((soundMakers/(float) TOTAL_SOUND_MAKERS) * 100);
+        if (soundMakers >= TOTAL_SOUND_MAKERS) {
             return 100;
         } else {
             return percent;

@@ -88,7 +88,7 @@ public class Images {
                 protesters = new Image("res/game/arctic/protesters.png");
 
                 //animals
-                polarBear =new SpriteSheet( (new Image("res/game/arctic/polar_bear.png")), 128, 128);
+                polarBear =new SpriteSheet( (new Image("res/game/arctic/polarBear.png")), 280, 280);
                 walrus =new SpriteSheet( (new Image("res/game/arctic/walrus.png")), 128, 128);
                 lemming =new SpriteSheet( (new Image("res/game/arctic/lemming.png")), 128, 128);
                 //other

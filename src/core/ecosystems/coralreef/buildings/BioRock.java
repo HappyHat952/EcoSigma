@@ -5,7 +5,6 @@ import core.ecosystems.Grid;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.setup.Images;
-import org.newdawn.slick.Color;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class BioRock extends Building {
     private Grid grid;
     private boolean isDone;
     private int time;
-    final private int maxCoralCreated = 2;
+    final private int MAX_CORAL_CREATED = 2;
     public BioRock(){
         myImage = Images.bioRock;
         name = "Biorock";
@@ -30,7 +29,7 @@ public class BioRock extends Building {
         if (time > 5 * 60 && !isDone) {
             ArrayList<Cell> cells = getSurroundingCells();
 
-            for (int i = 0; i < maxCoralCreated; i++) {
+            for (int i = 0; i < MAX_CORAL_CREATED; i++) {
                 if (!cells.isEmpty()) {
                     int random = (int) (Math.random() * cells.size());
                     Coral c = new Coral(true);

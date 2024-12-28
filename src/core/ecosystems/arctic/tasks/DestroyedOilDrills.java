@@ -1,6 +1,6 @@
 package core.ecosystems.arctic.tasks;
 
-import core.ecosystems.arctic.buildings.Fire;
+import core.ecosystems.arctic.buildings.OilDrill;
 import core.ecosystems.arctic.buildings.Protesters;
 import core.ecosystems.general.Building;
 import core.ecosystems.Grid;
@@ -19,7 +19,7 @@ public class DestroyedOilDrills extends Task {
     public int getPercentDone() {
         int count = 0;
         for (Building b: grid.getBuildings()) {
-            if (b instanceof Fire) {
+            if (b instanceof OilDrill) {
                 count++;
             }
         }
@@ -33,8 +33,8 @@ public class DestroyedOilDrills extends Task {
                 if (((Protesters) b).isCompleted()) {
                     for (int i = 0; i < grid.getBuildings().size(); i++) {
                         if (grid.getBuildings().get(i).equals(((Protesters) b).getOilDrill())){
-                            Fire fire = ((Protesters) b).getOilDrill();
-                            grid.getCells()[fire.getMyRow()][fire.getMyCol()].removeBuilding();
+                            OilDrill oilDrill = ((Protesters) b).getOilDrill();
+                            grid.getCells()[oilDrill.getMyRow()][oilDrill.getMyCol()].removeBuilding();
                             grid.getBuildings().remove(i);
                             return;
                         }

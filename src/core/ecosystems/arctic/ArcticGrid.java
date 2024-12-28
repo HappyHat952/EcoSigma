@@ -1,6 +1,6 @@
 package core.ecosystems.arctic;
 
-import core.ecosystems.arctic.buildings.Fire;
+import core.ecosystems.arctic.buildings.OilDrill;
 import core.ecosystems.arctic.buildings.Protesters;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
@@ -18,15 +18,15 @@ public class ArcticGrid extends Grid {
                 cells[i][j] = new ArcticCell(i, j);
             }
         }
-        Fire fire1 = new Fire();
-        fire1.assignCell(cells[5][5]);
-        Fire fire2 = new Fire();
-        fire2.assignCell(cells[2][1]);
-        Fire fire3 = new Fire();
-        fire3.assignCell(cells[8][7]);
-        buildings.add(fire1);
-        buildings.add(fire2);
-        buildings.add(fire3);
+        OilDrill oilDrill1 = new OilDrill();
+        oilDrill1.assignCell(cells[5][5]);
+        OilDrill oilDrill2 = new OilDrill();
+        oilDrill2.assignCell(cells[2][1]);
+        OilDrill oilDrill3 = new OilDrill();
+        oilDrill3.assignCell(cells[8][7]);
+        buildings.add(oilDrill1);
+        buildings.add(oilDrill2);
+        buildings.add(oilDrill3);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class ArcticGrid extends Grid {
         ArrayList<Cell> validCells = new ArrayList<>();
 
         for (Building b: buildings) {
-            if (b instanceof Fire) {
+            if (b instanceof OilDrill) {
                 int r = b.getMyRow();
                 int c = b.getMyCol();
 

@@ -33,7 +33,7 @@ public class Protesters extends Building {
        isCompleted = b;
     }
 
-    public Fire getOilDrill() {
+    public OilDrill getOilDrill() {
         ArrayList<Cell> cells = new ArrayList<>();
         int r = myRow;
         int c = myCol;
@@ -47,8 +47,8 @@ public class Protesters extends Building {
         checkIfPossible(cells, r+1, c+1);
 
         for (Cell cell: cells) {
-            if (cell.getBuilding() instanceof Fire) {
-                return (Fire) cell.getBuilding();
+            if (cell.getBuilding() instanceof OilDrill) {
+                return (OilDrill) cell.getBuilding();
             }
         }
         return null;

@@ -12,6 +12,7 @@ public class CoralRobot extends Building {
 
     private int time;
     private Grid grid;
+    private int coralRepaired;
 
     public CoralRobot(){
         myImage = Images.coralRobot;
@@ -20,6 +21,7 @@ public class CoralRobot extends Building {
         resizeImage();
         time = 0;
         grid = Game.getCurrentLevel().getGrid();
+        coralRepaired = 0;
     }
 
     public void update() {
@@ -42,8 +44,8 @@ public class CoralRobot extends Building {
                 int random = (int) (Math.random() * cells.size());
                 this.assignCell(cells.get(random));
             }
-            checkForDamage();
         }
+        checkForDamage();
     }
 
     public void checkIfPossible(ArrayList<Cell> validCells, int r, int c) {
@@ -85,7 +87,12 @@ public class CoralRobot extends Building {
         if (!cells.isEmpty()) {
             int random = (int) (Math.random() * cells.size());
             ((Coral) (cells.get(random).getBuilding())).setIsHealthy(true);
+            coralRepaired++;
         }
 
+    }
+
+    public int getCoralRepaired() {
+        return coralRepaired;
     }
 }

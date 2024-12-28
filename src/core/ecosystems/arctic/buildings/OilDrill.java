@@ -3,11 +3,11 @@ package core.ecosystems.arctic.buildings;
 import core.ecosystems.general.Building;
 import core.setup.Images;
 
-public class Fire extends Building {
+public class OilDrill extends Building {
 
-    public Fire() {
+    public OilDrill() {
         myImage = Images.check;
-        name = "Fire";
+        name = "OilDrill";
         info = "help please";
         resizeImage();
     }
