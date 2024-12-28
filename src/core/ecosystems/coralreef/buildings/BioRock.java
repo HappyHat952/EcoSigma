@@ -1,19 +1,66 @@
 package core.ecosystems.coralreef.buildings;
 
+import core.Game;
+import core.ecosystems.Grid;
 import core.ecosystems.general.Building;
+import core.ecosystems.general.Cell;
 import core.setup.Images;
+import org.newdawn.slick.Color;
+
+import java.util.ArrayList;
 
 public class BioRock extends Building {
 
+    private Grid grid;
+    private boolean isDone;
+    private int time;
+    final private int maxCoralCreated = 2;
     public BioRock(){
         myImage = Images.bioRock;
         name = "Biorock";
         info = "help please";
         resizeImage();
+        time = 0;
+        isDone = false;
     }
 
     public void update() {
+        grid = Game.getCurrentLevel().getGrid();
+        time++;
+        if (time > 5 * 60 && !isDone) {
+            ArrayList<Cell> cells = getSurroundingCells();
 
+            for (int i = 0; i < maxCoralCreated; i++) {
+                if (!cells.isEmpty()) {
+                    int random = (int) (Math.random() * cells.size());
+                    Coral c = new Coral(true);
+                    c.assignCell(cells.get(random));
+                    cells.remove(random);
+                }
+            }
+            isDone = true;
+        }
+    }
+
+
+    public ArrayList<Cell> getSurroundingCells() {
+        ArrayList<Cell> addedCells = new ArrayList<>();
+        checkIfPossible(addedCells, myRow - 1, myCol);
+        checkIfPossible(addedCells, myRow + 1, myCol);
+        checkIfPossible(addedCells, myRow, myCol - 1);
+        checkIfPossible(addedCells, myRow, myCol + 1);
+        checkIfPossible(addedCells, myRow - 1, myCol - 1);
+        checkIfPossible(addedCells, myRow - 1, myCol + 1);
+        checkIfPossible(addedCells, myRow + 1, myCol - 1);
+        checkIfPossible(addedCells, myRow + 1, myCol + 1);
+        return addedCells;
+    }
+
+    public void checkIfPossible(ArrayList<Cell> addedCells, int r, int c) {
+        if (r >= 0 && r < Grid.getGridSize() && c >= 0 && c <  Grid.getGridSize() && !grid.getCells()[r][c].hasBuilding()) {
+            Cell cell = grid.getCells()[r][c];
+            addedCells.add(cell);
+        }
     }
 
     public boolean isCompleted() {

@@ -3,6 +3,7 @@ package core.ecosystems;
 import core.Main;
 
 import core.ecosystems.general.*;
+import core.ecosystems.rainforest.buildings.Ranger;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -70,10 +71,15 @@ public class Grid {
             for (int j = 0; j < GRID_SIZE; j++)
             {
                 cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
+                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
+                    cells[i][j].getBuilding().update();
+                }
             }
         }
         for (Building b: buildings) {
-            b.update();
+            if (b instanceof Ranger) {
+                b.update();
+            }
         }
         for (Animal a: animals)
         {

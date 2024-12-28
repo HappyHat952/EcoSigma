@@ -24,7 +24,7 @@ public class Main extends StateBasedGame
     private BasicGameState game;
     private BasicGameState lab;
     
-	public Main(String name) 
+	public Main(String name)
 	{
 		super(name);
 

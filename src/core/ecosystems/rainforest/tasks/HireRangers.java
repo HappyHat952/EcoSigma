@@ -3,8 +3,8 @@ package core.ecosystems.rainforest.tasks;
 import core.ecosystems.Grid;
 import core.ecosystems.tasks.Task;
 
-public class ExtinguishFires extends Task {
-    public ExtinguishFires(String name, Grid grid) {
+public class HireRangers extends Task {
+    public HireRangers(String name, Grid grid) {
         super(name, grid);
     }
 

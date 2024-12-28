@@ -5,30 +5,40 @@ import core.setup.Images;
 
 public class Coral extends Building {
 
-    private int health;
-    private final int MAX_HEALTH = 5;
+    private boolean healthy;
+    private int time;
 
-    public Coral() {
-        myImage = Images.damagedCoral;
+    public Coral(boolean b) {
         name = "Coral";
         info = "help please";
+        healthy = b;
+        if (healthy) {
+            myImage = Images.protesters;
+        } else {
+            myImage = Images.damagedCoral;
+        }
         resizeImage();
-        health = 1;
     }
 
-    public int getHealth(){
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void addHealth(int i) {
-        if (i > 0 && health < MAX_HEALTH) {
-            health =+ i;
+    @Override
+    public void update() {
+        super.update();
+        time++;
+        if (healthy && time % 120 == 0 && Math.random() < .1) {
+            setIsHealthy(false);
         }
     }
 
+    public boolean isHealthy() {
+        return healthy;
+    }
 
+    public void setIsHealthy(boolean b) {
+        healthy = b;
+        if (healthy) {
+            myImage = Images.protesters;
+        } else {
+            myImage = Images.damagedCoral;
+        }
+    }
 }

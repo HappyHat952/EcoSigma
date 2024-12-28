@@ -1,9 +1,11 @@
 package core.ecosystems.coralreef.buildings;
 
 import core.ecosystems.general.Building;
+import core.ecosystems.general.Cell;
 import core.setup.Images;
 
 public class CoralRobot extends Building {
+
 
     public CoralRobot(){
         myImage = Images.coralRobot;

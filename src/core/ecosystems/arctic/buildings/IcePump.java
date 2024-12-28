@@ -45,7 +45,7 @@ public class IcePump extends Building {
         }
     }
 
-    private ArrayList<Cell> getSurroundingCells(int stage) {
+    public ArrayList<Cell> getSurroundingCells(int stage) {
         ArrayList<Cell> addedCells = new ArrayList<>();
         if (stage == 0) {
             checkIfPossible(addedCells, myRow - 1, myCol);
@@ -62,7 +62,7 @@ public class IcePump extends Building {
         return addedCells;
     }
 
-    private void checkIfPossible(ArrayList<Cell> addedCells, int r, int c) {
+    public void checkIfPossible(ArrayList<Cell> addedCells, int r, int c) {
         if (r >= 0 && r < Grid.getGridSize() && c >= 0 && c <  Grid.getGridSize()) {
             Cell cell = grid.getCells()[r][c];
             addedCells.add(cell);
