@@ -5,6 +5,7 @@ import core.ecosystems.arctic.animals.Lemming;
 import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.animals.Walrus;
 import core.Game;
+import core.ecosystems.coralreef.animals.Clownfish;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
@@ -73,7 +74,7 @@ public class Lab extends BasicGameState {
         machines[0] = genomeMaker;
         machines[1] = petriDish;
         machines[2] = organismMaker;
-        setAvailableAnimals(1);
+
 
 
 
@@ -280,16 +281,23 @@ public class Lab extends BasicGameState {
     public static void setAvailableAnimals(int biome)
     {
         availableOrganisms = new ArrayList<>();
+        if (biome == 0) {
 
-        switch (biome){
-            case 1:
-                //makes new animal buttons
-                availableOrganisms.add( PolarBear.class);
-                availableOrganisms.add( Walrus.class);
-                availableOrganisms.add(Lemming.class);
+            //makes new animal buttons
+            availableOrganisms.add(PolarBear.class);
+            availableOrganisms.add(Walrus.class);
+            availableOrganisms.add(Lemming.class);
 
-                //makes new plant button
-                availableOrganisms.add(Plant.class);
+            //makes new plant button
+            availableOrganisms.add(Plant.class);
+        }
+        else if (biome == 1)
+        {
+                availableOrganisms.add(Clownfish.class);
+        }
+        else
+        {
+            availableOrganisms.add(Plant.class);
         }
         genomeMaker.setButtons();
 

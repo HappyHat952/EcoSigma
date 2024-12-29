@@ -94,7 +94,7 @@ public class Images {
                 //animals
                 polarBear =new SpriteSheet( (new Image("res/game/arctic/animals/polarBear.png")), 280, 280);
                 walrus =new SpriteSheet( (new Image("res/game/arctic/animals/walrus.png")), 128, 128);
-                lemming =new SpriteSheet( (new Image("res/game/arctic/animals/lemming.png")), 128, 128);
+                lemming =new SpriteSheet( (new Image("res/game/arctic/animals/lemming.png")), 256, 256);
                 //other
                 cloudSheet = new SpriteSheet((new Image("res/game/arctic/cloud.png")), 128, 128);
 

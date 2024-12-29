@@ -38,6 +38,7 @@ public class IcePump extends Building {
                 ArrayList<Cell> cells = getSurroundingCells(stage);
                 for (Cell cell : cells) {
                     cell.setColor(Color.white);
+                    cell.setImage(Images.arcticCells.getSubImage(0,4));
                 }
                 iceCreated += cells.size();
                 stage++;
