@@ -7,6 +7,6 @@ import core.setup.Images;
 public class Clownfish extends Animal {
     public Clownfish(Cell cell) {
         super(cell);
-        sprite = Images.lemming;
+        sprite = Images.clownfish;
     }
 }

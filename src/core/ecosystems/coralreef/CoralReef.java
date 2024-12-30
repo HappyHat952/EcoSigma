@@ -11,6 +11,8 @@ import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import static core.ecosystems.lab.Lab.setAvailableAnimals;
+
 public class CoralReef extends Ecosystem {
 
     public CoralReef(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
@@ -21,4 +23,6 @@ public class CoralReef extends Ecosystem {
         taskManager.addTask(new CreateCoral("Create New Coral Structures", grid));
         taskManager.addTask(new RepairCoral("Repair Damaged Coral", grid));
     }
+
+
 }

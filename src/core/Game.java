@@ -124,5 +124,8 @@ public class Game extends BasicGameState
 		pause = false;
 	}
 
+	public static int getLevelID() {
+		return levelID;
+	}
 
 }

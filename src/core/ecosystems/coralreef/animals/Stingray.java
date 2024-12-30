@@ -4,9 +4,9 @@ import core.ecosystems.general.Animal;
 import core.ecosystems.general.Cell;
 import core.setup.Images;
 
-public class Lionfish extends Animal {
-    public Lionfish(Cell cell) {
+public class Stingray extends Animal {
+    public Stingray(Cell cell) {
         super(cell);
-        sprite = Images.lemming;
+        sprite = Images.stingray;
     }
 }

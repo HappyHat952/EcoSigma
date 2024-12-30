@@ -4,9 +4,9 @@ import core.ecosystems.general.Animal;
 import core.ecosystems.general.Cell;
 import core.setup.Images;
 
-public class Turtle extends Animal {
-    public Turtle(Cell cell) {
+public class JellyFish extends Animal {
+    public JellyFish(Cell cell) {
         super(cell);
-        sprite = Images.lemming;
+        sprite = Images.jellyFish;
     }
 }

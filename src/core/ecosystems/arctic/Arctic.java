@@ -13,6 +13,7 @@ public class Arctic extends Ecosystem {
 
     private static ArrayList<Cloud> clouds;
 
+
     public Arctic(GameContainer gc, StateBasedGame sbg, PopupManager pu)
     {
         super(gc, sbg, pu);

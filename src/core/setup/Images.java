@@ -48,6 +48,10 @@ public class Images {
     public static Image bioRock;
     public static Image soundCreator;
     public static Image coralRobot;
+    public static SpriteSheet clownfish;
+    public static SpriteSheet stingray;
+    public static SpriteSheet jellyFish;
+    public static SpriteSheet seaweed;
     // LEVEL 3
 
     // LEVEL 4
@@ -104,6 +108,11 @@ public class Images {
             soundCreator = new Image("res/game/coralreef/soundCreator.png");
             coralRobot = new Image("res/game/coralreef/robotRepairer.png");
 
+            //animals
+            clownfish = new SpriteSheet((new Image("res/game/coralreef/clownfish.png")), 128, 128);
+            stingray = new SpriteSheet((new Image("res/game/coralreef/stingray.png")), 128, 128);
+            jellyFish = new SpriteSheet((new Image("res/game/coralreef/jellyFish.png")), 128, 128);
+            seaweed = new SpriteSheet((new Image("res/game/coralreef/seaweed.png")), 128, 128);
             // LEVEL 3
 
             // LEVEL 4

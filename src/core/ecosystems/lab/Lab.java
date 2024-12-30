@@ -5,6 +5,10 @@ import core.ecosystems.arctic.animals.Lemming;
 import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.animals.Walrus;
 import core.Game;
+import core.ecosystems.coralreef.animals.Clownfish;
+import core.ecosystems.coralreef.animals.JellyFish;
+import core.ecosystems.coralreef.animals.Seaweed;
+import core.ecosystems.coralreef.animals.Stingray;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
@@ -73,17 +77,23 @@ public class Lab extends BasicGameState {
         machines[0] = genomeMaker;
         machines[1] = petriDish;
         machines[2] = organismMaker;
-        setAvailableAnimals(1);
+        if (Game.getLevelID() == 1) {
+//            setAvailableAnimals(2);
+        }
+        setAvailableAnimals(2);
 
 
 
         //makes new animal buttons
-        availableMachines.add( new OrganismCreator(0,500, PolarBear.class, "polar bear"));
-        availableMachines.add(new OrganismCreator(500, 500, Walrus.class, "walrus"));
-        availableMachines.add(new OrganismCreator(1000, 500, Lemming.class, "lemming"));
-
-        //makes new plant button
-        availableMachines.add(new OrganismCreator(1500,500, Plant.class, "plant"));
+        availableMachines.add( new OrganismCreator(0,500, Clownfish.class, "clown fish"));
+        availableMachines.add( new OrganismCreator(500,500, Stingray.class, "sting ray"));
+        availableMachines.add( new OrganismCreator(1000,500, JellyFish.class, "jelly fish"));
+        availableMachines.add( new OrganismCreator(1500,500, Seaweed.class, "seaweed"));
+//        availableMachines.add(new OrganismCreator(500, 500, Walrus.class, "walrus"));
+//        availableMachines.add(new OrganismCreator(1000, 500, Lemming.class, "lemming"));
+//
+//        //makes new plant button
+//        availableMachines.add(new OrganismCreator(1500,500, Plant.class, "plant"));
     }
 
     @Override
@@ -290,6 +300,17 @@ public class Lab extends BasicGameState {
 
                 //makes new plant button
                 availableOrganisms.add(Plant.class);
+            case 2:
+                availableOrganisms.add(Clownfish.class);
+                availableOrganisms.add(Stingray.class);
+                availableOrganisms.add(JellyFish.class);
+
+                availableOrganisms.add(Seaweed.class);
+                System.out.print("HELP ME");
+//                availableOrganisms.add( Walrus.class);
+//                availableOrganisms.add(Lemming.class);
+//
+//                availableOrganisms.add(Plant.class);
         }
         genomeMaker.setButtons();
 

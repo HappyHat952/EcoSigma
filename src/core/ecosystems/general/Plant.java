@@ -28,7 +28,7 @@ public class Plant extends Organism{
 
         frame = 0;
         sprite = Images.plant;
-        maxWaitTime = 100000;
+        maxWaitTime = 30;
         timer = maxWaitTime;
 
         name = "plant";
@@ -38,26 +38,35 @@ public class Plant extends Organism{
     }
     public void render(Graphics g)
     {
-        g.drawImage(sprite.getSubImage(0,frame).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
+        g.drawImage(sprite.getSubImage(frame,0).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
     }
     public void update(Grid grid)
     {
-        //this means all animal sprites MUST be vertical
-        if (timer % 33000 == 0)
-        {
-            if (frame<sprite.getVerticalCount()-1)
-            {
-                frame ++;
-            }
+        if (timer > 0) {
+            timer--;
         }
 
-        if (timer == 0)
-        {
+
+        if (timer == 0) {
+            frame = (frame + 1) % sprite.getHorizontalCount();
             timer = maxWaitTime;
         }
-        else {
-            timer --;
-        }
+        //this means all animal sprites MUST be vertical
+//        if (timer % 33000 == 0)
+//        {
+//            if (frame<sprite.getVerticalCount()-1)
+//            {
+//                frame ++;
+//            }
+//        }
+//
+//        if (timer == 0)
+//        {
+//            timer = maxWaitTime;
+//        }
+//        else {
+//            timer --;
+//        }
     }
 
 
