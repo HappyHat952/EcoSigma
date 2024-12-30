@@ -58,9 +58,9 @@ public class GenomeMaker extends LabScreen {
                     g.setFont(Fonts.medium);
                     g.drawString(b.getName().substring(2) +" genome",x + Main.getScreenWidth()*.125f, Main.getScreenHeight()*.47f);
                     int letterW = Fonts.medium.getWidth("G");
-                    g.drawString(segments[screenButtons.indexOf(b)].substring(0, 1+(int)((width - Main.getScreenWidth()*.25f) /letterW)),
-                            x + Main.getScreenWidth()*.125f,
-                            y+ Main.getScreenHeight() *.5f);
+                    //g.drawString(segments[screenButtons.indexOf(b)].substring(0, 1+(int)((width - Main.getScreenWidth()*.25f) /letterW)),
+                    //        x + Main.getScreenWidth()*.125f,
+                    //        y+ Main.getScreenHeight() *.5f);
                 }
             }
 

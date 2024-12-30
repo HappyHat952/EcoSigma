@@ -8,5 +8,6 @@ public class Clownfish extends Animal {
     public Clownfish(Cell cell) {
         super(cell);
         sprite = Images.clownfish;
+        name = "clownfish";
     }
 }
