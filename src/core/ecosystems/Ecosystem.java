@@ -3,6 +3,7 @@ package core.ecosystems;
 import core.Main;
 import core.buttons.LabButton;
 import core.ecosystems.general.Animal;
+import core.ecosystems.general.Building;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
 import core.ecosystems.tasks.Task;
@@ -11,6 +12,8 @@ import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.ArrayList;
 
 //manages everything regarding a single ecosystem - contains the shop, lab, and grid
 abstract public class Ecosystem {
@@ -21,12 +24,14 @@ abstract public class Ecosystem {
     protected GameContainer gc;
     protected StateBasedGame sbg;
     protected PopupManager pu;
+    protected ArrayList<Building> buildings;
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
         shop = new Shop(grid, gc);
         lab = new LabButton();
         taskManager = new TaskManager();
+        buildings = new ArrayList<>();
         this.gc = gc;
         this.sbg = sbg;
         this.pu = pu;
@@ -38,7 +43,10 @@ abstract public class Ecosystem {
         lab.render(g);
         shop.render(g);
         taskManager.render(g);
-        g.drawString(toString(), 400,400);
+        for (Building b : buildings)
+        {
+            b.render(g);
+        }
 
     }
 
@@ -50,9 +58,9 @@ abstract public class Ecosystem {
         }
     }
 
-    public void mousePressed(int x, int y) {
+    public void mousePressed(int x, int y, int button) {
         shop.mousePressed(x, y);
-        grid.mousePressed(x, y);
+        grid.mousePressed(x, y, button);
         if (lab.isMouseOver(x, y)) {
             pu.activate(1);
             sbg.enterState(Main.LAB_ID);
@@ -63,6 +71,8 @@ abstract public class Ecosystem {
     {
         grid.addOrganism(organism);
     }
+
+
 
     public TaskManager getTaskManager() {
         return taskManager;

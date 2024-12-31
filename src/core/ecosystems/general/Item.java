@@ -1,5 +1,6 @@
 package core.ecosystems.general;
 
+import core.Main;
 import core.ecosystems.Grid;
 import core.ecosystems.Shop;
 import core.ui.PopupManager;
@@ -35,15 +36,15 @@ public class Item {
 
     public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int myNum) {
         this.name = buildingObject.getName();
-        this.image = buildingObject.getMyImage();
+        this.image = buildingObject.getMyImage().getScaledCopy((int)(Main.getScreenWidth()*.12), (int)(Main.getScreenWidth()*.12));
         this.info = buildingObject.getInfo();
         this.x = i * Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
-        cost = 4;
         this.myNum = myNum;
         this.buildingClass = buildingClass;
         this.buildingObject = buildingObject;
         myColor = Color.white;
+        cost = buildingObject.getCost();
 
     }
 

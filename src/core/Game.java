@@ -47,11 +47,11 @@ public class Game extends BasicGameState
 		pause = false;
 		ecosystems = new Ecosystem[NUM_ECOSYSTEMS];
 		popupManager = new PopupManager();
-		ecosystems[0] = new Arctic(gc, sbg, popupManager);
-		ecosystems[1] = new CoralReef(gc, sbg, popupManager);
-		ecosystems[2] = new RainForest(gc, sbg, popupManager);
-		ecosystems[3] = new Farm(gc, sbg, popupManager);
-		ecosystems[4] = new City(gc, sbg, popupManager);
+		ecosystems[0] = new Arctic(gc, sbg, popupManager, 0);
+		ecosystems[1] = new CoralReef(gc, sbg, popupManager, 1);
+		ecosystems[2] = new RainForest(gc, sbg, popupManager, 2);
+		ecosystems[3] = new Farm(gc, sbg, popupManager, 3);
+		ecosystems[4] = new City(gc, sbg, popupManager, 4);
 		//popupManager.activate(0);
 	}
 
@@ -82,6 +82,7 @@ public class Game extends BasicGameState
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		// This code happens when you enter a gameState.
+		gc.setDefaultMouseCursor();
 	}
 
 	public void leave(GameContainer gc, StateBasedGame sbg)
@@ -102,7 +103,7 @@ public class Game extends BasicGameState
 	{
 		// This code happens every time the user presses the mouse
 		if (!pause) {
-			ecosystems[levelID].mousePressed(x, y);
+			ecosystems[levelID].mousePressed(x, y, button);
 		}
 		popupManager.mousePressed(button, x, y);
 	}

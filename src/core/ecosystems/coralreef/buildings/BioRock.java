@@ -33,7 +33,7 @@ public class BioRock extends Building {
                 if (!cells.isEmpty()) {
                     int random = (int) (Math.random() * cells.size());
                     Coral c = new Coral(true);
-                    c.assignCell(cells.get(random));
+                    c.assignCell(cells.get(random), grid);
                     cells.remove(random);
                 }
             }

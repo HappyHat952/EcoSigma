@@ -15,37 +15,37 @@ public class ArcticGrid extends Grid {
         super(gc);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[i][j] = new ArcticCell(i, j);
+                cells[i][j] = new ArcticCell(j, i);
             }
         }
         OilDrill oilDrill1 = new OilDrill();
-        oilDrill1.assignCell(cells[5][5]);
+        oilDrill1.assignCell(cells[5][5], this);
         OilDrill oilDrill2 = new OilDrill();
-        oilDrill2.assignCell(cells[2][1]);
+        oilDrill2.assignCell(cells[2][1], this);
         OilDrill oilDrill3 = new OilDrill();
-        oilDrill3.assignCell(cells[8][7]);
-        buildings.add(oilDrill1);
-        buildings.add(oilDrill2);
-        buildings.add(oilDrill3);
+        oilDrill3.assignCell(cells[8][7], this);
+//        buildings.add(oilDrill1);
+//        buildings.add(oilDrill2);
+//        buildings.add(oilDrill3);
     }
 
     @Override
-    public void mousePressed(int x, int y) {
+    public void mousePressed(int x, int y, int button) {
         if (mouseBuilding != null) {
             for (int i = 0; i < GRID_SIZE; i++) {
                 for (int j = 0; j < GRID_SIZE; j++) {
                     if (cells[i][j].mouseOver(x, y) && !cells[i][j].hasBuilding()) {
                         if (mouseBuilding instanceof Protesters) {
                             if (isValid(cells[i][j])) {
-                                mouseBuilding.assignCell(cells[i][j]);
-                                buildings.add(mouseBuilding);
+                                mouseBuilding.assignCell(cells[i][j], this);
+                                addBuilding(mouseBuilding);
                                 mouseBuilding = null;
                                 gc.setDefaultMouseCursor();
                                 return;
                             }
                         } else {
-                            mouseBuilding.assignCell(cells[i][j]);
-                            buildings.add(mouseBuilding);
+                            mouseBuilding.assignCell(cells[i][j], this);
+                            addBuilding(mouseBuilding);
                             mouseBuilding = null;
                             gc.setDefaultMouseCursor();
                         }

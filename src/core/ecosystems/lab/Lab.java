@@ -6,6 +6,7 @@ import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.animals.Walrus;
 import core.Game;
 import core.ecosystems.coralreef.animals.Clownfish;
+import core.ecosystems.farm.animals.PluroCultureCrop;
 import core.ecosystems.coralreef.animals.JellyFish;
 import core.ecosystems.coralreef.animals.Seaweed;
 import core.ecosystems.coralreef.animals.Stingray;
@@ -77,7 +78,7 @@ public class Lab extends BasicGameState {
         machines[0] = genomeMaker;
         machines[1] = petriDish;
         machines[2] = organismMaker;
-        setAvailableAnimals(1);
+
 
 
 
@@ -119,6 +120,7 @@ public class Lab extends BasicGameState {
         int index =0;
         for(Genome gen: genomes)
         {
+            g.setColor(Color.black);
             if(gen.isEgged()){ g.setColor(Color.red);}
             else{ g.setColor(Color.blue);}
 
@@ -284,27 +286,31 @@ public class Lab extends BasicGameState {
     public static void setAvailableAnimals(int biome)
     {
         availableOrganisms = new ArrayList<>();
+        if (biome == 0) {
 
-        switch (biome){
-            case 1:
-                //makes new animal buttons
-                availableOrganisms.add( PolarBear.class);
-                availableOrganisms.add( Walrus.class);
-                availableOrganisms.add(Lemming.class);
+            //makes new animal buttons
+            availableOrganisms.add(PolarBear.class);
+            availableOrganisms.add(Walrus.class);
+            availableOrganisms.add(Lemming.class);
 
-                //makes new plant button
-                availableOrganisms.add(Plant.class);
-            case 2:
+            //makes new plant button
+            availableOrganisms.add(Plant.class);
+        }
+        else if (biome == 1)
+        {
                 availableOrganisms.add(Clownfish.class);
-                availableOrganisms.add(Stingray.class);
-                availableOrganisms.add(JellyFish.class);
+            availableOrganisms.add(Stingray.class);
+            availableOrganisms.add(JellyFish.class);
 
-                availableOrganisms.add(Seaweed.class);
-                System.out.print("HELP ME");
-//                availableOrganisms.add( Walrus.class);
-//                availableOrganisms.add(Lemming.class);
-//
-//                availableOrganisms.add(Plant.class);
+            availableOrganisms.add(Seaweed.class);
+        }
+        else if (biome == 3 )
+        {
+            availableOrganisms.add(PluroCultureCrop.class);
+        }
+        else
+        {
+            availableOrganisms.add(Plant.class);
         }
         genomeMaker.setButtons();
 

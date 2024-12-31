@@ -2,6 +2,7 @@ package core.ecosystems;
 
 import core.Main;
 
+import core.ecosystems.arctic.buildings.CO2Sucker;
 import core.ecosystems.general.*;
 import core.ecosystems.rainforest.buildings.Ranger;
 import org.lwjgl.input.Mouse;
@@ -23,6 +24,7 @@ public class Grid {
     protected ArrayList<Plant> plants;
     protected GameContainer gc;
     protected StateBasedGame sbg;
+    protected Shop shop;
 
     public Grid(GameContainer gc)
     {
@@ -62,6 +64,14 @@ public class Grid {
         {
             p.render(g);
         }
+        for (Building b: buildings)
+        {
+            if (b.getCells() != null)
+            {
+                b.render(g);
+            }
+
+        }
     }
 
     public void update()
@@ -80,6 +90,7 @@ public class Grid {
             if (b instanceof Ranger) {
                 b.update();
             }
+
         }
         for (Animal a: animals)
         {
@@ -170,7 +181,7 @@ public class Grid {
 //            mouseBuilding = b;
 //        }
 //        }
-    public void mousePressed(int x, int y)
+    public void mousePressed(int x, int y, int button)
     {
         if (mouseBuilding != null)
         {
@@ -180,8 +191,8 @@ public class Grid {
                 {
                     if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
                     {
-                        mouseBuilding.assignCell(cells[i][j]);
-                        buildings.add(mouseBuilding);
+                        mouseBuilding.assignCell(cells[i][j], this);
+                        addBuilding(mouseBuilding);
                         mouseBuilding = null;
                         gc.setDefaultMouseCursor();
 
@@ -189,8 +200,18 @@ public class Grid {
                 }
             }
         } else {
-            System.out.println("NO BUILDING");
+            mousePressedNoBuilding( x,  y, button);
+            //Does this ONLY if there is no building
         }
+    }
+
+    public void mousePressedNoBuilding(int x, int y, int button)
+    {
+        for(Building b: buildings)
+        {
+            b.click(x,y,button);
+        }
+
     }
 
     public ArrayList<Building> getBuildings() {
@@ -199,6 +220,11 @@ public class Grid {
 
     public static int getGridSize() {
         return GRID_SIZE;
+    }
+
+    public void addShop(Shop shop)
+    {
+        this.shop = shop;
     }
 
     public void addOrganism(Class<? extends Organism> clazz) {
@@ -245,6 +271,22 @@ public class Grid {
         //animals.add(new Animal(cell));
     }
 
+    public void addAnimal(Class<? extends Animal> animal, Cell cell) {
+        if (!getAllOpenCells().isEmpty())
+        {
+            ArrayList<Cell> cellList = getAllOpenCells();
+            try {
+                Constructor constructor = animal.getDeclaredConstructor(Cell.class);
+                animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        //animals.add(new Animal(cell));
+    }
+
     public void addPlant(Class<? extends Plant> plant) {
         if (!getAllOpenCells().isEmpty()) {
             ArrayList<Cell> cellList = getAllOpenCells();
@@ -260,14 +302,60 @@ public class Grid {
 
         //animals.add(new Animal(cell));
     }
+    public void addPlant(Class<? extends Plant> plant, Cell cell) {
+        if (!getAllOpenCells().isEmpty()) {
+            try {
+                Constructor constructor = plant.getDeclaredConstructor(Cell.class);
+                plants.add(plant.getDeclaredConstructor(Cell.class).newInstance(cell));
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                     InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //animals.add(new Animal(cell));
+    }
 
-    public void addBuilding(Class<? extends Building> building) {
+    //add building using this
+    public void addBuilding(Building building)
+    {
+        int row = building.getMyRow();
+
+        if (buildings.isEmpty())
+        {
+            buildings.add(building);
+        }
+        else {
+            int i = 0;
+            while (i<=buildings.size() && !buildings.contains(building))
+            {
+                if (i == buildings.size())
+                {
+                    buildings.add(building);
+                }
+                if (row <= buildings.get(i).getMyRow())
+                {
+                    buildings.add(i, building);
+                }
+               // System.out.println(""+row+"<=" +buildings.get(i).getMyRow()+": "+(row <= buildings.get(i).getMyRow()));
+                i++;
+            }
+
+        }
+//        for (Building b: buildings)
+//        {
+//            System.out.print(b.getMyRow() +", ");
+//        }
+
+    }
+
+    public void addMouseBuilding(Class<? extends Building> building) {
         ArrayList<Cell> cellList = getAllOpenCells();
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));
         try {
             Constructor constructor = building.getDeclaredConstructor();
             Building newBuilding = building.getDeclaredConstructor().newInstance();
-            buildings.add(newBuilding);
+            //buildings.add(newBuilding);
+
             if (!mouseHasBuilding())
             {
                 mouseBuilding = newBuilding;

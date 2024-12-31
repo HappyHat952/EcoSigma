@@ -12,11 +12,12 @@ import java.util.ArrayList;
 public class Arctic extends Ecosystem {
 
     private static ArrayList<Cloud> clouds;
-
+    public static int ID;
 
     public Arctic(GameContainer gc, StateBasedGame sbg, PopupManager pu)
     {
         super(gc, sbg, pu);
+        ID = id;
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
@@ -46,8 +47,8 @@ public class Arctic extends Ecosystem {
     }
 
     @Override
-    public void mousePressed(int x, int y) {
-        super.mousePressed(x, y);
+    public void mousePressed(int x, int y, int button) {
+        super.mousePressed(x, y, button);
     }
 
     public static ArrayList<Cloud> getClouds() {

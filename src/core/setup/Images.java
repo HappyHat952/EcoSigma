@@ -53,10 +53,13 @@ public class Images {
     public static SpriteSheet jellyFish;
     public static SpriteSheet seaweed;
     // LEVEL 3
+    // 3: FARM
+    public static SpriteSheet farmCells;
+    public static Image greenHouse;
 
-    // LEVEL 4
-
-    // LEVEL 5
+    // 4: CITY
+    public static SpriteSheet cityCells;
+    public static Image cityBuilding;
 
     // LAB
 
@@ -114,8 +117,15 @@ public class Images {
             jellyFish = new SpriteSheet((new Image("res/game/coralreef/jellyFish.png")), 128, 128);
             seaweed = new SpriteSheet((new Image("res/game/coralreef/seaweed.png")), 128, 128);
             // LEVEL 3
+            // LEVEL 3: FARM
+            farmCells = new SpriteSheet("res/game/farm/farmCells.png",192,192 );
+            greenHouse = new Image("res/game/farm/buildings/greenhouse.png");
 
-            // LEVEL 4
+
+            // LEVEL 4: CITY
+            cityCells = new SpriteSheet("res/game/city/cityCell.png", 384,384);
+            cityBuilding = new Image("res/game/city/buildings/cityBuilding.png");
+
 
             // LEVEL 5
 

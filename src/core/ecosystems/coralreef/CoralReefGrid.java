@@ -18,14 +18,15 @@ public class CoralReefGrid extends Grid {
             }
         }
         Coral coral1 = new Coral(false);
-        coral1.assignCell(cells[3][3]);
+        coral1.assignCell(cells[3][3], this);
         Coral coral2 = new Coral(false);
-        coral2.assignCell(cells[5][5]);
+        coral2.assignCell(cells[5][5], this);
         Coral coral3 = new Coral(false);
-        coral3.assignCell(cells[8][7]);
-        buildings.add(coral1);
-        buildings.add(coral2);
-        buildings.add(coral3);
+        coral3.assignCell(cells[8][7],this);
+
+        addBuilding(coral1);
+        addBuilding(coral2);
+        addBuilding(coral3);
     }
 
     @Override

@@ -2,6 +2,7 @@ package core.ecosystems.general;
 
 import core.ecosystems.Grid;
 import core.setup.Images;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SpriteSheet;
 
@@ -13,8 +14,10 @@ public class Plant extends Organism{
     protected SpriteSheet sprite;
     protected int frame;
 
-    protected int timer;
-    protected int maxWaitTime;
+    protected int frameTimer;
+
+    protected int growTime;
+    protected int secondTimer;
 
     public Plant(Cell cell)
     {
@@ -28,8 +31,7 @@ public class Plant extends Organism{
 
         frame = 0;
         sprite = Images.plant;
-        maxWaitTime = 30;
-        timer = maxWaitTime;
+        growTime = 2;
 
         name = "plant";
 
@@ -38,21 +40,28 @@ public class Plant extends Organism{
     }
     public void render(Graphics g)
     {
-        g.drawImage(sprite.getSubImage(frame,0).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
+        g.drawImage(sprite.getSubImage(0,frame).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
+        g.drawString(""+ frame, x,y);
     }
     public void update(Grid grid)
     {
-        if (timer > 0) {
-            timer--;
-        }
-
-
-        if (timer == 0) {
-            frame = (frame + 1) % sprite.getHorizontalCount();
-            timer = maxWaitTime;
-        }
         //this means all animal sprites MUST be vertical
-//        if (timer % 33000 == 0)
+        frameTimer ++;
+        if (frameTimer% 60 == 0)
+        {
+            secondTimer ++;
+            frameTimer =0;
+        }
+
+        if (secondTimer == growTime)
+        {
+            if (frame< sprite.getVerticalCount()-1)
+            {
+                frame ++;
+            }
+            secondTimer = 0;
+        }
+//        if (frameTimer % 33000 == 0)
 //        {
 //            if (frame<sprite.getVerticalCount()-1)
 //            {
@@ -60,13 +69,28 @@ public class Plant extends Organism{
 //            }
 //        }
 //
-//        if (timer == 0)
+//        if (frameTimer == 0)
 //        {
-//            timer = maxWaitTime;
+//            frameTimer = maxWaitTime;
 //        }
 //        else {
-//            timer --;
+//            frameTimer --;
 //        }
+    }
+
+    public boolean isMature()
+    {
+        return (frame == sprite.getVerticalCount()-1);
+    }
+    public Cell getCell(){ return cell;}
+
+    public void click(int x, int y, int button)
+    {
+        sprite.setImageColor(1f,0f,0f);
+    }
+    public boolean mouseOver(int x, int y)
+    {
+        return (x>this.x && y>this.y && x<(this.x + Cell.getWidth()) && y< (this.y + Cell.getHeight()));
     }
 
 

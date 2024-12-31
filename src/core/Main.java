@@ -71,7 +71,7 @@ public class Main extends StateBasedGame
 		catch (SlickException e) 
 		{
 			e.printStackTrace();
-		}
+   		}
 
 	}
 }
