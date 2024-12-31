@@ -82,6 +82,7 @@ public class Plant extends Organism{
     {
         return (frame == sprite.getVerticalCount()-1);
     }
+    public Cell getCell(){ return cell;}
 
     public void click(int x, int y, int button)
     {

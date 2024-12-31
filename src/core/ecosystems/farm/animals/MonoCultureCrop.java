@@ -7,7 +7,7 @@ public class MonoCultureCrop extends Crop {
 
     public MonoCultureCrop(Cell cell) {
         super(cell);
-        growTime = 5;
+        growTime = 8;
         frame = (int)(Math.random()*sprite.getVerticalCount());
     }
 }

@@ -1,6 +1,7 @@
 package core.ecosystems.farm.tasks;
 
 import core.ecosystems.Grid;
+import core.ecosystems.farm.FarmGrid;
 import core.ecosystems.tasks.Task;
 
 public class AddedGreenhouse extends Task {
@@ -10,7 +11,7 @@ public class AddedGreenhouse extends Task {
 
     @Override
     public int getPercentDone() {
-        return 0;
+        return (int)(((FarmGrid)grid).getNumGreenHouses()/ 4f * 100);
     }
 
     @Override

@@ -200,8 +200,18 @@ public class Grid {
                 }
             }
         } else {
-            //System.out.println("NO BUILDING");
+            mousePressedNoBuilding( x,  y, button);
+            //Does this ONLY if there is no building
         }
+    }
+
+    public void mousePressedNoBuilding(int x, int y, int button)
+    {
+        for(Building b: buildings)
+        {
+            b.click(x,y,button);
+        }
+
     }
 
     public ArrayList<Building> getBuildings() {

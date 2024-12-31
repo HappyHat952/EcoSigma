@@ -9,6 +9,7 @@ public class Building {
 
     protected int myRow;
     protected int myCol;
+    protected int cost;
 
     protected int cellWidth;
     protected int cellHeight;
@@ -22,7 +23,7 @@ public class Building {
 
     public Building()
     {
-
+        cost = 4;
     }
 
     public void assignCell(Cell cell, Grid grid)
@@ -58,7 +59,7 @@ public class Building {
             }
         }
 
-        grid.addBuilding(this);
+        //grid.addBuilding(this);
     }
 
     public void render(Graphics g)
@@ -88,16 +89,34 @@ public class Building {
     public String getName() {
         return name;
     }
+    public int getCost()
+    {
+        return cost;
+    }
     public String getInfo() {
         return info;
     }
     public Cell getCell(){ return cell;}
     public Cell[] getCells() { return cells;}
+
+    public boolean mouseOver(int x, int y)
+    {
+        return (x > cells[0].getX() && x< cells[0].getX() + cellWidth* Cell.getWidth()
+                && y > cells[0].getY() && y< (cells[0].getY() + cellHeight* Cell.getHeight()));
+    }
+
     //mutator
     public void resizeImage()
     {
         myImage = myImage.getScaledCopy(Cell.getWidth(), Cell.getHeight());
     }
+
+    public void click(int x, int y, int button)
+    {
+
+    }
+
+
 
 
 }

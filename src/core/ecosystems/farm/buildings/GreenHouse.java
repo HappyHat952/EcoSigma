@@ -10,5 +10,22 @@ public class GreenHouse extends Building {
     {
         super();
         myImage = Images.greenHouse;
+        cost = 75;
+    }
+
+    public boolean isOver(Cell c)
+    {
+        if (cells != null)
+        {
+            for (Cell c1: cells)
+            {
+                if (c1 == c)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

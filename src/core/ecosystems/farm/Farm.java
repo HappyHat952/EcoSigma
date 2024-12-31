@@ -21,9 +21,9 @@ public class Farm extends Ecosystem {
         shop = new FarmShop(grid,gc);
         grid.addShop(shop);
         //add new tasks
-        taskManager.addTask(new AddedGreenhouse("Add five Greenhouses", grid) );
+        taskManager.addTask(new AddedGreenhouse("Add four Greenhouses", grid) );
         taskManager.addTask(new PlantTenVariedPlants("Add ten bio-diverse plants", grid));
-        taskManager.addTask(new RemoveMonocultures("remove monocultured plants", grid));
+        taskManager.addTask(new RemoveMonocultures("remove 20 monoculture plants", grid));
         taskManager.addTask(new WaterAllPlants("Place WaterTanks and irrigation pipes", grid));
     }
 

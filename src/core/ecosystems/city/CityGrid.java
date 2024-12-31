@@ -2,6 +2,7 @@ package core.ecosystems.city;
 
 import core.ecosystems.Grid;
 import core.ecosystems.city.buildings.CityBuilding;
+import core.ecosystems.general.Cell;
 import org.newdawn.slick.GameContainer;
 
 import java.util.ArrayList;
@@ -17,14 +18,19 @@ public class CityGrid extends Grid {
             }
         }
         cityBuildings = new ArrayList<>();
-        cityBuildings.add(new CityBuilding());
-        cityBuildings.add(new CityBuilding());
-        int i = 1;
 
-        for (CityBuilding c: cityBuildings)
+        Cell[] buildingCells = new Cell[]{
+                cells[1][0], cells [1][1], cells[1][4], cells[1][5],
+                cells[2][4], cells[2][5], cells[2][8], cells[2][9],
+                cells[3][4], cells[3][9], cells[3][8]};
+        for (Cell c: buildingCells)
         {
-            c.assignCell(cells[3+i][3], this);
-            i--;
+            CityBuilding b = new CityBuilding();
+            b.assignCell(c, this);
+            cityBuildings.add(b);
+            addBuilding( b);
+
+
         }
 
     }

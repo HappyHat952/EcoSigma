@@ -68,7 +68,7 @@ public class Shop {
                 money -= i.getCost();
                 grid.addMouseBuilding(i.getBuildingClass());
                 try {
-                    gc.setMouseCursor(i.getBuildingObject().getMyImage(), 50,50);
+                    gc.setMouseCursor(i.getBuildingObject().getMyImage().getScaledCopy(50,50),50,50);
                 } catch (SlickException e) {
                     throw new RuntimeException(e);
                 }
