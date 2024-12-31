@@ -4,6 +4,7 @@ package core.ecosystems;
 import core.Main;
 import core.ecosystems.arctic.buildings.CO2Sucker;
 import core.ecosystems.general.Item;
+import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -37,10 +38,16 @@ public class Shop {
         items.add(new Item (2, CO2Sucker.class, new CO2Sucker(),2));
     }
 
-    public void render(Graphics g) {
-        g.setColor(Color.white);
-        g.drawString("$ "+money + "\nitems: "+items.size(), Grid.getGridWidth() + margin, Main.getScreenHeight() * .70f);
+    public void addMoney(int value)
+    {
+        money += value;
+    }
 
+    public void render(Graphics g) {
+        g.setColor(Color.white); g.setFont(Fonts.big);
+        g.drawString("$ "+money , Grid.getGridWidth() + margin + Main.getScreenWidth()*.07f, Main.getScreenHeight() * .6f);
+
+        g.setFont(Fonts.small);
         for (int i = 0; i < items.size(); i++) {
             items.get(i).render(g);
         }
@@ -59,7 +66,7 @@ public class Shop {
             if (i.mouseOver(x,y) && money >= i.getCost() && !grid.mouseHasBuilding())
             {
                 money -= i.getCost();
-                grid.addBuilding(i.getBuildingClass());
+                grid.addMouseBuilding(i.getBuildingClass());
                 try {
                     gc.setMouseCursor(i.getBuildingObject().getMyImage(), 50,50);
                 } catch (SlickException e) {

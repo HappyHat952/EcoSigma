@@ -14,13 +14,13 @@ public class RainForestGrid extends Grid {
             }
         }
         Fire fire1 = new Fire();
-        fire1.assignCell(cells[5][5]);
-        buildings.add(fire1);
+        fire1.assignCell(cells[5][5], this);
+        addBuilding(fire1);
         Fire fire2 = new Fire();
-        fire2.assignCell(cells[8][7]);
-        buildings.add(fire2);
+        fire2.assignCell(cells[8][7], this);
+        addBuilding(fire2);
         Fire fire3 = new Fire();
-        fire3.assignCell(cells[2][2]);
-        buildings.add(fire3);
+        fire3.assignCell(cells[2][2], this);
+        addBuilding(fire3);
     }
 }

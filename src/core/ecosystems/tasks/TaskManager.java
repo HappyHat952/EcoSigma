@@ -64,6 +64,7 @@ public class TaskManager {
             count += t.getPercentDone();
         }
         currentProgress = (float) count /(tasks.size() * 100);
+        g.resetFont();
     }
 
     public void renderTasks(Graphics g) {

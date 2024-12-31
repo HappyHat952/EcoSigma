@@ -14,8 +14,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class CoralReef extends Ecosystem {
 
-    public CoralReef(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
+    public static int ID;
+
+    public CoralReef(GameContainer gc, StateBasedGame sbg, PopupManager pu, int id) {
         super(gc, sbg, pu);
+        ID = id;
         grid = new CoralReefGrid(gc);
         shop = new CoralReefShop(grid, gc);
         taskManager.addTask(new CreateSounds("Introduce Sounds", grid));

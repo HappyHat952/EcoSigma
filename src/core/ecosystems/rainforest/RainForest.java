@@ -20,8 +20,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class RainForest extends Ecosystem {
 
     private String danger;
-    public RainForest(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
+    public static int ID;
+    public RainForest(GameContainer gc, StateBasedGame sbg, PopupManager pu, int id) {
         super(gc, sbg, pu);
+        ID = id;
         grid = new RainForestGrid(gc);
         shop = new RainForestShop(grid, gc);
         taskManager.addTask(new EnrichSoil("Enrich Soil", grid));

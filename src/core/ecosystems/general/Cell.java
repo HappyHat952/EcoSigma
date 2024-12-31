@@ -31,8 +31,8 @@ public class Cell {
         row = r;
         col = c;
 
-        myX = r*width;
-        myY = c*height;
+        myX = c*width;
+        myY = r*height;
         myColor = Color.green;
     }
 
@@ -48,7 +48,7 @@ public class Cell {
         }
 
         g.setColor(Color.black);
-        g.setLineWidth(2);
+        g.setLineWidth(1);
         g.drawRect(myX, myY, width, height);
 
 
@@ -57,12 +57,13 @@ public class Cell {
             g.setColor(new Color(1f,1f,1f,.5f));
             g.fillRect(myX,myY, width,height);
         }
-        g.setColor(Color.black);
-//        g.drawString(row+", "+col, myX,myY);
-        if (myBuilding != null)
-        {
-            myBuilding.render(g);
-        }
+//        g.setColor(Color.black);
+//        g.drawString("row: "+row +"\ncol: "+ col, myX,myY);
+
+//        if (myBuilding != null)
+//        {
+//            myBuilding.render(g);
+//        }
     }
 
     public void update(int x, int y)
@@ -125,6 +126,7 @@ public class Cell {
     public void addAnimal(Animal a){myAnimal = a;}
     public void addPlant( Plant p){ myPlant = p;}
     public void removeAnimal(){myAnimal = null;}
+    public void removePlant(){myPlant = null;}
     public void removeBuilding(){
         myBuilding = null;
     }

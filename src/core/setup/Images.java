@@ -48,11 +48,13 @@ public class Images {
     public static Image bioRock;
     public static Image soundCreator;
     public static Image coralRobot;
-    // LEVEL 3
+    // 3: FARM
+    public static SpriteSheet farmCells;
+    public static Image greenHouse;
 
-    // LEVEL 4
-
-    // LEVEL 5
+    // 4: CITY
+    public static SpriteSheet cityCells;
+    public static Image cityBuilding;
 
     // LAB
 
@@ -104,9 +106,15 @@ public class Images {
             soundCreator = new Image("res/game/coralreef/soundCreator.png");
             coralRobot = new Image("res/game/coralreef/robotRepairer.png");
 
-            // LEVEL 3
+            // LEVEL 3: FARM
+            farmCells = new SpriteSheet("res/game/farm/farmCells.png",192,192 );
+            greenHouse = new Image("res/game/farm/buildings/greenhouse.png");
 
-            // LEVEL 4
+
+            // LEVEL 4: CITY
+            cityCells = new SpriteSheet("res/game/city/cityCell.png", 384,384);
+            cityBuilding = new Image("res/game/city/buildings/cityBuilding.png");
+
 
             // LEVEL 5
 

@@ -6,6 +6,7 @@ import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.animals.Walrus;
 import core.Game;
 import core.ecosystems.coralreef.animals.Clownfish;
+import core.ecosystems.farm.animals.PluroCultureCrop;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
@@ -116,6 +117,7 @@ public class Lab extends BasicGameState {
         int index =0;
         for(Genome gen: genomes)
         {
+            g.setColor(Color.black);
             if(gen.isEgged()){ g.setColor(Color.red);}
             else{ g.setColor(Color.blue);}
 
@@ -294,6 +296,10 @@ public class Lab extends BasicGameState {
         else if (biome == 1)
         {
                 availableOrganisms.add(Clownfish.class);
+        }
+        else if (biome == 3 )
+        {
+            availableOrganisms.add(PluroCultureCrop.class);
         }
         else
         {

@@ -51,7 +51,7 @@ public class Main extends StateBasedGame
 		addState(title);
         addState(intro);
         addState(map);
-        addState(game);
+        addState(game); 
         addState(lab);
 	}
 
@@ -71,7 +71,7 @@ public class Main extends StateBasedGame
 		catch (SlickException e) 
 		{
 			e.printStackTrace();
-		}
+   		}
 
 	}
 }

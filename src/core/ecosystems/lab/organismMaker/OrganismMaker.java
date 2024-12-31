@@ -28,12 +28,8 @@ public class OrganismMaker extends LabScreen {
 
         if (open)
         {
-            int i = 0;
-            for (Genome g: Lab.getGenomes())
-            {
-                removeCompleted();
-                setCloneSlots();
-            }
+            removeCompleted();
+            setCloneSlots();
             for (CloneProgress c: cloneSlots)
             {
                 if (c!= null)

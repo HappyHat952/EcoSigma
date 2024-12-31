@@ -83,6 +83,7 @@ public class GenomeMaker extends LabScreen {
 
     public void setButtons()
     {
+        screenButtons = new ArrayList<>();
         ArrayList<Class<? extends Organism>> organisms = Lab.getAvailableOrganisms();
         for(int i=0; i< organisms.size(); i++)
         {

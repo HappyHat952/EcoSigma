@@ -41,7 +41,7 @@ public class Ranger extends Building {
             if (!cells.isEmpty()) {
                 grid.getCells()[myRow][myCol].removeBuilding();
                 int random = (int) (Math.random() * cells.size());
-                this.assignCell(cells.get(random));
+                this.assignCell(cells.get(random), grid);
             }
         }
 

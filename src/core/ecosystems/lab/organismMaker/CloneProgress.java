@@ -28,7 +28,7 @@ public class CloneProgress {
         myGenome = g;
         myIndex = i;
 
-        timerOrEcosystem = new Button((int)(Main.getScreenWidth()*.61f), (int)(LabScreen.getScreenY() + Main.getScreenHeight()*.21f + i*Main.getScreenHeight()*.15f)
+        timerOrEcosystem = new Button((int)(Main.getScreenWidth()*.66f), (int)(LabScreen.getScreenY() + Main.getScreenHeight()*.21f + i*Main.getScreenHeight()*.15f)
                 , (int)(Main.getScreenWidth()*.1f), (int)(Main.getScreenHeight()*.12f), Color.lightGray, "Start Clone");
     }
 
@@ -36,13 +36,13 @@ public class CloneProgress {
     {
         //progressBar
         g.setColor(Color.black);
-        g.fillRect(Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
+        g.fillRect(Main.getScreenWidth()*.23f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
                 , Main.getScreenWidth()*.37f, Main.getScreenHeight()*.12f);
         g.setColor(Color.cyan);
-        g.fillRect(Main.getScreenWidth()*.28f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
+        g.fillRect(Main.getScreenWidth()*.23f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
                 , Main.getScreenWidth()*.37f*(totalTime*1f/maxTime), Main.getScreenHeight()*.12f);
         g.setColor(Color.black); g.setFont(Fonts.medium);
-        g.drawString(""+totalTime+"/ "+maxTime, Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        g.drawString(""+totalTime+"/ "+maxTime+"+ "+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
 
         if (timerOrEcosystem != null)
         {
@@ -61,7 +61,7 @@ public class CloneProgress {
                     totalTime--;
                     timerOrEcosystem = null;
                 } else {
-                    timerOrEcosystem = new Button((int) (Main.getScreenWidth() * .61f), (int) (LabScreen.getScreenY() + Main.getScreenHeight() * .21f + myIndex * Main.getScreenHeight() * .15f)
+                    timerOrEcosystem = new Button((int) (Main.getScreenWidth() * .66f), (int) (LabScreen.getScreenY() + Main.getScreenHeight() * .21f + myIndex * Main.getScreenHeight() * .15f)
                             , (int) (Main.getScreenWidth() * .1f), (int) (Main.getScreenHeight() * .12f), Color.green, "Put In Ecosystem");
                 }
             }
@@ -88,7 +88,7 @@ public class CloneProgress {
         }
     }
 
-    public boolean getIfComplete(){ return ready;}
+    public boolean getIfComplete(){ return myGenome.isUsed();}
     public Genome getGenome(){ return myGenome;}
 
 }

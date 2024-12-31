@@ -1,5 +1,7 @@
 package core.ecosystems.general;
 
+import core.ecosystems.Ecosystem;
+import core.ecosystems.Grid;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -7,28 +9,65 @@ public class Building {
 
     protected int myRow;
     protected int myCol;
+
+    protected int cellWidth;
+    protected int cellHeight;
     protected Cell cell;
+    protected Cell[] cells;
     protected Image myImage;
     protected String name;
     protected String info;
     protected boolean isCompleted;
+    protected Ecosystem ecosystem;
 
     public Building()
     {
 
     }
 
-    public void assignCell(Cell cell)
+    public void assignCell(Cell cell, Grid grid)
     {
         this.cell = cell;
+        cells = new Cell[]{cell};
         myRow = cell.getRow();
         myCol = cell.getCol();
         cell.addBuilding(this);
+        grid.addBuilding(this);
+        cellWidth = 1;
+        cellHeight = 1;
+    }
+
+    public void assignCell(Cell[] cells, Grid grid, int cellW, int cellH, boolean floating)
+    {
+        this.cells = cells;
+
+        //first cell must be the top left.
+        myRow = cells[0].getRow();
+        myCol = cells[0].getCol();
+        cellWidth = cellW;
+        cellHeight = cellH;
+
+
+        //if the building "floats" the cell that it is over doesn't contain the cell
+        //(therefore, animals and plants can be directly under the floating building on the cell)
+        if (!floating)
+        {
+            for (Cell c: cells)
+            {
+                c.addBuilding(this);
+            }
+        }
+
+        grid.addBuilding(this);
     }
 
     public void render(Graphics g)
     {
-        g.drawImage(myImage, cell.getX(), cell.getY());
+        //scaled by the width.
+        float width = myImage.getWidth();
+        float height = myImage.getHeight();
+        Image adjusted = myImage.getScaledCopy(Cell.getWidth()*cellWidth, (int)(height/width*Cell.getWidth()* cellWidth));
+        g.drawImage(adjusted, cells[0].getX(), cells[0].getY() + Cell.getHeight() - adjusted.getHeight());
     }
 
     public void update() {
@@ -52,7 +91,8 @@ public class Building {
     public String getInfo() {
         return info;
     }
-
+    public Cell getCell(){ return cell;}
+    public Cell[] getCells() { return cells;}
     //mutator
     public void resizeImage()
     {
