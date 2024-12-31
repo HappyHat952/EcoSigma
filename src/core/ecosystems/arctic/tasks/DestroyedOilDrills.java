@@ -1,5 +1,6 @@
 package core.ecosystems.arctic.tasks;
 
+import core.ecosystems.arctic.ArcticCell;
 import core.ecosystems.arctic.buildings.OilDrill;
 import core.ecosystems.arctic.buildings.Protesters;
 import core.ecosystems.general.Building;
@@ -8,7 +9,7 @@ import core.ecosystems.tasks.Task;
 
 public class DestroyedOilDrills extends Task {
 
-    private int totalOilDrills = 3;
+    final private int totalOilDrills = 3;
 
     public DestroyedOilDrills(String name, Grid grid) {
         super(name, grid);
@@ -18,9 +19,11 @@ public class DestroyedOilDrills extends Task {
     @Override
     public int getPercentDone() {
         int count = 0;
-        for (Building b: grid.getBuildings()) {
-            if (b instanceof OilDrill) {
-                count++;
+        for (int i = 0; i < grid.getCells().length; i++) {
+            for (int j = 0; j < grid.getCells()[0].length; j++) {
+                if (grid.getCells()[i][j].getBuilding() instanceof OilDrill) {
+                    count++;
+                }
             }
         }
         return (int) (((totalOilDrills-count)/(float)totalOilDrills) * 100);

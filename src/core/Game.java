@@ -2,14 +2,16 @@ package core;
 
 import core.ecosystems.Ecosystem;
 import core.ecosystems.arctic.Arctic;
-import core.ecosystems.city.City;
 import core.ecosystems.coralreef.CoralReef;
 import core.ecosystems.farm.Farm;
 import core.ecosystems.rainforest.RainForest;
+import core.setup.FileIO;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.ArrayList;
 
 public class Game extends BasicGameState
 {
@@ -18,9 +20,10 @@ public class Game extends BasicGameState
 	private GameContainer gc;
 	public static int levelID;
 	private static Ecosystem[] ecosystems;
-	private final static int NUM_ECOSYSTEMS = 5;
+	private final static int NUM_ECOSYSTEMS = 4;
 	private static boolean pause;
 	private static PopupManager popupManager;
+	private FileIO fileIO;
 	int numPopupsShown;
 
 
@@ -47,11 +50,17 @@ public class Game extends BasicGameState
 		pause = false;
 		ecosystems = new Ecosystem[NUM_ECOSYSTEMS];
 		popupManager = new PopupManager();
+		fileIO = new FileIO();
+		fileIO.readFile();
+
 		ecosystems[0] = new Arctic(gc, sbg, popupManager, 0);
 		ecosystems[1] = new CoralReef(gc, sbg, popupManager, 1);
 		ecosystems[2] = new RainForest(gc, sbg, popupManager, 2);
 		ecosystems[3] = new Farm(gc, sbg, popupManager, 3);
-		ecosystems[4] = new City(gc, sbg, popupManager, 4);
+
+		for (int i = 0; i < NUM_ECOSYSTEMS; i++) {
+			ecosystems[i].setCompleted(fileIO.isLevelCompleted(i + 1));
+		}
 		//popupManager.activate(0);
 	}
 
@@ -62,6 +71,9 @@ public class Game extends BasicGameState
 		if (!pause)
 		{
 			ecosystems[levelID].update();
+			if (ecosystems[levelID].isCompleted() && !fileIO.isLevelCompleted(levelID + 1)) {
+				fileIO.updateFile(levelID + 1);
+			}
 		}
 
 		popupManager.update();
@@ -72,7 +84,16 @@ public class Game extends BasicGameState
 	{
 		// This code renders shapes and images every frame.
 		g.setColor(Color.white);
-		g.setBackground(Color.darkGray);
+		if (levelID == 0) {
+			g.setBackground(new Color(130, 132, 133));
+		} else if (levelID == 1) {
+			g.setBackground(new Color(130, 132, 133));
+		} else if (levelID == 2) {
+			g.setBackground(new Color(130, 132, 133));
+		} else {
+			g.setBackground(new Color(130, 132, 133));
+		}
+
 		// REPLACE THIS
 		g.drawString(String.valueOf(levelID), Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
 		ecosystems[levelID].render(g);
@@ -127,6 +148,10 @@ public class Game extends BasicGameState
 
 	public static int getLevelID() {
 		return levelID;
+	}
+
+	public static Ecosystem[] getEcosystems(){
+		return ecosystems;
 	}
 
 }

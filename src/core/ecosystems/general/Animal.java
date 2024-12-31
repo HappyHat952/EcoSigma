@@ -33,7 +33,7 @@ public class Animal extends Organism {
         frame = 0;
         direction = 0;
         sprite = Images.animal;
-        maxWaitTime = 100;
+        maxWaitTime = 70;
         timer = maxWaitTime;
 
         name = "animal";

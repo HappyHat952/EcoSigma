@@ -81,7 +81,7 @@ public class Images {
             // INTRO
             introScreenSheet = new SpriteSheet("res/intro/intro.png", 1920, 1080);
             // MAP
-            mapScreen = (new Image("res/map/mapBlank.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            mapScreen = (new Image("res/map/map.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);

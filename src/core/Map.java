@@ -37,11 +37,11 @@ public class Map extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         sbg = stateBasedGame;
         mapScreenButtons = new ArrayList<>();
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.5f), 50, 50, Color.white, 0));
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.6f), (int) (Main.getScreenHeight()*.4f), 50, 50, Color.green, 1));
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.4f), (int) (Main.getScreenHeight()*.3f), 50, 50, Color.pink, 2));
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.2f), 50, 50, Color.orange, 3));
-        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.5f), (int) (Main.getScreenHeight()*.6f), 50, 50, Color.blue, 4));
+        int w = 65;
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.505f), (int) (Main.getScreenHeight()*.125f), w, w, Color.lightGray, 0));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.74f), (int) (Main.getScreenHeight()*.56f), w, w, Color.pink, 1));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.295f), (int) (Main.getScreenHeight()*.75f), w, w, Color.green, 2));
+        mapScreenButtons.add(new MapButton((int) (Main.getScreenWidth()*.195f), (int) (Main.getScreenHeight()*.395f), w, w, Color.orange, 3));
     }
 
     @Override

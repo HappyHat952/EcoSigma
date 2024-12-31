@@ -1,6 +1,7 @@
 package core.ecosystems.rainforest.tasks;
 
 import core.ecosystems.Grid;
+import core.ecosystems.arctic.buildings.OilDrill;
 import core.ecosystems.general.Building;
 import core.ecosystems.rainforest.buildings.Fire;
 import core.ecosystems.tasks.Task;
@@ -21,9 +22,11 @@ public class ExtinguishFires extends Task {
     @Override
     public void update() {
        int count = 0;
-        for (Building b: grid.getBuildings()) {
-            if (b instanceof Fire) {
-                count++;
+        for (int i = 0; i < grid.getCells().length; i++) {
+            for (int j = 0; j < grid.getCells()[0].length; j++) {
+                if (grid.getCells()[i][j].getBuilding() instanceof Fire) {
+                    count++;
+                }
             }
         }
         fires = count;

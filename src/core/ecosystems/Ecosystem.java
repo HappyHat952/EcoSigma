@@ -8,6 +8,7 @@ import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
+import core.setup.Fonts;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -25,6 +26,7 @@ abstract public class Ecosystem {
     protected StateBasedGame sbg;
     protected PopupManager pu;
     protected ArrayList<Building> buildings;
+    protected boolean isCompleted;
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
@@ -35,6 +37,8 @@ abstract public class Ecosystem {
         this.gc = gc;
         this.sbg = sbg;
         this.pu = pu;
+        // REPLACE WITH FILE READING
+        isCompleted = false;
         pu.activate(0);
     }
 
@@ -47,6 +51,10 @@ abstract public class Ecosystem {
         {
             b.render(g);
         }
+        if (isCompleted) {
+            g.setFont(Fonts.big);
+            g.drawString("YOU WINNNNNN", 500, 500);
+        }
 
     }
 
@@ -55,6 +63,9 @@ abstract public class Ecosystem {
         shop.update();
         for (Task t : taskManager.getAllTasks()) {
             t.update();
+        }
+        if (!isCompleted && taskManager.getCurrentProgress() == 1) {
+            isCompleted = true;
         }
     }
 
@@ -81,5 +92,13 @@ abstract public class Ecosystem {
 
     public Grid getGrid() {
         return grid;
+    }
+
+    public void setCompleted(boolean b) {
+        isCompleted = b;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
     }
 }
