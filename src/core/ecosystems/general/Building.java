@@ -30,10 +30,10 @@ public class Building {
     {
         this.cell = cell;
         cells = new Cell[]{cell};
-        myRow = cell.getRow();
-        myCol = cell.getCol();
+        myRow = cell.getCol();
+        myCol = cell.getRow();
         cell.addBuilding(this);
-        grid.addBuilding(this);
+        //grid.addBuilding(this);
         cellWidth = 1;
         cellHeight = 1;
     }

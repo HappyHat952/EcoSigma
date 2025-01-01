@@ -1,13 +1,10 @@
 package core.ecosystems.farm;
 
 import core.ecosystems.Ecosystem;
-import core.ecosystems.arctic.ArcticGrid;
-import core.ecosystems.arctic.ArcticShop;
 import core.ecosystems.farm.tasks.AddedGreenhouse;
 import core.ecosystems.farm.tasks.PlantTenVariedPlants;
 import core.ecosystems.farm.tasks.RemoveMonocultures;
 import core.ecosystems.farm.tasks.WaterAllPlants;
-import core.ecosystems.lab.Lab;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;

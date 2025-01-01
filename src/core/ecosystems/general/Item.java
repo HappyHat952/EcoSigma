@@ -34,13 +34,13 @@ public class Item {
         cost = 4;
     }
 
-    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int myNum) {
+    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int popupID) {
         this.name = buildingObject.getName();
         this.image = buildingObject.getMyImage().getScaledCopy((int)(Main.getScreenWidth()*.12), (int)(Main.getScreenWidth()*.12));
         this.info = buildingObject.getInfo();
         this.x = i * Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
         this.y = Shop.getHeight();
-        this.myNum = myNum;
+        this.myNum = popupID;
         this.buildingClass = buildingClass;
         this.buildingObject = buildingObject;
         myColor = Color.white;

@@ -11,7 +11,7 @@ public class AddedGreenhouse extends Task {
 
     @Override
     public int getPercentDone() {
-        return (int)(((FarmGrid)grid).getNumGreenHouses()/ 4f * 100);
+        return (int) ( (float)((((FarmGrid)grid).getNumGreenHouses())) /(4f) * 100) ;
     }
 
     @Override

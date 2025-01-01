@@ -1,10 +1,10 @@
-package core.ecosystems.lab.petriDish;
+package core.lab.petriDish;
 
 import core.Main;
-import core.ecosystems.lab.Genome;
-import core.ecosystems.lab.Lab;
-import core.ecosystems.lab.LabMachineButton;
-import core.ecosystems.lab.LabScreen;
+import core.lab.Genome;
+import core.lab.Lab;
+import core.lab.LabMachineButton;
+import core.lab.LabScreen;
 import core.setup.Fonts;
 import core.setup.Images;
 import org.newdawn.slick.Color;

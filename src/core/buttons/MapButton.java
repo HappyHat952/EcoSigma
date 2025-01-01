@@ -1,7 +1,7 @@
 package core.buttons;
 
 import core.Game;
-import core.ecosystems.lab.Lab;
+import core.lab.Lab;
 import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;

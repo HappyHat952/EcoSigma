@@ -1,10 +1,10 @@
-package core.ecosystems.lab.organismMaker;
+package core.lab.organismMaker;
 
 import core.Main;
 import core.buttons.Button;
-import core.ecosystems.lab.Genome;
-import core.ecosystems.lab.Lab;
-import core.ecosystems.lab.LabScreen;
+import core.lab.Genome;
+import core.lab.Lab;
+import core.lab.LabScreen;
 import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;

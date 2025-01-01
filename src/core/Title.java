@@ -17,6 +17,9 @@ public class Title extends BasicGameState {
     private int id;
     StateBasedGame sbg;
     private HelpButtons helpButtons;
+    private int frame;
+
+    private int frameCount;
 
     public Title(int id) {
 
@@ -31,20 +34,28 @@ public class Title extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         Images.loadImages();
-        PopupLoader.loadPopups();
+        PopupLoader.loadPopups(0);
         sbg = stateBasedGame;
         Fonts.loadFonts();
         helpButtons = new HelpButtons(0, 0);
+        frame = 0;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        graphics.drawImage(Images.titleScreen, 0, 0);
+        graphics.drawImage(Images.introScreenSheet.getSubImage(0,frame), 0, 0);
         helpButtons.render(graphics);
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        frameCount ++;
+        if (frameCount % 60 ==0)
+        {
+            if(frame == 0){ frame = 1;}
+            else { frame = 0;}
+            frameCount = 0;
+        }
 
     }
 

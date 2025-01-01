@@ -1,8 +1,8 @@
-package core.ecosystems.lab.petriDish;
+package core.lab.petriDish;
 
 import core.Main;
-import core.ecosystems.lab.Genome;
-import core.ecosystems.lab.Lab;
+import core.lab.Genome;
+import core.lab.Lab;
 import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;

@@ -6,6 +6,8 @@ import core.Game;
 import core.setup.PopupLoader;
 import org.newdawn.slick.Graphics;
 
+import static core.setup.PopupLoader.POPS;
+
 public class PopupManager {
     private static ArrayList<Popup> popups;
     int X_LEFT = 1500;
@@ -13,12 +15,7 @@ public class PopupManager {
 
     public PopupManager()
     {
-        popups = new ArrayList<>();
-        popups.add(PopupLoader.POP1);
-        popups.add(PopupLoader.POP2);
-        popups.add(PopupLoader.POP3);
-        popups.add(PopupLoader.POP4);
-        popups.add(PopupLoader.POP5);
+        popups = PopupLoader.POPS;
     }
 
     public static void render(Graphics g)

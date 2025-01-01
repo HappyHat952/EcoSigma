@@ -1,4 +1,4 @@
-package core.ecosystems.lab;
+package core.lab;
 
 import core.Main;
 import core.ecosystems.arctic.animals.Lemming;
@@ -10,8 +10,8 @@ import core.ecosystems.farm.animals.PluroCultureCrop;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
-import core.ecosystems.lab.organismMaker.OrganismMaker;
-import core.ecosystems.lab.petriDish.PetriDish;
+import core.lab.organismMaker.OrganismMaker;
+import core.lab.petriDish.PetriDish;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -26,11 +26,6 @@ public class Lab extends BasicGameState {
     private int id;
     private static StateBasedGame sbg;
     private static GameContainer gc;
-
-    private UpgradeLab upgrade;
-
-    private ArrayList<OrganismCreator> animalMachines;
-    private ArrayList<OrganismCreator> availableMachines;
 
     private static ArrayList<Class<? extends Organism>> availableOrganisms;
 
@@ -57,11 +52,6 @@ public class Lab extends BasicGameState {
         gc = gameContainer;
         sbg = stateBasedGame;
 
-        upgrade = new UpgradeLab();
-
-        availableMachines = new ArrayList<>();
-
-        animalMachines = new ArrayList<>();
         availableOrganisms = new ArrayList();
 
 
@@ -76,25 +66,11 @@ public class Lab extends BasicGameState {
         machines[1] = petriDish;
         machines[2] = organismMaker;
 
-
-
-
-        //makes new animal buttons
-        availableMachines.add( new OrganismCreator(0,500, PolarBear.class, "polar bear"));
-        availableMachines.add(new OrganismCreator(500, 500, Walrus.class, "walrus"));
-        availableMachines.add(new OrganismCreator(1000, 500, Lemming.class, "lemming"));
-
-        //makes new plant button
-        availableMachines.add(new OrganismCreator(1500,500, Plant.class, "plant"));
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.setBackground(Color.green);
-        for (OrganismCreator m: animalMachines)
-        {
-            m.render(g);
-        }
 
         LabScreen openLab = null;
         for (LabScreen l: machines)
@@ -107,11 +83,6 @@ public class Lab extends BasicGameState {
         }//prints the open lab in the front
         if (openLab != null) {  openLab.render(g);}
 
-        if (upgrade != null)
-        {
-            upgrade.render(g);
-            upgrade.reset();
-        }
         PopupManager.render(g);
 
         int index =0;
@@ -132,25 +103,6 @@ public class Lab extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
        if (!Game.getPause())
        {
-           if (upgrade != null)
-           {
-               upgrade.update();
-           }
-
-           if (upgrade != null && upgrade.isComplete())
-           {
-               if (!availableMachines.isEmpty())
-               {
-                   animalMachines.add(availableMachines.getFirst());
-                   availableMachines.removeFirst();
-               }
-
-               else {
-                   upgrade = null;
-               }
-           }
-
-
            for (LabScreen l: machines)
            {
                l.update();
@@ -203,28 +155,10 @@ public class Lab extends BasicGameState {
         // This code happens every time the user presses the mouse
         if (!Game.getPause())
         {
-//            for (OrganismCreator m: animalMachines)
-//            {
-//                if (m.isMouseOver(x,y))
-//                {
-//                    Game.getCurrentLevel().addAnimal(m.getOrganism());
-//                }
-//            }
+
             if (!freezeScreen)
             {
-                for (OrganismCreator m: animalMachines)
-                {
-                    if (m.isMouseOver(x,y))
-                    {
-                        Game.getCurrentLevel().addOrganism(m.getOrganism());
-                    }
-                }
 
-
-                if (upgrade != null && upgrade.isMouseOver(x,y))
-                {
-                    upgrade.action();
-                }
             }
 
 

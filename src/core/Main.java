@@ -1,6 +1,6 @@
 package core;
 
-import core.ecosystems.lab.Lab;
+import core.lab.Lab;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

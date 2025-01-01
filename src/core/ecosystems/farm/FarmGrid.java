@@ -5,6 +5,7 @@ import core.ecosystems.farm.animals.Crop;
 import core.ecosystems.farm.animals.MonoCultureCrop;
 import core.ecosystems.farm.animals.PluroCultureCrop;
 import core.ecosystems.farm.buildings.GreenHouse;
+import core.ecosystems.farm.buildings.WaterTank;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
@@ -30,6 +31,10 @@ public class FarmGrid extends Grid {
         greenHouses = new ArrayList<GreenHouse>();
         removedCrops = new ArrayList<MonoCultureCrop>();
         allTimePluroCrop = new ArrayList<PluroCultureCrop>();
+        WaterTank w = (new WaterTank());
+                w.assignCell(cells[2][2], this);
+                addBuilding(w);
+
 
         for (int i = 0; i< cells.length; i+=2)
         {
@@ -39,14 +44,27 @@ public class FarmGrid extends Grid {
             }
         }
 
+
+    }
+
+    public void updateGreenHousePlants()
+    {
         for (Plant p: plants)
         {
-            if (p instanceof MonoCultureCrop && greenHouse.isOver(p.getCell()))
+            boolean isGreenHouse = false;
+            for (GreenHouse g: greenHouses)
             {
-                 Crop c = (Crop)p ;
+                if (g.isOver(p.getCell()))
+                {
+                    isGreenHouse = true;
+                }
+            }
+            if (p instanceof MonoCultureCrop && isGreenHouse)
+            {
+                Crop c = (Crop)p ;
                 c.setGrowTime(5);
             }
-            if (p instanceof PluroCultureCrop && greenHouse.isOver(p.getCell()))
+            if (p instanceof PluroCultureCrop &&  isGreenHouse)
             {
                 Crop c = (Crop)p ;
                 c.setGrowTime(2);
@@ -57,6 +75,11 @@ public class FarmGrid extends Grid {
     @Override
     public void mousePressed(int x, int y, int button ) {
         super.mousePressed(x, y, button);
+        if (!buildings.isEmpty() &&buildings.getLast() instanceof GreenHouse)
+        {
+            updateGreenHousePlants();
+        }
+
 
     }
 
@@ -66,6 +89,7 @@ public class FarmGrid extends Grid {
         //assigns correct cells for greenhouses
         if (building instanceof GreenHouse)
         {
+            buildings.remove(building);
             int r;
             int c;
             if (building.getMyRow()<5) {
@@ -94,8 +118,26 @@ public class FarmGrid extends Grid {
 
             GHcells[0] = cells[c+4][r];
 
-            building.assignCell(GHcells, this, 5,5,true);
-            greenHouses.add((GreenHouse)building);
+            //check if there is a greenhouse in a specific part of the cell
+            boolean available = true;
+            for (GreenHouse g: greenHouses)
+            {
+                if (g.getCells()[0] == GHcells[0])
+                {
+                    available = false;
+                }
+            }
+
+            if (available)
+            {
+                building.assignCell(GHcells, this, 5,5,true);
+                greenHouses.add((GreenHouse)building);
+                buildings.add(building);
+            }
+            else {
+                mouseBuilding = building;
+            }
+
         }
     }
 
@@ -119,6 +161,7 @@ public class FarmGrid extends Grid {
 
             }
         }
+        updateGreenHousePlants();
     }
 
     public int getNumGreenHouses()

@@ -1,10 +1,7 @@
 package core;
 
 import core.setup.Images;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -17,7 +14,6 @@ public class Intro extends BasicGameState {
     StateBasedGame sbg;
     private Image currentSlide;
     private int slideNumber;
-    private final int NUM_SLIDES = 2;
 
     public Intro(int id) {
         this.id = id;
@@ -45,7 +41,7 @@ public class Intro extends BasicGameState {
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         // This code happens when you enter a gameState.
-        slideNumber = 0;
+        slideNumber = 2;
         currentSlide = (Images.introScreenSheet.getSprite(0, slideNumber)).getScaledCopy(Main.getScreenWidth(),
                 Main.getScreenHeight());
     }
@@ -58,13 +54,18 @@ public class Intro extends BasicGameState {
     public void keyPressed(int key, char c)
     {
         // This code happens every time the user presses a key
-        if (slideNumber < NUM_SLIDES) {
-            slideNumber++;
-            currentSlide = (Images.introScreenSheet.getSprite(0, slideNumber)).getScaledCopy(Main.getScreenWidth(),
-                    Main.getScreenHeight());
-        } else {
-            sbg.enterState(MAP_ID);
+        if (key == Input.KEY_SPACE)
+        {
+            if (slideNumber < Images.introScreenSheet.getVerticalCount()-1) {
+                slideNumber++;
+                currentSlide = (Images.introScreenSheet.getSprite(0, slideNumber)).getScaledCopy(Main.getScreenWidth(),
+                        Main.getScreenHeight());
+            }
+            else {
+                sbg.enterState(MAP_ID);
+            }
         }
+
     }
 
     public void mousePressed(int button, int x, int y)

@@ -1,4 +1,4 @@
-package core.ecosystems.lab;
+package core.lab;
 
 import core.buttons.Button;
 import core.ecosystems.general.Organism;

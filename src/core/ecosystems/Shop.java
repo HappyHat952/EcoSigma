@@ -16,8 +16,8 @@ public class Shop {
 
     private final int x = (int) (Main.getScreenWidth() * .7f);
     private static final int y = (int)( Main.getScreenHeight() * .75f);
-    private final static int margin = (int)(Main.getScreenWidth() * .05f);
-    private final static int buffer = (int)( 200/1920f * Main.getScreenWidth() ) ;
+    private final static int margin = (int)(Main.getScreenWidth() * .04f);
+    private final static int buffer = (int)( 260/1920f * Main.getScreenWidth() ) ;
     protected ArrayList<Item> items;
     protected Grid grid;
     protected GameContainer gc;
@@ -26,7 +26,7 @@ public class Shop {
 
     public Shop(Grid g, GameContainer gc) {
         items = new ArrayList<>();
-        money = 50;
+        money = 5000;
         grid = g;
         this.gc = gc;
 
@@ -45,7 +45,7 @@ public class Shop {
 
     public void render(Graphics g) {
         g.setColor(Color.white); g.setFont(Fonts.big);
-        g.drawString("$ "+money , Grid.getGridWidth() + margin + Main.getScreenWidth()*.07f, Main.getScreenHeight() * .6f);
+        g.drawString("$ "+money , Grid.getGridWidth() + margin + Main.getScreenWidth()*.12f, Main.getScreenHeight() * .65f);
 
         g.setFont(Fonts.small);
         for (int i = 0; i < items.size(); i++) {

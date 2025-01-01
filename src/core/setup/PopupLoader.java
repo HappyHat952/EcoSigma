@@ -4,6 +4,7 @@ import core.ui.Popup;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PopupLoader {
@@ -13,23 +14,34 @@ public class PopupLoader {
     public static Popup POP4;//shrub popup
     public static Popup POP5;// tree popup
     public static Popup POP6;
+    public static ArrayList<Popup> POPS;
 
 
-    static public void loadPopups()
+    static public void loadPopups(int id)
     {
-        POP1 = loadPopup(1);
-        POP2 = loadPopup(2);
-        POP3 = loadPopup(3);
-        POP4 = loadPopup(4);
-        POP5 = loadPopup(5);
+        String name;
+        POPS = new ArrayList<>();
+        if (id == 0)
+        {
+            name = "arctic";
+            for (int i = 1; i<=5; i++)
+            {
+                POPS.add(loadPopup(name,1));
+            }
+        }
+//        POP1 = loadPopup(1);
+//        POP2 = loadPopup(2);
+//        POP3 = loadPopup(3);
+//        POP4 = loadPopup(4);
+//        POP5 = loadPopup(5);
 
     }
 
 
-    static public Popup loadPopup(int num) {
+    static public Popup loadPopup(String name, int num) {
         try {
 
-            File text = new File("res/text/popup"+num);
+            File text = new File("res/text/"+name+"/"+name+num);
 
             Scanner scan = new Scanner(text);
 

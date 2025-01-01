@@ -1,13 +1,9 @@
 package core.ecosystems.coralreef;
 
 import core.ecosystems.Ecosystem;
-import core.ecosystems.arctic.ArcticGrid;
-import core.ecosystems.arctic.ArcticShop;
-import core.ecosystems.arctic.tasks.ClearedCO2;
 import core.ecosystems.coralreef.tasks.CreateCoral;
 import core.ecosystems.coralreef.tasks.CreateSounds;
 import core.ecosystems.coralreef.tasks.RepairCoral;
-import core.ecosystems.lab.Lab;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;

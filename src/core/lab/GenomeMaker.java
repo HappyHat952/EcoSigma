@@ -1,4 +1,4 @@
-package core.ecosystems.lab;
+package core.lab;
 
 import core.Main;
 import core.buttons.Button;
@@ -8,7 +8,6 @@ import core.setup.Images;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 
 import java.util.ArrayList;

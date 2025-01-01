@@ -15,8 +15,6 @@ public class GreenHouse extends Building {
 
     public boolean isOver(Cell c)
     {
-        if (cells != null)
-        {
             for (Cell c1: cells)
             {
                 if (c1 == c)
@@ -24,7 +22,6 @@ public class GreenHouse extends Building {
                     return true;
                 }
             }
-        }
 
         return false;
     }
