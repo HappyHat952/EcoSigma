@@ -31,6 +31,7 @@ public class DestroyedOilDrills extends Task {
 
     @Override
     public void update() {
+        // hello
         for (Building b: grid.getBuildings()) {
             if (b instanceof Protesters) {
                 if (((Protesters) b).isCompleted()) {
