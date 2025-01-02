@@ -24,8 +24,8 @@ public class Cloud {
         y = (int) ((Main.getScreenHeight() -h) * Math.random());
         image = Images.cloudSheet.getSprite(0, 0);
 
-        xSpeed = (int) (Math.random() * 2) + 3;
-        ySpeed = (int) (Math.random() * 2) + 3;
+        xSpeed = (int) (Math.random() * 2) + 2;
+        ySpeed = (int) (Math.random() * 2) + 2;
     }
 
     public void render(Graphics g) {

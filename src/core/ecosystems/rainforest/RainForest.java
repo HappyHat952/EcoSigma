@@ -30,7 +30,6 @@ public class RainForest extends Ecosystem {
         taskManager.addTask(new ExtinguishFires("Extinguish Fires", grid));
         taskManager.addTask(new HireRangers("Hire Rangers", grid));
         danger = "High";
-        //shop = new RainForestShop(grid, gc);
     }
 
     @Override

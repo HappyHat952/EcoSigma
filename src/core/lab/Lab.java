@@ -7,6 +7,9 @@ import core.ecosystems.arctic.animals.Walrus;
 import core.Game;
 import core.ecosystems.coralreef.animals.Clownfish;
 import core.ecosystems.farm.animals.PluroCultureCrop;
+import core.ecosystems.coralreef.animals.JellyFish;
+import core.ecosystems.coralreef.animals.Seaweed;
+import core.ecosystems.coralreef.animals.Stingray;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
@@ -230,6 +233,10 @@ public class Lab extends BasicGameState {
         else if (biome == 1)
         {
                 availableOrganisms.add(Clownfish.class);
+            availableOrganisms.add(Stingray.class);
+            availableOrganisms.add(JellyFish.class);
+
+            availableOrganisms.add(Seaweed.class);
         }
         else if (biome == 3 )
         {

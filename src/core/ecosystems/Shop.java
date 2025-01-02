@@ -33,9 +33,7 @@ public class Shop {
     }
 
     public void setItems() {
-        items.add(new Item (0, CO2Sucker.class, new CO2Sucker(), 2));
-        items.add(new Item (1, CO2Sucker.class, new CO2Sucker(), 2));
-        items.add(new Item (2, CO2Sucker.class, new CO2Sucker(),2));
+
     }
 
     public void addMoney(int value)

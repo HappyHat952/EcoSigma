@@ -7,7 +7,7 @@ import core.setup.Images;
 public class Clownfish extends Animal {
     public Clownfish(Cell cell) {
         super(cell);
-        sprite = Images.polarBear;
+        sprite = Images.clownfish;
         name = "clownfish";
     }
 }

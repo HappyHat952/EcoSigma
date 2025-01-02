@@ -30,9 +30,9 @@ public class TaskManager {
     private ArrayList<Task> tasks;
 
     public TaskManager() {
-        x = getGridWidth() + Main.getScreenWidth() * (10/1920f);
+        x = getGridWidth() + 1;
         y = 0;
-        w = Main.getScreenWidth()-x-(10/1920f);
+        w = Main.getScreenWidth()-x-1;
         h = Main.getScreenHeight() * (500/1080f);
         tasks = new ArrayList<>();
         xBuffer = 70;
@@ -90,5 +90,9 @@ public class TaskManager {
 
     public ArrayList<Task> getAllTasks() {
         return tasks;
+    }
+
+    public float getCurrentProgress() {
+        return currentProgress;
     }
 }

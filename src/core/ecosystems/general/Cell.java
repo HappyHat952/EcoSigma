@@ -31,8 +31,8 @@ public class Cell {
         row = r;
         col = c;
 
-        myX = c*width;
-        myY = r*height;
+        myX = r*width;
+        myY = c*height;
         myColor = Color.green;
     }
 

@@ -48,6 +48,11 @@ public class Images {
     public static Image bioRock;
     public static Image soundCreator;
     public static Image coralRobot;
+    public static SpriteSheet clownfish;
+    public static SpriteSheet stingray;
+    public static SpriteSheet jellyFish;
+    public static SpriteSheet seaweed;
+    // LEVEL 3
     // 3: FARM
     public static SpriteSheet farmCells;
     public static Image greenHouse;
@@ -76,7 +81,7 @@ public class Images {
             // INTRO
             introScreenSheet = new SpriteSheet("res/intro/intro.png", 1920, 1080);
             // MAP
-            mapScreen = (new Image("res/map/mapBlank.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            mapScreen = (new Image("res/map/map.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
@@ -106,6 +111,12 @@ public class Images {
             soundCreator = new Image("res/game/coralreef/soundCreator.png");
             coralRobot = new Image("res/game/coralreef/robotRepairer.png");
 
+            //animals
+            clownfish = new SpriteSheet((new Image("res/game/coralreef/clownfish.png")), 128, 128);
+            stingray = new SpriteSheet((new Image("res/game/coralreef/stingray.png")), 128, 128);
+            jellyFish = new SpriteSheet((new Image("res/game/coralreef/jellyFish.png")), 128, 128);
+            seaweed = new SpriteSheet((new Image("res/game/coralreef/seaweed.png")), 128, 128);
+            // LEVEL 3
             // LEVEL 3: FARM
             farmCells = new SpriteSheet("res/game/farm/farmCells.png",192,192 );
             greenHouse = new Image("res/game/farm/buildings/greenhouse.png");
