@@ -16,7 +16,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
 
-//manages everything regarding a single ecosystem - contains the shop, lab, and grid
+//manages everything regarding a single ecosystem - contains the shop, lab1, and grid
 abstract public class Ecosystem {
     protected Grid grid;
     protected Shop shop;
@@ -39,7 +39,7 @@ abstract public class Ecosystem {
         this.pu = pu;
         // REPLACE WITH FILE READING
         isCompleted = false;
-        pu.activate(0);
+        //pu.activate(0);
     }
 
     public void render(Graphics g) {

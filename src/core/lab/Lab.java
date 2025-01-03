@@ -13,8 +13,11 @@ import core.ecosystems.coralreef.animals.Stingray;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
+import core.ecosystems.rainforest.animals.Frog;
 import core.lab.organismMaker.OrganismMaker;
 import core.lab.petriDish.PetriDish;
+import core.setup.Images;
+import core.setup.PopupLoader;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -68,12 +71,15 @@ public class Lab extends BasicGameState {
         machines[0] = genomeMaker;
         machines[1] = petriDish;
         machines[2] = organismMaker;
+//
+//        PopupLoader.loadPopups(-1);
+//        PopupManager.activate(0);
 
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.setBackground(Color.green);
+        g.drawImage(Images.labBackground,0,0);
 
         LabScreen openLab = null;
         for (LabScreen l: machines)
@@ -83,7 +89,7 @@ public class Lab extends BasicGameState {
                 openLab = l;
             }
             l.render(g);
-        }//prints the open lab in the front
+        }//prints the open lab1 in the front
         if (openLab != null) {  openLab.render(g);}
 
         PopupManager.render(g);
@@ -127,6 +133,7 @@ public class Lab extends BasicGameState {
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         // This code happens when you enter a gameState.
+
     }
 
     public void leave(GameContainer gc, StateBasedGame sbg)
@@ -241,6 +248,10 @@ public class Lab extends BasicGameState {
         else if (biome == 3 )
         {
             availableOrganisms.add(PluroCultureCrop.class);
+        }
+        else if (biome == 4)
+        {
+            //availableOrganisms.add(Frog.class);
         }
         else
         {

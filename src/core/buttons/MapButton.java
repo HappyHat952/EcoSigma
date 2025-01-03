@@ -4,6 +4,8 @@ import core.Game;
 import core.lab.Lab;
 import core.setup.Fonts;
 import core.setup.Images;
+import core.setup.PopupLoader;
+import core.ui.PopupManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -22,7 +24,10 @@ public class MapButton extends Button {
     public void action(StateBasedGame sbg) {
         Game.levelID = levelID;
         sbg.enterState(GAME_ID);
+        PopupLoader.loadPopups(levelID);
+        PopupManager.activate(0);
         Lab.setAvailableAnimals(Game.levelID);
+
     }
 
     public void render(Graphics g) {

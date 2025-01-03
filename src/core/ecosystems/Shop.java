@@ -61,12 +61,12 @@ public class Shop {
     public void mousePressed(int x, int y) {
         for (Item i: items)
         {
-            if (i.mouseOver(x,y) && money >= i.getCost() && !grid.mouseHasBuilding())
+            if (i.mouseOver(x,y) && money >= i.getCost() && !grid.mouseHasBuilding() && !grid.mouseHasOrganism())
             {
                 money -= i.getCost();
                 grid.addMouseBuilding(i.getBuildingClass());
                 try {
-                    gc.setMouseCursor(i.getBuildingObject().getMyImage().getScaledCopy(50,50),50,50);
+                    gc.setMouseCursor(i.getBuildingObject().getMyImage().getScaledCopy(50,50),25,25);
                 } catch (SlickException e) {
                     throw new RuntimeException(e);
                 }

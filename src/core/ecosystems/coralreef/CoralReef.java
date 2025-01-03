@@ -8,8 +8,6 @@ import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-import static core.ecosystems.lab.Lab.setAvailableAnimals;
-
 public class CoralReef extends Ecosystem {
 
     public static int ID;

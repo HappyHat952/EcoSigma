@@ -20,15 +20,41 @@ public class PopupLoader {
     static public void loadPopups(int id)
     {
         String name;
+        if (POPS != null)
+        {
+            for (Popup p: POPS)
+            {
+                p.deactivate();
+            }
+        }
+
         POPS = new ArrayList<>();
-        if (id == 0)
+        if (id == -1)
+        {
+            name = "lab";
+            for (int i= 1; i<= 4; i++)
+            {
+                POPS.add(loadPopup(name,i));
+            }
+        }
+        else if (id == 0)
         {
             name = "arctic";
             for (int i = 1; i<=5; i++)
             {
-                POPS.add(loadPopup(name,1));
+                POPS.add(loadPopup(name,i));
             }
         }
+        else
+        {
+            //id 3
+            name = "farm";
+            for (int i= 1; i<= 5; i++)
+            {
+                POPS.add(loadPopup(name, i));
+            }
+        }
+
 //        POP1 = loadPopup(1);
 //        POP2 = loadPopup(2);
 //        POP3 = loadPopup(3);

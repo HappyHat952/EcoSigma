@@ -62,6 +62,10 @@ public class Images {
     public static Image cityBuilding;
 
     // LAB
+    public static Image labBackground;
+    public static Image genomeMaker;
+    public static Image petriDishes;
+    public static Image organismMaker;
 
     public static void loadImages() {
         try {
@@ -130,6 +134,10 @@ public class Images {
             // LEVEL 5
 
             // LAB
+            labBackground = new Image("res/lab/lab.png");
+            genomeMaker = new Image("res/lab/genomeMaker.png");
+            petriDishes = new Image("res/lab/eggMaker.png");
+            organismMaker = new Image("res/lab/organismMaker.png");
         } catch (SlickException e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package core.ecosystems.arctic;
 
 import core.ecosystems.arctic.tasks.*;
 import core.ecosystems.Ecosystem;
+import core.setup.PopupLoader;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -20,6 +21,7 @@ public class Arctic extends Ecosystem {
         ID = id;
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
+        pu.activate(0);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         taskManager.addTask(new CreatedIce("Create Ice", grid));
         taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));

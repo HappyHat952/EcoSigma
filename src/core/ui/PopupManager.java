@@ -20,7 +20,7 @@ public class PopupManager {
 
     public static void render(Graphics g)
     {
-        for (Popup p: popups)
+        for (Popup p: PopupLoader.POPS)
         {
             p.render(g);
         }
@@ -29,7 +29,7 @@ public class PopupManager {
 
     public static  void update( )
     {
-        for (Popup p: popups)
+        for (Popup p: PopupLoader.POPS)
         {
             p.update();
         }
@@ -37,7 +37,7 @@ public class PopupManager {
     }
 
     public static void mousePressed(int button, int x, int y) {
-        for (Popup p: popups)
+        for (Popup p: PopupLoader.POPS)
         {
             p.click(x, y);
         }
@@ -45,14 +45,14 @@ public class PopupManager {
 
     public static void activate(int i )
     {
-        popups.get(i).activate();
+        PopupLoader.POPS.get(i).activate();
         Game.pause();
     }
 
 
     public static void addPopup(Popup p)
     {
-        popups.add(p);
+        PopupLoader.POPS.add(p);
     }
 
 

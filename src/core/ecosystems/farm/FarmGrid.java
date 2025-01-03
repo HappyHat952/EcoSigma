@@ -24,7 +24,7 @@ public class FarmGrid extends Grid {
         super(gc);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[i][j] = new FarmCell(i, j);
+                cells[i][j] = new FarmCell(j, i);
             }
         }
         GreenHouse greenHouse = new GreenHouse();
@@ -111,12 +111,12 @@ public class FarmGrid extends Grid {
             {
                 for (int j = r; j<4+r; j++)
                 {
-                    GHcells[k] = cells[i][j];
+                    GHcells[k] = cells[j][j];
                     k++;
                 }
             }
 
-            GHcells[0] = cells[c+4][r];
+            GHcells[0] = cells[r+4][c];
 
             //check if there is a greenhouse in a specific part of the cell
             boolean available = true;
@@ -136,6 +136,7 @@ public class FarmGrid extends Grid {
             }
             else {
                 mouseBuilding = building;
+                buildings.remove(building);
             }
 
         }

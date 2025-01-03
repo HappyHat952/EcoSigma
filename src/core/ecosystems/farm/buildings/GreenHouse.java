@@ -11,6 +11,7 @@ public class GreenHouse extends Building {
         super();
         myImage = Images.greenHouse;
         cost = 75;
+        name = "Greenhouse";
     }
 
     public boolean isOver(Cell c)

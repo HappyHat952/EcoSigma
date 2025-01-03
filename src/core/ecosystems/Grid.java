@@ -18,7 +18,10 @@ public class Grid {
     protected final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
     protected static int gridWidth; //size of the grid relative to 1920 x 1080
     protected Cell[][] cells;
+
     protected Building mouseBuilding;//a building that is purchased (only one)
+    protected Organism mouseOrganism; // an organism stored on the mouse;
+
     protected ArrayList<Building> buildings;
     protected ArrayList<Animal> animals;
     protected ArrayList<Plant> plants;
@@ -124,6 +127,7 @@ public class Grid {
     public ArrayList<Plant> getPlants(){ return plants;}
     public static int getGridWidth(){ return gridWidth;}
     public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
+    public boolean mouseHasOrganism(){ return !(mouseOrganism == null);}
     public ArrayList<Cell> getOpenAdjacentCells(int r, int c)
     {
         //adds all available cells (checking boundaries)
@@ -356,9 +360,27 @@ public class Grid {
             Building newBuilding = building.getDeclaredConstructor().newInstance();
             //buildings.add(newBuilding);
 
-            if (!mouseHasBuilding())
+            if (!mouseHasBuilding() && !mouseHasOrganism())
             {
                 mouseBuilding = newBuilding;
+            }
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        //animals.add(new Animal(cell));
+    }
+    public void addMouseOrganism(Class<? extends Organism> organism) {
+        ArrayList<Cell> cellList = getAllOpenCells();
+        Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        try {
+            Constructor constructor = organism.getDeclaredConstructor();
+            Organism newOrganism = organism.getDeclaredConstructor(Cell.class).newInstance();
+            //buildings.add(newBuilding);
+
+            if (!mouseHasBuilding() && !mouseHasOrganism() )
+            {
+                mouseOrganism = newOrganism;
             }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

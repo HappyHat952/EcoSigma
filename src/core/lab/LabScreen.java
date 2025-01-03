@@ -15,7 +15,7 @@ abstract public class LabScreen {
     protected LabMachineButton machineButton;
 
 
-    protected boolean open;//determines if the lab machine has been opened
+    protected boolean open;//determines if the lab1 machine has been opened
 
     public LabScreen()
     {

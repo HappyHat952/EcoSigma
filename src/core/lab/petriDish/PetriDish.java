@@ -20,8 +20,8 @@ public class PetriDish  extends LabScreen {
     {
         super();
         dishes = new ArrayList<>();
-        machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.4f), (int)(Main.getScreenHeight()*.4f),
-                Images.placeHolder.getSubImage(0,1).getScaledCopy((int)(Main.getScreenWidth()*.1f), (int)(Main.getScreenWidth()*.1)));
+        machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.35f), (int)(Main.getScreenHeight()*.3f),
+                Images.petriDishes.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2f)));
     }
 
 

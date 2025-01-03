@@ -18,8 +18,8 @@ public class OrganismMaker extends LabScreen {
 
     public OrganismMaker(){
         super();
-        machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.6f), (int)(Main.getScreenHeight()*.4f),
-                Images.placeHolder.getSubImage(0,3).getScaledCopy((int)(Main.getScreenWidth()*.1f), (int)(Main.getScreenWidth()*.1)));
+        machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.6f), (int)(Main.getScreenHeight()*.04f),
+                Images.organismMaker.getScaledCopy((int)(Main.getScreenWidth()*.1f)*3, (int)(Main.getScreenWidth()*.1)*6));
         cloneSlots = new CloneProgress[3];
 
     }

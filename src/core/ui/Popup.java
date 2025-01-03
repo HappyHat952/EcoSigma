@@ -61,4 +61,5 @@ public class Popup {
         return active;
     }
     public void activate(){ active = true;}
+    public void deactivate(){ active = false;}
 }
