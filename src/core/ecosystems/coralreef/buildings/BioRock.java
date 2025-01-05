@@ -24,6 +24,7 @@ public class BioRock extends Building {
     }
 
     public void update() {
+        super.update();
         grid = Game.getCurrentLevel().getGrid();
         time++;
         if (time > 5 * 60 && !isDone) {

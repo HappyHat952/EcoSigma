@@ -4,6 +4,7 @@ import core.ecosystems.Ecosystem;
 import core.ecosystems.Grid;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 
 public class Building {
 
@@ -16,14 +17,19 @@ public class Building {
     protected Cell cell;
     protected Cell[] cells;
     protected Image myImage;
+    protected SpriteSheet mySprite;
     protected String name;
     protected String info;
     protected boolean isCompleted;
     protected Ecosystem ecosystem;
 
+    protected int frame;
+    protected int frameTimer;
+    protected int frameRate;
     public Building()
     {
         cost = 4;
+        frameRate = 1;
     }
 
     public void assignCell(Cell cell, Grid grid)
@@ -65,13 +71,27 @@ public class Building {
     public void render(Graphics g)
     {
         //scaled by the width.
+
         float width = myImage.getWidth();
         float height = myImage.getHeight();
         Image adjusted = myImage.getScaledCopy(Cell.getWidth()*cellWidth, (int)(height/width*Cell.getWidth()* cellWidth));
         g.drawImage(adjusted, cells[0].getX(), cells[0].getY() + Cell.getHeight() - adjusted.getHeight());
+
     }
 
     public void update() {
+        frameTimer++;
+        if (frameTimer %frameRate == 0 && mySprite != null &&  frame < mySprite.getVerticalCount()-1)
+        {
+            frame ++;
+            frameTimer = 0;
+        }
+
+        if (mySprite != null)
+        {
+            myImage = mySprite.getSubImage(0,frame);
+        }
+
 
     }
     //accessor

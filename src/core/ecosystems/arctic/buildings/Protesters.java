@@ -19,6 +19,7 @@ public class Protesters extends Building {
         resizeImage();
     }
     public void update() {
+        super.update();
         time++;
         if (time >= (10 * 60)){
             isCompleted = true;

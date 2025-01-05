@@ -13,6 +13,7 @@ public class SoundMaker extends Building {
     }
 
     public void update() {
+        super.update();
 
     }
 

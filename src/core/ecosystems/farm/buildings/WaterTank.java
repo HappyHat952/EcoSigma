@@ -25,6 +25,7 @@ public class WaterTank extends Building {
 
     public void update()
     {
+        super.update();
         frameTimer++;
         if (frameTimer %160 == 0 && currentStage <2)
         {

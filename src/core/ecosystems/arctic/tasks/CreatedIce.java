@@ -1,5 +1,7 @@
 package core.ecosystems.arctic.tasks;
 
+import core.ecosystems.arctic.ArcticCell;
+import core.ecosystems.arctic.ArcticGrid;
 import core.ecosystems.general.Cell;
 import core.ecosystems.Grid;
 import core.ecosystems.tasks.Task;
@@ -29,10 +31,10 @@ public class CreatedIce extends Task {
     public void update() {
                     // LOOP HERE
                     int count = 0;
-                    Cell[][] cells = grid.getCells();
+                    Cell[][] cells = ((ArcticGrid)grid).getCells();
                     for (int r = 0; r < cells.length; r++) {
                         for (int c = 0; c < cells[r].length; c++) {
-                            if (cells[r][c].getColor().equals(Color.white)) {
+                            if (((ArcticCell)cells[r][c]).isIce()) {
                                 count++;
                             }
                         }

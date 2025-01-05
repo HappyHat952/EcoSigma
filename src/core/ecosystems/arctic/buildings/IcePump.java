@@ -1,5 +1,6 @@
 package core.ecosystems.arctic.buildings;
 
+import core.ecosystems.arctic.ArcticCell;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.Game;
@@ -37,6 +38,8 @@ public class IcePump extends Building {
                 time = 0;
                 ArrayList<Cell> cells = getSurroundingCells(stage);
                 for (Cell cell : cells) {
+                    ArcticCell c = (ArcticCell)cell;
+                    c.setToIce();
                     cell.setImage(Images.arcticCells.getSubImage(0,4));
                 }
                 iceCreated += cells.size();

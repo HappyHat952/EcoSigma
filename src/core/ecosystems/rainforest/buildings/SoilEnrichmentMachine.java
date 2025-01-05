@@ -30,6 +30,7 @@ public class SoilEnrichmentMachine extends Building {
     }
 
     public void update() {
+        super.update();
         grid = Game.getCurrentLevel().getGrid();
         if (stage < 2) {
             time++;
