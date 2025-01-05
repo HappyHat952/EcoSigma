@@ -1,5 +1,6 @@
 package core.ecosystems.arctic;
 
+import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.tasks.*;
 import core.ecosystems.Ecosystem;
 import core.setup.PopupLoader;
@@ -31,6 +32,7 @@ public class Arctic extends Ecosystem {
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {
             clouds.add(new Cloud());
         }
+        addOrganism(PolarBear.class);
     }
 
     public void render(Graphics g) {
