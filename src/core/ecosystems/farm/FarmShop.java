@@ -5,19 +5,24 @@ import core.ecosystems.Shop;
 import core.ecosystems.arctic.buildings.CO2Sucker;
 import core.ecosystems.arctic.buildings.IcePump;
 import core.ecosystems.arctic.buildings.Protesters;
+import core.ecosystems.farm.animals.PluroCultureCrop;
 import core.ecosystems.farm.buildings.GreenHouse;
 import core.ecosystems.farm.buildings.WaterTank;
 import core.ecosystems.general.Item;
+import core.ecosystems.general.OrganismItem;
 import org.newdawn.slick.GameContainer;
 
 public class FarmShop extends Shop {
     Item greenHouseItem;
 
+
     public FarmShop(Grid grid, GameContainer gc)
     {
         super(grid, gc);
         setItems();
+        organismItem = new OrganismItem(0, PluroCultureCrop.class, grid);
     }
+
 
     public void setItems()
     {

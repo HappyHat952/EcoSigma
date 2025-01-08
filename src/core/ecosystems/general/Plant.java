@@ -21,6 +21,7 @@ public class Plant extends Organism{
 
     public Plant(Cell cell)
     {
+        super(cell);
         if (cell != null)
         {
             this.cell = cell;
@@ -34,6 +35,7 @@ public class Plant extends Organism{
         growTime = 2;
 
         name = "plant";
+        image = sprite.getSubImage(0, sprite.getVerticalCount()-1);
 
 
 

@@ -28,6 +28,7 @@ public class Animal extends Organism {
 
 
     public Animal(Cell cell) {
+        super(cell);
         if (cell != null) {
             this.currentCell = cell;
             cell.addAnimal(this);
@@ -44,6 +45,7 @@ public class Animal extends Organism {
         name = "animal";
         cells = new ArrayList<>();
         myClass = Animal.class;
+        image = sprite.getSubImage(0,0);
     }
 
     public void render(Graphics g) {
@@ -74,6 +76,7 @@ public class Animal extends Organism {
 
             cells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
 
+            ArrayList<Cell> cells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
             if (!cells.isEmpty()) {
 
                 //determine next future cell location

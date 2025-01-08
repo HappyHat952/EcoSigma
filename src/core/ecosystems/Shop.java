@@ -4,6 +4,7 @@ package core.ecosystems;
 import core.Main;
 import core.ecosystems.arctic.buildings.CO2Sucker;
 import core.ecosystems.general.Item;
+import core.ecosystems.general.OrganismItem;
 import core.setup.Fonts;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -19,6 +20,7 @@ public class Shop {
     private final static int margin = (int)(Main.getScreenWidth() * .04f);
     private final static int buffer = (int)( 260/1920f * Main.getScreenWidth() ) ;
     protected ArrayList<Item> items;
+    protected OrganismItem organismItem;
     protected Grid grid;
     protected GameContainer gc;
 
@@ -50,6 +52,11 @@ public class Shop {
             items.get(i).render(g);
         }
 
+        if (organismItem != null)
+        {
+            organismItem.render(g);
+        }
+
     }
 
     public void update()
@@ -72,6 +79,10 @@ public class Shop {
                 }
                 i.click(x,y);
             }
+        }
+        if (organismItem != null)
+        {
+            organismItem.click(x,y);
         }
     }
 
