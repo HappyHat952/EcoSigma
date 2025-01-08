@@ -67,11 +67,12 @@ public class OrganismMaker extends LabScreen {
                     g.setLineWidth(4); g.setColor(Color.white);
                     g.drawRect(x+Main.getScreenWidth()*.11f, y+ Main.getScreenHeight()*.21f + i*Main.getScreenHeight()*.15f
                             , Main.getScreenWidth()*.58f, Main.getScreenHeight()*.12f);
-                    i++;
+
                 }
                 else {
                     p.render(g);
                 }
+                i++;
             }
         }
     }
