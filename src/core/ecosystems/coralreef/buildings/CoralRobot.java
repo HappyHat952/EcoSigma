@@ -23,6 +23,7 @@ public class CoralRobot extends Building {
     private int y;
     private ArrayList<Cell> c;
     private int direction;
+    protected ArrayList<Cell> possibleCells;
 
     public CoralRobot() {
         myImage = Images.coralRobot;
@@ -85,7 +86,7 @@ public class CoralRobot extends Building {
             timer = maxWaitTime;
 
 
-            ArrayList<Cell> possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
+            possibleCells = grid.getOpenAdjacentCells(currentCell.getRow(), currentCell.getCol());
             if (!possibleCells.isEmpty()) {
 
                 //determine next future cell location
