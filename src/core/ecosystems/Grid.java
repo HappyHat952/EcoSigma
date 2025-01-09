@@ -3,6 +3,7 @@ package core.ecosystems;
 import core.Main;
 
 import core.ecosystems.arctic.buildings.CO2Sucker;
+import core.ecosystems.coralreef.buildings.CoralRobot;
 import core.ecosystems.general.*;
 import core.ecosystems.rainforest.buildings.Ranger;
 import org.lwjgl.input.Mouse;
@@ -80,20 +81,20 @@ public class Grid {
 
     public void update()
     {
-        for (int i = 0; i < GRID_SIZE; i++)
-        {
-            for (int j = 0; j < GRID_SIZE; j++)
-            {
-                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
-                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
-                    cells[i][j].getBuilding().update();
-                }
-            }
-        }
+//        for (int i = 0; i < GRID_SIZE; i++)
+//        {
+//            for (int j = 0; j < GRID_SIZE; j++)
+//            {
+//                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
+//                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
+//                    cells[i][j].getBuilding().update();
+//                }
+//            }
+//        }
         for (Building b: buildings) {
-            if (b instanceof Ranger) {
+//            if (b instanceof Ranger) {
                 b.update();
-            }
+//            }
 
         }
         for (Animal a: animals)

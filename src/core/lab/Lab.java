@@ -14,6 +14,8 @@ import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
 import core.ecosystems.rainforest.animals.Frog;
+import core.ecosystems.rainforest.animals.Jaguar;
+import core.ecosystems.rainforest.animals.Parrot;
 import core.lab.organismMaker.OrganismMaker;
 import core.lab.petriDish.PetriDish;
 import core.setup.Images;
@@ -239,7 +241,7 @@ public class Lab extends BasicGameState {
         }
         else if (biome == 1)
         {
-                availableOrganisms.add(Clownfish.class);
+            availableOrganisms.add(Clownfish.class);
             availableOrganisms.add(Stingray.class);
             availableOrganisms.add(JellyFish.class);
 
@@ -251,11 +253,14 @@ public class Lab extends BasicGameState {
         }
         else if (biome == 4)
         {
-            //availableOrganisms.add(Frog.class);
+            availableOrganisms.add(Jaguar.class);
+            availableOrganisms.add(Parrot.class);
+            availableOrganisms.add(Frog.class);
+
+            availableOrganisms.add(Plant.class);
         }
         else
         {
-            availableOrganisms.add(Plant.class);
         }
         genomeMaker.setButtons();
 

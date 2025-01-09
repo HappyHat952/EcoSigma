@@ -8,5 +8,6 @@ public class Stingray extends Animal {
     public Stingray(Cell cell) {
         super(cell);
         sprite = Images.stingray;
+        name = "stingray";
     }
 }

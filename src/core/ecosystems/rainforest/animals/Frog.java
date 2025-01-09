@@ -1,4 +1,14 @@
 package core.ecosystems.rainforest.animals;
 
-public class Frog {
+import core.ecosystems.general.Animal;
+import core.ecosystems.general.Cell;
+import core.setup.Images;
+
+public class Frog extends Animal {
+
+    public Frog(Cell cell) {
+        super(cell);
+        sprite = Images.clownfish;
+        name = "frog";
+    }
 }

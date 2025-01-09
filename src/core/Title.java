@@ -1,6 +1,5 @@
 package core;
 
-import core.buttons.HelpButtons;
 import core.setup.Fonts;
 import core.setup.Images;
 import core.setup.PopupLoader;
@@ -16,7 +15,6 @@ public class Title extends BasicGameState {
 
     private int id;
     StateBasedGame sbg;
-    private HelpButtons helpButtons;
     private int frame;
 
     private int frameCount;
@@ -37,14 +35,12 @@ public class Title extends BasicGameState {
         PopupLoader.loadPopups(0);
         sbg = stateBasedGame;
         Fonts.loadFonts();
-        helpButtons = new HelpButtons(0, 0);
         frame = 0;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.drawImage(Images.introScreenSheet.getSubImage(0,frame), 0, 0);
-        helpButtons.render(graphics);
     }
 
     @Override
