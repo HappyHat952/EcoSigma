@@ -1,6 +1,9 @@
 package core.ecosystems.farm.tasks;
 
 import core.ecosystems.Grid;
+import core.ecosystems.farm.FarmCell;
+import core.ecosystems.farm.FarmGrid;
+import core.ecosystems.general.Cell;
 import core.ecosystems.tasks.Task;
 
 public class WaterAllPlants extends Task {
@@ -10,7 +13,18 @@ public class WaterAllPlants extends Task {
 
     @Override
     public int getPercentDone() {
-        return 0;
+        int waterCount = 0;
+        for (Cell[] cells: ((FarmGrid)grid).getCells())
+        {
+            for (Cell c: cells)
+            {
+                if (((FarmCell)c).getWatered())
+                {
+                    waterCount++;
+                }
+            }
+        }
+        return waterCount;
     }
 
     @Override

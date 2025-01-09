@@ -1,6 +1,8 @@
 package core.buttons;
 
+import core.Main;
 import core.setup.Fonts;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -54,14 +56,31 @@ public class Button {
         else {
             g.drawImage(image, x,y);
         }
-
-        if (name != null)
+        if (isMouseOver(Mouse.getX(), Main.getScreenHeight() -Mouse.getY()))
         {
+            if (image == null)
+            {
+                g.setColor(new Color(1f,1f,1f,.8f));
+                g.fillRect(x,y,w,h);
+            }
+            else {
+//                Image whiteImage = image;
+//                whiteImage.setImageColor(0f,0f,0f,.5f);
+//                g.drawImage(whiteImage,x,y);
+                image.drawFlash(x,y);
+            }
+            if (name != null) {
+                g.setFont(Fonts.small);
+                g.setColor(Color.black);
+                g.drawString(name, x + w / 2f - Fonts.small.getWidth(name) / 2f, y + h / 2f);
+            }
+
+        }else if (name != null){
             g.setFont(Fonts.small);
             g.setColor(Color.white);
             g.drawString(name, x+w/2f - Fonts.small.getWidth(name)/2f, y+ h/2f);
-            Fonts.small.getWidth(name);
         }
+
     }
 
     public boolean isMouseOver(int mouseX, int mouseY) {

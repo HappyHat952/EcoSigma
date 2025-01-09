@@ -36,8 +36,8 @@ public class Building {
     {
         this.cell = cell;
         currentCells = new Cell[]{cell};
-        myRow = cell.getRow();
-        myCol = cell.getCol();
+        myRow = cell.getCol();
+        myCol = cell.getRow();
         // WE CHANGED THIS AND SWITCHED
         cell.addBuilding(this);
         //grid.addBuilding(this);

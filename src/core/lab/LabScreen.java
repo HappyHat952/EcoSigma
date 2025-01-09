@@ -3,6 +3,7 @@ package core.lab;
 import core.Main;
 import core.buttons.Button;
 import core.setup.Images;
+import core.ui.PopupManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -13,6 +14,8 @@ abstract public class LabScreen {
     static protected int y;
     protected Button closeButton;
     protected LabMachineButton machineButton;
+    protected int id;
+    protected boolean hasBeenOpened;
 
 
     protected boolean open;//determines if the lab1 machine has been opened
@@ -46,14 +49,21 @@ abstract public class LabScreen {
     {
         if (!open && machineButton.isMouseOver( x,  y))
         {
+            if(!hasBeenOpened)
+            {
+                hasBeenOpened = true;
+                PopupManager.activate(id);
+            }
             open = true;
             Lab.freeze();
+
         }
         if (open && (closeButton.isMouseOver(x,y)||!mouseOver(x,y)))
         {
             open = false;
             Lab.unfreeze();
         }
+
     }
 
     public boolean mouseOver(int x, int y)

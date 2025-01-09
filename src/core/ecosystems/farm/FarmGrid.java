@@ -90,6 +90,8 @@ public class FarmGrid extends Grid {
         if (building instanceof GreenHouse)
         {
             buildings.remove(building);
+            building.getCell().removeBuilding();
+
             int r;
             int c;
             if (building.getMyRow()<5) {
@@ -135,8 +137,8 @@ public class FarmGrid extends Grid {
                 buildings.add(building);
             }
             else {
-                mouseBuilding = building;
-                buildings.remove(building);
+                addMouseBuilding( GreenHouse.class);
+
             }
 
         }

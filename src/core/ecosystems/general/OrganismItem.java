@@ -2,6 +2,7 @@ package core.ecosystems.general;
 
 import core.Main;
 import core.ecosystems.Grid;
+import core.lab.Lab;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -37,6 +38,7 @@ public class OrganismItem {
         //draws square if none available or red animal image
         g.setColor (Color.white);
         g.fillRect(x,y,size,size);
+      //  g.drawImage(Lab.getOrganismName())
         g.setColor(Color.black);
         g.drawString(""+numOrganisms, x + size/2, y + size/2);
 

@@ -2,6 +2,7 @@ package core.ecosystems.farm.buildings;
 
 import core.Game;
 import core.ecosystems.Grid;
+import core.ecosystems.farm.FarmCell;
 import core.ecosystems.farm.FarmGrid;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
@@ -38,6 +39,7 @@ public class WaterTank extends Building {
         for (Cell c : getSurroundingCells(currentStage, corners))
         {
             c.setImage(Images.farmCells.getSubImage(0,1));
+            ((FarmCell)c).waterCell();
         }
     }
 

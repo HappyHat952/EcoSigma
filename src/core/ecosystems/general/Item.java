@@ -3,7 +3,9 @@ package core.ecosystems.general;
 import core.Main;
 import core.ecosystems.Grid;
 import core.ecosystems.Shop;
+import core.setup.Fonts;
 import core.ui.PopupManager;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -53,6 +55,11 @@ public class Item {
         g.setColor(myColor);
         g.drawString(name+"\n$ "+cost, x + 20, y + image.getHeight() + 10);
         g.drawRect(x, y,image.getWidth(), image.getHeight());
+
+
+        if (mouseOver(Mouse.getX(), Main.getScreenHeight() -Mouse.getY())) {
+            image.drawFlash(x, y);
+        }
     }
 
     public void click(int x, int y)

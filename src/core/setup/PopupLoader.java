@@ -8,12 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PopupLoader {
-    public static Popup POP1;//welcome popup
-    public static Popup POP2;//lichen popup
-    public static Popup POP3;//grass popup
-    public static Popup POP4;//shrub popup
-    public static Popup POP5;// tree popup
-    public static Popup POP6;
     public static ArrayList<Popup> POPS;
 
 

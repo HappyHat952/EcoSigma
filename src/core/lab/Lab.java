@@ -18,6 +18,7 @@ import core.ecosystems.rainforest.animals.Jaguar;
 import core.ecosystems.rainforest.animals.Parrot;
 import core.lab.organismMaker.OrganismMaker;
 import core.lab.petriDish.PetriDish;
+import core.setup.Fonts;
 import core.setup.Images;
 import core.setup.PopupLoader;
 import core.ui.PopupManager;
@@ -44,7 +45,7 @@ public class Lab extends BasicGameState {
 
     private static ArrayList<Genome> genomes ;
 
-    private static boolean freezeScreen; // doesn't allow clicking outside when "in" a machine.
+    private static boolean hasBeenOpened;
 
     public Lab(int id) {
         this.id = id;
@@ -73,6 +74,8 @@ public class Lab extends BasicGameState {
         machines[0] = genomeMaker;
         machines[1] = petriDish;
         machines[2] = organismMaker;
+
+        hasBeenOpened = false;
 //
 //        PopupLoader.loadPopups(-1);
 //        PopupManager.activate(0);
@@ -91,9 +94,10 @@ public class Lab extends BasicGameState {
                 openLab = l;
             }
             l.render(g);
+            g.setColor(Color.black); g.setFont(Fonts.small);
+
         }//prints the open lab1 in the front
         if (openLab != null) {  openLab.render(g);}
-
         PopupManager.render(g);
 
         int index =0;
@@ -119,7 +123,7 @@ public class Lab extends BasicGameState {
                l.update();
            }
        }
-        PopupManager.update();
+       PopupManager.update();
        for (int j = 0; j< genomes.size(); j++)
        {
            if (genomes.get(j).isUsed())
@@ -135,6 +139,12 @@ public class Lab extends BasicGameState {
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         // This code happens when you enter a gameState.
+        PopupLoader.loadPopups(-1);
+        if (!hasBeenOpened)
+        {
+            PopupManager.activate(0);
+            hasBeenOpened = true;
+        }
 
     }
 
@@ -165,25 +175,17 @@ public class Lab extends BasicGameState {
     public void mousePressed(int button, int x, int y)
     {
         // This code happens every time the user presses the mouse
-        if (!Game.getPause())
-        {
-
-            if (!freezeScreen)
-            {
-
-            }
-
 
             //only allows clicking on the one that is " open"
             for (LabScreen l: machines)
             {
-                if (!freezeScreen || l.getIsOpen())
+                if (!Game.getPause() || l.getIsOpen())
                 {
                     l.mouseClicked(button,x,y);
                 }
 
             }
-        }
+
 
         PopupManager.mousePressed(button,x,y);
 
@@ -193,11 +195,12 @@ public class Lab extends BasicGameState {
 
     public static void freeze()
     {
-        freezeScreen = true;
+        Game.pause();
     }
     public static void unfreeze()
     {
-        freezeScreen = false;
+
+        Game.unpause();
     }
 
     public static void addGenome( Genome genome){ genomes.add(genome);

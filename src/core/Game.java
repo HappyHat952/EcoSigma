@@ -154,4 +154,6 @@ public class Game extends BasicGameState
 		return ecosystems;
 	}
 
+	public static PopupManager getPopupManager(){ return popupManager;}
+
 }
