@@ -22,6 +22,7 @@ public class GenomeMaker extends LabScreen {
         machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.05f), (int)(Main.getScreenHeight()*.3f),
                 Images.genomeMaker.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2)));
         screenButtons = new ArrayList<Button>();
+        id = 1;
     }
 
 

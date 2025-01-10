@@ -11,11 +11,6 @@ public class LabMachineButton extends Button {
         super(x,y,i);
     }
 
-    public void render(Graphics g)
-    {
-        super.render(g);
-    }
-
     public void action()
     {
         open = true;

@@ -3,11 +3,13 @@ package core.ecosystems;
 import core.Main;
 
 import core.ecosystems.arctic.buildings.CO2Sucker;
+import core.ecosystems.coralreef.buildings.CoralRobot;
 import core.ecosystems.general.*;
 import core.ecosystems.rainforest.buildings.Ranger;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.lang.reflect.Constructor;
@@ -79,20 +81,20 @@ public class Grid {
 
     public void update()
     {
-        for (int i = 0; i < GRID_SIZE; i++)
-        {
-            for (int j = 0; j < GRID_SIZE; j++)
-            {
-                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
-                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
-                    cells[i][j].getBuilding().update();
-                }
-            }
-        }
+//        for (int i = 0; i < GRID_SIZE; i++)
+//        {
+//            for (int j = 0; j < GRID_SIZE; j++)
+//            {
+//                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
+//                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
+//                    cells[i][j].getBuilding().update();
+//                }
+//            }
+//        }
         for (Building b: buildings) {
-            if (b instanceof Ranger) {
+//            if (b instanceof Ranger) {
                 b.update();
-            }
+//            }
 
         }
         for (Animal a: animals)
@@ -187,7 +189,7 @@ public class Grid {
 //        }
     public void mousePressed(int x, int y, int button)
     {
-        if (mouseBuilding != null)
+        if (mouseHasBuilding())
         {
             for (int i = 0; i < GRID_SIZE; i++)
             {
@@ -203,7 +205,24 @@ public class Grid {
                     }
                 }
             }
-        } else {
+        }
+        else if (mouseHasOrganism())
+        {
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+                for (int j = 0; j < GRID_SIZE; j++)
+                {
+                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
+                    {
+                        addOrganism(mouseOrganism.getClass(), cells[i][j]);
+                        mouseOrganism = null;
+                        gc.setDefaultMouseCursor();
+
+                    }
+                }
+            }
+        }
+        else {
             mousePressedNoBuilding( x,  y, button);
             //Does this ONLY if there is no building
         }
@@ -253,8 +272,29 @@ public class Grid {
                 throw new RuntimeException(e);
             }
         }
+        //animals.add(new Animal(cell));
+    }
+
+    public void addOrganism(Class<? extends Organism> clazz, Cell cell) {
+        if (!getAllOpenCells().isEmpty())
+        {
+            try {
+                Constructor constructor = clazz.getDeclaredConstructor(Cell.class);
+                Organism organism = clazz.getDeclaredConstructor(Cell.class).newInstance(cell);
+                if (organism instanceof Animal)
+                {
+                    animals.add((Animal) organism);
+                }
+                if (organism instanceof Plant)
+                {
+                    plants.add((Plant) organism);
+                }
 
 
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
         //animals.add(new Animal(cell));
     }
 
@@ -374,15 +414,15 @@ public class Grid {
         ArrayList<Cell> cellList = getAllOpenCells();
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));
         try {
-            Constructor constructor = organism.getDeclaredConstructor();
-            Organism newOrganism = organism.getDeclaredConstructor(Cell.class).newInstance();
+            Organism newOrganism = organism.getDeclaredConstructor(Cell.class).newInstance(cell);
             //buildings.add(newBuilding);
 
             if (!mouseHasBuilding() && !mouseHasOrganism() )
             {
                 mouseOrganism = newOrganism;
+                gc.setMouseCursor(newOrganism.getImage().getScaledCopy(50,50),25,25 );
             }
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (SlickException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
 

@@ -21,6 +21,7 @@ public class OrganismMaker extends LabScreen {
         machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.6f), (int)(Main.getScreenHeight()*.04f),
                 Images.organismMaker.getScaledCopy((int)(Main.getScreenWidth()*.1f)*3, (int)(Main.getScreenWidth()*.1)*6));
         cloneSlots = new CloneProgress[3];
+        id = 3;
 
     }
     @Override
@@ -74,6 +75,7 @@ public class OrganismMaker extends LabScreen {
                 else {
                     p.render(g);
                 }
+                i++;
             }
         }
     }

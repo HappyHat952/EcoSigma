@@ -16,7 +16,7 @@ public class GreenHouse extends Building {
 
     public boolean isOver(Cell c)
     {
-            for (Cell c1: cells)
+            for (Cell c1: currentCells)
             {
                 if (c1 == c)
                 {

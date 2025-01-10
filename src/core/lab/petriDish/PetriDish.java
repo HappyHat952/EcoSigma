@@ -22,6 +22,7 @@ public class PetriDish  extends LabScreen {
         dishes = new ArrayList<>();
         machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.35f), (int)(Main.getScreenHeight()*.3f),
                 Images.petriDishes.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2f)));
+        id = 2;
     }
 
 

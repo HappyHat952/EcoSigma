@@ -15,7 +15,7 @@ public class Building {
     protected int cellWidth;
     protected int cellHeight;
     protected Cell cell;
-    protected Cell[] cells;
+    protected Cell[] currentCells;
     protected Image myImage;
     protected SpriteSheet mySprite;
     protected String name;
@@ -35,9 +35,10 @@ public class Building {
     public void assignCell(Cell cell, Grid grid)
     {
         this.cell = cell;
-        cells = new Cell[]{cell};
+        currentCells = new Cell[]{cell};
         myRow = cell.getCol();
         myCol = cell.getRow();
+        // WE CHANGED THIS AND SWITCHED
         cell.addBuilding(this);
         //grid.addBuilding(this);
         cellWidth = 1;
@@ -46,7 +47,7 @@ public class Building {
 
     public void assignCell(Cell[] cells, Grid grid, int cellW, int cellH, boolean floating)
     {
-        this.cells = cells;
+        this.currentCells = cells;
 
         //first cell must be the top left.
         myRow = cells[0].getRow();
@@ -75,7 +76,7 @@ public class Building {
         float width = myImage.getWidth();
         float height = myImage.getHeight();
         Image adjusted = myImage.getScaledCopy(Cell.getWidth()*cellWidth, (int)(height/width*Cell.getWidth()* cellWidth));
-        g.drawImage(adjusted, cells[0].getX(), cells[0].getY() + Cell.getHeight() - adjusted.getHeight());
+        g.drawImage(adjusted, currentCells[0].getX(), currentCells[0].getY() + Cell.getHeight() - adjusted.getHeight());
 
     }
 
@@ -117,12 +118,12 @@ public class Building {
         return info;
     }
     public Cell getCell(){ return cell;}
-    public Cell[] getCells() { return cells;}
+    public Cell[] getCells() { return currentCells;}
 
     public boolean mouseOver(int x, int y)
     {
-        return (x > cells[0].getX() && x< cells[0].getX() + cellWidth* Cell.getWidth()
-                && y > cells[0].getY() && y< (cells[0].getY() + cellHeight* Cell.getHeight()));
+        return (x > currentCells[0].getX() && x< currentCells[0].getX() + cellWidth* Cell.getWidth()
+                && y > currentCells[0].getY() && y< (currentCells[0].getY() + cellHeight* Cell.getHeight()));
     }
 
     //mutator

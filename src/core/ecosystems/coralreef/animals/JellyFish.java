@@ -8,5 +8,6 @@ public class JellyFish extends Animal {
     public JellyFish(Cell cell) {
         super(cell);
         sprite = Images.jellyFish;
+        name = "jellyfish";
     }
 }

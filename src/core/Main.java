@@ -39,7 +39,7 @@ public class Main extends StateBasedGame
 	{
 		return appgc.getScreenWidth();
 	}
-	
+	                             
 	public static int getScreenHeight()
 	{
 		return appgc.getScreenHeight();

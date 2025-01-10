@@ -2,7 +2,6 @@ package core.ecosystems.general;
 
 import core.ecosystems.Grid;
 import core.setup.Images;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SpriteSheet;
 
@@ -24,10 +23,11 @@ public class Animal extends Organism {
     // 0 down, 1 left, 2 right, 3 up
     protected int direction;
 
-    protected ArrayList<Cell> cells;
+    protected ArrayList<Cell> possibleCells;
 
 
     public Animal(Cell cell) {
+        super(cell);
         if (cell != null) {
             this.currentCell = cell;
             cell.addAnimal(this);
@@ -42,8 +42,9 @@ public class Animal extends Organism {
         timer = maxWaitTime;
 
         name = "animal";
-        cells = new ArrayList<>();
+        possibleCells = new ArrayList<>();
         myClass = Animal.class;
+        image = sprite.getSubImage(0,0);
     }
 
     public void render(Graphics g) {
@@ -72,14 +73,14 @@ public class Animal extends Organism {
 
             timer = maxWaitTime;
 
-            cells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
+            possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
 
-            if (!cells.isEmpty()) {
+            if (!possibleCells.isEmpty()) {
 
                 //determine next future cell location
-                int i = (int) (Math.random() * cells.size());
+                int i = (int) (Math.random() * possibleCells.size());
 
-                futureCell = cells.get(i);
+                futureCell = possibleCells.get(i);
                 determineDirection(futureCell);
             }
         } else {
@@ -90,10 +91,8 @@ public class Animal extends Organism {
                 x = currentCell.getX() + (int)( displacement * (futureCell.getX() - currentCell.getX())/((float)maxWaitTime) );
                 y = currentCell.getY() + (int) (displacement * (futureCell.getY() - currentCell.getY())/((float)maxWaitTime));
             }
-
-
         }
-        cells = grid.getOpenAdjacentCells(currentCell.getCol(),currentCell.getRow());
+        possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(),currentCell.getRow());
     }
 
 
