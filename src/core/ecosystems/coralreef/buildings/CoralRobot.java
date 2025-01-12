@@ -26,6 +26,7 @@ public class CoralRobot extends Building {
     protected ArrayList<Cell> possibleCells;
 
     public CoralRobot() {
+        super();
         myImage = Images.coralRobot;
         name = "Repair Robot";
         info = "help please";
@@ -35,7 +36,6 @@ public class CoralRobot extends Building {
         coralRepaired = 0;
         maxWaitTime = 70;
         timer = maxWaitTime;
-        currentCell = grid.getCells()[myRow][myCol];
         x = grid.getCells()[myRow][myCol].getX();
         y = grid.getCells()[myRow][myCol].getY();
         c = new ArrayList<>();
@@ -45,18 +45,19 @@ public class CoralRobot extends Building {
     public void update() {
         super.update();
         time++;
-        if (time % 100 == 0) {
-            ArrayList<Cell> cells = new ArrayList<>();
-            int r = myRow;
-            int c = myCol;
-            checkIfPossible(cells, r - 1, c - 1);
-            checkIfPossible(cells, r - 1, c);
-            checkIfPossible(cells, r - 1, c + 1);
-            checkIfPossible(cells, r, c - 1);
-            checkIfPossible(cells, r, c + 1);
-            checkIfPossible(cells, r + 1, c - 1);
-            checkIfPossible(cells, r + 1, c);
-            checkIfPossible(cells, r + 1, c + 1);
+        if (time % 100 == 0)
+        {
+//            ArrayList<Cell> cells = new ArrayList<>();
+//            int r = myRow;
+//            int c = myCol;
+//            checkIfPossible(cells, r - 1, c - 1);
+//            checkIfPossible(cells, r - 1, c);
+//            checkIfPossible(cells, r - 1, c + 1);
+//            checkIfPossible(cells, r, c - 1);
+//            checkIfPossible(cells, r, c + 1);
+//            checkIfPossible(cells, r + 1, c - 1);
+//            checkIfPossible(cells, r + 1, c);
+//            checkIfPossible(cells, r + 1, c + 1);
 //            if (!cells.isEmpty()) {
 //                grid.getCells()[myRow][myCol].removeBuilding();
 //                int random = (int) (Math.random() * cells.size());
@@ -65,11 +66,21 @@ public class CoralRobot extends Building {
         }
         move();
         checkForDamage();
+
+    }
+
+    public void assignCell(Cell c, Grid grid)
+    {
+        super.assignCell(c,grid);
+        currentCell = c;
+        myRow = c.getRow();
+        myCol = c.getCol();
+        x = c.getX();
+        y = c.getY();
     }
 
     public void move() {
         if (timer == 0) {
-            System.out.println("TIMER IS 0");
             if (futureCell != null) {
                 //switch cell location if future cell is changed
                 currentCell.removeBuilding();
@@ -80,7 +91,6 @@ public class CoralRobot extends Building {
                 x = currentCell.getX();
                 y = currentCell.getY();
                 currentCells[0] = currentCell;
-                System.out.println("CELL CHANGED");
             }
 
             timer = maxWaitTime;
@@ -94,8 +104,6 @@ public class CoralRobot extends Building {
 
                 futureCell = possibleCells.get(i);
                 determineDirection(futureCell);
-            } else {
-                System.out.println("CELL IS EMPTY");
             }
         } else {
             timer--;
@@ -103,7 +111,6 @@ public class CoralRobot extends Building {
                 int displacement = maxWaitTime - timer;
                 x = currentCell.getX() + (int) (displacement * (futureCell.getX() - currentCell.getX()) / ((float) maxWaitTime));
                 y = currentCell.getY() + (int) (displacement * (futureCell.getY() - currentCell.getY()) / ((float) maxWaitTime));
-                System.out.println("ITS MOVING");
             }
 
 
@@ -169,8 +176,8 @@ public class CoralRobot extends Building {
     }
 
     private void determineDirection(Cell newCell) {
-        int r = newCell.getRow() - currentCell.getRow(); // GREATER THAN 0 IF IT MOVED RIGHT, LESS IF LEFT
-        int c = newCell.getCol() - currentCell.getCol(); // GREATER THAN 0 IF IT MOVED DOWN, LESS IF UP
+        int r = newCell.getRow() - currentCells[0].getRow(); // GREATER THAN 0 IF IT MOVED RIGHT, LESS IF LEFT
+        int c = newCell.getCol() - currentCells[0].getCol(); // GREATER THAN 0 IF IT MOVED DOWN, LESS IF UP
 
         if (r > 0) {
             direction = 2; // moving right
