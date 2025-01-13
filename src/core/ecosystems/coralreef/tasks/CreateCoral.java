@@ -7,7 +7,7 @@ import core.ecosystems.tasks.Task;
 
 public class CreateCoral extends Task {
 
-    final private int TOTAL_CORAL = 15;
+    final private int TOTAL_CORAL = 12;
     private int healthyCoral = 0;
     public CreateCoral(String name, Grid grid) {
         super(name, grid);
@@ -29,7 +29,7 @@ public class CreateCoral extends Task {
                 Cell cell = grid.getCells()[r][c];
 
                 if (cell.hasBuilding() && cell.getBuilding() instanceof Coral
-//                        && ((Coral) cell.getBuilding()).isHealthy()
+                        && ((Coral) cell.getBuilding()).isArtificial()
                 ) {
                     count++;
                 }

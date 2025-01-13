@@ -23,10 +23,48 @@ public class ArcticGrid extends Grid {
         OilDrill oilDrill2 = new OilDrill();
         oilDrill2.assignCell(cells[2][1], this);
         OilDrill oilDrill3 = new OilDrill();
-        oilDrill3.assignCell(cells[8][7], this);
+        oilDrill3.assignCell(cells[6][2], this);
         addBuilding(oilDrill1);
         addBuilding(oilDrill2);
         addBuilding(oilDrill3);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (cells[i][j].getBuilding() instanceof Protesters) {
+                    boolean hasOilDrillNearby = false;
+
+                    for (Cell c : getSurroundingCells(i, j)) {
+                        if (c.getBuilding() instanceof OilDrill) {
+                            hasOilDrillNearby = true;
+                            break;
+                        }
+                    }
+
+                    if (!hasOilDrillNearby) {
+                        cells[i][j].removeBuilding();
+                    }
+                }
+            }
+        }
+    }
+
+    public ArrayList<Cell> getSurroundingCells(int row, int col) {
+        ArrayList<Cell> validCells = new ArrayList<>();
+                int r = row;
+                int c = col;
+                checkIfPossible(validCells, r-1, c-1);
+                checkIfPossible(validCells, r-1, c);
+                checkIfPossible(validCells, r-1, c+1);
+                checkIfPossible(validCells, r, c-1);
+                checkIfPossible(validCells, r, c+1);
+                checkIfPossible(validCells, r+1, c-1);
+                checkIfPossible(validCells, r+1, c);
+                checkIfPossible(validCells, r+1, c+1);
+                return validCells;
     }
 
     @Override

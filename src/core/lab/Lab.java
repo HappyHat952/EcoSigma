@@ -16,6 +16,7 @@ import core.ecosystems.general.Plant;
 import core.ecosystems.rainforest.animals.Frog;
 import core.ecosystems.rainforest.animals.Jaguar;
 import core.ecosystems.rainforest.animals.Parrot;
+import core.ecosystems.rainforest.animals.Tree;
 import core.lab.organismMaker.OrganismMaker;
 import core.lab.petriDish.PetriDish;
 import core.setup.Fonts;
@@ -260,7 +261,7 @@ public class Lab extends BasicGameState {
             availableOrganisms.add(Parrot.class);
             availableOrganisms.add(Frog.class);
 
-            availableOrganisms.add(Plant.class);
+            availableOrganisms.add(Tree.class);
         }
         else
         {

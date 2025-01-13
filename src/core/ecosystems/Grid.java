@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Grid {
-    protected final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
+    public final static int GRID_SIZE = 10; // number of squares in horizontal and vertical
     protected static int gridWidth; //size of the grid relative to 1920 x 1080
     protected Cell[][] cells;
 

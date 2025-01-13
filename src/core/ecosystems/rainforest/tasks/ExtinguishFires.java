@@ -1,10 +1,15 @@
 package core.ecosystems.rainforest.tasks;
 
+import core.Game;
 import core.ecosystems.Grid;
 import core.ecosystems.arctic.buildings.OilDrill;
+import core.ecosystems.arctic.buildings.Protesters;
 import core.ecosystems.general.Building;
 import core.ecosystems.rainforest.buildings.Fire;
+import core.ecosystems.rainforest.buildings.FireDrone;
 import core.ecosystems.tasks.Task;
+
+import static core.ecosystems.Grid.GRID_SIZE;
 
 public class ExtinguishFires extends Task {
     final private int TOTAL_FIRES = 3;
@@ -30,5 +35,24 @@ public class ExtinguishFires extends Task {
             }
         }
         fires = count;
+
+        for (int i = 0; i < GRID_SIZE; i++)
+        {
+            for (int j = 0; j < GRID_SIZE; j++)
+            {
+                Building b = Game.getCurrentLevel().getGrid().getCells()[i][j].getBuilding();
+                if (b instanceof FireDrone) {
+                        for (int a = 0; a < grid.getBuildings().size(); a++) {
+                            if (grid.getBuildings().get(a).equals(((FireDrone) b).getFire())){
+                                Fire fire = ((FireDrone) b).getFire();
+                                grid.getCells()[fire.getMyCol()][fire.getMyRow()].removeBuilding();
+                                grid.getBuildings().remove(a);
+                                return;
+                            }
+                        }
+
+                }
+            }
+        }
     }
-}
+    }

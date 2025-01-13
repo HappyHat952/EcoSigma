@@ -57,9 +57,11 @@ public class Images {
     public static SpriteSheet farmCells;
     public static Image greenHouse;
 
-    // 4: CITY
+    // 4: RAINFOREST
     public static SpriteSheet cityCells;
     public static Image cityBuilding;
+    public static Image healthySoil;
+    public static Image unhealthySoil;
 
     // LAB
     public static Image labBackground;
@@ -126,12 +128,9 @@ public class Images {
             greenHouse = new Image("res/game/farm/buildings/greenhouse.png");
 
 
-            // LEVEL 4: CITY
-            cityCells = new SpriteSheet("res/game/city/cityCell.png", 384,384);
-            cityBuilding = new Image("res/game/city/buildings/cityBuilding.png");
-
-
-            // LEVEL 5
+            // LEVEL 4: RAINFOREST
+            healthySoil = new Image("res/game/rainforest/healthySoil.png");
+            unhealthySoil = new Image("res/game/rainforest/unhealthySoil.png");
 
             // LAB
             labBackground = new Image("res/lab/lab.png");

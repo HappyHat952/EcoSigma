@@ -1,5 +1,6 @@
 package core.ecosystems.arctic.tasks;
 
+import core.Game;
 import core.ecosystems.arctic.ArcticCell;
 import core.ecosystems.arctic.buildings.OilDrill;
 import core.ecosystems.arctic.buildings.Protesters;
@@ -47,5 +48,29 @@ public class DestroyedOilDrills extends Task {
                 }
             }
         }
+//        for (int i = 0; i < grid.getCells().length; i++) {
+//            for (int j = 0; j < grid.getCells()[0].length; j++) {
+//                Building b = grid.getCells()[i][j].getBuilding();
+//                if (b instanceof Protesters) {
+//                    if (((Protesters) b).isCompleted()) {
+//                        for (int k = 0; k < grid.getCells().length; k++) {
+//                            for (int l = 0; l < grid.getCells()[0].length; l++) {
+//                                Building c = grid.getCells()[k][l].getBuilding();
+//
+//                                if (c != null) {
+//                                    if (c.equals(((Protesters) b).getOilDrill())) {
+//                                        OilDrill oilDrill = ((Protesters) b).getOilDrill();
+//                                        grid.getCells()[oilDrill.getMyRow()][oilDrill.getMyCol()].removeBuilding();
+//                                        grid.getCells()[c.getMyRow()][c.getMyCol()].removeBuilding();
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        ((Protesters) b).setCompleted(false);
+//                    }
+//                }
+//            }
+//        }
+
     }
 }

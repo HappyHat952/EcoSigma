@@ -4,6 +4,7 @@ import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.Game;
 import core.ecosystems.Grid;
+import core.ecosystems.rainforest.RainForestCell;
 import core.setup.Images;
 import org.newdawn.slick.Color;
 
@@ -19,7 +20,7 @@ public class SoilEnrichmentMachine extends Building {
 
     public SoilEnrichmentMachine() {
         myImage = Images.damagedCoral;
-        name = "Ice Pump";
+        name = "Soil Enricher";
         info = "help";
         time = 0;
         stage = 0;
@@ -38,7 +39,7 @@ public class SoilEnrichmentMachine extends Building {
                 time = 0;
                 ArrayList<Cell> cells = getSurroundingCells(stage);
                 for (Cell cell : cells) {
-                    cell.setColor(Color.green);
+                    ((RainForestCell) cell).setHealthy(true);
                 }
                 iceCreated += cells.size();
                 stage++;

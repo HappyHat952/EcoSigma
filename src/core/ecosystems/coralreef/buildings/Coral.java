@@ -7,6 +7,7 @@ public class Coral extends Building {
 
     private boolean healthy;
     private int time;
+    private boolean isArtificial;
 
     public Coral(boolean b) {
         name = "Coral";
@@ -40,5 +41,13 @@ public class Coral extends Building {
         } else {
             myImage = Images.damagedCoral;
         }
+    }
+
+    public boolean isArtificial() {
+        return isArtificial;
+    }
+
+    public void setArtificial(boolean artificial) {
+        isArtificial = artificial;
     }
 }

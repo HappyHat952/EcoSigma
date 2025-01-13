@@ -26,8 +26,8 @@ public class Arctic extends Ecosystem {
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         taskManager.addTask(new CreatedIce("Create Ice", grid));
         taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));
-        taskManager.addTask(new CreateAnimals("Create all three Animals", grid));
-        taskManager.addTask(new Plant4Plants("Plant four plants", grid));
+        taskManager.addTask(new CreateAnimals("Create All 3 Animals", grid));
+        taskManager.addTask(new Plant4Plants("Plant Four Plants", grid));
         clouds = new ArrayList<>();
         for (int i = 0; i < ClearedCO2.getTotalClouds(); i++) {
             clouds.add(new Cloud());

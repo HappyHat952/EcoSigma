@@ -7,9 +7,7 @@ import core.ecosystems.coralreef.CoralReefShop;
 import core.ecosystems.coralreef.tasks.CreateCoral;
 import core.ecosystems.coralreef.tasks.CreateSounds;
 import core.ecosystems.coralreef.tasks.RepairCoral;
-import core.ecosystems.rainforest.tasks.EnrichSoil;
-import core.ecosystems.rainforest.tasks.ExtinguishFires;
-import core.ecosystems.rainforest.tasks.HireRangers;
+import core.ecosystems.rainforest.tasks.*;
 import core.setup.Fonts;
 import core.ui.PopupManager;
 import org.newdawn.slick.Color;
@@ -29,6 +27,8 @@ public class RainForest extends Ecosystem {
         taskManager.addTask(new EnrichSoil("Enrich Soil", grid));
         taskManager.addTask(new ExtinguishFires("Extinguish Fires", grid));
         taskManager.addTask(new HireRangers("Hire Rangers", grid));
+        taskManager.addTask(new CreateAllAnimals("Create All 3 Animals", grid));
+        taskManager.addTask(new CreateTrees("Plant 5 Trees", grid));
         danger = "High";
     }
 
@@ -37,6 +37,14 @@ public class RainForest extends Ecosystem {
         super.render(g);
         g.setFont(Fonts.medium);
         g.setColor(Color.black);
-        g.drawString("Danger Levels: " + danger, (float) Main.getScreenWidth() /2, 5);
+        g.drawString("Danger Levels: " + danger, (float) Main.getScreenWidth() * (.3f), 20);
+    }
+
+    public String getDanger() {
+        return danger;
+    }
+
+    public void setDanger(String danger) {
+        this.danger = danger;
     }
 }
