@@ -35,6 +35,7 @@ public class RainForestGrid extends Grid {
         fire3.assignCell(cells[2][2], this);
         addBuilding(fire3);
     }
+    //hi
 
     @Override
     public void update() {
