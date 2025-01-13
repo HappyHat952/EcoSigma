@@ -21,7 +21,7 @@ public class Farm extends Ecosystem {
         PopupLoader.loadPopups(ID);
         //add new tasks
         taskManager.addTask(new AddedGreenhouse("Add 4 Greenhouses", grid) );
-        taskManager.addTask(new PlantTenVariedPlants("Add 10 bio-diverse plants", grid));
+        taskManager.addTask(new PlantTenVariedPlants("Add 60 bio-diverse plants", grid));
         taskManager.addTask(new RemoveMonocultures("Remove 50 monoculture plants", grid));
         taskManager.addTask(new WaterAllPlants("Water the full farm", grid));
     }

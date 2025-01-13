@@ -14,6 +14,7 @@ public class DestroyedOilDrills extends Task {
 
     public DestroyedOilDrills(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 130;
     }
 
 

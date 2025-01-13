@@ -108,6 +108,7 @@ abstract public class Ecosystem {
     public void setCompleted(boolean b) {
         isCompleted = b;
     }
+    public Shop getShop(){ return shop;}
 
     public boolean isCompleted() {
         return isCompleted;

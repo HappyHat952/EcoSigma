@@ -9,5 +9,6 @@ public class PolarBear extends Animal {
         super(cell);
         sprite = Images.polarBear;
         name = "Polar Bear";
+        costOfGenome = 120;
     }
 }

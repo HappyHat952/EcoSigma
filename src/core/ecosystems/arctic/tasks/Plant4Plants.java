@@ -15,6 +15,7 @@ public class Plant4Plants extends Task {
         super(name, grid);
         totalPlants = 4;
         numPlants = 0;
+        moneyValue = 400;
     }
     public int getPercentDone() {
         if (numPlants < 4) {

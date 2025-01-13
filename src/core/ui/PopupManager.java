@@ -10,8 +10,6 @@ import static core.setup.PopupLoader.POPS;
 
 public class PopupManager {
     private static ArrayList<Popup> popups;
-    int X_LEFT = 1500;
-    private static boolean successionComplete;
 
     public PopupManager()
     {
@@ -24,7 +22,6 @@ public class PopupManager {
         {
             p.render(g);
         }
-        g.drawString("num popups: "+ popups.size(), 0,0);
     }
 
     public static  void update( )

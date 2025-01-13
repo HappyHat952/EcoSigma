@@ -63,10 +63,6 @@ public class Grid {
         {
             a.render(g);
         }
-//        for (Plant p: plants)
-//        {
-//            p.render(g);
-//        }
         for (Building b: buildings)
         {
             if (b.getCells() != null && b.isMoving())

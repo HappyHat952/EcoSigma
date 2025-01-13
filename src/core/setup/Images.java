@@ -44,6 +44,7 @@ public class Images {
     public static SpriteSheet polarBear;
     public static SpriteSheet walrus;
     public static SpriteSheet lemming;
+    public static SpriteSheet compionMoss;
     // CORAL REEF
     public static Image damagedCoral;
     public static Image coral;
@@ -122,6 +123,7 @@ public class Images {
                 polarBear =new SpriteSheet( (new Image("res/game/arctic/animals/polarBear.png")), 280, 280);
                 walrus =new SpriteSheet( (new Image("res/game/arctic/animals/walrus.png")), 128, 128);
                 lemming =new SpriteSheet( (new Image("res/game/arctic/animals/lemming.png")), 256, 256);
+                compionMoss = new SpriteSheet("res/game/arctic/animals/compionMoss.png",96,96);
                 //other
                 cloudSheet = new SpriteSheet((new Image("res/game/arctic/cloud.png")), 128, 128);
 
@@ -153,9 +155,9 @@ public class Images {
             drone = new Image("res/game/rainforest/drone.png");
             fire = new Image("res/game/rainforest/fire.png");
             ranger = new SpriteSheet("res/game/rainforest/ranger.png", 108, 108);
-            frog = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
-            jaguar = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
-            parrot = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
+            frog = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
+            jaguar = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
+            parrot = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
             soilEnrichmentMachine = new Image("res/game/rainforest/soilEnrichmentMachine.png");
             // LAB
             labBackground = new Image("res/lab/lab.png");

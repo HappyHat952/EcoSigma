@@ -2,6 +2,7 @@ package core.ecosystems.general;
 
 import core.Main;
 import core.ecosystems.Grid;
+import core.setup.Fonts;
 import core.setup.Images;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
@@ -59,6 +60,7 @@ public class Plant extends Organism{
         g.drawImage(image.getScaledCopy((float)cell.getWidth()/image.getWidth()),  x,  y);
         if(cell.mouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
         {
+            g.setColor(Color.white); g.setFont(Fonts.small);
             g.drawString(name, x,cell.getY());
         }
 

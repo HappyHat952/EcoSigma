@@ -10,7 +10,7 @@ public class GreenHouse extends Building {
     {
         super();
         myImage = Images.greenHouse;
-        cost = 300;
+        cost = 200;
         name = "Greenhouse";
     }
 

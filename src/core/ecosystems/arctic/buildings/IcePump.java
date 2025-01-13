@@ -39,9 +39,14 @@ public class IcePump extends Building {
                 time = 0;
                 ArrayList<Cell> cells = getSurroundingCells(stage);
                 for (Cell cell : cells) {
-                    ArcticCell c = (ArcticCell)cell;
-                    c.setToIce();
-                    cell.setImage(Images.arcticCells.getSubImage(0,4));
+                    if (!((ArcticCell)cell).isIce())
+                    {
+                        ArcticCell c = (ArcticCell)cell;
+                        c.setToIce();
+                        cell.setImage(Images.arcticCells.getSubImage(0,4));
+                        Game.getCurrentShop().addMoney(15);
+                    }
+
                 }
                 iceCreated += cells.size();
                 stage++;

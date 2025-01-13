@@ -28,7 +28,6 @@ public class Ranger extends Building {
     private SpriteSheet sprite;
     public Ranger() {
         super();
-        myImage = Images.ranger.getSubImage(0, 0, 108, 108);
         sprite = Images.ranger;
         myImage = sprite.getSubImage(0, 0);
         name = "Ranger";
@@ -62,6 +61,9 @@ public class Ranger extends Building {
     }
 
     public void move() {
+        if (timer % 15 == 0) {
+            frame = (frame + 1) % 4;
+        }
         if (timer == 0) {
             if (futureCell != null) {
                 //switch cell location if future cell is changed
@@ -101,13 +103,14 @@ public class Ranger extends Building {
 
     public void render(Graphics g)
     {
+
         float width = myImage.getWidth();
         float height = myImage.getHeight();
         Image adjusted = myImage.getScaledCopy(Cell.getWidth()*cellWidth, (int)(height/width*Cell.getWidth()* cellWidth));
 //        g.drawImage(adjusted, x, y + Cell.getHeight() - adjusted.getHeight());
         g.drawImage(sprite.getSubImage(0, frame).getScaledCopy(Cell.getWidth(), Cell.getHeight()), x, y + Cell.getHeight() - adjusted.getHeight());
         if (grid != null) {
-            g.drawString("" + forwardIsClear(grid), x, y);
+            g.drawString("" + frame, x, y);
         }
 
     }

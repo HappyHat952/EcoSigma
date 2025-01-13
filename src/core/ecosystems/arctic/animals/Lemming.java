@@ -9,5 +9,6 @@ public class Lemming extends Animal {
         super(cell);
         sprite = Images.lemming;
         name = "Lemming";
+        costOfGenome = 80;
     }
 }

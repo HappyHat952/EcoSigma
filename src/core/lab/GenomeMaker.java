@@ -1,5 +1,6 @@
 package core.lab;
 
+import core.Game;
 import core.Main;
 import core.buttons.Button;
 import core.ecosystems.general.Organism;
@@ -20,7 +21,7 @@ public class GenomeMaker extends LabScreen {
     {
         super();
         machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.05f), (int)(Main.getScreenHeight()*.3f),
-                Images.genomeMaker.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2)));
+                Images.genomeMaker.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2)), 1);
         screenButtons = new ArrayList<Button>();
         id = 1;
     }
@@ -40,8 +41,8 @@ public class GenomeMaker extends LabScreen {
             g.setColor(Color.black);
             g.setFont(Fonts.big);
             g.drawString("GENOME MAKER", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
-            g.drawString("Pick the Genome of an Organism to Clone!", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.17f);
-
+            g.drawString("Purchase Genome to Clone", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.17f);
+            g.drawString("Money "+ Game.getCurrentShop().getMoney(), x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.22f);
 
 
             g.setLineWidth(3);
@@ -58,9 +59,9 @@ public class GenomeMaker extends LabScreen {
                     g.setFont(Fonts.medium);
                     g.drawString(b.getName().substring(2) +" genome",x + Main.getScreenWidth()*.125f, Main.getScreenHeight()*.47f);
                     int letterW = Fonts.medium.getWidth("G");
-                    //g.drawString(segments[screenButtons.indexOf(b)].substring(0, 1+(int)((width - Main.getScreenWidth()*.25f) /letterW)),
-                    //        x + Main.getScreenWidth()*.125f,
-                    //        y+ Main.getScreenHeight() *.5f);
+                    g.drawString(segments[screenButtons.indexOf(b)].substring(0, 1+(int)((width - Main.getScreenWidth()*.25f) /letterW)),
+                            x + Main.getScreenWidth()*.125f,
+                            y+ Main.getScreenHeight() *.5f);
                 }
             }
 
@@ -103,9 +104,12 @@ public class GenomeMaker extends LabScreen {
         {
             for(Button b: screenButtons)
             {
-                if (b.isMouseOver(x,y))
+                Class<? extends Organism> o = Lab.getAvailableOrganisms().get(screenButtons.indexOf(b));
+                int cost = Lab.getOrganism(o).getCostOfGenome();
+                if (b.isMouseOver(x,y) && Game.getCurrentShop().hasMoney(cost))
                 {
                     Lab.addGenome(new Genome(Lab.getAvailableOrganisms().get(screenButtons.indexOf(b))));
+                    Game.getCurrentShop().removeMoney(cost);
                 }
             }
         }

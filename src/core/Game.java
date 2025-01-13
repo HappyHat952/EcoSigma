@@ -1,6 +1,7 @@
 package core;
 
 import core.ecosystems.Ecosystem;
+import core.ecosystems.Shop;
 import core.ecosystems.arctic.Arctic;
 import core.ecosystems.coralreef.CoralReef;
 import core.ecosystems.farm.Farm;
@@ -138,6 +139,8 @@ public class Game extends BasicGameState
 	public static Ecosystem getCurrentLevel() {
 		return ecosystems[levelID];
 	}
+
+	public static Shop getCurrentShop(){ return getCurrentLevel().getShop();}
 
 	public static void pause()
 	{

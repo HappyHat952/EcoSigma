@@ -36,13 +36,13 @@ public class CloneProgress {
     {
         //progressBar
         g.setColor(Color.black);
-        g.fillRect(Main.getScreenWidth()*.23f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
-                , Main.getScreenWidth()*.37f, Main.getScreenHeight()*.12f);
+        g.fillRect(LabScreen.getScreenX()+Main.getScreenWidth()*.11f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
+                , Main.getScreenWidth()*.43f, Main.getScreenHeight()*.12f);
         g.setColor(Color.cyan);
-        g.fillRect(Main.getScreenWidth()*.23f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
-                , Main.getScreenWidth()*.37f*(totalTime*1f/maxTime), Main.getScreenHeight()*.12f);
+        g.fillRect(LabScreen.getScreenX()+Main.getScreenWidth()*.11f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
+                , Main.getScreenWidth()*.43f*(totalTime*1f/maxTime), Main.getScreenHeight()*.12f);
         g.setColor(Color.white); g.setFont(Fonts.medium);
-        g.drawString(""+totalTime+"/ "+maxTime+": "+isTiming+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        g.drawString("Creating "+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
 
         if (timerOrEcosystem != null)
         {

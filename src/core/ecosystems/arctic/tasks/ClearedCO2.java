@@ -17,7 +17,7 @@ public class ClearedCO2 extends Task {
 //        totalClouds = arctic.getClouds().size();
         totalClouds = 10;
         cloudsDone = 0;
-        moneyValue = 20;
+        moneyValue = 400;
     }
 
 
