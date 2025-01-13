@@ -33,7 +33,7 @@ public class OrganismItem {
         this.myOrganism = myOrganism;
         this.grid = grid;
         this.i = i;
-        numOrganisms = 10;
+        numOrganisms = 0;
         myImage = Lab.getOrganismImage(myOrganism).getScaledCopy(size,size);
 
     }
@@ -44,7 +44,7 @@ public class OrganismItem {
         g.drawImage(myImage,x,y);
         if (numOrganisms == 0)
         {
-            g.setColor (new Color(255,0,0,20));
+            g.setColor (new Color(255,0,0,50));
             g.fillRect(x,y,size,size);
         }
       //  g.drawImage(Lab.getOrganismName())
@@ -54,7 +54,7 @@ public class OrganismItem {
     }
 
     public void action() {
-        if (numOrganisms >0 && !grid.mouseHasOrganism())
+        if (numOrganisms >0)
         {
             if (grid.isMouseOrganismItem(this))
             {
@@ -65,6 +65,10 @@ public class OrganismItem {
                 grid.addMouseOrganismItem(this);
             }
 
+        }
+        else
+        {
+            grid.removeMouseOrganismItem();
         }
     }
 

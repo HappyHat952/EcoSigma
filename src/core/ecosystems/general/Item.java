@@ -24,19 +24,11 @@ public class Item {
     protected Color myColor;
     protected boolean wasClicked;
     protected int myNum;
+    protected Shop shop;
 
 
-    public Item(String name, Image image, String info, int i, int y) {
-        this.name = name;
-        this.image = image;
-        this.info = info;
-        index = i;
-        this.x = i* Shop.getBuffer() + Shop.getMargin() + Grid.getGridWidth();
-        this.y = Shop.getHeight();
-        cost = 4;
-    }
 
-    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int popupID) {
+    public Item(int i, Class<? extends Building> buildingClass, Building buildingObject, int popupID, Shop shop) {
         this.name = buildingObject.getName();
         this.image = buildingObject.getMyImage().getScaledCopy((int)(Main.getScreenWidth()*.12), (int)(Main.getScreenWidth()*.12));
         this.info = buildingObject.getInfo();
@@ -47,6 +39,7 @@ public class Item {
         this.buildingObject = buildingObject;
         myColor = Color.white;
         cost = buildingObject.getCost();
+        this.shop = shop;
 
     }
 
@@ -56,9 +49,22 @@ public class Item {
         g.drawString(name+"\n$ "+cost, x + 20, y + image.getHeight() + 10);
         g.drawRect(x, y,image.getWidth(), image.getHeight());
 
+        if (shop != null && !shop.hasMoney(cost) )
+        {
+            g.setColor (new Color(255,0,0,50));
+            g.fillRect(x,y,image.getWidth(),image.getHeight());
+        }
+
 
         if (mouseOver(Mouse.getX(), Main.getScreenHeight() -Mouse.getY())) {
             image.drawFlash(x, y);
+            if(info != null)
+            {
+                g.setFont(Fonts.small);
+                g.setColor(Color.black);
+                g.drawString(name, x + image.getWidth()*.6f - Fonts.small.getWidth(name) / .6f, y + image.getHeight() / 2f);
+            }
+
         }
     }
 

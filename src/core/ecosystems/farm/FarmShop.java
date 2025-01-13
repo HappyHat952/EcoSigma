@@ -34,9 +34,9 @@ public class FarmShop extends Shop {
 
     public void setItems()
     {
-        greenHouseItem = new Item(0, GreenHouse.class, new GreenHouse(), 2);
+        greenHouseItem = new Item(0, GreenHouse.class, new GreenHouse(), 2, this);
         items.add(greenHouseItem);
-        waterTankItem = (new Item (1, WaterTank.class, new WaterTank(),3));
+        waterTankItem = (new Item (1, WaterTank.class, new WaterTank(),3,this));
         items.add(waterTankItem);
 //        items.add(new Item (2, GreenHouse.class, new GreenHouse(),4));
     }

@@ -14,7 +14,7 @@ import org.newdawn.slick.SlickException;
 
 import java.util.ArrayList;
 
-public class Shop {
+abstract public class Shop {
 
     private final int x = (int) (Main.getScreenWidth() * .7f);
     private static final int y = (int)( Main.getScreenHeight() * .75f);
@@ -37,10 +37,9 @@ public class Shop {
 
     }
 
-    public void setItems() {
+    abstract public void setItems();
 
-    }
-
+    public boolean hasMoney(int value){ return value<= money;}
     public void addMoney(int value)
     {
         money += value;

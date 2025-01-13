@@ -220,6 +220,9 @@ public class Grid {
                             }
                             mouseOrganismItem.removeOneOrganism();
                         }
+                        else {
+                            removeMouseOrganismItem();
+                        }
 
 
                     }
@@ -418,6 +421,7 @@ public class Grid {
     }
     public void removeMouseOrganismItem() {
       mouseOrganismItem = null;
+      gc.setDefaultMouseCursor();
 
     }
 }

@@ -18,7 +18,7 @@ public class WaterTank extends Building {
     public WaterTank()
     {
         super();
-        myImage = Images.placeHolder.getScaledCopy(Cell.getWidth() , (int)(Cell.getWidth()*1.5f));
+        myImage = Images.waterTank.getScaledCopy(Cell.getWidth() , (int)(Cell.getWidth()*2f));
         cost = 40;
         name = "Water Tank";
         corners = false;

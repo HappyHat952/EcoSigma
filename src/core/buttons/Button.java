@@ -15,6 +15,7 @@ public class Button {
     protected Color color;
     protected Image image;
     protected  String name;
+    protected String info;
 
     public Button(int x, int y, int w, int h, Color color) {
         this.x = x;
@@ -31,6 +32,16 @@ public class Button {
         this.h = h;
         this.color = color;
         this.name = name;
+    }
+
+    public Button(int x, int y, int w, int h, Color color, String name, String info) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+        this.name = name;
+        this.info = info;
     }
 
     public Button(int x, int y, Image image) {
@@ -64,15 +75,18 @@ public class Button {
                 g.fillRect(x,y,w,h);
             }
             else {
-//                Image whiteImage = image;
-//                whiteImage.setImageColor(0f,0f,0f,.5f);
-//                g.drawImage(whiteImage,x,y);
                 image.drawFlash(x,y);
             }
             if (name != null) {
                 g.setFont(Fonts.small);
                 g.setColor(Color.black);
                 g.drawString(name, x + w / 2f - Fonts.small.getWidth(name) / 2f, y + h / 2f);
+            }
+            if (info != null)
+            {
+                g.setFont(Fonts.small);
+                g.setColor(Color.black);
+                g.drawString(info, x + w /2f - Fonts.small.getWidth(info) /2f , y + h *.6f);
             }
 
         }else if (name != null){

@@ -30,7 +30,7 @@ abstract public class Ecosystem {
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
-        shop = new Shop(grid, gc);
+        //shop = new Shop(grid, gc);
         lab = new LabButton();
         taskManager = new TaskManager();
       //  buildings = new ArrayList<>();
