@@ -28,7 +28,7 @@ public class RainForestGrid extends Grid {
         Fire fire1 = new Fire();
         fire1.assignCell(cells[5][5], this);
         addBuilding(fire1);
-//        Fire fire2 = new Fire();
+//        Fire fire2 = new Fire(); HELLO
 //        fire2.assignCell(cells[7][7], this);
 //        addBuilding(fire2);
         Fire fire3 = new Fire();
