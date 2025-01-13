@@ -23,6 +23,7 @@ public class Building {
     protected String info;
     protected boolean isCompleted;
     protected Ecosystem ecosystem;
+    protected boolean isMoving; // tells if a building is a moving building ( a robot)) or stays still.
 
     protected int frame;
     protected int frameTimer;
@@ -99,6 +100,7 @@ public class Building {
     }
     //accessor
 
+    public boolean isMoving(){ return isMoving;}
     public int getMyCol() {
         return myCol;
     }

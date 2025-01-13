@@ -40,6 +40,7 @@ public class CoralRobot extends Building {
         y = grid.getCells()[myRow][myCol].getY();
         c = new ArrayList<>();
         direction = 0;
+        isMoving = true;
     }
 
     public void update() {

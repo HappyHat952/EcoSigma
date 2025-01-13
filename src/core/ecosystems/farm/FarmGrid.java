@@ -12,6 +12,7 @@ import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
 import core.setup.Images;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,15 @@ public class FarmGrid extends Grid {
         }
 
 
+    }
+
+    public void render(Graphics g)
+    {
+        super.render(g);
+        for (GreenHouse gh: greenHouses)
+        {
+            gh.render(g);
+        }
     }
 
     public void updateGreenHousePlants()

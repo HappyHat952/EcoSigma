@@ -19,6 +19,7 @@ public class Grid {
 
     protected Building mouseBuilding;//a building that is purchased (only one)
     protected Organism mouseOrganism; // an organism stored on the mouse;
+    protected OrganismItem mouseOrganismItem;
 
     protected ArrayList<Building> buildings;
     protected ArrayList<Animal> animals;
@@ -66,14 +67,14 @@ public class Grid {
 //        {
 //            p.render(g);
 //        }
-//        for (Building b: buildings)
-//        {
-//            if (b.getCells() != null)
-//            {
-//                b.render(g);
-//            }
-//
-//        }
+        for (Building b: buildings)
+        {
+            if (b.getCells() != null && b.isMoving())
+            {
+                b.render(g);
+            }
+
+        }
     }
 
     public void update()
@@ -112,6 +113,9 @@ public class Grid {
     public static int getGridWidth(){ return gridWidth;}
     public boolean mouseHasBuilding(){ return !(mouseBuilding == null);}
     public boolean mouseHasOrganism(){ return !(mouseOrganism == null);}
+    public boolean  mouseHasOrganismItem(){ return !(mouseOrganismItem == null);}
+
+    public boolean isMouseOrganismItem(OrganismItem oi){ return oi == mouseOrganismItem;}
     public ArrayList<Cell> getOpenAdjacentCells(int r, int c)
     {
         //adds all available cells (checking boundaries)
@@ -162,25 +166,14 @@ public class Grid {
     {
         gridWidth = (int) (Main.getScreenWidth() * (float)1080/1920) ;
     }
-//    public void addMouseBuilding(Building b){
-//        //only adds a new building if the current one is placed;
-//        if (!mouseHasBuilding())
-//        {
-//            mouseBuilding = b;
-//        }
-//        }
-    public void mousePressed(int x, int y, int button)
-    {
+
+    public void mousePressed(int x, int y, int button) {
 
         //adds a building if the mouse has a building;
-        if (mouseHasBuilding())
-        {
-            for (int i = 0; i < GRID_SIZE; i++)
-            {
-                for (int j = 0; j < GRID_SIZE; j++)
-                {
-                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding() &&!cells[i][j].hasAnimal() && !cells[i][j].hasPlant())
-                    {
+        if (mouseHasBuilding()) {
+            for (int i = 0; i < GRID_SIZE; i++) {
+                for (int j = 0; j < GRID_SIZE; j++) {
+                    if (cells[i][j].mouseOver(x, y) && !cells[i][j].hasBuilding() && !cells[i][j].hasAnimal() && !cells[i][j].hasPlant()) {
                         mouseBuilding.assignCell(cells[i][j], this);
                         addBuilding(mouseBuilding);
                         mouseBuilding = null;
@@ -192,26 +185,42 @@ public class Grid {
         }
 
         //adds an organism if the mouse contains an organism
-        else if (mouseHasOrganism())
-        {
-            for (int i = 0; i < GRID_SIZE; i++)
-            {
-                for (int j = 0; j < GRID_SIZE; j++)
-                {
-                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding() &&!cells[i][j].hasAnimal() && !cells[i][j].hasPlant())
-                    {
+        else if (mouseHasOrganism()) {
+            for (int i = 0; i < GRID_SIZE; i++) {
+                for (int j = 0; j < GRID_SIZE; j++) {
+                    if (cells[i][j].mouseOver(x, y) && !cells[i][j].hasBuilding() && !cells[i][j].hasAnimal() && !cells[i][j].hasPlant()) {
                         addOrganism(mouseOrganism.getClass(), cells[i][j]);
                         mouseOrganism = null;
                         gc.setDefaultMouseCursor();
                         //adds the new organism to the list so that it will be rendered
-                        if (mouseOrganism instanceof Animal)
-                        {
+                        if (mouseOrganism instanceof Animal) {
                             animals.add((Animal) mouseOrganism);
                         }
-                        if (mouseOrganism instanceof Plant )
-                        {
+                        if (mouseOrganism instanceof Plant) {
                             plants.add((Plant) mouseOrganism);
                         }
+
+                    }
+                }
+            }
+        } else if (mouseHasOrganismItem())
+        {
+            for (int i = 0; i < GRID_SIZE; i++) {
+                for (int j = 0; j < GRID_SIZE; j++) {
+                    if (cells[i][j].mouseOver(x, y) && !cells[i][j].hasBuilding() && !cells[i][j].hasAnimal() && !cells[i][j].hasPlant()) {
+                        if (mouseOrganismItem.hasOrganisms())
+                        {
+                            Organism organism = addOrganism(mouseOrganismItem.getOrganismClass(), cells[i][j]);
+                            //adds the new organism to the list so that it will be rendered
+                            if (organism != null && organism instanceof Animal) {
+                                animals.add((Animal) organism);
+                            }
+                            if (organism != null && organism instanceof Plant) {
+                                plants.add((Plant) organism);
+                            }
+                            mouseOrganismItem.removeOneOrganism();
+                        }
+
 
                     }
                 }
@@ -269,7 +278,7 @@ public class Grid {
         //animals.add(new Animal(cell));
     }
 
-    public void addOrganism(Class<? extends Organism> clazz, Cell cell) {
+    public Organism addOrganism(Class<? extends Organism> clazz, Cell cell) {
         if (!getAllOpenCells().isEmpty())
         {
             try {
@@ -291,13 +300,16 @@ public class Grid {
                     }
                     //plants.add((Plant) organism);
                 }
+                return organism;
 
 
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
+
         }
         //animals.add(new Animal(cell));
+        return null;
     }
 
     public void addPlant(Class<? extends Plant> plant, Cell cell) {
@@ -354,7 +366,7 @@ public class Grid {
             Building newBuilding = building.getDeclaredConstructor().newInstance();
             //buildings.add(newBuilding);
 
-            if (!mouseHasBuilding() && !mouseHasOrganism())
+            if (!mouseHasBuilding() && !mouseHasOrganism()  && !mouseHasOrganismItem())
             {
                 mouseBuilding = newBuilding;
             }
@@ -366,11 +378,12 @@ public class Grid {
     }
     public void addMouseOrganism(Class<? extends Organism> organism) {
         ArrayList<Cell> cellList = getAllOpenCells();
-        Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        //Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        Cell cell = new Cell(40,50);
         try {
             Organism newOrganism = organism.getDeclaredConstructor(Cell.class).newInstance(cell);
 
-            if (!mouseHasBuilding() && !mouseHasOrganism() )
+            if (!mouseHasBuilding() && !mouseHasOrganism()  && !mouseHasOrganismItem())
             {
                 mouseOrganism = newOrganism;
                 gc.setMouseCursor(newOrganism.getImage().getScaledCopy(50,50),25,25 );
@@ -380,5 +393,28 @@ public class Grid {
         }
 
         //animals.add(new Animal(cell));
+    }
+    public void addMouseOrganismItem(OrganismItem oi) {
+        ArrayList<Cell> cellList = getAllOpenCells();
+        //Cell cell = cellList.get((int)(Math.random()*cellList.size()));
+        Cell cell = new Cell(40,50);
+        mouseOrganismItem = oi;
+        try {
+
+            Organism newOrganism = oi.getOrganismClass().getDeclaredConstructor(Cell.class).newInstance(cell);
+
+            if (!mouseHasBuilding() && !mouseHasOrganism() )
+            {
+                gc.setMouseCursor(newOrganism.getImage().getScaledCopy(50,50),25,25 );
+            }
+        } catch (SlickException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        //animals.add(new Animal(cell));
+    }
+    public void removeMouseOrganismItem() {
+      mouseOrganismItem = null;
+
     }
 }

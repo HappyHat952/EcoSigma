@@ -56,8 +56,15 @@ public class OrganismItem {
     public void action() {
         if (numOrganisms >0 && !grid.mouseHasOrganism())
         {
-            grid.addMouseOrganism(myOrganism);
-            numOrganisms --;
+            if (grid.isMouseOrganismItem(this))
+            {
+                grid.removeMouseOrganismItem();
+            }
+            else
+            {
+                grid.addMouseOrganismItem(this);
+            }
+
         }
     }
 
@@ -65,6 +72,13 @@ public class OrganismItem {
     {
         numOrganisms++;
     }
+    public void removeOneOrganism()
+    {
+        numOrganisms--;
+    }
+
+    public int getNumOrganisms(){ return numOrganisms;}
+    public boolean hasOrganisms(){ return numOrganisms>0;}
 
     public Class<? extends Organism> getOrganismClass()
     {

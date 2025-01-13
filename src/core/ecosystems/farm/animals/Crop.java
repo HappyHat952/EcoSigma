@@ -20,14 +20,10 @@ public class Crop extends Plant {
 
     public void update(Grid grid)
     {
-
         FarmCell fcell = (FarmCell)cell;
         if (fcell.isWatered())
         {
             super.update( grid);
-//            //growTime = (int)( (float)growTime * .5f);
-//            setGrowTime(2);
-//            waterAdjusted = true;
         }
     }
 

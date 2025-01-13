@@ -30,7 +30,7 @@ public class Shop {
 
     public Shop(Grid g, GameContainer gc) {
         items = new ArrayList<>();
-        money = 5000;
+        money = 30;
         grid = g;
         this.gc = gc;
         organismItems = new ArrayList<>();
