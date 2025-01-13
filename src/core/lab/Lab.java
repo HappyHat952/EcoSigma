@@ -119,11 +119,12 @@ public class Lab extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
        if (!Game.getPause())
        {
-           for (LabScreen l: machines)
-           {
-               l.update();
-           }
+
        }
+        for (LabScreen l: machines)
+        {
+            l.update();
+        }
        PopupManager.update();
        for (int j = 0; j< genomes.size(); j++)
        {
@@ -209,6 +210,18 @@ public class Lab extends BasicGameState {
     public static ArrayList<Genome> getGenomes(){ return genomes;}
 
     public static void addOrganismToGame(Class<? extends Organism> o ){ Game.getCurrentLevel().addOrganism(o);}
+
+    public static Organism getOrganism(Class<? extends Organism> o)
+    {
+        try {
+            Constructor constructor = o.getDeclaredConstructor(Cell.class);
+            Organism organism = o.getDeclaredConstructor(Cell.class).newInstance(new Cell(0,0));
+            return organism;
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static String getOrganismName(Class<? extends Organism> o)
     {

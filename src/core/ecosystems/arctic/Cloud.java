@@ -15,6 +15,7 @@ public class Cloud {
     private int xSpeed;
     private int ySpeed;
     private Image image;
+    private int value;
 
     public Cloud() {
         image = Images.cloudSheet.getSprite(0, 0);
@@ -26,6 +27,8 @@ public class Cloud {
 
         xSpeed = (int) (Math.random() * 2) + 2;
         ySpeed = (int) (Math.random() * 2) + 2;
+
+        value = 15;
     }
 
     public void render(Graphics g) {
@@ -45,6 +48,11 @@ public class Cloud {
             ySpeed = ySpeed * -1;
             y+= ySpeed;
         }
+    }
+
+    public int getValue()
+    {
+        return value;
     }
 
 }

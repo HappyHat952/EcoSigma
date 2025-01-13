@@ -33,15 +33,16 @@ public class DestroyedOilDrills extends Task {
     @Override
     public void update() {
         // hello
-        for (Building b: grid.getBuildings()) {
+        for (int j = 0; j< grid.getBuildings().size(); j++) {
+            Building b = grid.getBuildings().get(j);
             if (b instanceof Protesters) {
                 if (((Protesters) b).isCompleted()) {
                     for (int i = 0; i < grid.getBuildings().size(); i++) {
                         if (grid.getBuildings().get(i).equals(((Protesters) b).getOilDrill())){
                             OilDrill oilDrill = ((Protesters) b).getOilDrill();
                             grid.getCells()[oilDrill.getMyRow()][oilDrill.getMyCol()].removeBuilding();
-                            grid.getBuildings().remove(i);
-                            return;
+                            grid.getBuildings().remove(oilDrill);
+                            i--;
                         }
                     }
                     ((Protesters) b).setCompleted(false);

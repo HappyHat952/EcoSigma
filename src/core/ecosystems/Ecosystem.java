@@ -25,7 +25,6 @@ abstract public class Ecosystem {
     protected GameContainer gc;
     protected StateBasedGame sbg;
     protected PopupManager pu;
-    protected ArrayList<Building> buildings;
     protected boolean isCompleted;
     protected boolean hasBeenOpened;
 
@@ -34,7 +33,7 @@ abstract public class Ecosystem {
         shop = new Shop(grid, gc);
         lab = new LabButton();
         taskManager = new TaskManager();
-        buildings = new ArrayList<>();
+      //  buildings = new ArrayList<>();
         this.gc = gc;
         this.sbg = sbg;
         this.pu = pu;
@@ -62,10 +61,6 @@ abstract public class Ecosystem {
         lab.render(g);
         shop.render(g);
         taskManager.render(g);
-        for (Building b : buildings)
-        {
-            b.render(g);
-        }
         if (isCompleted) {
             g.setFont(Fonts.big);
             g.drawString("YOU WINNNNNN", 500, 500);

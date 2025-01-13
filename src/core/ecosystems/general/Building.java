@@ -11,6 +11,7 @@ public class Building {
     protected int myRow;
     protected int myCol;
     protected int cost;
+    protected int removalPrice;
 
     protected int cellWidth;
     protected int cellHeight;

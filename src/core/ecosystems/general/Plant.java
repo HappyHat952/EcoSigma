@@ -42,7 +42,7 @@ public class Plant extends Organism{
     public void render(Graphics g)
     {
         g.drawImage(sprite.getSubImage(0,frame).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
-        g.drawString(""+ frame, x,y);
+        g.drawString(name, x,y);
     }
     public void update(Grid grid)
     {

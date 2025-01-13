@@ -26,19 +26,15 @@ public class OrganismMaker extends LabScreen {
     }
     @Override
     public void update() {
-
-        if (open)
+        removeCompleted();
+        setCloneSlots();
+        for (CloneProgress c: cloneSlots)
         {
-            removeCompleted();
-            setCloneSlots();
-            for (CloneProgress c: cloneSlots)
+            if (c!= null)
             {
-                if (c!= null)
-                {
-                    c.update();
-                }
-
+                c.update();
             }
+
         }
 
     }

@@ -16,6 +16,7 @@ public class CO2Sucker extends Building {
         time = 0;
         frameRate = 12;
         resizeImage();
+        cost = 35;
     }
 
     public void update() {

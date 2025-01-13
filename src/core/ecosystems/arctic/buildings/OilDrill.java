@@ -10,5 +10,6 @@ public class OilDrill extends Building {
         name = "OilDrill";
         info = "help please";
         resizeImage();
+        removalPrice = 300;
     }
 }

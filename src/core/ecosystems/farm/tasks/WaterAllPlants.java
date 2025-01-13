@@ -9,6 +9,7 @@ import core.ecosystems.tasks.Task;
 public class WaterAllPlants extends Task {
     public WaterAllPlants(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 200;
     }
 
     @Override

@@ -7,6 +7,7 @@ public class Organism {
     protected String name;
     protected Image image;
     protected SpriteSheet sprite;
+    protected int costOfGenome;
 
     protected Organism(Cell cell)
     {
@@ -24,4 +25,5 @@ public class Organism {
         }
         return image;
     }
+    public int getCostOfGenome(){ return costOfGenome;}
 }

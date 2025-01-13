@@ -21,7 +21,6 @@ public class Cell {
 
     protected Color myColor;
     protected Image myImage;
-
     protected Building myBuilding;
     protected Animal myAnimal;
     protected Plant myPlant;

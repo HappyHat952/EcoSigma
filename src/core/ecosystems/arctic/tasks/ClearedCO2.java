@@ -35,7 +35,8 @@ public class ClearedCO2 extends Task {
                     count++;
                     ((CO2Sucker) b).setCompleted(false);
                     if (!Arctic.getClouds().isEmpty()) {
-                        Arctic.getClouds().removeLast();
+//                        Arctic.getClouds().removeLast();
+                        Arctic.removeCloud();
                     }
                 }
             }

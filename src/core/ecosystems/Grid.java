@@ -81,43 +81,28 @@ public class Grid {
 
     public void update()
     {
-//        for (int i = 0; i < GRID_SIZE; i++)
-//        {
-//            for (int j = 0; j < GRID_SIZE; j++)
-//            {
-//                cells[i][j].update(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
-//                if (cells[i][j].hasBuilding() && !(cells[i][j].getBuilding() instanceof Ranger)){
-//                    cells[i][j].getBuilding().update();
-//                }
-//            }
-//        }
         for (Building b: buildings) {
-//            if (b instanceof Ranger) {
                 b.update();
-//            }
-
         }
         for (Animal a: animals)
         {
             a.update(this);
-//            if (True)
-//            {
-//                addAnimal(a.getClass());
-//            }
         }
         for (Plant p: plants)
         {
             p.update(this);
 
         }
-        if (!animals.isEmpty()&& Math.random()<.0001)
-        {
-            addAnimal(animals.get((int)(animals.size()*Math.random())).getClass());
-        }
-        if (!plants.isEmpty()&& Math.random()<.0001)
-        {
-            addPlant(plants.get((int)(plants.size()*Math.random())).getClass());
-        }
+
+        //will randomly add a new animal to the scene
+//        if (!animals.isEmpty()&& Math.random()<.0001)
+//        {
+//            addAnimal(animals.get((int)(animals.size()*Math.random())).getClass());
+//        }
+//        if (!plants.isEmpty()&& Math.random()<.0001)
+//        {
+//            addPlant(plants.get((int)(plants.size()*Math.random())).getClass());
+//        }
     }
 
     //ACCESSOR
@@ -189,18 +174,18 @@ public class Grid {
 //        }
     public void mousePressed(int x, int y, int button)
     {
+
+        //adds a building if the mouse has a building;
         if (mouseHasBuilding())
         {
             for (int i = 0; i < GRID_SIZE; i++)
             {
                 for (int j = 0; j < GRID_SIZE; j++)
                 {
-                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
+                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding() &&!cells[i][j].hasAnimal() && !cells[i][j].hasPlant())
                     {
                         mouseBuilding.assignCell(cells[i][j], this);
                         addBuilding(mouseBuilding);
-                        System.out.println(mouseBuilding.toString() + "row: "+ i + "col: "+ j );
-                        System.out.println(mouseBuilding.toString() + "row: "+ mouseBuilding.getMyRow() + "col: " + mouseBuilding.getMyCol());
                         mouseBuilding = null;
                         gc.setDefaultMouseCursor();
 
@@ -208,19 +193,20 @@ public class Grid {
                 }
             }
         }
+
+        //adds an organism if the mouse contains an organism
         else if (mouseHasOrganism())
         {
-            System.out.println("mouse has organism");
             for (int i = 0; i < GRID_SIZE; i++)
             {
                 for (int j = 0; j < GRID_SIZE; j++)
                 {
-                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
+                    if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding() &&!cells[i][j].hasAnimal() && !cells[i][j].hasPlant())
                     {
-                        System.out.println("cell identified");
                         addOrganism(mouseOrganism.getClass(), cells[i][j]);
                         mouseOrganism = null;
                         gc.setDefaultMouseCursor();
+                        //adds the new organism to the list so that it will be rendered
                         if (mouseOrganism instanceof Animal)
                         {
                             animals.add((Animal) mouseOrganism);
@@ -309,54 +295,6 @@ public class Grid {
         //animals.add(new Animal(cell));
     }
 
-    public void addAnimal(Class<? extends Animal> animal) {
-        if (!getAllOpenCells().isEmpty())
-        {
-            ArrayList<Cell> cellList = getAllOpenCells();
-            Cell cell = cellList.get((int)(Math.random()*cellList.size()));
-            try {
-                Constructor constructor = animal.getDeclaredConstructor(Cell.class);
-                animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-
-        //animals.add(new Animal(cell));
-    }
-
-    public void addAnimal(Class<? extends Animal> animal, Cell cell) {
-        if (!getAllOpenCells().isEmpty())
-        {
-            ArrayList<Cell> cellList = getAllOpenCells();
-            try {
-                Constructor constructor = animal.getDeclaredConstructor(Cell.class);
-                animals.add(animal.getDeclaredConstructor(Cell.class).newInstance(cell));
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-
-        //animals.add(new Animal(cell));
-    }
-
-    public void addPlant(Class<? extends Plant> plant) {
-        if (!getAllOpenCells().isEmpty()) {
-            ArrayList<Cell> cellList = getAllOpenCells();
-            Cell cell = cellList.get((int) (Math.random() * cellList.size()));
-            try {
-                Constructor constructor = plant.getDeclaredConstructor(Cell.class);
-                plants.add(plant.getDeclaredConstructor(Cell.class).newInstance(cell));
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
-                     InvocationTargetException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        //animals.add(new Animal(cell));
-    }
     public void addPlant(Class<? extends Plant> plant, Cell cell) {
         if (!getAllOpenCells().isEmpty()) {
             try {

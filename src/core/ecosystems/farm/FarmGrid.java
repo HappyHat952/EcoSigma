@@ -10,6 +10,7 @@ import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
 import core.ecosystems.general.Organism;
 import core.ecosystems.general.Plant;
+import core.setup.Images;
 import org.newdawn.slick.GameContainer;
 
 import java.util.ArrayList;
@@ -27,20 +28,23 @@ public class FarmGrid extends Grid {
                 cells[i][j] = new FarmCell(j, i);
             }
         }
-        GreenHouse greenHouse = new GreenHouse();
-        greenHouses = new ArrayList<GreenHouse>();
-        removedCrops = new ArrayList<MonoCultureCrop>();
-        allTimePluroCrop = new ArrayList<PluroCultureCrop>();
+        greenHouses = new ArrayList<>();
+        removedCrops = new ArrayList<>();
+        allTimePluroCrop = new ArrayList<>();
         WaterTank w = (new WaterTank());
                 w.assignCell(cells[2][2], this);
                 addBuilding(w);
 
 
-        for (int i = 0; i< cells.length; i+=2)
+        for (int i = 0; i< cells.length; i++)
         {
             for (int j = 0; j< cells[0].length; j ++)
             {
-                addPlant(MonoCultureCrop.class, cells[i][j]);
+                if (i==9||i==5||i==4||i==0 || j==9||j==5||j==4||j==0)
+                {
+                    addPlant(MonoCultureCrop.class, cells[i][j]);
+                }
+
             }
         }
 
@@ -53,12 +57,15 @@ public class FarmGrid extends Grid {
         {
             for (GreenHouse g: greenHouses)
             {
+
                 if (g.isOver(p.getCell()))
                 {
+
                     if (p instanceof MonoCultureCrop)
                     {
                         Crop c = (Crop)p ;
                         c.setGrowTime(5);
+
                     }
                     if (p instanceof PluroCultureCrop)
                     {
@@ -111,9 +118,9 @@ public class FarmGrid extends Grid {
 
             for(int i = 4 + c; i>=c; i--)
             {
-                for (int j = r; j<4+r; j++)
+                for (int j = r; j<=4+r; j++)
                 {
-                    GHcells[k] = cells[j][j];
+                    GHcells[k] = cells[j][i];
                     k++;
                 }
             }
@@ -151,7 +158,7 @@ public class FarmGrid extends Grid {
         {
             Plant p = plants.get(i);
             p.click(x,y, button);
-            if (p.mouseOver(x,y))
+            if (p.mouseOver(x,y) && p.isMature())
             {
                 Crop c = (Crop) p;
                 shop.addMoney(c.getPrice());
@@ -159,6 +166,17 @@ public class FarmGrid extends Grid {
                 if (c instanceof MonoCultureCrop)
                 {
                     removedCrops.add((MonoCultureCrop) c);
+                    if (Math.random()<.3)
+                    {
+                        shop.addOrganism(MonoCultureCrop.class);
+                    }
+                }
+                if (c instanceof PluroCultureCrop)
+                {
+                    for (int j = 1 + (int)(Math.random()*2); j>0; j--)
+                    {
+                        shop.addOrganism(PluroCultureCrop.class);
+                    }
                 }
                 i--;
 
@@ -170,6 +188,21 @@ public class FarmGrid extends Grid {
     public int getNumGreenHouses()
     {
         return greenHouses.size();
+    }
+    public int getNumWateredCells()
+    {
+        int count =0;
+        for (Cell[] cs: cells)
+        {
+            for (Cell c: cs)
+            {
+                if ( ((FarmCell)c).isWatered())
+                {
+                    count ++;
+                }
+            }
+        }
+        return count;
     }
     public int getNumRemovedMono()
     {

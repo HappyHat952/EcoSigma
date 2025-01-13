@@ -7,14 +7,15 @@ import core.ecosystems.tasks.Task;
 public class RemoveMonocultures extends Task {
     public RemoveMonocultures(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 90;
     }
 
     @Override
     public int getPercentDone() {
 
-        if (((FarmGrid)grid).getNumRemovedMono()<=20)
+        if (((FarmGrid)grid).getNumRemovedMono()<=50)
         {
-            return (int)((float)( ((FarmGrid)grid) .getNumRemovedMono() )/20 * 100);
+            return (int)((float)( ((FarmGrid)grid) .getNumRemovedMono() )/50 * 100);
         }
         else {
             return 100;

@@ -20,10 +20,10 @@ public class Farm extends Ecosystem {
         grid.addShop(shop);
         PopupLoader.loadPopups(ID);
         //add new tasks
-        taskManager.addTask(new AddedGreenhouse("Add four Greenhouses", grid) );
-        taskManager.addTask(new PlantTenVariedPlants("Add ten bio-diverse plants", grid));
-        taskManager.addTask(new RemoveMonocultures("remove 20 monoculture plants", grid));
-        taskManager.addTask(new WaterAllPlants("Place WaterTanks and irrigation pipes", grid));
+        taskManager.addTask(new AddedGreenhouse("Add 4 Greenhouses", grid) );
+        taskManager.addTask(new PlantTenVariedPlants("Add 10 bio-diverse plants", grid));
+        taskManager.addTask(new RemoveMonocultures("Remove 50 monoculture plants", grid));
+        taskManager.addTask(new WaterAllPlants("Water the full farm", grid));
     }
 
 }

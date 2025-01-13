@@ -17,6 +17,7 @@ public class Protesters extends Building {
         name = "Protesters";
         info = "help please";
         resizeImage();
+        cost = 200;
     }
     public void update() {
         super.update();

@@ -28,6 +28,7 @@ public class IcePump extends Building {
         iceCreated = 0;
         lastReportedIce = 0;
         resizeImage();
+        cost = 90;
     }
 
     public void update() {

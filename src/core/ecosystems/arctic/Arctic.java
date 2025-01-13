@@ -15,6 +15,7 @@ public class Arctic extends Ecosystem {
 
     private static ArrayList<Cloud> clouds;
     public static int ID;
+    public static ArcticShop myShop;
 
     public Arctic(GameContainer gc, StateBasedGame sbg, PopupManager pu, int id)
     {
@@ -22,6 +23,7 @@ public class Arctic extends Ecosystem {
         ID = id;
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
+        myShop = (ArcticShop)shop;
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         taskManager.addTask(new CreatedIce("Create Ice", grid));
         taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));
@@ -56,5 +58,10 @@ public class Arctic extends Ecosystem {
 
     public static ArrayList<Cloud> getClouds() {
         return clouds;
+    }
+
+    public static void removeCloud(){
+        clouds.removeLast();
+        myShop.addMoney(15);
     }
 }

@@ -41,8 +41,8 @@ public class CloneProgress {
         g.setColor(Color.cyan);
         g.fillRect(Main.getScreenWidth()*.23f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
                 , Main.getScreenWidth()*.37f*(totalTime*1f/maxTime), Main.getScreenHeight()*.12f);
-        g.setColor(Color.black); g.setFont(Fonts.medium);
-        g.drawString(""+totalTime+"/ "+maxTime+"+ "+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        g.setColor(Color.white); g.setFont(Fonts.medium);
+        g.drawString(""+totalTime+"/ "+maxTime+": "+isTiming+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
 
         if (timerOrEcosystem != null)
         {
@@ -53,7 +53,7 @@ public class CloneProgress {
 
     public void update()
     {
-        if (isTiming) {
+        if (isTiming ) {
             frameTime++;
 
             if (frameTime % 60 == 0) {

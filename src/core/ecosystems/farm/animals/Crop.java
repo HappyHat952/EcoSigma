@@ -7,7 +7,7 @@ import core.ecosystems.general.Plant;
 
 public class Crop extends Plant {
     int price;
-    boolean hasBeenWatered;
+    boolean waterAdjusted;
     public Crop(Cell cell) {
         super(cell);
         price = 10;
@@ -20,13 +20,14 @@ public class Crop extends Plant {
 
     public void update(Grid grid)
     {
-        super.update( grid);
+
         FarmCell fcell = (FarmCell)cell;
-        if (fcell.isWatered() && !hasBeenWatered)
+        if (fcell.isWatered())
         {
-            //growTime = (int)( (float)growTime * .5f);
-            growTime = 1;
-            hasBeenWatered = true;
+            super.update( grid);
+//            //growTime = (int)( (float)growTime * .5f);
+//            setGrowTime(2);
+//            waterAdjusted = true;
         }
     }
 

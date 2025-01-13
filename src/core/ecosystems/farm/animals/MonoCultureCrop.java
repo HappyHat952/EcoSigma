@@ -9,6 +9,8 @@ public class MonoCultureCrop extends Crop {
         super(cell);
         growTime = 8;
         frame = 0;
+        name = "monoculture";
+        price = 2;
         // frame = (int)(Math.random()*sprite.getVerticalCount());
     }
 }

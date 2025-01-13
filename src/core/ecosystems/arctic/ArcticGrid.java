@@ -23,10 +23,10 @@ public class ArcticGrid extends Grid {
         OilDrill oilDrill2 = new OilDrill();
         oilDrill2.assignCell(cells[2][1], this);
 //        OilDrill oilDrill3 = new OilDrill();
-//        oilDrill3.assignCell(cells[6][2], this);
+//        oilDrill3.assignCell(cells[8][7], this);
         addBuilding(oilDrill1);
         addBuilding(oilDrill2);
-//        addBuilding(oilDrill3);
+        //addBuilding(oilDrill3);
     }
 
     @Override

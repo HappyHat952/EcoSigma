@@ -7,6 +7,7 @@ import core.ecosystems.tasks.Task;
 public class AddedGreenhouse extends Task {
     public AddedGreenhouse(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 700;
     }
 
     @Override

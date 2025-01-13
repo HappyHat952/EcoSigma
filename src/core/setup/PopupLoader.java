@@ -1,6 +1,8 @@
 package core.setup;
 
 import core.ui.Popup;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,9 +36,9 @@ public class PopupLoader {
         else if (id == 0)
         {
             name = "arctic";
-            for (int i = 1; i<=5; i++)
+            for (int i = 1; i<=4; i++)
             {
-                POPS.add(loadPopup(name,i));
+                POPS.add(loadImagePopup(name,i));
             }
         }
         else
@@ -90,6 +92,22 @@ public class PopupLoader {
 
         }
         return new Popup();
+
+    }
+
+    static public Popup loadImagePopup(String name, int num) {
+        try {
+
+            Image image = new Image("res/popupImage/"+name+"/"+name+num+".png");
+
+            return new Popup(image);
+
+
+        }
+        catch (SlickException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }
