@@ -20,7 +20,6 @@ public class FarmShop extends Shop {
     {
         super(grid, gc);
         setItems();
-        organismItem = new OrganismItem(0, PluroCultureCrop.class, grid);
     }
 
 

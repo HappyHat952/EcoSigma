@@ -25,7 +25,7 @@ public class MapButton extends Button {
         Game.levelID = levelID;
         sbg.enterState(GAME_ID);
         PopupLoader.loadPopups(levelID);
-        PopupManager.activate(0);
+        Game.getCurrentLevel().setFirstOpen();
         Lab.setAvailableAnimals(Game.levelID);
 
     }

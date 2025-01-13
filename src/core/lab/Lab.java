@@ -221,6 +221,17 @@ public class Lab extends BasicGameState {
         }
 
     }
+    public static Image getOrganismImage(Class<? extends Organism> o)
+    {
+        try {
+            Constructor constructor = o.getDeclaredConstructor(Cell.class);
+            Organism organism = o.getDeclaredConstructor(Cell.class).newInstance(new Cell(0,0));
+            return organism.getImage();
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static GenomeMaker getGenomeMaker(){ return genomeMaker;}
     public static PetriDish getPetriDish(){ return petriDish;}
@@ -232,43 +243,48 @@ public class Lab extends BasicGameState {
     //use this to change the available Organisms.
     public static void setAvailableAnimals(int biome)
     {
-        availableOrganisms = new ArrayList<>();
+        availableOrganisms = getOrganismForBiome(biome);
+
+        genomeMaker.setButtons();
+
+    }
+
+    public static ArrayList<Class<? extends Organism>> getOrganismForBiome(int biome)
+    {
+        ArrayList<Class<? extends Organism>> biomeOrganisms = new ArrayList<>();
         if (biome == 0) {
 
             //makes new animal buttons
-            availableOrganisms.add(PolarBear.class);
-            availableOrganisms.add(Walrus.class);
-            availableOrganisms.add(Lemming.class);
+            biomeOrganisms.add(PolarBear.class);
+            biomeOrganisms.add(Walrus.class);
+            biomeOrganisms.add(Lemming.class);
 
             //makes new plant button
-            availableOrganisms.add(Plant.class);
+            biomeOrganisms.add(Plant.class);
         }
         else if (biome == 1)
         {
-            availableOrganisms.add(Clownfish.class);
-            availableOrganisms.add(Stingray.class);
-            availableOrganisms.add(JellyFish.class);
+            biomeOrganisms.add(Clownfish.class);
+            biomeOrganisms.add(Stingray.class);
+            biomeOrganisms.add(JellyFish.class);
 
-            availableOrganisms.add(Seaweed.class);
+            biomeOrganisms.add(Seaweed.class);
         }
         else if (biome == 3 )
         {
-            availableOrganisms.add(PluroCultureCrop.class);
+            biomeOrganisms.add(PluroCultureCrop.class);
         }
         else if (biome == 4)
         {
-            availableOrganisms.add(Jaguar.class);
-            availableOrganisms.add(Parrot.class);
-            availableOrganisms.add(Frog.class);
+            biomeOrganisms.add(Jaguar.class);
+            biomeOrganisms.add(Parrot.class);
+            biomeOrganisms.add(Frog.class);
 
-            availableOrganisms.add(Tree.class);
+            biomeOrganisms.add(Tree.class);
         }
         else
         {
         }
-        genomeMaker.setButtons();
-
-
-
+        return biomeOrganisms;
     }
 }

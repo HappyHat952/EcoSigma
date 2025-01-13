@@ -63,7 +63,6 @@ public class OrganismMaker extends LabScreen {
             int i = 0;
             for(CloneProgress p: cloneSlots)
             {
-                i++;
                 if (p == null)
                 {
                     g.setLineWidth(4); g.setColor(Color.white);

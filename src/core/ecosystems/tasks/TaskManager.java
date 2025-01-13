@@ -72,7 +72,7 @@ public class TaskManager {
         for (int i = 0; i < tasks.size(); i++) {
             g.setLineWidth(1);
             g.drawRect(x + xBuffer - (xBuffer-boxWidth), yBuffer + (i * textBuffer), boxWidth, boxWidth);
-            g.drawString(tasks.get(i).getName() + ": " + tasks.get(i).getPercentDone() + "%", x + xBuffer, yBuffer + i * textBuffer - 10);
+            g.drawString("$ "+tasks.get(i).getValue() +": "+tasks.get(i).getName() + ": " + tasks.get(i).getPercentDone() + "%", x + xBuffer, yBuffer + i * textBuffer - 10);
             g.setLineWidth(10);
             if (tasks.get(i).isComplete()) {
                 g.drawImage(Images.check, x + xBuffer - (xBuffer-boxWidth), yBuffer + (i * textBuffer));

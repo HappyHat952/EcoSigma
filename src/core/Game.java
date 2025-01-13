@@ -5,6 +5,7 @@ import core.ecosystems.arctic.Arctic;
 import core.ecosystems.coralreef.CoralReef;
 import core.ecosystems.farm.Farm;
 import core.ecosystems.rainforest.RainForest;
+import core.lab.Lab;
 import core.setup.FileIO;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
@@ -60,6 +61,7 @@ public class Game extends BasicGameState
 
 		for (int i = 0; i < NUM_ECOSYSTEMS; i++) {
 			ecosystems[i].setCompleted(fileIO.isLevelCompleted(i + 1));
+			ecosystems[i].setOrganismItems(Lab.getOrganismForBiome(i));
 		}
 		//popupManager.activate(0);
 	}
@@ -75,8 +77,8 @@ public class Game extends BasicGameState
 				fileIO.updateFile(levelID + 1);
 			}
 		}
-
 		popupManager.update();
+
 
 	}
 

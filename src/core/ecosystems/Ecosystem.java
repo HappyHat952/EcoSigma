@@ -2,10 +2,9 @@ package core.ecosystems;
 
 import core.Main;
 import core.buttons.LabButton;
-import core.ecosystems.general.Animal;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Organism;
-import core.ecosystems.general.Plant;
+import core.ecosystems.general.OrganismItem;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
 import core.setup.Fonts;
@@ -13,6 +12,7 @@ import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import core.lab.Lab;
 
 import java.util.ArrayList;
 
@@ -27,6 +27,7 @@ abstract public class Ecosystem {
     protected PopupManager pu;
     protected ArrayList<Building> buildings;
     protected boolean isCompleted;
+    protected boolean hasBeenOpened;
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
@@ -39,7 +40,21 @@ abstract public class Ecosystem {
         this.pu = pu;
         // REPLACE WITH FILE READING
         isCompleted = false;
+        hasBeenOpened = false;
         //pu.activate(0);
+
+    }
+
+    public void setOrganismItems(ArrayList<Class<? extends Organism>> list)
+    {
+        ArrayList<OrganismItem> organismItems = new ArrayList<>();
+        int i =0;
+        for (Class clazz: list)
+        {
+            organismItems.add(new OrganismItem(i, clazz, grid));
+            i++;
+        }
+        shop.setOrganismItems(organismItems);
     }
 
     public void render(Graphics g) {
@@ -63,6 +78,7 @@ abstract public class Ecosystem {
         shop.update();
         for (Task t : taskManager.getAllTasks()) {
             t.update();
+            t.getMoney(shop);
         }
         if (!isCompleted && taskManager.getCurrentProgress() == 1) {
             isCompleted = true;
@@ -73,14 +89,14 @@ abstract public class Ecosystem {
         shop.mousePressed(x, y);
         grid.mousePressed(x, y, button);
         if (lab.isMouseOver(x, y)) {
-            pu.activate(1);
             sbg.enterState(Main.LAB_ID);
         }
     }
 
     public void addOrganism(Class<? extends Organism> organism)
     {
-        grid.addOrganism(organism);
+       // grid.addOrganism(organism);
+        shop.addOrganism(organism);
     }
 
 
@@ -100,5 +116,15 @@ abstract public class Ecosystem {
 
     public boolean isCompleted() {
         return isCompleted;
+    }
+
+
+    //if opened, sets first open to true
+    public void setFirstOpen(){
+        if (!hasBeenOpened)
+        {
+            pu.activate(0);
+        }
+        hasBeenOpened = true;
     }
 }

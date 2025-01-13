@@ -11,6 +11,16 @@ public class LabMachineButton extends Button {
         super(x,y,i);
     }
 
+    public void render(Graphics g)
+    {
+        super.render(g);
+        if (LabScreen.isSomethingOpen())
+        {
+            g.drawImage(image,x,y);
+        }
+
+    }
+
     public void action()
     {
         open = true;

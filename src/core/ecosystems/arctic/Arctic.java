@@ -22,7 +22,6 @@ public class Arctic extends Ecosystem {
         ID = id;
         grid = new ArcticGrid(gc);
         shop = new ArcticShop(grid, gc);
-        pu.activate(0);
         taskManager.addTask(new ClearedCO2("Clear CO2 Emissions", grid));
         taskManager.addTask(new CreatedIce("Create Ice", grid));
         taskManager.addTask(new DestroyedOilDrills("Ban Oil Drills", grid));

@@ -1,10 +1,12 @@
 package core.ecosystems.general;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 
 public class Organism {
     protected String name;
     protected Image image;
+    protected SpriteSheet sprite;
 
     protected Organism(Cell cell)
     {
@@ -15,5 +17,11 @@ public class Organism {
     {
         return name;
     }
-    public Image getImage(){ return image; }
+    public Image getImage(){
+        if (sprite != null)
+        {
+            return sprite.getSubImage(0,0);
+        }
+        return image;
+    }
 }

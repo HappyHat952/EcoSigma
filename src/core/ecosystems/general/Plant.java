@@ -11,10 +11,9 @@ public class Plant extends Organism{
     protected int y;
 
     protected Cell cell;
-    protected SpriteSheet sprite;
-    protected int frame;
 
     protected int frameTimer;
+    protected int frame;
 
     protected int growTime;
     protected int secondTimer;

@@ -16,6 +16,7 @@ abstract public class LabScreen {
     protected LabMachineButton machineButton;
     protected int id;
     protected boolean hasBeenOpened;
+    protected static boolean somethingIsOpen;
 
 
     protected boolean open;//determines if the lab1 machine has been opened
@@ -47,7 +48,7 @@ abstract public class LabScreen {
 
     public void mouseClicked(int button, int x, int y)
     {
-        if (!open && machineButton.isMouseOver( x,  y))
+        if (!open && machineButton.isMouseOver( x,  y) && !somethingIsOpen)
         {
             if(!hasBeenOpened)
             {
@@ -55,12 +56,14 @@ abstract public class LabScreen {
                 PopupManager.activate(id);
             }
             open = true;
+            somethingIsOpen = true;
             Lab.freeze();
 
         }
         if (open && (closeButton.isMouseOver(x,y)||!mouseOver(x,y)))
         {
             open = false;
+            somethingIsOpen = false;
             Lab.unfreeze();
         }
 
@@ -85,6 +88,7 @@ abstract public class LabScreen {
     public static int getScreenY(){        return y;}
     public static int getScreenHeight(){   return height;}
     public static int getScreenWidth(){    return width;}
+    public static boolean isSomethingOpen(){ return somethingIsOpen;}
 
     public int getMachineX(){       return machineButton.getX();}
     public int getMachineY(){       return machineButton.getY();}

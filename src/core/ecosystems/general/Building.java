@@ -38,6 +38,7 @@ public class Building {
         currentCells = new Cell[]{cell};
         myRow = cell.getCol();
         myCol = cell.getRow();
+        currentCells[0] = cell;
         // WE CHANGED THIS AND SWITCHED
         cell.addBuilding(this);
         //grid.addBuilding(this);

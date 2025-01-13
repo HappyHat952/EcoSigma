@@ -34,18 +34,21 @@ public class WaterTank extends Building {
         }
         if (frameTimer %79 == 0 )
         {
+            for (Cell c : getSurroundingCells(currentStage, corners))
+            {
+                c.setImage(Images.farmCells.getSubImage(0,1));
+                ((FarmCell)c).waterCell();
+            }
             corners = !corners;
+
         }
-        for (Cell c : getSurroundingCells(currentStage, corners))
-        {
-            c.setImage(Images.farmCells.getSubImage(0,1));
-            ((FarmCell)c).waterCell();
-        }
+
     }
 
     public ArrayList<Cell> getSurroundingCells(int stage, boolean corners) {
         ArrayList<Cell> addedCells = new ArrayList<>();
 
+        //based on the stage, and if it needs corners, determine what cells need to be added.
         if (stage == 0)
         {
             checkIfPossible(addedCells, myRow, myCol);
@@ -61,20 +64,6 @@ public class WaterTank extends Building {
 
                 }
             }
-
-
-//        if (stage == 0) {
-//            checkIfPossible(addedCells, myRow - 1, myCol);
-//            checkIfPossible(addedCells, myRow + 1, myCol);
-//            checkIfPossible(addedCells, myRow, myCol - 1);
-//            checkIfPossible(addedCells, myRow, myCol + 1);
-//            checkIfPossible(addedCells, myRow, myCol);
-//        } else if (stage == 1) {
-//            checkIfPossible(addedCells, myRow - 1, myCol - 1);
-//            checkIfPossible(addedCells, myRow - 1, myCol + 1);
-//            checkIfPossible(addedCells, myRow + 1, myCol - 1);
-//            checkIfPossible(addedCells, myRow + 1, myCol + 1);
-//        }
         }
 
         return addedCells;
