@@ -18,7 +18,7 @@ public class WaterAllPlants extends Task {
         {
             for (Cell c: cells)
             {
-                if (((FarmCell)c).getWatered())
+                if (((FarmCell)c).isWatered())
                 {
                     waterCount++;
                 }

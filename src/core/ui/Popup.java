@@ -17,7 +17,6 @@ public class Popup {
         this.title = title;
         this.message = message;
         myButton = new PopupButton(220,240);
-        Game.pause();
     }
 
     public Popup()
@@ -27,7 +26,6 @@ public class Popup {
 
         myButton = new PopupButton(440,240);
         active = true;
-        Game.pause();
     }
 
     public void render(Graphics g) {

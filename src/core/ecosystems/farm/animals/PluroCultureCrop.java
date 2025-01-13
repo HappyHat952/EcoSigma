@@ -9,7 +9,7 @@ public class PluroCultureCrop extends Crop{
         super(cell);
         growTime = 4;
         sprite = Images.plant;
-        sprite.setImageColor(1f, (float)(Math.random()),(float)( Math.random()));
+        //sprite.setImageColor(1f, (float)(Math.random()),(float)( Math.random()));
         name = "PluroCultureCrop";
 
     }

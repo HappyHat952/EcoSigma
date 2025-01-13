@@ -67,7 +67,7 @@ public class Main extends StateBasedGame
 			appgc.setVSync(true);
 			appgc.start();
  
-		} 
+		}
 		catch (SlickException e) 
 		{
 			e.printStackTrace();

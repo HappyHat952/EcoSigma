@@ -20,7 +20,7 @@ public class CoralReefGrid extends Grid {
         super(gc);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[i][j] = new CoralReefCell(i, j);
+                cells[i][j] = new CoralReefCell(j, i);
             }
         }
         Coral coral1 = new Coral(false);

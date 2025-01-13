@@ -21,7 +21,7 @@ public class OrganismItem {
 
     public OrganismItem(int i , Class<? extends Organism> myOrganism, Grid grid)
     {
-        margin = Grid.getGridWidth() + (int)(Main.getScreenWidth()*.27f);
+        margin = Grid.getGridWidth() + (int)(Main.getScreenWidth()*.22f);
         buffer = (int)(Main.getScreenWidth()*.05f);
         size = (int) (Main.getScreenWidth() *.04f);
 

@@ -199,6 +199,8 @@ public class Grid {
                     {
                         mouseBuilding.assignCell(cells[i][j], this);
                         addBuilding(mouseBuilding);
+                        System.out.println(mouseBuilding.toString() + "row: "+ i + "col: "+ j );
+                        System.out.println(mouseBuilding.toString() + "row: "+ mouseBuilding.getMyRow() + "col: " + mouseBuilding.getMyCol());
                         mouseBuilding = null;
                         gc.setDefaultMouseCursor();
 

@@ -20,7 +20,8 @@ public class Shop {
     private final static int margin = (int)(Main.getScreenWidth() * .04f);
     private final static int buffer = (int)( 260/1920f * Main.getScreenWidth() ) ;
     protected ArrayList<Item> items;
-    protected OrganismItem organismItem;
+    //protected OrganismItem organismItem;
+    protected ArrayList<OrganismItem> organismItems;
     protected Grid grid;
     protected GameContainer gc;
 
@@ -45,16 +46,19 @@ public class Shop {
 
     public void render(Graphics g) {
         g.setColor(Color.white); g.setFont(Fonts.big);
-        g.drawString("$ "+money , Grid.getGridWidth() + margin + Main.getScreenWidth()*.12f, Main.getScreenHeight() * .65f);
+        g.drawString("$ "+money , Grid.getGridWidth() + margin + Main.getScreenWidth()*.12f, Main.getScreenHeight() * .565f);
 
         g.setFont(Fonts.small);
         for (int i = 0; i < items.size(); i++) {
             items.get(i).render(g);
         }
 
-        if (organismItem != null)
-        {
-            organismItem.render(g);
+//        if (organismItem != null)
+//        {
+//            organismItem.render(g);
+//        }
+        for (int i = 0; i < organismItems.size(); i++) {
+            organismItems.get(i).render(g);
         }
 
     }
@@ -64,6 +68,11 @@ public class Shop {
 
     }
     //MUTATOR
+
+    public void setOrganismItems(ArrayList<OrganismItem> organismItems)
+    {
+        this.organismItems = organismItems;
+    }
 
     public void mousePressed(int x, int y) {
         for (Item i: items)
@@ -80,10 +89,15 @@ public class Shop {
                 i.click(x,y);
             }
         }
-        if (organismItem != null)
-        {
-            organismItem.click(x,y);
+        for (OrganismItem oi: organismItems) {
+            if (oi != null)
+            {
+                oi.click(x,y);
+            }
+
         }
+
+
     }
 
 

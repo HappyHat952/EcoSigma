@@ -20,7 +20,7 @@ public class FarmCell extends Cell {
         watered = true;
     }
 
-    public boolean getWatered()
+    public boolean isWatered()
     {
         return watered;
     }

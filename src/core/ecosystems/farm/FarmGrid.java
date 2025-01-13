@@ -51,24 +51,23 @@ public class FarmGrid extends Grid {
     {
         for (Plant p: plants)
         {
-            boolean isGreenHouse = false;
             for (GreenHouse g: greenHouses)
             {
                 if (g.isOver(p.getCell()))
                 {
-                    isGreenHouse = true;
+                    if (p instanceof MonoCultureCrop)
+                    {
+                        Crop c = (Crop)p ;
+                        c.setGrowTime(5);
+                    }
+                    if (p instanceof PluroCultureCrop)
+                    {
+                        Crop c = (Crop)p ;
+                        c.setGrowTime(2);
+                    }
                 }
             }
-            if (p instanceof MonoCultureCrop && isGreenHouse)
-            {
-                Crop c = (Crop)p ;
-                c.setGrowTime(5);
-            }
-            if (p instanceof PluroCultureCrop &&  isGreenHouse)
-            {
-                Crop c = (Crop)p ;
-                c.setGrowTime(2);
-            }
+
         }
     }
 
@@ -89,6 +88,7 @@ public class FarmGrid extends Grid {
         //assigns correct cells for greenhouses
         if (building instanceof GreenHouse)
         {
+
             buildings.remove(building);
             building.getCell().removeBuilding();
 

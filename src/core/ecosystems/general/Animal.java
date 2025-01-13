@@ -14,7 +14,6 @@ public class Animal extends Organism {
 
     protected Cell currentCell;
     protected Cell futureCell;
-    protected SpriteSheet sprite;
     protected int frame;
 
     protected int timer;
@@ -24,6 +23,8 @@ public class Animal extends Organism {
     protected int direction;
 
     protected ArrayList<Cell> possibleCells;
+
+    protected Grid grid;
 
 
     public Animal(Cell cell) {
@@ -44,25 +45,26 @@ public class Animal extends Organism {
         name = "animal";
         possibleCells = new ArrayList<>();
         myClass = Animal.class;
-        image = sprite.getSubImage(0,0);
+        image = sprite.getSubImage(0, 0);
     }
 
     public void render(Graphics g) {
         g.drawImage(sprite.getSubImage(frame, direction).getScaledCopy(Cell.getWidth(), Cell.getHeight()), x, y);
+        if (grid != null) {
+            g.drawString("" + forwardIsClear(grid), x, y);
+        }
     }
 
     public void update(Grid grid) {
         // loops through the walk cycle (happens every time)
+        this.grid = grid;
+        System.out.println(timer);
         if (timer % 15 == 0) {
             frame = (frame + 1) % 4;
         }
-        //stage 1: moving
-        //stage 2: determine next cell location
-
         if (timer == 0) {
 
-            if (futureCell != null)
-            {
+            if (futureCell != null) {
                 //switch cell location if future cell is changed
                 currentCell.removeAnimal();
                 currentCell = futureCell;
@@ -74,6 +76,7 @@ public class Animal extends Organism {
             timer = maxWaitTime;
 
             possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
+            System.out.println("ANIMAL UPDATE");
 
             if (!possibleCells.isEmpty()) {
 
@@ -82,17 +85,22 @@ public class Animal extends Organism {
 
                 futureCell = possibleCells.get(i);
                 determineDirection(futureCell);
+                futureCell.addAnimal(this);
+
             }
         } else {
             timer--;
-            if (futureCell != null)
-            {
+
+            System.out.println("ANIMAL UPDATE- -2");
+            if (futureCell != null) {
                 int displacement = maxWaitTime - timer;
-                x = currentCell.getX() + (int)( displacement * (futureCell.getX() - currentCell.getX())/((float)maxWaitTime) );
-                y = currentCell.getY() + (int) (displacement * (futureCell.getY() - currentCell.getY())/((float)maxWaitTime));
+                x = currentCell.getX() + (int) (displacement * (futureCell.getX() - currentCell.getX()) / ((float) maxWaitTime));
+                y = currentCell.getY() + (int) (displacement * (futureCell.getY() - currentCell.getY()) / ((float) maxWaitTime));
             }
+
+
         }
-        possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(),currentCell.getRow());
+        possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
     }
 
 
@@ -109,5 +117,57 @@ public class Animal extends Organism {
         } else if (c < 0) {
             direction = 3; // moving up
         }
+    }
+
+    private boolean forwardIsClear(Grid grid)
+    {
+        Cell cell = null;
+        switch(direction)
+        {
+            case(2 ):
+                if (currentCell.getRow()+ 1< 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()+1][currentCell.getCol()];
+                }
+            case(1):
+                if (currentCell.getRow()-1> 0)
+                {
+                    cell = grid.getCells()[currentCell.getRow()-1][currentCell.getCol()];
+                }
+            case(0):
+                if (currentCell.getCol()+1< 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()][currentCell.getCol()+1];
+                }
+
+            case(3):
+                if (currentCell.getCol()-1 > 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()][currentCell.getCol()-1];
+                }
+
+        }
+
+        if (cell != null)
+        {
+            return !cell.hasBuilding();
+        }
+        return false;
+    }
+
+    private Cell setToForward(Grid grid)
+    {
+        switch(direction)
+        {
+            case(2):
+                return grid.getCells()[currentCell.getRow()+1][currentCell.getCol()];
+            case(1):
+                return grid.getCells()[currentCell.getRow()-1][currentCell.getCol()];
+            case(0):
+                return grid.getCells()[currentCell.getRow()][currentCell.getCol()+1];
+            case(3):
+                return grid.getCells()[currentCell.getRow()][currentCell.getCol()-1];
+        }
+        return currentCell;
     }
 }

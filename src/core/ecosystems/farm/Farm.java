@@ -19,7 +19,6 @@ public class Farm extends Ecosystem {
         shop = new FarmShop(grid,gc);
         grid.addShop(shop);
         PopupLoader.loadPopups(ID);
-        pu.activate(0);
         //add new tasks
         taskManager.addTask(new AddedGreenhouse("Add four Greenhouses", grid) );
         taskManager.addTask(new PlantTenVariedPlants("Add ten bio-diverse plants", grid));
