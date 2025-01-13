@@ -111,6 +111,7 @@ public class Cell {
     public boolean hasBuilding(){ return !(myBuilding == null);}
     public boolean hasAnimal(){return !(myAnimal == null);}
     public boolean hasPlant(){return !(myPlant == null);}
+
     //MUTATOR
     public static void setWidth(int w)
     {
@@ -137,5 +138,16 @@ public class Cell {
             return myBuilding;
         }
         return null;
+    }
+    public void renderBuildingOrPlant(Graphics g)
+    {
+        if (hasBuilding())
+        {
+            myBuilding.render(g);
+        }
+        else if (hasPlant())
+        {
+            myPlant.render(g);
+        }
     }
 }

@@ -2,11 +2,7 @@ package core.ecosystems;
 
 import core.Main;
 
-import core.ecosystems.arctic.buildings.CO2Sucker;
-import core.ecosystems.coralreef.buildings.CoralRobot;
 import core.ecosystems.general.*;
-import core.ecosystems.rainforest.buildings.Ranger;
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -59,24 +55,25 @@ public class Grid {
             for (int j = 0; j < GRID_SIZE; j++)
             {
                 cells[i][j].render(g);
+                cells[i][j].renderBuildingOrPlant(g);
             }
         }
         for (Animal a: animals)
         {
             a.render(g);
         }
-        for (Plant p: plants)
-        {
-            p.render(g);
-        }
-        for (Building b: buildings)
-        {
-            if (b.getCells() != null)
-            {
-                b.render(g);
-            }
-
-        }
+//        for (Plant p: plants)
+//        {
+//            p.render(g);
+//        }
+//        for (Building b: buildings)
+//        {
+//            if (b.getCells() != null)
+//            {
+//                b.render(g);
+//            }
+//
+//        }
     }
 
     public void update()
@@ -284,7 +281,15 @@ public class Grid {
                 }
                 if (organism instanceof Plant)
                 {
-                    plants.add((Plant) organism);
+                    for (int i = 0; i<plants.size(); i ++)
+                    {
+                        if (cell.getY()<= plants.get(i).getCell().getY())
+                        {
+                            plants.add(i, (Plant) organism);
+                            i = plants.size();
+                        }
+                    }
+                    //plants.add((Plant) organism);
                 }
 
 

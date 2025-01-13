@@ -166,10 +166,7 @@ public class FarmGrid extends Grid {
                 if (c instanceof MonoCultureCrop)
                 {
                     removedCrops.add((MonoCultureCrop) c);
-                    if (Math.random()<.3)
-                    {
-                        shop.addOrganism(MonoCultureCrop.class);
-                    }
+                    shop.addOrganism(MonoCultureCrop.class);
                 }
                 if (c instanceof PluroCultureCrop)
                 {

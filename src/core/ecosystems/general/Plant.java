@@ -1,9 +1,12 @@
 package core.ecosystems.general;
 
+import core.Main;
 import core.ecosystems.Grid;
 import core.setup.Images;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
 public class Plant extends Organism{
@@ -26,8 +29,7 @@ public class Plant extends Organism{
             this.cell = cell;
             cell.addPlant(this);
         }
-        x = cell.getX();
-        y = cell.getY();
+
 
         frame = 0;
         sprite = Images.plant;
@@ -35,14 +37,31 @@ public class Plant extends Organism{
 
         name = "plant";
         image = sprite.getSubImage(0, sprite.getVerticalCount()-1);
+        image = image.getScaledCopy((float)cell.getWidth()/image.getWidth());
+        x = cell.getX();
+        y = cell.getY()-(image.getHeight() -Cell.getHeight());
 
 
 
     }
+
+    public void setSprite(SpriteSheet sprite)
+    {
+        this.sprite = sprite;
+        image = sprite.getSubImage(0, sprite.getVerticalCount()-1);
+        image = image.getScaledCopy((float)cell.getWidth()/image.getWidth());
+        x = cell.getX();
+        y = cell.getY()-(image.getHeight() -Cell.getHeight());
+    }
     public void render(Graphics g)
     {
-        g.drawImage(sprite.getSubImage(0,frame).getScaledCopy(cell.getWidth(), cell.getHeight()),  x,  y);
-        g.drawString(name, x,y);
+        Image image = sprite.getSubImage(0,frame);
+        g.drawImage(image.getScaledCopy((float)cell.getWidth()/image.getWidth()),  x,  y);
+        if(cell.mouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
+        {
+            g.drawString(name, x,cell.getY());
+        }
+
     }
     public void update(Grid grid)
     {
@@ -91,7 +110,7 @@ public class Plant extends Organism{
     }
     public boolean mouseOver(int x, int y)
     {
-        return (x>this.x && y>this.y && x<(this.x + Cell.getWidth()) && y< (this.y + Cell.getHeight()));
+        return (x> cell.getX() && y>cell.getY() && x<(cell.getX() + Cell.getWidth()) && y< (cell.getY() + Cell.getHeight()));
     }
 
 
