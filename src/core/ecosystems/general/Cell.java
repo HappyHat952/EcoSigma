@@ -1,5 +1,7 @@
 package core.ecosystems.general;
 
+import core.Main;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -52,7 +54,7 @@ public class Cell {
         g.drawRect(myX, myY, width, height);
 
 
-        if (isOver)
+        if (mouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
         {
             g.setColor(new Color(1f,1f,1f,.5f));
             g.fillRect(myX,myY, width,height);

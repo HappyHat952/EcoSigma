@@ -29,34 +29,6 @@ public class ArcticGrid extends Grid {
         addBuilding(oilDrill3);
     }
 
-    @Override
-    public void mousePressed(int x, int y, int button) {
-        if (mouseBuilding != null) {
-            for (int i = 0; i < GRID_SIZE; i++) {
-                for (int j = 0; j < GRID_SIZE; j++) {
-                    if (cells[i][j].mouseOver(x, y) && !cells[i][j].hasBuilding()) {
-                        if (mouseBuilding instanceof Protesters) {
-                            if (isValid(cells[i][j])) {
-                                mouseBuilding.assignCell(cells[i][j], this);
-                                addBuilding(mouseBuilding);
-                                mouseBuilding = null;
-                                gc.setDefaultMouseCursor();
-                                return;
-                            }
-                        } else {
-                            mouseBuilding.assignCell(cells[i][j], this);
-                            addBuilding(mouseBuilding);
-                            mouseBuilding = null;
-                            gc.setDefaultMouseCursor();
-                        }
-                    }
-                }
-            }
-        } else {
-            System.out.println("NO BUILDING");
-        }
-    }
-
     public boolean isValid(Cell cell) {
         ArrayList<Cell> validCells = new ArrayList<>();
 

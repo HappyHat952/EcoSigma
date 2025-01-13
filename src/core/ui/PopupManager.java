@@ -47,7 +47,7 @@ public class PopupManager {
     {
         PopupLoader.POPS.get(i).activate();
         Game.pause();
-        System.out.println("MANAGER PAUSE");
+        //System.out.println("MANAGER PAUSE");
     }
 
 

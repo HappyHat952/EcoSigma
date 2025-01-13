@@ -210,15 +210,25 @@ public class Grid {
         }
         else if (mouseHasOrganism())
         {
+            System.out.println("mouse has organism");
             for (int i = 0; i < GRID_SIZE; i++)
             {
                 for (int j = 0; j < GRID_SIZE; j++)
                 {
                     if (cells[i][j].mouseOver(x,y) && !cells[i][j].hasBuilding())
                     {
+                        System.out.println("cell identified");
                         addOrganism(mouseOrganism.getClass(), cells[i][j]);
                         mouseOrganism = null;
                         gc.setDefaultMouseCursor();
+                        if (mouseOrganism instanceof Animal)
+                        {
+                            animals.add((Animal) mouseOrganism);
+                        }
+                        if (mouseOrganism instanceof Plant )
+                        {
+                            plants.add((Plant) mouseOrganism);
+                        }
 
                     }
                 }
@@ -264,11 +274,10 @@ public class Grid {
                 {
                     animals.add((Animal) organism);
                 }
-                if (organism instanceof Plant)
+                if (organism instanceof Plant )
                 {
                     plants.add((Plant) organism);
                 }
-
 
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
@@ -417,7 +426,6 @@ public class Grid {
         Cell cell = cellList.get((int)(Math.random()*cellList.size()));
         try {
             Organism newOrganism = organism.getDeclaredConstructor(Cell.class).newInstance(cell);
-            //buildings.add(newBuilding);
 
             if (!mouseHasBuilding() && !mouseHasOrganism() )
             {

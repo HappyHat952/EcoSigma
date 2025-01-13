@@ -58,7 +58,6 @@ public class Animal extends Organism {
     public void update(Grid grid) {
         // loops through the walk cycle (happens every time)
         this.grid = grid;
-        System.out.println(timer);
         if (timer % 15 == 0) {
             frame = (frame + 1) % 4;
         }
@@ -76,7 +75,6 @@ public class Animal extends Organism {
             timer = maxWaitTime;
 
             possibleCells = grid.getOpenAdjacentCells(currentCell.getCol(), currentCell.getRow());
-            System.out.println("ANIMAL UPDATE");
 
             if (!possibleCells.isEmpty()) {
 
@@ -91,7 +89,6 @@ public class Animal extends Organism {
         } else {
             timer--;
 
-            System.out.println("ANIMAL UPDATE- -2");
             if (futureCell != null) {
                 int displacement = maxWaitTime - timer;
                 x = currentCell.getX() + (int) (displacement * (futureCell.getX() - currentCell.getX()) / ((float) maxWaitTime));

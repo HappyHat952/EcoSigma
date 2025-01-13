@@ -220,6 +220,17 @@ public class Lab extends BasicGameState {
         }
 
     }
+    public static Image getOrganismImage(Class<? extends Organism> o)
+    {
+        try {
+            Constructor constructor = o.getDeclaredConstructor(Cell.class);
+            Organism organism = o.getDeclaredConstructor(Cell.class).newInstance(new Cell(0,0));
+            return organism.getImage();
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static GenomeMaker getGenomeMaker(){ return genomeMaker;}
     public static PetriDish getPetriDish(){ return petriDish;}
