@@ -78,6 +78,7 @@ abstract public class Ecosystem {
         shop.update();
         for (Task t : taskManager.getAllTasks()) {
             t.update();
+            t.getMoney(shop);
         }
         if (!isCompleted && taskManager.getCurrentProgress() == 1) {
             isCompleted = true;
@@ -94,7 +95,8 @@ abstract public class Ecosystem {
 
     public void addOrganism(Class<? extends Organism> organism)
     {
-        grid.addOrganism(organism);
+       // grid.addOrganism(organism);
+        shop.addOrganism(organism);
     }
 
 

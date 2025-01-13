@@ -4,6 +4,7 @@ package core.ecosystems;
 import core.Main;
 import core.ecosystems.arctic.buildings.CO2Sucker;
 import core.ecosystems.general.Item;
+import core.ecosystems.general.Organism;
 import core.ecosystems.general.OrganismItem;
 import core.setup.Fonts;
 import org.newdawn.slick.Color;
@@ -32,6 +33,7 @@ public class Shop {
         money = 5000;
         grid = g;
         this.gc = gc;
+        organismItems = new ArrayList<>();
 
     }
 
@@ -42,6 +44,16 @@ public class Shop {
     public void addMoney(int value)
     {
         money += value;
+    }
+    public void addOrganism(Class<? extends Organism> o)
+    {
+        for (OrganismItem oi: organismItems)
+        {
+            if (o.equals(oi.getOrganismClass()))
+            {
+                oi.addOneOrganism();
+            }
+        }
     }
 
     public void render(Graphics g) {

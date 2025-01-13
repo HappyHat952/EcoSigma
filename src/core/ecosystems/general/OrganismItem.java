@@ -61,6 +61,16 @@ public class OrganismItem {
         }
     }
 
+    public void addOneOrganism()
+    {
+        numOrganisms++;
+    }
+
+    public Class<? extends Organism> getOrganismClass()
+    {
+        return myOrganism;
+    }
+
     public boolean mouseOver(int x, int y)
     {
         return (x> this.x && x < this.x + size && y> this.y && y< this.y + size);
