@@ -8,7 +8,7 @@ public class Parrot extends Animal {
 
     public Parrot(Cell cell) {
         super(cell);
-        sprite = Images.clownfish;
+        sprite = Images.parrot;
         name = "parrot";
     }
 }

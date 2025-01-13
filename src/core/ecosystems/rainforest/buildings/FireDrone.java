@@ -26,9 +26,8 @@ public class FireDrone extends Building {
     protected ArrayList<Cell> possibleCells;
     public FireDrone() {
         super();
-        myImage = Images.coralRobot;
+        myImage = Images.drone;
         name = "Fire Drone";
-        info = "help please";
         resizeImage();
         time = 0;
         grid = Game.getCurrentLevel().getGrid();

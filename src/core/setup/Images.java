@@ -68,6 +68,13 @@ public class Images {
     public static Image healthySoil;
     public static Image unhealthySoil;
     public static SpriteSheet tree;
+    public static Image drone;
+    public static Image fire;
+    public static SpriteSheet ranger;
+    public static Image soilEnrichmentMachine;
+    public static SpriteSheet frog;
+    public static SpriteSheet jaguar;
+    public static SpriteSheet parrot;
 
     // LAB
     public static Image labBackground;
@@ -143,6 +150,13 @@ public class Images {
             healthySoil = new Image("res/game/rainforest/healthySoil.png");
             unhealthySoil = new Image("res/game/rainforest/unhealthySoil.png");
             tree = new SpriteSheet("res/game/rainforest/tree.png", 64, 128);
+            drone = new Image("res/game/rainforest/drone.png");
+            fire = new Image("res/game/rainforest/fire.png");
+            ranger = new SpriteSheet("res/game/rainforest/ranger.png", 108, 108);
+            frog = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
+            jaguar = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
+            parrot = new SpriteSheet("res/game/rainforest/frog.png", 108, 108);
+            soilEnrichmentMachine = new Image("res/game/rainforest/soilEnrichmentMachine.png");
             // LAB
             labBackground = new Image("res/lab/lab.png");
             genomeMaker = new Image("res/lab/genomeMaker.png");

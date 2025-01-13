@@ -19,8 +19,8 @@ public class SoilEnrichmentMachine extends Building {
     private Grid grid;
 
     public SoilEnrichmentMachine() {
-        myImage = Images.damagedCoral;
-        name = "Soil Enricher";
+        myImage = Images.soilEnrichmentMachine;
+        name = "Soil Enrichment Machine";
         info = "help";
         time = 0;
         stage = 0;

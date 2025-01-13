@@ -8,6 +8,7 @@ import core.ecosystems.general.Cell;
 import core.setup.Images;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 
 import java.util.ArrayList;
 
@@ -24,11 +25,13 @@ public class Ranger extends Building {
     private ArrayList<Cell> c;
     private int direction;
     protected ArrayList<Cell> possibleCells;
+    private SpriteSheet sprite;
     public Ranger() {
         super();
-        myImage = Images.coralRobot;
+        myImage = Images.ranger.getSubImage(0, 0, 108, 108);
+        sprite = Images.ranger;
+        myImage = sprite.getSubImage(0, 0);
         name = "Ranger";
-        info = "help please";
         resizeImage();
         time = 0;
         grid = Game.getCurrentLevel().getGrid();
@@ -82,7 +85,7 @@ public class Ranger extends Building {
                 int i = (int) (Math.random() * possibleCells.size());
 
                 futureCell = possibleCells.get(i);
-                determineDirection(futureCell);
+//                determineDirection(futureCell);
             }
         } else {
             timer--;
@@ -101,8 +104,48 @@ public class Ranger extends Building {
         float width = myImage.getWidth();
         float height = myImage.getHeight();
         Image adjusted = myImage.getScaledCopy(Cell.getWidth()*cellWidth, (int)(height/width*Cell.getWidth()* cellWidth));
-        g.drawImage(adjusted, x, y + Cell.getHeight() - adjusted.getHeight());
+//        g.drawImage(adjusted, x, y + Cell.getHeight() - adjusted.getHeight());
+        g.drawImage(sprite.getSubImage(0, frame).getScaledCopy(Cell.getWidth(), Cell.getHeight()), x, y + Cell.getHeight() - adjusted.getHeight());
+        if (grid != null) {
+            g.drawString("" + forwardIsClear(grid), x, y);
+        }
 
+    }
+
+    private boolean forwardIsClear(Grid grid)
+    {
+        Cell cell = null;
+        switch(direction)
+        {
+            case(2 ):
+                if (currentCell.getRow()+ 1< 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()+1][currentCell.getCol()];
+                }
+            case(1):
+                if (currentCell.getRow()-1> 0)
+                {
+                    cell = grid.getCells()[currentCell.getRow()-1][currentCell.getCol()];
+                }
+            case(0):
+                if (currentCell.getCol()+1< 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()][currentCell.getCol()+1];
+                }
+
+            case(3):
+                if (currentCell.getCol()-1 > 10)
+                {
+                    cell = grid.getCells()[currentCell.getRow()][currentCell.getCol()-1];
+                }
+
+        }
+
+        if (cell != null)
+        {
+            return !cell.hasBuilding();
+        }
+        return false;
     }
 
     public boolean isCompleted() {
@@ -113,19 +156,5 @@ public class Ranger extends Building {
         isCompleted = completed;
     }
 
-    private void determineDirection(Cell newCell) {
-        int c = newCell.getRow() - currentCells[0].getRow(); // GREATER THAN 0 IF IT MOVED RIGHT, LESS IF LEFT
-        int r = newCell.getCol() - currentCells[0].getCol(); // GREATER THAN 0 IF IT MOVED DOWN, LESS IF UP
-
-        if (r > 0) {
-            direction = 2; // moving right
-        } else if (r < 0) {
-            direction = 1; //moving left
-        } else if (c > 0) {
-            direction = 0; //moving down
-        } else if (c < 0) {
-            direction = 3; // moving up
-        }
-    }
 }
 

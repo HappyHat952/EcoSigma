@@ -6,9 +6,8 @@ import core.setup.Images;
 public class Fire extends Building {
 
     public Fire() {
-        myImage = Images.check;
+        myImage = Images.fire;
         name = "Fire";
-        info = "help please";
         resizeImage();
     }
 
