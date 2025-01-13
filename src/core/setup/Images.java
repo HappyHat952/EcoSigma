@@ -57,6 +57,7 @@ public class Images {
     public static SpriteSheet farmCells;
     public static Image greenHouse;
     public static SpriteSheet monoCulture;
+    public static SpriteSheet pluroCulture;
 
     // 4: RAINFOREST
     public static SpriteSheet cityCells;
@@ -128,6 +129,7 @@ public class Images {
             farmCells = new SpriteSheet("res/game/farm/farmCells.png",192,192 );
             greenHouse = new Image("res/game/farm/buildings/greenhouse.png");
             monoCulture = new SpriteSheet("res/game/farm/organisms/monoCultureCrop.png", 160,320);
+            pluroCulture = new SpriteSheet("res/game/farm/organisms/pluroCultureCrop.png", 160,1920);
 
 
             // LEVEL 4: RAINFOREST
