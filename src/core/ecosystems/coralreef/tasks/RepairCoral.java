@@ -15,7 +15,7 @@ import org.lwjgl.input.Mouse;
 public class RepairCoral extends Task {
 
     private int coralRepaired;
-    final private int TOTAL_CORAL_REPAIRED = 6;
+    final private int TOTAL_CORAL_REPAIRED = 8;
 
     public RepairCoral(String name, Grid grid) {
         super(name, grid);

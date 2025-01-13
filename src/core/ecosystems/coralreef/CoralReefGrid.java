@@ -29,10 +29,37 @@ public class CoralReefGrid extends Grid {
         coral2.assignCell(cells[5][5], this);
         Coral coral3 = new Coral(false);
         coral3.assignCell(cells[8][7], this);
+        Coral coral4 = new Coral(false);
+        coral4.assignCell(cells[1][0], this);
+        Coral coral5 = new Coral(false);
+        coral5.assignCell(cells[4][2], this);
+        Coral coral6 = new Coral(false);
+        coral6.assignCell(cells[6][7], this);
+        Coral coral7 = new Coral(false);
+        coral7.assignCell(cells[5][2], this);
+        Coral coral8 = new Coral(false);
+        coral8.assignCell(cells[9][5], this);
+        Coral coral9 = new Coral(false);
+        coral9.assignCell(cells[3][9], this);
+        Coral coral10 = new Coral(false);
+        coral10.assignCell(cells[6][9], this);
+        Coral coral11 = new Coral(false);
+        coral11.assignCell(cells[1][6], this);
+        Coral coral12 = new Coral(false);
+        coral12.assignCell(cells[0][0], this);
 
         addBuilding(coral1);
         addBuilding(coral2);
         addBuilding(coral3);
+        addBuilding(coral4);
+        addBuilding(coral5);
+        addBuilding(coral6);
+        addBuilding(coral7);
+        addBuilding(coral8);
+        addBuilding(coral9);
+        addBuilding(coral10);
+        addBuilding(coral11);
+        addBuilding(coral12);
     }
 
     @Override
@@ -58,6 +85,13 @@ public class CoralReefGrid extends Grid {
                             coral.setArtificial(true);
                         }
                     }
+                }
+                if (cells[i][j].getBuilding() instanceof BioRock && ((BioRock) cells[i][j].getBuilding()).isCoralCreated()) {
+                    cells[i][j].removeBuilding();
+                    Coral coral = new Coral(true);
+                    coral.assignCell(cells[i][j], this);
+                    buildings.add(coral);
+                    coral.setArtificial(true);
                 }
             }
         }

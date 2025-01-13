@@ -14,7 +14,7 @@ public class Coral extends Building {
         info = "help please";
         healthy = b;
         if (healthy) {
-            myImage = Images.protesters;
+            myImage = Images.coral;
         } else {
             myImage = Images.damagedCoral;
         }
@@ -37,7 +37,7 @@ public class Coral extends Building {
     public void setIsHealthy(boolean b) {
         healthy = b;
         if (healthy) {
-            myImage = Images.protesters;
+            myImage = Images.coral;
         } else {
             myImage = Images.damagedCoral;
         }

@@ -287,7 +287,7 @@ public class Lab extends BasicGameState {
         {
             biomeOrganisms.add(PluroCultureCrop.class);
         }
-        else if (biome == 4)
+        else if (biome == 2)
         {
             biomeOrganisms.add(Jaguar.class);
             biomeOrganisms.add(Parrot.class);

@@ -63,21 +63,17 @@ public class Plant extends Organism{
         }
 
     }
-    public void update(Grid grid)
-    {
+    public void update(Grid grid) {
         //this means all animal sprites MUST be vertical
-        frameTimer ++;
-        if (frameTimer% 60 == 0)
-        {
-            secondTimer ++;
-            frameTimer =0;
+        frameTimer++;
+        if (frameTimer % 60 == 0) {
+            secondTimer++;
+            frameTimer = 0;
         }
 
-        if (secondTimer == growTime)
-        {
-            if (frame< sprite.getVerticalCount()-1)
-            {
-                frame ++;
+        if (secondTimer == growTime) {
+            if (frame < sprite.getVerticalCount() - 1) {
+                frame++;
             }
             secondTimer = 0;
         }
@@ -96,6 +92,11 @@ public class Plant extends Organism{
 //        else {
 //            frameTimer --;
 //        }
+    }
+
+    public boolean isValid (Cell c)
+    {
+        return true;
     }
 
     public boolean isMature()

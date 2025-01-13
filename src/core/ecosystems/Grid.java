@@ -288,7 +288,7 @@ public class Grid {
                 {
                     animals.add((Animal) organism);
                 }
-                if (organism instanceof Plant)
+                if (organism instanceof Plant && ((Plant)organism). isValid(cell))
                 {
                     for (int i = 0; i<plants.size(); i ++)
                     {
@@ -299,6 +299,9 @@ public class Grid {
                         }
                     }
                     //plants.add((Plant) organism);
+                }
+                else {
+                    cell.removePlant();
                 }
                 return organism;
 

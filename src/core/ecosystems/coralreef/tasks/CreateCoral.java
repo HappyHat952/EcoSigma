@@ -7,7 +7,7 @@ import core.ecosystems.tasks.Task;
 
 public class CreateCoral extends Task {
 
-    final private int TOTAL_CORAL = 12;
+    final private int TOTAL_CORAL = 9;
     private int healthyCoral = 0;
     public CreateCoral(String name, Grid grid) {
         super(name, grid);

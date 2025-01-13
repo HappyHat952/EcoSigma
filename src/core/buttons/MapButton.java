@@ -51,7 +51,7 @@ public class MapButton extends Button {
         }
 
         if (Game.getEcosystems()[levelID].isCompleted()) {
-            g.drawImage(Images.check.getScaledCopy(w, h), x, y);
+            g.drawImage(Images.mapDone.getScaledCopy(w, h), x, y);
         }
     }
 }

@@ -18,7 +18,6 @@ public class RainForestCell extends Cell {
         isHealthy = healthy;
         if (isHealthy) {
             myImage = Images.healthySoil;
-            System.out.println("HELP ME PLEASE");
         } else {
             myImage = Images.unhealthySoil;
         }

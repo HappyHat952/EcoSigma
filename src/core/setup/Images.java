@@ -29,6 +29,7 @@ public class Images {
     public static SpriteSheet animal;
     public static SpriteSheet plant;
     public static Image lab;
+    public static Image mapDone;
     //LAB
     public static Image labMachine;
     // ARCTIC
@@ -45,6 +46,7 @@ public class Images {
     public static SpriteSheet lemming;
     // CORAL REEF
     public static Image damagedCoral;
+    public static Image coral;
     public static Image bioRock;
     public static Image soundCreator;
     public static Image coralRobot;
@@ -64,6 +66,7 @@ public class Images {
     public static Image cityBuilding;
     public static Image healthySoil;
     public static Image unhealthySoil;
+    public static SpriteSheet tree;
 
     // LAB
     public static Image labBackground;
@@ -90,6 +93,7 @@ public class Images {
             introScreenSheet = new SpriteSheet("res/intro/intro.png", 1920, 1080);
             // MAP
             mapScreen = (new Image("res/map/map.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            mapDone = new Image("res/game/mapDone.png");
             // GAME
             check = (new Image("res/game/check.png").getScaledCopy(boxWidth, boxWidth));
             animal =new SpriteSheet( (new Image("res/game/animal_placeholder.png")), 128, 128);
@@ -115,6 +119,7 @@ public class Images {
 
             // LEVEL 2
             damagedCoral = new Image("res/game/coralreef/bleachedCoral.png");
+            coral = new Image("res/game/coralreef/coral.png");
             bioRock = new Image("res/game/coralreef/bioRock.png");
             soundCreator = new Image("res/game/coralreef/soundCreator.png");
             coralRobot = new Image("res/game/coralreef/robotRepairer.png");
@@ -135,7 +140,7 @@ public class Images {
             // LEVEL 4: RAINFOREST
             healthySoil = new Image("res/game/rainforest/healthySoil.png");
             unhealthySoil = new Image("res/game/rainforest/unhealthySoil.png");
-
+            tree = new SpriteSheet("res/game/rainforest/tree.png", 64, 128);
             // LAB
             labBackground = new Image("res/lab/lab.png");
             genomeMaker = new Image("res/lab/genomeMaker.png");
