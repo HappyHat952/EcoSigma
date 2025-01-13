@@ -10,7 +10,7 @@ import core.ecosystems.tasks.Task;
 
 public class DestroyedOilDrills extends Task {
 
-    final private int totalOilDrills = 3;
+    final private int totalOilDrills = 2;
 
     public DestroyedOilDrills(String name, Grid grid) {
         super(name, grid);

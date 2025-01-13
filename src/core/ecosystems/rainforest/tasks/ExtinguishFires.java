@@ -12,7 +12,7 @@ import core.ecosystems.tasks.Task;
 import static core.ecosystems.Grid.GRID_SIZE;
 
 public class ExtinguishFires extends Task {
-    final private int TOTAL_FIRES = 3;
+    final private int TOTAL_FIRES = 2;
     private int fires;
     public ExtinguishFires(String name, Grid grid) {
         super(name, grid);
