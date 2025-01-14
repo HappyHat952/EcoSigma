@@ -9,6 +9,7 @@ import core.ecosystems.coralreef.tasks.CreateSounds;
 import core.ecosystems.coralreef.tasks.RepairCoral;
 import core.ecosystems.rainforest.tasks.*;
 import core.setup.Fonts;
+import core.setup.Images;
 import core.ui.PopupManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -30,6 +31,8 @@ public class RainForest extends Ecosystem {
         taskManager.addTask(new CreateAllAnimals("Create All 3 Animals", grid));
         taskManager.addTask(new CreateTrees("Plant 5 Trees", grid));
         danger = "High";
+        winImage = Images.forestWin;
+        this.id = id;
     }
 
     @Override

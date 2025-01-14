@@ -3,6 +3,7 @@ package core.ecosystems.arctic;
 import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.tasks.*;
 import core.ecosystems.Ecosystem;
+import core.setup.Images;
 import core.setup.PopupLoader;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
@@ -34,6 +35,8 @@ public class Arctic extends Ecosystem {
             clouds.add(new Cloud());
         }
         addOrganism(PolarBear.class);
+        winImage = Images.arcticWin;
+        this.id = id;
     }
 
     public void render(Graphics g) {

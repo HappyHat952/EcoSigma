@@ -19,14 +19,14 @@ import java.util.ArrayList;
 public class Game extends BasicGameState
 {
 	private int id;
-	private StateBasedGame sbg;
-	private GameContainer gc;
+	private static StateBasedGame sbg;
+	private static  GameContainer gc;
 	public static int levelID;
 	private static Ecosystem[] ecosystems;
 	private final static int NUM_ECOSYSTEMS = 4;
 	private static boolean pause;
 	private static PopupManager popupManager;
-	private FileIO fileIO;
+	private static FileIO fileIO;
 	int numPopupsShown;
 
 
@@ -65,9 +65,31 @@ public class Game extends BasicGameState
 			ecosystems[i].setCompleted(fileIO.isLevelCompleted(i + 1));
 			ecosystems[i].setOrganismItems(Lab.getOrganismForBiome(i));
 		}
-		//popupManager.activate(0);
 	}
 
+	public static void reset(int i)
+	{
+		if (i == 0)
+		{
+			ecosystems[0] = new Arctic(gc, sbg, popupManager, 0);
+		}
+		if (i == 1)
+		{
+			ecosystems[1] = new CoralReef(gc, sbg, popupManager, 1);
+		}
+		if (i == 2)
+		{
+			ecosystems[2] = new RainForest(gc, sbg, popupManager, 2);
+		}
+		if (i == 3)
+		{
+			ecosystems[3] = new Farm(gc, sbg, popupManager, 3);
+		}
+		for (int j = 0; j < NUM_ECOSYSTEMS; j++) {
+			ecosystems[j].setCompleted(fileIO.isLevelCompleted(j + 1));
+			ecosystems[j].setOrganismItems(Lab.getOrganismForBiome(i));
+		}
+	}
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		// This updates your game's logic every frame.  NO DRAWING.
@@ -149,6 +171,8 @@ public class Game extends BasicGameState
 	{
 		pause = true;
 	}
+
+
 	public static void unpause()
 	{
 		pause = false;

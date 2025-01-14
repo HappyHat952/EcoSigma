@@ -20,9 +20,9 @@ public class CoralReefShop extends Shop {
 
     public void setItems()
     {
-        items.add(new Item(0, BioRock.class, new BioRock(), 2,this));
-        items.add(new Item (1, CoralRobot.class, new CoralRobot(),3,this));
-        items.add(new Item (2, SoundMaker.class, new SoundMaker(),4,this));
+        items.add(new Item(0, BioRock.class, new BioRock(), 1,this));
+        items.add(new Item (1, CoralRobot.class, new CoralRobot(),2,this));
+        items.add(new Item (2, SoundMaker.class, new SoundMaker(),3,this));
     }
 
     public void update(){

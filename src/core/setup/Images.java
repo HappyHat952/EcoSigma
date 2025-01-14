@@ -10,6 +10,12 @@ public class Images {
 
     //PLACEHOLDERS
     public static SpriteSheet placeHolder;
+    //WIN SCREENS
+    public static Image arcticWin;
+    public static Image farmWin;
+    public static Image forestWin;
+    public static Image coralWin;
+    public static Image win;
     // CONSTANTS
     static int boxWidth = 30;
     // BUTTONS
@@ -88,6 +94,13 @@ public class Images {
 
             //PLACEHOLDERS
             placeHolder = new SpriteSheet("res/game/placeHolder.png", 256, 256);
+
+            //WIN SCREENS
+             arcticWin = new Image("res/winScreens/arcticWin.png");
+             coralWin= new Image("res/winScreens/coralReefWin.png");
+             farmWin= new Image("res/winScreens/farmWin.png");
+             forestWin= new Image("res/winScreens/rainForestWin.png");
+             win= new Image("res/winScreens/win.png");
 
 
             // BUTTONS

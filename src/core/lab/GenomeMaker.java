@@ -89,7 +89,7 @@ public class GenomeMaker extends LabScreen {
         for(int i=0; i< organisms.size(); i++)
         {
             screenButtons.add(new Button((int)(Main.getScreenWidth()*.25f + Main.getScreenWidth()*i*.5f/organisms.size()),
-                    (int)(Main.getScreenHeight()*.35f),(int) (Main.getScreenWidth()*.45f/organisms.size()),
+                    (int)(Main.getScreenHeight()*.39f),(int) (Main.getScreenWidth()*.45f/organisms.size()),
                     (int)(Main.getScreenHeight()*.1f),Color.lightGray,"$ " +
                     Lab.getOrganism(organisms.get(i)).getCostOfGenome()+": "+Lab.getOrganismName(organisms.get(i)) ));
         }

@@ -20,9 +20,9 @@ public class RainForestShop extends Shop {
 
     public void setItems()
     {
-        items.add(new Item(0, FireDrone.class, new FireDrone(), 2,this));
-        items.add(new Item (1, SoilEnrichmentMachine.class, new SoilEnrichmentMachine(),3,this));
-        items.add(new Item (2, Ranger.class, new Ranger(),4,this));
+        items.add(new Item(0, FireDrone.class, new FireDrone(), 3,this));
+        items.add(new Item (1, SoilEnrichmentMachine.class, new SoilEnrichmentMachine(),2,this));
+        items.add(new Item (2, Ranger.class, new Ranger(),1,this));
     }
 
     public void update(){

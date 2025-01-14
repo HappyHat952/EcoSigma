@@ -5,6 +5,7 @@ import core.ecosystems.farm.tasks.AddedGreenhouse;
 import core.ecosystems.farm.tasks.PlantTenVariedPlants;
 import core.ecosystems.farm.tasks.RemoveMonocultures;
 import core.ecosystems.farm.tasks.WaterAllPlants;
+import core.setup.Images;
 import core.setup.PopupLoader;
 import core.ui.PopupManager;
 import org.newdawn.slick.GameContainer;
@@ -24,6 +25,8 @@ public class Farm extends Ecosystem {
         taskManager.addTask(new PlantTenVariedPlants("Add 60 bio-diverse plants", grid));
         taskManager.addTask(new RemoveMonocultures("Remove 50 monoculture plants", grid));
         taskManager.addTask(new WaterAllPlants("Water the full farm", grid));
+        winImage = Images.farmWin;
+        this.id = id;
     }
 
 }

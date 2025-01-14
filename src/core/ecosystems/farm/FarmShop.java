@@ -24,6 +24,7 @@ public class FarmShop extends Shop {
     {
         super(grid, gc);
         setItems();
+        money = 100;
     }
 
     @Override
@@ -34,9 +35,9 @@ public class FarmShop extends Shop {
 
     public void setItems()
     {
-        greenHouseItem = new Item(0, GreenHouse.class, new GreenHouse(), 2, this);
+        greenHouseItem = new Item(0, GreenHouse.class, new GreenHouse(), 1, this);
         items.add(greenHouseItem);
-        waterTankItem = (new Item (1, WaterTank.class, new WaterTank(),3,this));
+        waterTankItem = (new Item (1, WaterTank.class, new WaterTank(),2,this));
         items.add(waterTankItem);
 //        items.add(new Item (2, GreenHouse.class, new GreenHouse(),4));
     }

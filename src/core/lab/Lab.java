@@ -1,6 +1,8 @@
 package core.lab;
 
 import core.Main;
+import core.buttons.Button;
+import core.ecosystems.Grid;
 import core.ecosystems.arctic.animals.CompionMoss;
 import core.ecosystems.arctic.animals.Lemming;
 import core.ecosystems.arctic.animals.PolarBear;
@@ -49,6 +51,8 @@ public class Lab extends BasicGameState {
 
     private static boolean hasBeenOpened;
 
+    private Button homeButton;
+
     public Lab(int id) {
         this.id = id;
     }
@@ -78,6 +82,8 @@ public class Lab extends BasicGameState {
         machines[2] = organismMaker;
 
         hasBeenOpened = false;
+
+        homeButton = new Button(Grid.getGridWidth() - (int)(Main.getScreenWidth()*.2f),(int)(Main.getScreenHeight()*.1f),70,70, Color.cyan,"return");
 //
 //        PopupLoader.loadPopups(-1);
 //        PopupManager.activate(0);
@@ -112,6 +118,7 @@ public class Lab extends BasicGameState {
             g.drawString(""+getOrganismName(gen.getOrganism()),Main.getScreenWidth()*.5f, Main.getScreenHeight()*index*.02f);
             index ++;
         }
+        homeButton.render(g);
 
 
     }
@@ -187,6 +194,10 @@ public class Lab extends BasicGameState {
                     l.mouseClicked(button,x,y);
                 }
 
+            }
+            if (homeButton.isMouseOver(x,y))
+            {
+                sbg.enterState(Main.GAME_ID);
             }
 
 

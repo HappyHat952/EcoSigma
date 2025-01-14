@@ -30,7 +30,7 @@ public class PopupLoader {
             name = "lab";
             for (int i= 1; i<= 4; i++)
             {
-                POPS.add(loadPopup(name,i));
+                POPS.add(loadImagePopup(name,i));
             }
         }
         else if (id == 0)
@@ -41,13 +41,29 @@ public class PopupLoader {
                 POPS.add(loadImagePopup(name,i));
             }
         }
-        else
+        else if (id == 3)
         {
             //id 3
             name = "farm";
-            for (int i= 1; i<= 5; i++)
+            for (int i= 1; i<= 4; i++)
             {
-                POPS.add(loadPopup(name, i));
+                POPS.add(loadImagePopup(name, i));
+            }
+        }
+        else if (id == 1)
+        {
+            name = "coral";
+            for (int i= 1; i<= 4; i++)
+            {
+                POPS.add(loadImagePopup(name, i));
+            }
+        }
+        else if (id == 2)
+        {
+            name = "forest";
+            for (int i= 1; i<= 4; i++)
+            {
+                POPS.add(loadImagePopup(name, i));
             }
         }
 

@@ -1,6 +1,8 @@
 package core.ecosystems;
 
+import core.Game;
 import core.Main;
+import core.buttons.Button;
 import core.buttons.LabButton;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Organism;
@@ -8,9 +10,12 @@ import core.ecosystems.general.OrganismItem;
 import core.ecosystems.tasks.Task;
 import core.ecosystems.tasks.TaskManager;
 import core.setup.Fonts;
+import core.setup.Images;
 import core.ui.PopupManager;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 import core.lab.Lab;
 
@@ -27,6 +32,10 @@ abstract public class Ecosystem {
     protected PopupManager pu;
     protected boolean isCompleted;
     protected boolean hasBeenOpened;
+    protected Image winImage;
+    protected Button reset;
+    protected Button home;
+    protected int id;
 
     public Ecosystem(GameContainer gc, StateBasedGame sbg, PopupManager pu) {
         grid = new Grid(gc);
@@ -41,13 +50,11 @@ abstract public class Ecosystem {
         isCompleted = false;
         hasBeenOpened = false;
         //pu.activate(0);
+        winImage = Images.win;
+        reset = new Button(Grid.getGridWidth() + (int)(Main.getScreenWidth()*.3f),(int)(Main.getScreenHeight()*.55f),70,70, Color.green,"reset");
+        home =  new Button(Grid.getGridWidth() + (int)(Main.getScreenWidth()*.26f),(int)(Main.getScreenHeight()*.55f),70,70, Color.blue,"home");
 
     }
-
-    public Shop getShop() {
-        return shop;
-    }
-
     public void setOrganismItems(ArrayList<Class<? extends Organism>> list)
     {
         ArrayList<OrganismItem> organismItems = new ArrayList<>();
@@ -67,8 +74,10 @@ abstract public class Ecosystem {
         taskManager.render(g);
         if (isCompleted) {
             g.setFont(Fonts.big);
-            g.drawString("YOU WINNNNNN", 500, 500);
+            g.drawImage(winImage.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()),0,0);
         }
+        reset.render(g);
+        home.render(g);
 
     }
 
@@ -89,6 +98,14 @@ abstract public class Ecosystem {
         grid.mousePressed(x, y, button);
         if (lab.isMouseOver(x, y)) {
             sbg.enterState(Main.LAB_ID);
+        }
+        if (reset.isMouseOver(x,y))
+        {
+            Game.reset(id);
+        }
+        if (home.isMouseOver(x,y))
+        {
+            sbg.enterState(Main.MAP_ID);
         }
     }
 
