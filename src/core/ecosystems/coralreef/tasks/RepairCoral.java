@@ -20,6 +20,7 @@ public class RepairCoral extends Task {
     public RepairCoral(String name, Grid grid) {
         super(name, grid);
         coralRepaired = 0;
+        moneyValue = 135;
     }
 
     public int getPercentDone() {

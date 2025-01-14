@@ -42,6 +42,7 @@ public class Ranger extends Building {
         c = new ArrayList<>();
         direction = 0;
         isMoving = true;
+        cost = 90;
     }
 
     @Override

@@ -9,5 +9,6 @@ public class JellyFish extends Animal {
         super(cell);
         sprite = Images.jellyFish;
         name = "jellyfish";
+        costOfGenome = 25;
     }
 }

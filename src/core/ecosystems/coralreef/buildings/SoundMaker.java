@@ -7,9 +7,10 @@ public class SoundMaker extends Building {
 
     public SoundMaker(){
         myImage = Images.soundCreator;
-        name = "Sound Creator";
+        name = "Audio Amplifier";
         info = "help please";
         resizeImage();
+        cost = 85;
     }
 
     public void update() {

@@ -10,5 +10,6 @@ public class Frog extends Animal {
         super(cell);
         sprite = Images.frog;
         name = "frog";
+        costOfGenome = 25;
     }
 }

@@ -3,6 +3,7 @@ package core;
 import core.setup.Fonts;
 import core.setup.Images;
 import core.setup.PopupLoader;
+import core.setup.Sounds;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -32,6 +33,7 @@ public class Title extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         Images.loadImages();
+        Sounds.loadSounds();
         PopupLoader.loadPopups(0);
         sbg = stateBasedGame;
         Fonts.loadFonts();

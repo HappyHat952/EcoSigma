@@ -19,6 +19,7 @@ public class CreateAllAnimals extends Task {
         super(name, grid);
         totalAnimals = 3;
         numAnimals = 0;
+        moneyValue = 75;
     }
     public int getPercentDone() {
         if (numAnimals <= 3) {

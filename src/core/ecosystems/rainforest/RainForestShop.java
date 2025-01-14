@@ -15,6 +15,7 @@ public class RainForestShop extends Shop {
     public RainForestShop(Grid g, GameContainer gc) {
         super(g, gc);
         setItems();
+        money = 350;
     }
 
     public void setItems()

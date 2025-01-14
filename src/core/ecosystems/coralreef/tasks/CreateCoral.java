@@ -11,6 +11,7 @@ public class CreateCoral extends Task {
     private int healthyCoral = 0;
     public CreateCoral(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 120;
     }
 
     public int getPercentDone() {

@@ -15,6 +15,7 @@ public class CoralReefShop extends Shop {
     public CoralReefShop(Grid g, GameContainer gc) {
         super(g, gc);
         setItems();
+        money = 200;
     }
 
     public void setItems()

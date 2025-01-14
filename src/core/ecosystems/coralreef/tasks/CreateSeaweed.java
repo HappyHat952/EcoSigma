@@ -20,6 +20,7 @@ public class CreateSeaweed extends Task {
         super(name, grid);
         totalPlants = 3;
         numPlants = 0;
+        moneyValue = 80;
     }
     public int getPercentDone() {
         if (numPlants < 3) {

@@ -4,15 +4,18 @@ import core.ecosystems.Grid;
 import core.ecosystems.coralreef.buildings.SoundMaker;
 import core.ecosystems.general.Cell;
 import core.ecosystems.tasks.Task;
+import core.setup.Sounds;
 
 public class CreateSounds extends Task {
 
     private int soundMakers;
     final private int TOTAL_SOUND_MAKERS = 3;
+    private boolean soundOn;
 
     public CreateSounds(String name, Grid grid) {
         super(name, grid);
         soundMakers = 0;
+        moneyValue = 200;
     }
 
     public int getPercentDone() {

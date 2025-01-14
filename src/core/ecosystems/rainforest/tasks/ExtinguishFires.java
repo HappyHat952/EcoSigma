@@ -17,6 +17,7 @@ public class ExtinguishFires extends Task {
     public ExtinguishFires(String name, Grid grid) {
         super(name, grid);
         fires = TOTAL_FIRES;
+        moneyValue = 80;
     }
 
     @Override

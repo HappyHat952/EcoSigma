@@ -44,6 +44,10 @@ abstract public class Ecosystem {
 
     }
 
+    public Shop getShop() {
+        return shop;
+    }
+
     public void setOrganismItems(ArrayList<Class<? extends Organism>> list)
     {
         ArrayList<OrganismItem> organismItems = new ArrayList<>();

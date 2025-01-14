@@ -10,5 +10,6 @@ public class Jaguar extends Animal {
         super(cell);
         sprite = Images.jaguar;
         name = "jaguar";
+        costOfGenome = 25;
     }
 }

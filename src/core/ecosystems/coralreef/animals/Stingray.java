@@ -9,5 +9,6 @@ public class Stingray extends Animal {
         super(cell);
         sprite = Images.stingray;
         name = "stingray";
+        costOfGenome = 25;
     }
 }

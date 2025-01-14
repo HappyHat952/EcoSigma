@@ -26,11 +26,11 @@ abstract public class Shop {
     protected Grid grid;
     protected GameContainer gc;
 
-    protected static int money;
+    protected int money;
 
     public Shop(Grid g, GameContainer gc) {
         items = new ArrayList<>();
-        money = 30;
+        money = 100;
         grid = g;
         this.gc = gc;
         organismItems = new ArrayList<>();

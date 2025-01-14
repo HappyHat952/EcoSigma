@@ -9,5 +9,6 @@ public class Clownfish extends Animal {
         super(cell);
         sprite = Images.clownfish;
         name = "clownfish";
+        costOfGenome = 25;
     }
 }

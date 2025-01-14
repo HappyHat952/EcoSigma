@@ -11,6 +11,7 @@ public class EnrichSoil extends Task {
     private final int TOTAL_HEALTHY_SOIL = 27;
     public EnrichSoil(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 140;
     }
 
     @Override

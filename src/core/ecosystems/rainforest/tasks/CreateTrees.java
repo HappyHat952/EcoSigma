@@ -17,6 +17,7 @@ public class CreateTrees extends Task {
         super(name, grid);
         totalPlants = 5;
         numPlants = 0;
+        moneyValue = 130;
     }
     public int getPercentDone() {
         if (numPlants < 5) {
@@ -27,13 +28,15 @@ public class CreateTrees extends Task {
     }
     public void update()
     {
+        int count = 0;
         ArrayList<Plant> plants = grid.getPlants();
         for (Plant p: plants)
         {
             if (p instanceof Tree)
             {
-                numPlants++;
+                count++;
             }
         }
+        numPlants = count;
     }
 }

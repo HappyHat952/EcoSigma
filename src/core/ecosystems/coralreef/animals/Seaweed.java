@@ -9,5 +9,6 @@ public class Seaweed extends Plant {
         super(cell);
         sprite = Images.seaweed;
         name = "seaweed";
+        costOfGenome = 25;
     }
 }

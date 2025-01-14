@@ -20,7 +20,7 @@ public class SoilEnrichmentMachine extends Building {
 
     public SoilEnrichmentMachine() {
         myImage = Images.soilEnrichmentMachine;
-        name = "Soil Enrichment Machine";
+        name = "Soil Synthesizer";
         info = "help";
         time = 0;
         stage = 0;
@@ -28,6 +28,7 @@ public class SoilEnrichmentMachine extends Building {
         iceCreated = 0;
         lastReportedIce = 0;
         resizeImage();
+        cost = 70;
     }
 
     public void update() {
@@ -40,6 +41,7 @@ public class SoilEnrichmentMachine extends Building {
                 ArrayList<Cell> cells = getSurroundingCells(stage);
                 for (Cell cell : cells) {
                     ((RainForestCell) cell).setHealthy(true);
+                    Game.getCurrentLevel().getShop().addMoney(15);
                 }
                 iceCreated += cells.size();
                 stage++;

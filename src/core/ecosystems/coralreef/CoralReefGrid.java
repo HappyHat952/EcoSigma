@@ -1,5 +1,6 @@
 package core.ecosystems.coralreef;
 
+import core.Game;
 import core.Main;
 import core.ecosystems.Grid;
 import core.ecosystems.arctic.ArcticCell;
@@ -83,6 +84,7 @@ public class CoralReefGrid extends Grid {
                             c.remove(random);
                             ((BioRock) cells[i][j].getBuilding()).setCoralCreated(true);
                             coral.setArtificial(true);
+                            Game.getCurrentLevel().getShop().addMoney(15);
                         }
                     }
                 }

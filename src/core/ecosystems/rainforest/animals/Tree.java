@@ -9,6 +9,8 @@ public class Tree extends Plant {
     public Tree(Cell cell) {
         super(cell);
         setSprite(Images.tree);
+        name = "Tree";
+        costOfGenome = 25;
     }
 
     public boolean isValid(Cell c )

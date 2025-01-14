@@ -18,13 +18,13 @@ public class BioRock extends Building {
 
     public BioRock(){
         myImage = Images.bioRock;
-        name = "Biorock";
+        name = "Coral Concrete";
         info = "help please";
         resizeImage();
         time = 0;
         isCompleted = false;
         isCoralCreated = false;
-
+        cost = 70;
     }
 
     public void update() {

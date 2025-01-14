@@ -7,6 +7,7 @@ import core.ecosystems.farm.Farm;
 import core.ecosystems.rainforest.RainForest;
 import core.lab.Lab;
 import core.setup.FileIO;
+import core.setup.Sounds;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -119,6 +120,8 @@ public class Game extends BasicGameState
 		if (key == Input.KEY_E)
 		{
 			sbg.enterState(Main.MAP_ID);
+			Sounds.coralReef.stop();
+			((CoralReef) ecosystems[1]).setSoundOn(false);
 		}
 	}
 

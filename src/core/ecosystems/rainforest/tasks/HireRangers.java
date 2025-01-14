@@ -15,6 +15,7 @@ public class HireRangers extends Task {
     private int rangers;
     public HireRangers(String name, Grid grid) {
         super(name, grid);
+        moneyValue = 15;
     }
 
     @Override

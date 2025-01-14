@@ -28,7 +28,7 @@ public class CoralRobot extends Building {
     public CoralRobot() {
         super();
         myImage = Images.coralRobot;
-        name = "Repair Robot";
+        name = "Repair-o-bot";
         info = "help please";
         resizeImage();
         time = 0;
@@ -41,6 +41,7 @@ public class CoralRobot extends Building {
         c = new ArrayList<>();
         direction = 0;
         isMoving = true;
+        cost = 45;
     }
 
     public void update() {
@@ -168,6 +169,7 @@ public class CoralRobot extends Building {
             int random = (int) (Math.random() * cells.size());
             ((Coral) (cells.get(random).getBuilding())).setIsHealthy(true);
             coralRepaired++;
+            Game.getCurrentLevel().getShop().addMoney(3);
         }
 
     }
