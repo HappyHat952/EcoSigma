@@ -169,7 +169,7 @@ public class Images {
             fire = new Image("res/game/rainforest/fire.png");
             ranger = new SpriteSheet("res/game/rainforest/ranger.png", 108, 108);
             frog = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
-            jaguar = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
+            jaguar = new SpriteSheet("res/game/rainforest/jaguar.png", 108, 108);
             parrot = new SpriteSheet("res/game/rainforest/frog.png", 128, 128);
             soilEnrichmentMachine = new Image("res/game/rainforest/soilEnrichmentMachine.png");
             // LAB

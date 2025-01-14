@@ -50,9 +50,9 @@ public class Animal extends Organism {
 
     public void render(Graphics g) {
         g.drawImage(sprite.getSubImage(frame, direction).getScaledCopy(Cell.getWidth(), Cell.getHeight()), x, y);
-        if (grid != null) {
-            g.drawString("" + forwardIsClear(grid), x, y);
-        }
+//        if (grid != null) {
+//            g.drawString("" + forwardIsClear(grid), x, y);
+//        }
     }
 
     public void update(Grid grid) {
