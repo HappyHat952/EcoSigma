@@ -18,6 +18,7 @@ public class ExtinguishFires extends Task {
         super(name, grid);
         fires = TOTAL_FIRES;
         moneyValue = 80;
+        //help
     }
 
     @Override
