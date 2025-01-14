@@ -9,5 +9,6 @@ public class Walrus extends Animal {
         super(cell);
         sprite = Images.walrus;
         name = "Walrus";
+        costOfGenome = 140;
     }
 }

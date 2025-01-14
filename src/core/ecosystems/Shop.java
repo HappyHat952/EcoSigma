@@ -21,7 +21,6 @@ abstract public class Shop {
     private final static int margin = (int)(Main.getScreenWidth() * .04f);
     private final static int buffer = (int)( 260/1920f * Main.getScreenWidth() ) ;
     protected ArrayList<Item> items;
-    //protected OrganismItem organismItem;
     protected ArrayList<OrganismItem> organismItems;
     protected Grid grid;
     protected GameContainer gc;
@@ -40,9 +39,14 @@ abstract public class Shop {
     abstract public void setItems();
 
     public boolean hasMoney(int value){ return value<= money;}
+    public int getMoney(){ return money;}
     public void addMoney(int value)
     {
         money += value;
+    }
+    public void removeMoney(int value)
+    {
+        money -= value;
     }
     public void addOrganism(Class<? extends Organism> o)
     {

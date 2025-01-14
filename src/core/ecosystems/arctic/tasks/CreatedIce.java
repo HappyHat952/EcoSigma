@@ -15,6 +15,7 @@ public class CreatedIce extends Task {
         super(name, grid);
         iceCreated = 0;
         totalIce = 30;
+        moneyValue = 200;
     }
 
 

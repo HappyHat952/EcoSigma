@@ -18,6 +18,7 @@ public class ArcticShop extends Shop {
     {
         super(grid, gc);
         setItems();
+        money = 50;
     }
 
     //MUTATOR

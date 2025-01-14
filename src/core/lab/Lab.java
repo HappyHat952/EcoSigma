@@ -1,6 +1,7 @@
 package core.lab;
 
 import core.Main;
+import core.ecosystems.arctic.animals.CompionMoss;
 import core.ecosystems.arctic.animals.Lemming;
 import core.ecosystems.arctic.animals.PolarBear;
 import core.ecosystems.arctic.animals.Walrus;
@@ -273,7 +274,7 @@ public class Lab extends BasicGameState {
             biomeOrganisms.add(Lemming.class);
 
             //makes new plant button
-            biomeOrganisms.add(Plant.class);
+            biomeOrganisms.add(CompionMoss.class);
         }
         else if (biome == 1)
         {
@@ -299,5 +300,6 @@ public class Lab extends BasicGameState {
         {
         }
         return biomeOrganisms;
+
     }
 }
