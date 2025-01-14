@@ -55,6 +55,10 @@ abstract public class Ecosystem {
         home =  new Button(Grid.getGridWidth() + (int)(Main.getScreenWidth()*.26f),(int)(Main.getScreenHeight()*.55f),70,70, Color.blue,"home");
 
     }
+
+    public Shop getShop(){
+        return shop;
+    }
     public void setOrganismItems(ArrayList<Class<? extends Organism>> list)
     {
         ArrayList<OrganismItem> organismItems = new ArrayList<>();
