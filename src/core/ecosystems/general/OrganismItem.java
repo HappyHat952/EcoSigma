@@ -33,7 +33,7 @@ public class OrganismItem {
         this.myOrganism = myOrganism;
         this.grid = grid;
         this.i = i;
-        numOrganisms = 200;
+        numOrganisms = 0;
         myImage = Lab.getOrganismImage(myOrganism).getScaledCopy(size,size);
 
     }
