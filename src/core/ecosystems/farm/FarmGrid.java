@@ -74,13 +74,13 @@ public class FarmGrid extends Grid {
                     if (p instanceof MonoCultureCrop)
                     {
                         Crop c = (Crop)p ;
-                        c.setGrowTime(5);
+                    //    c.setGrowTime(5);
 
                     }
                     if (p instanceof PluroCultureCrop)
                     {
                         Crop c = (Crop)p ;
-                        c.setGrowTime(2);
+                     //   c.setGrowTime(2);
                     }
                 }
             }

@@ -101,7 +101,7 @@ public class Animal extends Organism {
     }
 
 
-    private void determineDirection(Cell newCell) {
+    protected void determineDirection(Cell newCell) {
         int r = newCell.getRow() - currentCell.getRow(); // GREATER THAN 0 IF IT MOVED RIGHT, LESS IF LEFT
         int c = newCell.getCol() - currentCell.getCol(); // GREATER THAN 0 IF IT MOVED DOWN, LESS IF UP
 

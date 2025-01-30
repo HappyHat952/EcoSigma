@@ -7,6 +7,8 @@ import core.ecosystems.general.Plant;
 import core.ecosystems.tasks.Task;
 
 public class PlantTenVariedPlants extends Task {
+
+    boolean DONE;
     public PlantTenVariedPlants(String name, Grid grid) {
         super(name, grid);
         moneyValue = 350;
@@ -23,14 +25,23 @@ public class PlantTenVariedPlants extends Task {
                 num++;
             }
         }
+        if (num ==60)
+        {
+            DONE = true;
+        }
 
-        if (num<= 60)
+        if (num<= 60 && !DONE)
         {
             return (int)((float)num/60* 100);
         }
-        else {
-            return 60;
+        else if (DONE)
+        {
+            return 100;
         }
+        else {
+            return 100;
+        }
+
     }
 
     @Override
