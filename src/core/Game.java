@@ -8,6 +8,7 @@ import core.ecosystems.farm.Farm;
 import core.ecosystems.rainforest.RainForest;
 import core.lab.Lab;
 import core.setup.FileIO;
+import core.setup.PopupLoader;
 import core.setup.Sounds;
 import core.ui.PopupManager;
 import org.newdawn.slick.*;
@@ -130,6 +131,7 @@ public class Game extends BasicGameState
 	{
 		// This code happens when you enter a gameState.
 		gc.setDefaultMouseCursor();
+
 	}
 
 	public void leave(GameContainer gc, StateBasedGame sbg)
@@ -154,7 +156,7 @@ public class Game extends BasicGameState
 		if (!pause) {
 			ecosystems[levelID].mousePressed(x, y, button);
 		}
-		popupManager.mousePressed(button, x, y);
+		PopupManager.mousePressed(button, x, y);
 	}
 
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
@@ -185,7 +187,4 @@ public class Game extends BasicGameState
 	public static Ecosystem[] getEcosystems(){
 		return ecosystems;
 	}
-
-	public static PopupManager getPopupManager(){ return popupManager;}
-
 }

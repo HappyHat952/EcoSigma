@@ -138,10 +138,11 @@ abstract public class Ecosystem {
 
     //if opened, sets first open to true
     public void setFirstOpen(){
-        if (!hasBeenOpened)
-        {
-            pu.activate(0);
-        }
-        hasBeenOpened = true;
+        PopupManager.activate(0);
+//        if (!hasBeenOpened)
+//        {
+//            PopupManager.activate(0);
+//        }
+//        hasBeenOpened = true;
     }
 }

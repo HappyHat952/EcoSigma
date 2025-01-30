@@ -1,5 +1,6 @@
 package core.lab.petriDish;
 
+import core.Game;
 import core.Main;
 import core.lab.Genome;
 import core.lab.Lab;
@@ -16,6 +17,7 @@ public class PetriDish  extends LabScreen {
 
     public ArrayList<EggDish> dishes;
 
+
     public PetriDish()
     {
         super();
@@ -23,6 +25,7 @@ public class PetriDish  extends LabScreen {
         machineButton = new LabMachineButton((int)(Main.getScreenWidth()*.35f), (int)(Main.getScreenHeight()*.3f),
                 Images.petriDishes.getScaledCopy((int)(Main.getScreenWidth()*.2f), (int)(Main.getScreenWidth()*.2f)),2);
         id = 2;
+
     }
 
 
@@ -75,7 +78,7 @@ public class PetriDish  extends LabScreen {
         {
             for (EggDish d: dishes)
             {
-                if(d.mouseOver(x,y))
+                if(!Game.getPause() && d.mouseOver(x,y))
                 {
                     d.getGenome().putInEgg();
                 }

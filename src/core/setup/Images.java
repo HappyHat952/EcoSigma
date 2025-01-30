@@ -38,6 +38,7 @@ public class Images {
     public static Image mapDone;
     //LAB
     public static Image labMachine;
+    public static SpriteSheet petriDish;
     // ARCTIC
     public static Image arcticMachine;
     public static SpriteSheet arcticCells;
@@ -46,6 +47,7 @@ public class Images {
     public static Image pump;
     public static Image oilDrill;
     public static Image protesters;
+    public static SpriteSheet animatedPump;
 
     public static SpriteSheet polarBear;
     public static SpriteSheet walrus;
@@ -109,6 +111,8 @@ public class Images {
             soundOnButton = new Image("res/buttons/soundOnButton.png");
             soundOffButton = new Image("res/buttons/soundOffButton.png");
             pauseButton = new Image("res/buttons/pauseButton.png");
+
+
             // TITLE
             titleScreen = (new Image("res/title/title.png")).getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             // INTRO
@@ -123,6 +127,7 @@ public class Images {
             lab = new Image("res/game/lab.png");
             //LAB
             labMachine = new Image("res/game/LabMachine.png");
+            petriDish = new SpriteSheet("res/lab/petriDish.png", 160,160);
             // ARCTIC
                 arcticCells = new SpriteSheet("res/game/arctic/arcticCells.png", 224,224);
                 //machines
@@ -131,6 +136,7 @@ public class Images {
                 pump = new Image("res/game/arctic/machine/pump.png");
                 oilDrill = new Image("res/game/arctic/machine/oilDrill.png");
                 protesters = new Image("res/game/arctic/protesters.png");
+                animatedPump = new SpriteSheet("res/game/arctic/machine/animatedPump.png", 160,160);
 
                 //animals
                 polarBear =new SpriteSheet( (new Image("res/game/arctic/animals/polarBear.png")), 280, 280);

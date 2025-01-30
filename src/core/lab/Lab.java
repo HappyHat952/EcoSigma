@@ -34,6 +34,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import static core.Game.levelID;
+
 public class Lab extends BasicGameState {
 
     private int id;
@@ -83,7 +85,7 @@ public class Lab extends BasicGameState {
 
         hasBeenOpened = false;
 
-        homeButton = new Button(Grid.getGridWidth() - (int)(Main.getScreenWidth()*.2f),(int)(Main.getScreenHeight()*.1f),70,70, Color.cyan,"return");
+        homeButton = new Button(Main.getScreenWidth() - (int)(Main.getScreenWidth()*.08f),(int)(Main.getScreenHeight()*.85f),70,70, Color.blue,"return");
 //
 //        PopupLoader.loadPopups(-1);
 //        PopupManager.activate(0);
@@ -170,6 +172,7 @@ public class Lab extends BasicGameState {
         {
             if (key == Input.KEY_E)
             {
+                PopupLoader.loadPopups(levelID);
                 sbg.enterState(Main.GAME_ID);
             }
             for (LabScreen l: machines)
@@ -197,7 +200,9 @@ public class Lab extends BasicGameState {
             }
             if (homeButton.isMouseOver(x,y))
             {
+                PopupLoader.loadPopups(levelID);
                 sbg.enterState(Main.GAME_ID);
+
             }
 
 

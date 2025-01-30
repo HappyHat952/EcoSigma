@@ -42,10 +42,13 @@ public class GenomeMaker extends LabScreen {
             g.setFont(Fonts.big);
             g.drawString("GENOME MAKER", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
             g.drawString("Purchase Genome to Clone", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.17f);
-            g.drawString("Money "+ Game.getCurrentShop().getMoney(), x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.22f);
+            g.drawString("$ "+ Game.getCurrentShop().getMoney(), x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.22f);
 
 
             g.setLineWidth(3);
+            g.setColor(Color.black);
+            g.fillRect(x+Main.getScreenWidth()*.125f , y+Main.getScreenHeight()*.5f, width - Main.getScreenWidth()*.25f,
+                    Fonts.medium.getHeight());
             g.setColor(Color.white);
             g.drawRect(x+Main.getScreenWidth()*.125f , y+Main.getScreenHeight()*.5f, width - Main.getScreenWidth()*.25f,
                     Fonts.medium.getHeight());
@@ -56,8 +59,8 @@ public class GenomeMaker extends LabScreen {
                 b.render(g);
                 if (b.isMouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
                 {
-                    g.setFont(Fonts.medium);
-                    g.drawString(b.getName().substring(2) +" genome",x + Main.getScreenWidth()*.125f, Main.getScreenHeight()*.47f);
+                    g.setFont(Fonts.medium); g.setColor(Color.white);
+                    g.drawString(b.getName().substring(2) +" genome",x + Main.getScreenWidth()*.125f, Main.getScreenHeight()*.56f);
                     int letterW = Fonts.medium.getWidth("G");
                     g.drawString(segments[screenButtons.indexOf(b)].substring(0, 1+(int)((width - Main.getScreenWidth()*.25f) /letterW)),
                             x + Main.getScreenWidth()*.125f,

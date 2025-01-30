@@ -4,6 +4,7 @@ import core.Main;
 import core.lab.Genome;
 import core.lab.Lab;
 import core.setup.Fonts;
+import core.setup.Images;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -13,9 +14,12 @@ public class EggDish {
     int pixelY;
     int pixelW;
     int pixelH;
+
+    private int dish;
     public EggDish(Genome g)
     {
         genome = g;
+        dish = (int)( Math.random() * 3);
     }
 
     public void render(Graphics g, int i)
@@ -25,20 +29,21 @@ public class EggDish {
         int w = (int)(Main.getScreenWidth()*.28f);
         int h = (int)(Main.getScreenHeight()*.32f);
 
-        pixelX = (int)(w + x*Main.getScreenHeight()*.11f);
-        pixelY = (int)(h + y* Main.getScreenHeight()*.11f);
-        pixelW = (int) (Main.getScreenHeight()*.1f);
-        pixelH = (int)(Main.getScreenHeight()*.1f);
+        pixelX = (int)(w + x*Main.getScreenHeight()*.21f);
+        pixelY = (int)(h + y* Main.getScreenHeight()*.21f);
+        pixelW = (int) (Main.getScreenHeight()*.23f);
+        pixelH = (int)(Main.getScreenHeight()*.23f);
 
         //the petri dish
-        g.setColor(Color.cyan);
-        g.fillOval(pixelX, pixelY, pixelW, pixelH);
+        //     g.setColor(Color.cyan);
+        g.drawImage(Images.petriDish.getSubImage(0,dish).getScaledCopy(pixelW,pixelH), pixelX, pixelY);
+  //      g.fillOval(pixelX, pixelY, pixelW, pixelH);
 
         //the name
         g.setColor(Color.black); g.setFont(Fonts.small);
         int textW = Fonts.small.getWidth(Lab.getOrganismName(genome.getOrganism()));
         g.drawString(Lab.getOrganismName(genome.getOrganism()), pixelX +(int)(pixelW/2f)- (int)(textW/2f) , pixelY
-         + (int)(pixelH/2f) - (int)(Fonts.small.getHeight()/2f));
+         + pixelH + Fonts.small.getHeight());
     }
 
     public Genome getGenome(){ return genome;}

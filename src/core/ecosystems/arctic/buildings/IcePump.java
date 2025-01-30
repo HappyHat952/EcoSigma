@@ -1,5 +1,6 @@
 package core.ecosystems.arctic.buildings;
 
+import core.ecosystems.arctic.Arctic;
 import core.ecosystems.arctic.ArcticCell;
 import core.ecosystems.general.Building;
 import core.ecosystems.general.Cell;
@@ -19,19 +20,22 @@ public class IcePump extends Building {
     private Grid grid;
 
     public IcePump() {
-        myImage = Images.pump;
+        mySprite = Images.animatedPump;
+        myImage = Images.animatedPump.getSubImage(0,0);
         name = "Ice Pump";
         info = "help";
         time = 0;
         stage = 0;
         isCompleted = false;
         iceCreated = 0;
+        frameRate = 23;
         lastReportedIce = 0;
         resizeImage();
-        cost = 90;
+        cost = 60;
     }
 
     public void update() {
+        super.update();
         grid = Game.getCurrentLevel().getGrid();
         if (stage < 2) {
             time++;
@@ -51,6 +55,10 @@ public class IcePump extends Building {
                 iceCreated += cells.size();
                 stage++;
             }
+        }
+        if (frame == mySprite.getVerticalCount())
+        {
+            frame = 0;
         }
     }
 

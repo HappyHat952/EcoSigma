@@ -40,9 +40,21 @@ public class CloneProgress {
                 , Main.getScreenWidth()*.43f, Main.getScreenHeight()*.12f);
         g.setColor(Color.cyan);
         g.fillRect(LabScreen.getScreenX()+Main.getScreenWidth()*.11f, LabScreen.getScreenY() + Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f
-                , Main.getScreenWidth()*.43f*(totalTime*1f/maxTime), Main.getScreenHeight()*.12f);
+                , Main.getScreenWidth()*.43f*((maxTime - totalTime)*1f/maxTime), Main.getScreenHeight()*.12f);
         g.setColor(Color.white); g.setFont(Fonts.medium);
-        g.drawString("Creating "+Lab.getOrganismName(myGenome.getOrganism()), Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+
+        if (totalTime == maxTime)
+        {
+            g.drawString("Create "+Lab.getOrganismName(myGenome.getOrganism()) +"?", Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        }
+        else if (myGenome.isUsed())
+        {
+            g.drawString(Lab.getOrganismName(myGenome.getOrganism())+ " created", Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        }
+        else {
+            g.drawString("Creating "+Lab.getOrganismName(myGenome.getOrganism()) +" ...", Main.getScreenWidth()*.28f, LabScreen.getScreenY()+ Main.getScreenHeight()*.21f + myIndex*Main.getScreenHeight()*.15f);
+        }
+
 
         if (timerOrEcosystem != null)
         {

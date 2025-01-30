@@ -55,7 +55,7 @@ public class OrganismMaker extends LabScreen {
         if (open)
         {
             g.setColor(Color.black); g.setFont(Fonts.big);
-            g.drawString("Cloning Progress", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
+            g.drawString("Orgo-Creation Machine", x+Main.getScreenWidth()*.11f, y+Main.getScreenHeight()*.12f);
             int i = 0;
             for(CloneProgress p: cloneSlots)
             {
